@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:74:"D:\xampp\htdocs\jz\tp5.0\public/../application/admin\view\login\index.html";i:1522803771;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,7 @@
     <div class="message">今朝装饰-后台管理</div>
     <div id="darkbannerwrap"></div>
     
-    <form action="{:url('admin/login/login')}" method="post">
+    <form action="<?php echo url('admin/login/login'); ?>" method="post">
 		<input name="action" value="login" type="hidden">
 		<input name="username" placeholder="用户名" required="" type="text">
 		<hr class="hr15">

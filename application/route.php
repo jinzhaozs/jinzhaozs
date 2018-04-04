@@ -20,4 +20,5 @@ Route::post('/index/Index/doedit','index/Index/doedit');//执行修改
 Route::get('/index/Index/del/:id','index/Index/del');//删除
 
 //后台路由
-Route::get('/admin','admin/Login/index');//测试
+Route::get('/admin','admin/Login/index');//登陆页面
+Route::post('/admin/login/login','admin/Login/login');//执行登陆
