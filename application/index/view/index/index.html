@@ -11,18 +11,37 @@
 <button><a href="{:url('admin/index/index')}">前台</a></button>
 <!-- 头部 -->
 <div>
+<!-- 条件 -->
+	<div style="margin-left: 10%;margin-top: 2%;">
+		<span>条件：</span>
+		<!-- 类型 -->
+		{neq name="$comtype['lxcode']" value=""}
+		<span id="lxcode" style="display: none;">{$comtype['lxcode']}</span>
+		<span>{$comtype['lxname']}</span>
+		<button><a class="comtypedel" href="{:url('/index/index/index')}">x</a></button>
+		{/neq}
+
+		<!-- 服务区域 -->
+		{neq name="$comservice['qycode']" value=""}
+		<span id="qycode" style="display: none;">{$comservice['qycode']}</span>
+		<span>{$comservice['qyname']}</span>
+		<button><a class="comservicedel" href="{:url('/index/index/index')}">x</a></button>
+		{/neq}
+
+		<span>共{$count}结果</span>
+	</div>
 	<!-- 类型 -->
 	<div style="margin-left: 10%;margin-top: 2%;">
 		<span >类型</span>
 		{foreach name="com_leixing" item="vocom_leixing"}
-		<span><a href="{:url('/index/index/index',['type'=>$vocom_leixing.lxcode])}">{$vocom_leixing.lxcode}{$vocom_leixing.lxname}</a></span>
+		<span><a class="comtype" href="{:url('/index/index/index',['type'=>$vocom_leixing.lxcode])}">{$vocom_leixing.lxname}</a></span>
 		{/foreach}
 	</div>
 	<!-- 服务区域 -->
 	<div style="margin-left: 10%;margin-top: 2%;">
 		<span >服务区域</span>
 		{foreach name="com_fuwuquyu" item="vocom_fuwuquyu"}
-		<span><a href="">{$vocom_fuwuquyu.qyname}</a></span>
+		<span><a class="comservice" href="{:url('/index/index/index',['service'=>$vocom_fuwuquyu.qycode])}">{$vocom_fuwuquyu.qyname}</a></span>
 		{/foreach}
 	</div>
 
@@ -53,13 +72,47 @@
 			{/foreach}
 		</div>
 	</div>
+	<div>{$shop->render()}</div>
 </div>
 </body>
 <script type="text/javascript">
-	$('.wo a').click(function(){
-							var statu=$('.st .curr').attr('name');
-							var pric=$('.pr .curr').attr('name');
-							 $(this).attr("href",$(this).attr("href")+"/status/"+statu+"/price/"+pric);
-						})
+	// 类型 闭包
+	function type(){
+		service = "";//服务区域信息
+		var qycode = $("#qycode").html();//获取服务区域
+		if (qycode) {
+			service = "?service="+qycode;
+		}
+		
+	}
+	// 服务区域闭包
+	function service(){
+		type = "";//类型信息
+		var lxcode = $("#lxcode").html();//获取类型
+		if (lxcode) {
+			type = "?type="+lxcode;
+		}
+		
+	}
+	//类型点击
+	$(document).on("click",".comtype",function(){
+		type();
+		$(this).attr("href",$(this).attr("href")+service);
+	});
+	//类型删除
+	$(document).on("click",".comtypedel",function(){
+		type();
+		$(this).attr("href",$(this).attr("href")+service);
+	})
+	//服务区域点击
+	$(document).on("click",".comservice",function(){
+		service();
+		$(this).attr("href",$(this).attr("href")+type);
+	});
+	//服务区域删除
+	$(document).on("click",".comservicedel",function(){
+		service();
+		$(this).attr("href",$(this).attr("href")+type);
+	});
 </script>
 </html>

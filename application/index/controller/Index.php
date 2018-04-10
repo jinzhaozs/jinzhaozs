@@ -15,27 +15,59 @@ class Index extends \app\index\controller\Base
 	//查询
     public function index()
     {
-        //获取数据
+        // 统一变量说明
+        $comtype = null;//类型数组
+        $comservice = null;//服务区域数组
+        $whereleixing = array();//公司条件数组
+
+        //获取类型数据
         $type = input('type'); // 获取类型 code
         if ($type) {
+            $comtype['lxcode'] = $type;//type 的code
+            $typename = $this->uri("com_qiyecsleixing",$comtype);//转换数据
+            $comtype['lxname'] = $typename['0']['lxname'];// type 的name
+            // dump($thpename);
             $whereleixing['com_leixing'] = array('like',"%$type,%");
-        }else{
-            $whereleixing = array();
         }
-        // dump($whereleixing);
-    	//链接数据库赋值
+        
+        //获取服务区域数据
+        $service = input('service'); // 获取类型 code
+        if ($service) {
+            $comservice['qycode'] = $service;//type 的code
+            $servicename = $this->uri("com_fuwuqy",$comservice);//转换数据
+            $comservice['qyname'] = $servicename['0']['qyname'];// type 的name
+            // dump($thpename);
+            $whereleixing['com_fuqy'] = array('like',"%$service,%");
+        }
+
+        /**
+         * 公司信息
+         * @var [type]
+         */
+        $shop = $this->uri("shop",$whereleixing,"3");//查询公司信息
+        // dump($shop);die;
+        $count = db("shop")->where($whereleixing)->count();//查询公司信息总条数
+
+        //链接数据库赋值
         $com_leixing = $this->uri("com_qiyecsleixing",array());//类型
         $com_fuwuquyu = $this->uri("com_fuwuqy",array());//服务区域
         $com_fengge = $this->uri("com_zhuancfg",array());//风格
         $com_suozaiqu = $this->uri("com_suozaiqu",array());//所在区域
 
-        $shop = $this->uri("shop",$whereleixing);//公司信息
-        
+        //渲染类别信息
         $this->assign("com_leixing",$com_leixing);
         $this->assign("com_fuwuquyu",$com_fuwuquyu);
         $this->assign("com_fengge",$com_fengge);
         $this->assign("com_suozaiqu",$com_suozaiqu);
+        //渲染条件信息
+        $this->assign("comtype",$comtype);//类型
+        $this->assign("comservice",$comservice);//服务区域
+       //渲染公司信息
         $this->assign("shop",$shop);
+        $this->assign("count",$count);
+        return $this->fetch();
+    }
+    public function aa(){
         return $this->fetch();
     }
 }

@@ -13,6 +13,7 @@ use think\Route;
 // 注册路由到index模块的News控制器的read操作
 Route::get('/','index/Index/index');//查询
 Route::get('/index/index/index/','index/Index/index');//查询
+Route::get('/aa','index/Index/aa');//查询
 
 //后台
 Route::rule('/admin/index/index','admin/index/index');//主页
