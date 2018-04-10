@@ -11,12 +11,8 @@
 
 use think\Route;
 // 注册路由到index模块的News控制器的read操作
-Route::rule('/','index/Index/index');//查询
-Route::rule('/index/Index/add','index/Index/add');//添加
-Route::post('/index/Index/doadd','index/Index/doadd');//执行添加
-Route::get('/index/Index/edit/:id','index/Index/edit');//修改
-Route::post('/index/Index/doedit','index/Index/doedit');//执行修改
-Route::get('/index/Index/del/:id','index/Index/del');//删除
+Route::get('/','index/Index/index');//查询
+Route::get('/index/index/index/','index/Index/index');//查询
 
 //后台
 Route::rule('/admin/index/index','admin/index/index');//主页

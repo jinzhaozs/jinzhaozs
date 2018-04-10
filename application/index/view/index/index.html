@@ -1,85 +1,65 @@
 <html>
 <head>
 <title></title>
-<style type="text/css">
-body,table{ 
-font-size:12px; 
-} 
-table{ 
-table-layout:fixed; 
-empty-cells:show; 
-border-collapse: collapse; 
-margin:0 auto; 
-} 
-td{ 
-height:30px; 
-} 
-h1,h2,h3{ 
-font-size:12px; 
-margin:0; 
-padding:0; 
-} 
-.table{ 
-	margin-top: 5%;
-	margin-bottom: 3%;
-border:1px solid #cad9ea; 
-color:#666; 
-} 
-.table th { 
-background-repeat:repeat-x; 
-height:30px; 
-} 
-.table td,.table th{ 
-border:1px solid #cad9ea; 
-padding:0 1em 0; 
-} 
-.table tr.alter{ 
-background-color:#f5fafe; 
-}
-</style>
+<script src="__STATIC__/assets/js/jquery.min.js"></script>
+<!-- bootstrap -->
+<link rel="stylesheet" href="__STATIC__/bootstrap/css/bootstrap.min.css"/>
+<script src="__STATIC__/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 <button><a href="{:url('admin/index/index')}">后台</a></button>
-<table width="90%" class="table">
-<tr>
-	<th>
-		id
-	</th>
-	<th>
-		name
-	</th>
-	<th>
-		text
-	</th>
-	<th>
-		time
-	</th>
-	<th>
-		操作
-	</th>
-</tr>
-{foreach name="res" item="vores"}
-<tr>
-	<td>
-		{$vores.id}
-	</td>
-	<td>
-		{$vores.name}
-	</td>
-	<td>
-		{$vores.text}
-	</td>
-	<td>
-		{$vores.time}
-	</td>
-	<td>
-		<a href="{:url('index/index/edit',['id'=>$vores['id']])}">修改</a> | <a href="{:url('index/index/del',['id'=>$vores['id']])}">删除</a>
-	</td>
-</tr>
-{/foreach}
-</table>
+<button><a href="{:url('admin/index/index')}">前台</a></button>
+<!-- 头部 -->
 <div>
-	<button><a href="{:url('index/Index/add')}">添加</a></button>
+	<!-- 类型 -->
+	<div style="margin-left: 10%;margin-top: 2%;">
+		<span >类型</span>
+		{foreach name="com_leixing" item="vocom_leixing"}
+		<span><a href="{:url('/index/index/index',['type'=>$vocom_leixing.lxcode])}">{$vocom_leixing.lxcode}{$vocom_leixing.lxname}</a></span>
+		{/foreach}
+	</div>
+	<!-- 服务区域 -->
+	<div style="margin-left: 10%;margin-top: 2%;">
+		<span >服务区域</span>
+		{foreach name="com_fuwuquyu" item="vocom_fuwuquyu"}
+		<span><a href="">{$vocom_fuwuquyu.qyname}</a></span>
+		{/foreach}
+	</div>
+
+	<!-- 风格  -->
+	<div style="margin-left: 10%;margin-top: 2%;">
+		<span >风格</span>
+		{foreach name="com_fengge" item="vocom_fengge"}
+		<span><a href="">{$vocom_fengge.zcfgname}</a></span>
+		{/foreach}
+	</div>
+	<!-- 所在区域 -->
+	<div style="margin-left: 10%;margin-top: 2%;">
+		<span >所在区域</span>
+		{foreach name="com_suozaiqu" item="vocom_suozaiqu"}
+		<span><a href="">{$vocom_suozaiqu.qyname}</a></span>
+		{/foreach}
+	</div>
+</div>
+<!-- 中部 -->
+<div>
+	<div style="margin-left: 10%;margin-top: 2%;">
+		<div>
+			{foreach name="shop" item="voshop"}
+			<div>
+				<span>{$voshop.name}</span>
+				<span>{$voshop.dizhi}</span>
+			</div>
+			{/foreach}
+		</div>
+	</div>
 </div>
 </body>
+<script type="text/javascript">
+	$('.wo a').click(function(){
+							var statu=$('.st .curr').attr('name');
+							var pric=$('.pr .curr').attr('name');
+							 $(this).attr("href",$(this).attr("href")+"/status/"+statu+"/price/"+pric);
+						})
+</script>
 </html>
