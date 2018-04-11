@@ -1,0 +1,1920 @@
+@-webkit-keyframes autofill{
+    to {
+        background: transparent;
+    }
+}
+
+input:-webkit-autofill{
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+}
+.tender-pop{
+    background: url(http://img.to8to.com/to8to_img/zxbj/common_tender/tender_bg.png) no-repeat center center;
+    height: 500px;
+    background-size: contain; 
+} 
+
+.tender-pop-main {
+    height: 500px;
+    overflow: hidden;
+}
+.tender-pop .tender-pop-title {
+    padding-top: 138px;
+    font-size: 28px;
+    text-align: center;
+    color: #50ac6a;
+    line-height: 36px;
+    padding-left: 5px;
+    position: relative;
+}
+.tender-pop .tender-pop-title em{
+    z-index: 9;
+    position: relative;
+    font-weight: 600;
+}
+.tender-pop .tender-pop-title .title-bg-col{
+    background: #e9f6ed;
+    display: block;
+    width: 95%;
+    height: 20px;
+    position: absolute;
+    bottom: 0px;
+    left: 9px;
+    z-index: 0;
+}
+.tender-pop .tender-pop-mfsj .title-bg-col{
+    width: 260px;
+    left: 50%;
+    margin-left: -128px;
+}
+.tender-pop .tender-pop-mfbj .title-bg-col{
+    width: 228px;
+    left: 50%;
+    margin-left: -112px;
+}
+.tilte-wid{
+    margin: 0 auto;
+    text-align: left;
+}
+.tender-price-result-box {
+    padding: 9px 40px 0;
+}
+.tender-pop-applypeople {
+    margin: 2px auto 0;
+    color: #666;
+    padding-left: 10px;
+    text-align: center;
+}
+.num-man {
+    color: #feb338;
+}
+.tender-form-list {
+    padding: 16px 40px 10px;
+}
+.tender-form-list .tender-form-item {
+    text-align: left;
+}
+
+.tender-form-item {
+    text-align: center;
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    position: relative;
+    color: #666;
+    margin-bottom: 20px;
+}
+.height_area{
+   margin-bottom: 17px;
+}
+.tender-phone{
+    margin-bottom: 16px;
+}
+.tender-form-select {
+    width: 232px;
+    height: 34px;
+    padding-left: 6px;
+    font-size: 14px;
+    color: #666;
+    border: 1px solid #dddddd;
+    vertical-align: middle;
+    padding-bottom: 8px \0; 
+    *padding-left: 0px;
+    *padding-top: 9px;
+    *padding-bottom: 9px;
+    *position: relative;
+    /* *top: 8px; */
+}
+.tender-form-select.province {
+    width: 111px;
+    margin-left: 20px;
+}
+.tender-form-select.city {
+    margin-left: 10px;
+}
+input.tender-form-input {
+    width: 212px;
+    padding: 5px 9px 6px;
+    border: 1px solid #dddddd;
+    vertical-align: middle;
+    left: 98px;
+    margin-left: 20px;
+}
+input.tender-form-phone{
+    margin-left: 10px;
+}
+.tender-form-font {
+    position: absolute;
+    left: 106px;
+    *left: 104px;
+    top: 1px;
+    color: #999;
+}
+.tender-form-sup {
+    position: absolute;
+    right: 100px;
+    color: #333;
+}
+.tender-pop-buttom {
+    width: 120px;
+    height: 36px;
+    background-color: #ff6000;
+    display: block;
+    margin: 0 auto;
+    color: white;
+    cursor: pointer;
+}
+.tender-form-footer {
+    width: 232px;
+    margin: 0 auto 13px;
+    font-size: 12px;
+    color: #999;
+    height: 18px;
+    line-height: 18px;
+}
+.tender-form-explain {
+    color: #feb338;
+    padding-left: 12px;
+}
+.tender-form-check {
+    height: 24px;
+    color: #999;
+}
+.tender-form-check span {
+    margin-left: 5px;
+}
+.tender-form-item .style-budget-em {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-position: -2px -312px;
+    vertical-align: middle;
+}
+.tender-pop .form_error {
+    position: absolute;
+    left: 94px;
+    top: 25px;
+    color: #ff6666;
+    font-size: 12px;
+}
+.tender-pop .form_error .ico_error {
+    width: 13px;
+    height: 13px;
+    background: url(http://img.to8to.com/to8to_img/global.png?v=20160512) no-repeat;
+    background-position: -51px -165px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.tender-huxing .select {
+    width: 255px;
+    padding-left: 5px;
+    height: 34px;
+    border-color: rgb(221, 221, 221);
+}
+.tender-huxing .select_s {
+    border: none;
+    margin-right: 0;
+    margin-left: 0;
+    border: 1px solid rgb(221, 221, 221);
+    width: 111px;
+    outline: none;
+}
+.tender-huxing .select_s_s {
+    width: 74px;
+    margin-bottom: 10px;
+}
+.tender-huxing {
+    height: 79px;
+}
+.tender-huxing div {
+    width: 235px;
+    float: right;
+    display: inline-block;
+    position: absolute;
+    top: 3px;
+    left: 96px;
+}
+.tender-pop-buttom, .tender-form-footer {
+    text-align: center;
+}
+.tender-huxing .select-margin {
+    margin-left: 5px;
+}
+.tender-huxing .select-long-margin {
+    margin-left: 10px;
+}
+
+.tender-pop-mfbj .style-budget-title, .tender-pop-mfsj .style-budget-title {
+    font-weight: 900;
+}
+.tender-form-item .worn-font {
+    color: #feb338;
+    position: relative;
+    top: 3px;
+    font-size: 24px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.tender-pop-tabs {
+    position: absolute;
+    left: -40px;
+    top: 50%;
+    margin-top: -78px;
+    cursor: pointer;
+}
+.tender-pop-tabs li {
+    position: relative;
+    display: block;
+    width: 40px;
+    height: 50%;
+}
+.tender-pop-tabs li span {
+    background: url(http://img.to8to.com/to8to_img/zxbj/common_tender/tender_list_bg.png) no-repeat;
+    display: block;
+    height: 100px;
+    width: 40px;
+
+}
+.tender-pop-tabs li.active.btn-mfbj-list span{
+    background-position: 0 -400px;
+}
+.tender-pop-tabs li.btn-mfbj-list span{
+    background-position: -42px -400px;
+}
+.tender-pop-tabs li.btn-mfsj-list span{
+    background-position: -128px -400px;
+}
+.tender-pop-tabs li.active.btn-mfsj-list span{
+    background-position: -86px -400px;
+}
+.tender-pop-con {
+    display: none;
+}
+.tender-pop-logo {
+    position: absolute;
+    height: 153px;
+    width: 144px;
+    top: -116px;
+    left: 20px;
+    background: url(http://img.to8to.com/to8to_img/xgt/xgt_xqy.png) no-repeat 0 0;
+    _background: url(http://img.to8to.com/to8to_img/xgt/xgt_xqy.gif) no-repeat 0 0;
+}
+.tender-price-result li {
+    height: 40px;
+}
+.tender-price-result {
+    width: 292px;
+    margin: 0 auto;
+    padding: 22px 0;
+    border: 1px solid #ddd;
+}
+.tender-price-result li span {
+    float: left;
+    width: 48%;
+    height: 40px;
+    line-height: 40px;
+    text-align: right;
+    font-size: 14px;
+    color: #666;
+}
+.tender-price-result li strong {
+    float: right;
+    width: 52%;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 0;
+    font-weight: normal;
+    font-size: 12px;
+}
+.tender-price-result em {
+    text-align: center;
+    padding: 0 18px 0 12px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.tender-price-ad {
+    margin: 40px 67px 0;
+}
+.tender-price-ad p {
+    width: 310px;
+    margin: 0 auto;
+    color: #999;
+    font-size: 12px;
+}
+
+.tender-price-ad span {
+    color: #feb338;
+}
+.tender-price-ad a {
+    display: block;
+    width: 170px;
+    height: 20px;
+    text-align: center;
+    margin-left: 80px;
+    margin-top: 22px;
+    color: #01af63;
+    line-height: 28px;
+}
+.tender-price-ad em {
+    display: inline-block;
+    width: 202px;
+    height: 36px;
+    position: relative;
+    bottom: 45px;
+    right: 16px;
+    top: -32px;
+    cursor: pointer;
+    background: url(http://img.to8to.com/to8to_img/xgt/xgt_xqy.png) no-repeat -2px -163px;
+    _background: url(http://img.to8to.com/to8to_img/xgt/xgt_xqy.gif) no-repeat -2px -163px;
+}
+.tender-form-check a, .zzfw span {
+    color: #feb338;
+}
+.tender-mfsjinit-img {
+    padding: 152px 72px 0;
+}
+.tender-mfsjinit-img em {
+    width: 340px;
+    height: 291px;
+    display: block;
+    background: url(http://img.to8to.com/to8to_img/zxbj/common_tender/tender_list_bg.png) no-repeat -1px -102px;
+    _background: url(http://img.to8to.com/to8to_img/xgt/xgt_xqy.gif) no-repeat -33px -346px;
+}
+.tender-result-text, .tender-result-explain {
+    text-align: center;
+}
+.tender-result-text {
+    font-size: 16px;
+    color: #333;
+}
+.tender-pop-mfsj .mflf {
+    display: block;
+    width: 115px;
+    height: 115px;
+    margin: 0 auto;
+    background: url(http://img.to8to.com/to8to_img/zxbj/common_tender/tender_list_bg.png) no-repeat -644px 0px;
+    _background: url(http://img.to8to.com/to8to_img/xgt/xgt_xqy.gif) no-repeat -238px -14px;
+}
+.tender-result-explain {
+    margin-top: 2px;
+    color: #feb338;
+}
+.tender-form-item.mall em {
+    display: block;
+    height: 92px;
+    width: 357px;
+    margin: 0 auto;
+    cursor: pointer;
+    background: url(http://img.to8to.com/to8to_img/xgt/xgt_xqy.png) no-repeat -2px -215px;
+    _background: url(http://img.to8to.com/to8to_img/xgt/xgt_xqy.gif) no-repeat -2px -215px;
+}
+.tender-result-mfsj .tender-form-item {
+    height: auto;
+}
+.mar-bot-6{
+    margin-bottom: 6px;
+}
+.mr-bot-12{
+    margin-bottom: 12px;
+}
+.tender-title-count {
+    color: #feb338;
+    width: 95px;
+    text-align: center;
+    display: inline-block;
+    *display: inline;
+    *zoom:1;
+}
+.tender-result-text span{
+    color: #68c192;
+}
+.tender-pop-title.littlefont .tender-title-text {
+    font-size: 14px;
+    color: #333;
+    font-weight: normal;
+}
+.tender-mfsj-btn {
+    position: relative;
+    display: block;
+    margin: 18px auto 12px;
+    width: 120px;
+    height: 40px;
+    color: #fff;
+}
+.tender-mfsj-btn em {
+    display: block;
+    width: 101px;
+    height: 38px;
+    line-height: 38px;
+    cursor: pointer;
+    text-align: center;
+    background: url(http://img.to8to.com/to8to_img/zxbj/common_tender/tender_list_bg.png) no-repeat 0px 0px;
+    _background: url(http://img.to8to.com/to8to_img/xgt/xgt_xqy.gif) no-repeat -412px -347px;
+}
+.tender-mfsj-btn.no-allow em {
+    background-position: 0px -48px;
+    cursor: not-allowed;
+}
+.tender-pop-right .littlefont {
+    padding-top: 142px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
+.tender-pop-mfbj .new-init-yusuan {
+    padding-top: 25px;
+    padding-bottom: 30px;
+}
+.tender-pop-mfbj .new-init-yusuan li {
+    height: 26px;
+}
+.tender-pop-left {
+    float: left;
+    width: 490px;
+    /* border-right: 1px solid #ddd; */
+    height: 500px;
+    +height: 460px;
+    position: relative;
+}
+.mfsj-left-lien{
+    height: 332px;
+    width: 1px;
+    background: #73c579;
+    position: absolute;
+    right: -10px;
+    top: 168px;
+}
+.tender-pop-right {
+    float: right;
+    width: 470px;
+    height: 500px;
+    margin-right: 40px;
+    +height: 460px;
+}
+.to8to_zj {
+    margin-left: 10px;
+    color: #bbb;
+    font-size: 14px;
+}
+.dn {
+    display: none;
+}
+
+.submit-box{
+    position: absolute;
+    top: 208px;
+    left: 437px;
+    width: 125px;
+    height: 139px;
+    background: url(http://img.to8to.com/to8to_img/zxbj/common_tender/ico-line-btn.png) no-repeat;
+    z-index: 9;
+    overflow: hidden;
+    margin-top: 0;
+}
+.ico-line-top{
+    background: url(http://img.to8to.com/to8to_img/zxbj/common_tender/ico-line-top.png) no-repeat center center;
+    width: 38px;
+    height: 47px;
+    position: absolute;
+    top: 164px;
+    left: 480px;
+    display: block;
+}
+.ico-line-bottom{
+    height: 154px;
+    width: 1px;
+    display: block;
+    position: absolute;
+    top: 346px;
+    left: 500px;
+    background: #f6c03f;
+}
+
+.no-allow .tender-recalc {
+    cursor: not-allowed;
+}
+.tender-calc-btn,
+.tender-calc-btn.again {
+    position: absolute;
+    top: 25px;
+    left: 16px;
+    width: 90px;
+    height: 90px;
+    z-index: 15;
+    background: #f6c03f;
+    background-position: 0 0;
+    -webkit-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 45px;
+}
+.mfbjcalc-btn-ie {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 125px;
+    height: 139px;
+    background: url(http://img.to8to.com/to8to_img/zxbj/common_tender/ico-line-btn.png) no-repeat;
+    background-size: contain;
+}
+.mfbjcalc-btn-ie img{
+    margin-top: 7px;
+}
+.tender-recalc {
+    position: absolute;
+    top: 20px;
+    left: 23px;
+    font-size: 16px;
+    width: 45px;
+    height: 45px;
+    color: #fff;
+    /* line-height: 90px; */
+    text-align: center;
+    cursor: pointer;
+}
+.old-circle-animate{
+    position: absolute;
+    top: 15px;
+    right: 8px;
+    width: 110px;
+    height: 110px;
+    -webkit-border-radius:50%;
+    border-radius: 50%;
+    background: #fde5ba;
+    z-index: 12;
+    -webkit-animation:scale-three2 1.5s ease infinite;
+       -moz-animation:scale-three2 1.5s ease infinite;
+         -o-animation:scale-three2 1.5s ease infinite;
+            animation:scale-three2 1.5s ease infinite;
+    animation-fill-mode: both;
+}
+@keyframes scale-three2{
+    0%{
+        transform:scale(1);
+        opacity: 0.8;
+    }
+    100%{
+        transform:scale(1.3);
+        opacity:0;
+    }
+}
+@-webkit-keyframes scale-three2{
+    0%{
+        -webkit-transform:scale(1);
+        opacity: 0.7;
+    }
+    100%{
+        -webkit-transform:scale(1.3);
+        opacity:0;
+    }
+}
+@-moz-keyframes scale-three2 {
+    0%{
+        -moz-transform:scale(1);
+        opacity: 0.7;
+    }
+    100%{
+        -moz-transform:scale(1.3);
+        opacity:0;
+    }
+}
+@-o-keyframes scale-three2 {
+     0%{
+        -o-transform:scale(1);
+        opacity: 0.7;
+    }
+
+    100%{
+        -o-transform:scale(1.3);
+        opacity:0;
+    }
+}
+
+/* 免费设计 */
+.tender-init-mfsj .tender-form-list {
+    width: 360px;
+    margin: 0px auto 0;
+}
+.tender-init-mfsj .tender-form-footer {
+    margin: 0 97px 13px;
+}
+.tender-init-mfsj .tender-form-explain {
+    text-align: center;
+}
+.tender-init-mfsj .tender-form-item, .tender-pop-company .tender-form-item {
+    margin-bottom: 20px;
+}
+.tender-init-mfsj .tender-form-select.province {
+    width: 123px;
+}
+.tender-init-mfsj .tender-form-input {
+    width: 236px;
+}
+/* 装修公司 */
+.tender-pop-company .tender-price-result li span {
+    width: 55%;
+}
+.tender-pop-company .tender-price-result li strong {
+    width: 45%;
+}
+.tender-company-result {
+    width: 340px;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    display: none;
+}
+.tender-company-result-list {
+    height: 70px;
+    padding: 9px 0 9px 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ddd;
+}
+.tender-company-result-list dt {
+    float: left;
+    width: 70px;
+    height: 70px;
+}
+.tender-company-result-list dd {
+    float: left;
+    width: 258px;
+    height: 70px;
+}
+.tender-company-result-list dt a {
+    display: block;
+    width: 68px;
+    height: 68px;
+    border: 1px solid #ddd;
+}
+.tender-company-result-list dt img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.tender-company-name {
+    float: left;
+    width: 127px;
+    padding: 0 10px;
+}
+.tender-company-name h4 {
+    width: 127px;
+    height: 28px;
+    margin-bottom: 5px;
+    line-height: 28px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: normal;
+}
+.tender-company-name h4 a {
+    font-size: 14px;
+    color: #333;
+}
+.tender-company-name p {
+    height: 20px;
+    line-height: 20px;
+    color: #999;
+    font-size: 12px;
+}
+.tender-company-name p span, .tender-company-detail p span {
+    color: #f36f20;
+}
+.tender-company-detail {
+    float: left;
+    width: 98px;
+    padding-left: 10px;
+    border-left: 1px solid #ddd;
+    font-size: 12px;
+}
+.tender-company-detail p {
+    height: 22px;
+    line-height: 22px;
+    color: #666;
+}
+.tender-pop-company .tender-form-explain {
+    text-align: center;
+}
+/* 装修材料 */
+.tender-material-result {
+    overflow: hidden;
+    width: 348px;
+    height: 248px;
+    margin: 20px auto 0;
+    border: 1px solid #eee;
+}
+.tender-material-table {
+    width: 351px;
+    height: 251px;
+}
+.tender-material-table li {
+    float: left;
+    width: 154px;
+    height: 41px;
+    padding-left: 20px;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    line-height: 41px;
+    font-size: 12px;
+    color: #999;
+}
+.tender-material-table li span {
+    float: left;
+    width: 72px;
+    color: #666;
+}
+.tender-material-table li strong {
+    float: left;
+    padding-right: 5px;
+    color: #333;
+    font-family: 'Arial';
+    font-size: 14px;
+    text-align: center;
+}
+.tender-pop-material .tender-price-ad {
+    margin: 20px auto 0;
+}
+.tender-pop-material .tender-price-ad p {
+    width: 350px;
+}
+/* 楼盘下拉框 */
+.tender-loupan-box {
+    width: 230px;
+    border:1px solid #eee;
+    position: absolute;
+    margin-top: -1px;
+    height: 100px;
+    overflow-y: auto;
+    overflow-x:hidden;
+    display: none;
+    background-color: #FFF;
+    top: 38px;
+    left: 86px;
+    z-index: 10;
+}
+.tender-loupan-box li{
+    padding:0 10px;
+    height: 34px;
+    line-height: 34px;
+    width: 288px; 
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    cursor: pointer;
+}
+.tender-loupan-box ul li:hover{
+    background-color: #F8F8F8;
+    color: #333;
+}
+/*适配效果图报价页*/
+.tender-pop-showImg{
+    width: 240px;
+    height: 145px;
+    margin: 7px auto;
+    text-align: center;
+    border:5px solid #fff;
+}
+.tender-pop-showImg img{
+    display: inline;
+    max-width: 240px;
+    max-height: 145px;
+}
+.tender-price-newResult{
+    margin:0 auto;
+    height: 51px;
+    width: 298px;
+    background-color: #FFF9F6;
+    border: 1px solid #FFE4DA;
+    text-align: center;
+    padding:12px 3px;
+}
+.tender-price-newResult li{
+    display:inline-block;
+    width:114px;
+    margin:-7px 0px -8px;
+    text-align: left;
+    float:left;
+}
+.tender-price-imgad{
+    margin-top:24px;
+}
+.tender-price-newResult li strong{
+    line-height: 40px;
+    font-weight:normal;
+}
+.tender-price-newResult .to8to_zj{
+    font-size:12px;
+}
+
+/* 弹框视频 */
+
+.tender-video {
+    display: none;
+}
+.tender-video-title {
+    padding-top: 45px;
+    font-size: 22px;
+    text-align: center;
+    line-height: 36px;
+    padding-right: 27px;
+}
+.tender-video-wrapper {
+    width: 360px;
+    height: 200px;
+    margin-left: 45px;
+    margin-top: 21px;
+    margin-bottom: 33px;
+    position: relative;
+}
+.tender-video-tip {
+    line-height: 27px;
+    font-size: 14px;
+    padding-right: 27px;
+    text-align: center;
+}
+.tender-video-num {
+    color: #ff6000;
+}
+.video-first-text {
+    display: block;
+
+}
+.tender-video-wrapper-hand {
+    display: none;
+    position: absolute;
+    right: -8px;
+    bottom: -8px;
+}
+.tender-video-wrapper-btn {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    display: block;
+    width: 35px;
+    height: 35px;
+}
+
+/*新版效果图详情页 by fidermo.hu 2016/11/04*/
+.newbj-select-province{
+    width:155px;
+    height:38px;
+    font-size:14px;
+    border:1px solid #e3e3e3;
+}
+.newbj-province-margin{
+    margin-right:10px;
+}
+input.newbj-square,
+input.newbj-phone{
+    width:300px;
+    height:21px;
+}
+.newbj-tips-font{
+    left:11px;
+}
+.newbj-form-sup{
+    right:6px;
+}
+.newbj-tender-huxing select{
+    width:60px;
+    height:38px;
+    font-size:14px;
+    border:1px solid #e3e3e3;
+}
+.newbj-right-margin{
+    margin-right:5px;
+}
+.newbj-calcBn{
+    width: 120px;
+    height: 36px;
+    margin: 0 auto;
+    background-color: #f36f20;
+    font-size:14px;
+    color: #fff;
+    text-align: center;
+    line-height: 36px;
+    cursor:pointer;
+    margin-top: -6px;
+}
+.newbj-result-server{
+    margin-top: 8px;
+    text-align: center;
+    font-size: 18px;
+}
+.newbj-result-design{
+    margin-top: 6px;
+    text-align: center;
+    font-size: 14px;
+    color:red;
+    font-weight:bold;
+}
+.newbj-result-jpg{
+    display: block;
+    width: 299px;
+    height: 115px;
+    margin: 0 auto;
+    margin-top: 17px;
+}
+.newbj-form-item .form_error{
+    left:0px;
+}
+.result-title{
+    margin-top: 35px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: black;
+}
+.slide-container{
+    position: relative;
+    width: 320px;
+    margin: 0 auto;
+    margin-top: 24px;
+}
+.result-bottom{
+    height: 25px;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    margin:10px 0px -10px;
+}
+.lastPic,
+.nextPic{
+    width: 24px;
+    height: 30px;
+    position: absolute;
+    background-color: #000;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    top: 56%;
+    margin-top: -25px;
+    z-index: 2;
+}
+.lastPic:hover,
+.nextPic:hover{
+    opacity:0.75;
+}
+.lastPic{
+    left:0px;
+}
+.nextPic{
+    right:0px;
+}
+.lastPic span,
+.nextPic span{
+    display: block;
+    width: 11px;
+    height: 20px;
+    margin: 5px auto;
+    line-height: 99em;
+    overflow: hidden;
+    font-size: 0;
+    background: url(http://img.to8to.com/decorate_gallery/images/png/banner.png?v=1411559744) no-repeat;
+}
+.lastPic span{
+    background-position:0px 0px;
+}
+.nextPic span{
+    background-position:-12px 0px;
+}
+.slider-newBJ{
+    position: relative;
+    bottom: 19px;
+    z-index: 2;
+    width: 56px;
+    margin: 0 auto;
+}
+.slider-newBJ li{
+    width: 10px;
+    height: 10px;
+    float: left;
+    margin: 0 2px;
+}
+.slider-newBJ li a{
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-position: 0 -21px;
+    overflow: hidden;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    background: url(http://img.to8to.com/decorate_gallery/images/png/banner.png?v=1411559745) no-repeat;
+    background-position: 0px -21px;
+}
+.slider-newBJ li a.slider-On{
+    background-position: -17px -21px;
+    opacity: 1;
+}
+/*.tender-price-ad .region-phone{
+    color:red;
+    font-weight: bold;
+}*/
+.tender-price-ad .newBJ-result-text{
+    width: 390px;
+    color: #feb338;
+    font-size: 12px;
+}
+.Result-newBJ-right{
+    width:320px;
+    height:240px;
+}
+.Result-newBJ-right img{
+    width:320px;
+    height:240px;
+}
+.tender-price-ad .newBJ-result-warn{
+    margin:0;
+}
+/*引导关注微信小号 第三版*/
+.pop-weixin-consult{
+    width: 338px;
+    height: 80px;
+    border: 1px solid #009cff;
+    position: relative;
+    margin: 43px 0 0 26px;
+    display: none;
+}
+.pop-weixin-consult-xgt{
+    margin: 26px 0 0 83px;
+}
+.pop-weixin2-consult{
+    display: none;
+    width: 356px;
+    margin: 74px 0 0 37px;
+}
+.pop-weixin2-consult img{
+    width: 356px;
+    height: 224px;
+}
+.con-bj-new2 .con_bj_res {
+    width: 356px;
+    padding: 45px 40px 0 0;
+    color: #333;
+    font-size: 14px;
+}
+.zxbj-weixin2-point{
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: right;
+}
+.pop-weixin2-consult .attention2{
+    color: #fe4800;
+    text-align: center;
+    margin-bottom: 31px;
+    font-size: 12px;
+}
+.pop-weixin-consult .zxbj-weixin-portrait-left{
+    position: absolute;
+    width: 120px;
+    height: 92px;
+    top: -30px;
+    left: 3px;
+    z-index: 6;
+}
+.pop-weixin-consult .zxbj-weixin-portrait-left img {
+  width: 135px;
+  height: 95px;
+  z-index: 10;
+}
+.pop-weixin-consult .zxbj-weixin-portrait-text{
+    position: absolute;
+    top: 39px;
+    left: 19px;
+    z-index: 6;
+}
+.pop-weixin-consult .zxbj-weixin-portrait-text .zxbj-weixin-point{
+    font-size: 12px;
+    color: #5abcfd;
+    margin: 4px 0 0 -9px;
+}
+.pop-weixin-consult .zxbj-weixin-portrait-text .zxbj-weixin-zxgw{
+    font-size: 12px;
+    color: #fff;
+}
+.pop-weixin-consult .zxbj-weixin-portrait-title{
+    position: absolute;
+    z-index: 6;
+    top: 20px;
+    left: 135px;
+    font-size: 14px;
+    color: #333;
+}
+.pop-weixin-consult .zxbj-weixin-portrait-title .portrait-title2 {
+  margin-top: -3px;
+}
+.pop-weixin-consult .zxbj-weixin-portrait-btn {
+  position: absolute;
+  top: 17px;
+  right: 12px;
+}
+.pop-weixin-consult .zxbj-weixin-portrait-btn img {
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+}
+.pop-weixin-consult .zxbj-weixin-portrait-text .weixin-zxgw-name{
+    font-size: 12px;
+    color: #fe4800;
+}
+.pop-weixin-consult .zxbj-weixin-portrait-right{
+  display: none;
+  position: absolute;
+  right: 17px;
+  top: -90px;
+  width: 90px;
+  height: 114px;
+  background-color: #fff;
+  z-index: 10;
+}
+.pop-weixin-consult .zxbj-weixin-portrait-right .zxbj-weixin-code {
+  right: 0;
+  top: 0;
+  background: url('http://static.to8to.com/img/to8to_img/wx_xh/zxbj_wxxh.png?v=201612281448') no-repeat;
+  background-position: -523px -306px;
+  width: 74px;
+  height: 74px;
+  border: 1px solid #fff;
+  border-top: 0;
+  border-right: 0;
+  margin: 7px 0 0 7px;
+}
+.pop-weixin-consult .zxbj-weixin-portrait-right .zxbj-wx-icon{
+  position: absolute;
+  background: url('http://static.to8to.com/img/to8to_img/wx_xh/zxbj_wxxh.png?v=201612281448') no-repeat -1px -176px;
+  width: 16px;
+  height: 12px;
+  top: 3px;
+  left: -17px;
+}
+.pop-weixin-consult .zxbj-weixin-portrait-right .zxbj-wx-guide {
+  position: relative;
+  font-size: 12px;
+  color: #333;
+  margin-left: 23px;
+}
+.pop-weixin-consult-dg .zxbj-weixin-portrait-right .zxbj-weixin-code{
+    background-position: -1px -80px;
+}
+.pop-weixin-consult .portrait-right-bg {
+  background: url('http://static.to8to.com/img/to8to_img/wx_xh/zxbj_wxxh.png?v=201612291639') no-repeat -240px -584px;
+  width: 90px;
+  height: 114px;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  padding-top: 1px;
+}
+.pop-weixin2-consult .zxbj-weixin2-fruit-box{
+    position: relative;
+    width: 356px;
+    height: 222px;
+}
+.pop-weixin2-consult .zxbj-weixin2-fruit-box .weixin2-fruit-title1{
+    position: absolute;
+    font-size: 18px;
+    font-weight: bold;
+    color: #01af63;
+    top: -6px;
+    left: 72px;
+}
+.pop-weixin2-consult .zxbj-weixin2-fruit-box .weixin2-fruit-bg{
+    background: url('http://static.to8to.com/img/to8to_img/wx_xh/zxbj_wxxh.png?v=201612281533') no-repeat -244px -78px;
+    width: 356px;
+    height: 222px;
+    z-index: 15;
+}
+.pop-weixin2-consult .zxbj-weixin2-fruit-box .weixin2-fruit-show{
+    position: absolute;
+    top: 43px;
+    left: 60px;
+}
+.pop-weixin2-consult .zxbj-weixin2-fruit-box .fruit-show-left{
+    float: left;
+    margin-right: 35px;
+    position: relative;
+}
+.pop-weixin2-consult .zxbj-weixin2-fruit-box .fruit-show-right{
+    float: left;
+    margin-top: -2px;
+}
+.pop-weixin2-consult .zxbj-weixin2-fruit-box .fruit-show-p1{
+    font-size: 12px;
+    color: #333;    
+    margin: 7px 0 0 -28px;
+}
+.pop-weixin2-consult .zxbj-weixin2-fruit-box .fruit-show-p1-name{
+    font-size: 12px;
+    color: #fe4800;
+}
+.pop-weixin2-consult .zxbj-weixin2-fruit-box .fruit-show-p2{
+    font-size: 12px;
+    color: #333;
+    margin-left: -18px;
+}
+.pop-weixin2-consult .zxbj-weixin2-fruit-box .fruit-show-p3{
+    position: relative;
+    font-size: 12px;
+    font-weight: bold;
+    color: #333;
+    margin: 7px 0 0 15px;
+}
+.pop-weixin2-consult .zxbj-weixin2-fruit-box .fruit-show-p3 .zxbj-wx-icon{
+    position: absolute;
+    background: url('http://static.to8to.com/img/to8to_img/wx_xh/zxbj_wxxh.png?v=201612281533') no-repeat -1px -176px;
+    width: 16px;
+    height: 12px;
+    left: -21px;
+    top: 2px;
+}
+.pop-weixin2-consult .zxbj-weixin2-fruit-box .fruit-show-portrait{
+    background: url('http://static.to8to.com/img/to8to_img/wx_xh/wxxh_portrait.gif?v=201612292110');
+    width: 138px;
+    height: 100px;
+    z-index: 20;
+    margin: -8px 0 0 -39px;
+}
+.pop-weixin2-consult .zxbj-weixin2-fruit-box .fruit-show-code{
+    background: url('http://static.to8to.com/img/to8to_img/wx_xh/zxbj_wxxh.png?v=201703021628') no-repeat;
+    background-position: -1px -584px;
+    width: 110px;
+    height: 110px;
+    z-index: 20;
+}
+.pop-weixin2-consult-dg .zxbj-weixin2-fruit-box .fruit-show-code{
+    background-position: 0 -190px;
+}
+.pop-weixin2-consult .zxbj-weixin2-fruit-box .pop-fruit-show-arrow{
+    position: absolute;
+    background: url('http://static.to8to.com/img/to8to_img/wx_xh/zxbj_wxxh.png?v=201612281533') no-repeat -23px -175px;
+    width: 23px;
+    height: 14px;
+    top: 37px;
+    left: 103px;
+}
+.pop-weixin2-consult .zxbj-weixin2-fruit-box .weixin2-fruit-title2{
+    font-size: 14px;
+    position: absolute;
+    bottom: 2px;
+    left: 10px;
+    color: #fff;
+}
+.pop-weixin2-consult .zxbj-weixin2-fruit-box .fruit-title2-fff000{
+    font-weight: bold;
+    color: #fff000;
+}
+.pop-weixin2-consult .zxbj-weixin2-fruit-box .fruit-title2-b{
+    font-weight: bold;
+}
+/*引导关注微信小号 第四版 fidermo.hu 17/1/14 start*/
+.pop-specialcity{
+    height: 73px;
+    margin-bottom: 0;
+}
+.pop-label{
+    float: left;
+    width: 81px;
+    padding-right: 5px;
+    line-height: 34px;
+    color: #333;
+    text-align: left;
+    margin-left: 0;
+    font-size: 14px;
+}
+.pop-label-start{
+    color: #feb338;
+    position: relative;
+    top: 3px;
+    font-size: 24px;
+    vertical-align: middle;
+    margin-right: 9px;
+}
+.pop-label-text{
+    margin-top:-19px;
+}
+.pop-specialcity .pop-element{
+    width:259px;
+    margin-left:84px;
+}
+.pop-text-wrap{
+    position: relative;
+}
+.pop-specialcity .pop-text-wrap .tender-form-input{
+    width: 237px;
+    height: 32px;
+    padding-top: 11px;
+    border: 0;
+    background: url("http://static.to8to.com/img/to8to_img/wx_xh/zxbj_wxxh.png?v=201701131423") -451px -522px no-repeat;
+}
+.pop-specialcity .pop-text-wrap .tender-form-font{
+    top:9px;
+    left:12px;
+}
+.pop-choosebjway{
+    height:20px;
+}
+.pop-choosebjway li{
+    position: relative;
+    float:left;
+    padding-left:20px;
+    margin-left:16px;
+    cursor:pointer;
+    line-height:19px;
+}
+.pop-choosebjway em{
+    position:absolute;
+    display: block;
+    width:15px;
+    height:15px;
+    left:0px;
+    top:3px;
+    background: url('http://static.to8to.com/img/to8to_img/wx_xh/zxbj_wxxh.png?v=201701131423') no-repeat -451px -470px;
+}
+.pop-blueradio{
+    color:#5ABCFD;
+}
+.pop-blueradio em{
+    background-position:-468px -488px;
+}
+.pre-pop-fruit-show-arrow{
+    position: absolute;
+    background: url('http://static.to8to.com/img/to8to_img/wx_xh/zxbj_wxxh.png?v=201612281533') no-repeat -23px -175px;
+    width: 23px;
+    height: 14px;
+    top: 100px;
+    left: 190px;
+}
+/*微信引导单独样式*/
+.pop-suspend-wechat{
+    display: none;
+    position:absolute;
+    width:370px;
+    height:223px;
+    bottom:70px;
+    right:43px;
+    background: url('http://static.to8to.com/img/to8to_img/wx_xh/zxbj_wxxh.png?v=201701131423') no-repeat -450px -572px;
+}
+.pop-suspend-wechat p{
+    height:19px;
+    line-height:19px;
+}
+.pop-sus-head{
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 21px;
+}
+.pop-sus-headimg{
+    float: left;
+    width: 170px;
+    height: 134px;
+    margin-left: 21px;
+    margin-top: 22px;
+}
+.pop-headdetail{
+    position: relative;
+    z-index: 1;
+    width: 91px;
+    height: 90px;
+    margin: 0 auto;
+    background: url(http://static.to8to.com/img/to8to_img/wx_xh/zxbj_wxxh.png?v=201701131423) no-repeat -447px -805px;
+}
+.pop-worddetail{
+    position: relative;
+    z-index: 2;
+    height: 29px;
+    width: 140px;
+    margin: 0 auto;
+    margin-top: -11px;
+    background: url(http://static.to8to.com/img/to8to_img/wx_xh/zxbj_wxxh.png?v=201701131423) no-repeat -573px -835px;
+}
+.pop-sus-headimg p{
+    color: #5ABCFD;
+    text-align: center;
+    font-size: 12px;
+}
+.pop-worddetail p{
+    text-align: center;
+    color: #fff;
+    font-size: 13px;
+    line-height: 25px;
+}
+.pop-sus-quocode{
+    float: right;
+    width: 105px;
+    height: 131px;
+    font-size: 12px;
+    text-align: center;
+    margin-right:46px;
+    margin-top:17px;
+}
+.pop-sus-quocode div{
+    height: 100px;
+    margin-bottom: 5px;
+    border: 1px solid #eee;
+    background: url(http://static.to8to.com/img/to8to_img/wx_xh/zxbj_wxxh.png?v=201703021618) no-repeat -821px -283px;
+}
+
+
+.pop-element .pop-choosebjway,
+.pop-element .pop-suspend-wechat{
+    display: none;
+}
+.pop-specialcity .pop-element .pop-choosebjway{
+    display: block;
+}
+/*右侧计算报价栏*/
+.pop-calc-disabled,
+a.pop-calc-disabled:hover,
+a.pop-calc-disabled:active{
+    background: #fefefe url(http://static.to8to.com/img/to8to_img/wx_xh/zxbj_wxxh.png?v=201701131423) no-repeat -635px -271px;
+    pointer-events:none;
+}
+/*引导关注微信小号 第四版 fidermo.hu 17/1/14 end*/
+/*错误提示样式错位问题 hank.lan 17/3/21*/
+.pop-specialcity .pop-text-wrap .form_error{
+    left: 0;
+    top: 35px;
+}
+/*引导关注微信小号 第五版 hank.lan 增加广州 南京 合肥 无锡 武汉 长沙*/
+.fruit-show-code1{
+    display: none;
+    border: 1px solid #e8e8e8;
+}
+.fruit-show-code1 img{
+    width: 108px;
+    height: 108px;
+    display: block;
+}
+/* 热点广告 */
+.hotad-contain .littlefont {
+    padding-top: 62px;
+}
+.hotad-contain .tender-price-result-box {
+    position: relative;
+    margin-top: -8px;
+}
+.hotad-contain .tender-price-result-box .tender-price-result{
+    position:relative;
+    width:340px;
+    height:108px;
+}
+.tender-price-result-box .pop-hotad-result{
+    display: none;
+    height: 0;
+    overflow: hidden;
+}
+.hotad-contain .tender-price-result-box .pop-hotad-result{
+    display: block;
+    position: absolute;
+    bottom:12px;
+    left:83px;
+    height:50px;
+    padding-top:13px;
+    color:#999;
+    line-height:24px;
+    letter-spacing:1px;
+    font-size:12px;
+    text-align:left;
+    border-top:1px solid #e1e1e1;
+}
+.hotad-cl em,
+.hotad-rg em,
+.hotad-sj em,
+.hotad-zj em{
+    display: inline-block;
+    width: 55px;
+    font-style: normal;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0;
+    font-weight: 400;
+    text-align: center;
+    font-size: 18px;
+    color: #feb338;
+}
+.hotad-contain .tender-price-result .hotad-cl,
+.hotad-contain .tender-price-result .hotad-rg{
+    position:absolute;
+    left:18px;
+}
+.hotad-contain .tender-price-result .hotad-sj,
+.hotad-contain .tender-price-result .hotad-zj{
+    position:absolute;
+    right:0px;
+}
+.hotad-contain .tender-price-result .hotad-cl,
+.hotad-contain .tender-price-result .hotad-sj{
+    top:17px;
+}
+.hotad-contain .tender-price-result .hotad-rg,
+.hotad-contain .tender-price-result .hotad-zj{
+    top:57px;
+}
+.hotad-contain .tender-price-result li span{
+    width:58px;
+}
+.hotad-contain  .tender-price-result li strong{
+    width:106px;
+}
+.hotad-contain .tender-price-result em{
+    display: inline;
+    width: auto;
+    margin: 0;
+    padding: 0 6px 0 2px;
+    font-size: 14px;
+    font-weight: 700;
+}
+.pop-result-hotad,
+.pop-wechat-ad{
+    display:none;
+    position:relative;
+    width:339px;
+    height:0;
+    margin:0 auto;
+    margin-top:23px;
+    overflow:hidden;
+}
+.hotad-contain .pop-result-hotad,
+.hotad-contain .pop-weixin2-consult .pop-wechat-ad{
+    display: block;
+    height:60px;
+}
+.hotad-contain .pop-weixin2-consult .attention2{
+    display: none;
+}
+.hotad-contain .pop-result-hotad img,
+.hotad-contain .pop-wechat-ad img{
+    width:100%;
+}
+.hotad-contain .pop-result-hotad p,
+.hotad-contain .pop-wechat-ad p{
+    position:absolute;
+    right:0;
+    bottom:0;
+    width:35px;
+    height:16px;
+    line-height:16px;
+    color:#fff;
+    font-size:12px;
+    background: #000;
+    filter:alpha(opacity=70);
+    opacity: .7;
+    text-align:center;
+}
+.hotad-contain .pop-weixin2-consult{
+    margin-top:75px;
+}
+.pop-wechat-hotad{
+    display: none;
+    width: 370px;
+    padding-top: 30px;
+    font-size: 14px;
+    color:#999;
+    margin:0 auto;
+    text-align:center;
+}
+.pop-wechat-hotad .wechat-img{
+    width:69px;
+    height:69px;
+    margin:0 auto;
+    background:url(//img.to8to.com/to8to_img/wx_xh/zxbj_wxxh.png?v=20170428) no-repeat -384px 0;
+}
+.pop-wechat-hotad .wechat-message{
+    width:100%;
+    text-align:center;
+    color:#333;
+    font-size:20px;
+    margin-top:21px;
+}
+.pop-wechat-hotad .wechat-text{
+    margin-top:20px;
+}
+.pop-wechat-hotad .wechat-recall{
+    color:#ff5200;
+    margin-top:11px;
+    margin-bottom:68px;
+}
+.pop-hotad-result .call-phone{
+    color:#fe5f00;
+}
+.pop-weixin2-hotad .zxbj-weixin2-point{
+    display: none;
+}
+/* 审核信息样式 */
+.pop-check-frame .tender-pop-left,
+.pop-check-info{
+    display: none;
+}
+.pop-check-frame .tender-pop-right{
+    float: left;
+    margin-left: 16px;
+    padding-right: 10px;
+    position: relative;
+    /* border-right: 1px solid #E8E8E8; */
+}
+.pop-check-frame .pop-check-info{
+    display: block;
+    position: relative;
+    float: left;
+    width: 375px;
+    margin: 148px 0 0 52px;
+    color: #333;
+    font-size: 14px;
+}
+.pop-check-info h3{
+    font-size:18px;
+    color:#333;
+}
+.pop-check-info h3 span{
+    font-size:12px;
+    color:#feb338;
+}
+.pop-check-info .check_question{
+    padding: 0;
+    font-size:14px;
+    color:#999;
+    background: transparent;
+}
+.pop-check-info .house-type{
+    margin-top: 12px;
+}
+.pop-check-info .decorate-time{
+    margin-top: 6px;
+}
+.pop-check-info .plot-name{
+    margin-top: 15px;
+}
+.check-house{
+    float:left;
+    width:110px;
+    height:100px;
+}
+.check-house-last{
+    margin-top:-4px;
+}
+.check-house,
+.check-time{
+    cursor:pointer;
+}
+.check-house div{
+    width:80px;
+    height:85px;
+    margin:0 auto;
+}
+.decorate-time .check-time{
+    float:left;
+    margin-top:12px;
+}
+.check-house div,
+.check-house p i,
+.check-time p i{
+    background:url(//img.to8to.com/to8to_img/zxbj/zxbjcontainer.png?v=20170508) no-repeat -529px -164px;
+}
+.check-house .old-house{
+    background-position-X:-655px;
+}
+.check-house .little-change{
+    background-position:-779px -171px;
+}
+.check-house p,
+.check-time p{
+    position: relative;
+    text-indent: 15px;
+    font-size:12px;
+    color:#333;
+}
+.pop-check-info .check-house p{
+    margin-left: 27px;
+    margin-top: -6px;
+}
+.pop-check-info .check-house-last p{
+    margin-top:-2px;
+}
+.check-time p{
+    text-indent:18px;
+    margin-left:13px;
+}
+.check-time-next p{
+    margin-left:27px;
+}
+.check-house p i,
+.check-time p i{
+    position: absolute;
+    width:15px;
+    height:15px;
+    left: 0;
+    top: 3px;
+    background-position: -560px -258px;
+}
+.check-house.on p i,
+.check-time.on p i{
+    background-position: -535px -258px;
+}
+.plot-name .check_question{
+    float:left;
+    margin-top: 5px;
+}
+.plot-name input{
+    width:229px;
+    height:30px;
+    text-indent:6px;
+    border:1px solid #e8e8e8;
+}
+.check-upload,
+.check-upload:hover{
+    display: block;
+    width: 80px;
+    height: 32px;
+    background-color: #FF701A;
+    color: #fff;
+    text-align: center;
+    line-height: 32px;
+    margin: 0 auto;
+    margin-top: 28px;
+}
+.pop-check-info .complate-form{
+    display: none;
+    position: absolute;
+    top: 148px;
+    left: 90px;
+    width: 180px;
+    height: 42px;
+    background: #000;
+    filter:alpha(opacity=60);
+    opacity: .6;
+    text-align: center;
+    line-height: 42px;
+    font-size:14px;
+    color:#fff;
+}
+.check-right-line{
+    display: none;
+    height: 332px;
+    width: 1px;
+    background: #73c579;
+    position: absolute;
+    right: -4px;
+    top: 168px;
+}
+.pop-check-frame .tender-pop-right .check-right-line{
+    display: block;
+}
+/* 普通结果态 */
+.pop-check-frame .tender-pop-right .littlefont{
+    padding-top: 142px;
+}
+.pop-check-frame .tender-pop-right .littlefont .price-result-title{
+    font-size: 18px;
+    /* font-weight:normal; */
+}
+.pop-check-frame .tender-price-result-box{
+    padding-top: 10px;
+}
+.pop-check-frame .tender-price-result{
+    width: 306px;
+    padding: 13px 0;
+}
+.pop-check-frame .tender-price-result li span{
+    width: 44%;
+}
+.pop-check-frame .tender-price-result li strong{
+    width: 56%;
+}
+.pop-check-frame .tender-price-ad{
+    margin-left: 78px;
+}
+/* 微信小号结果态 */
+.pop-check-frame .pop-weixin2-consult{
+    margin-top: 148px;
+    *padding-top: 148px;
+}
+.pop-check-frame .zxbj-weixin2-point{
+    text-align: center;
+    font-weight: normal;
+}
+.pop-check-frame .pop-weixin2-consult .attention2{
+    margin-top: -4px;
+    margin-bottom: 0;
+    color: #feb338;
+}
+.pop-check-frame .pop-weixin2-consult .zxbj-weixin2-fruit-box{
+    width: 357px;
+    height: 248px;
+    margin-top: 16px;
+}
+.pop-check-frame .pop-weixin2-consult .zxbj-weixin2-fruit-box .weixin2-fruit-bg{
+    width: 357px;
+    height: 244px;
+    background: url(http://static.to8to.com/img/to8to_img/wx_xh/zxbj_wxxh_check.png?v=201705111615) no-repeat -322px -252px;
+}
+.pop-check-frame .pop-weixin2-consult .zxbj-weixin2-fruit-box .weixin2-fruit-title1{
+    color: #05c679;
+}
+.pop-check-frame .pop-weixin2-consult .zxbj-weixin2-fruit-box .weixin2-fruit-show{
+    top: 56px;
+}
+.pop-check-frame .pop-weixin2-consult .zxbj-weixin2-fruit-box .fruit-show-p1{
+    margin-top: 2px;
+    margin-left: -13px;
+}
+.pop-check-frame .pop-weixin2-consult .zxbj-weixin2-fruit-box .fruit-show-p1-name{
+    color: #05c679;
+}
+.pop-check-frame .pop-weixin2-consult .zxbj-weixin2-fruit-box .fruit-show-p2{
+    margin-top: 2px;
+}
+.pop-check-frame .pop-weixin2-consult .zxbj-weixin2-fruit-box .fruit-show-right{
+    margin-top: -4px;
+}
+.pop-check-frame .pop-weixin2-consult .zxbj-weixin2-fruit-box .fruit-show-p3{
+    margin-top: 9px;
+}
+.pop-check-frame .pop-weixin2-consult .zxbj-weixin2-fruit-box .weixin2-fruit-title2{
+    bottom: 7px;
+}
+/* 审核信息结果弹窗 */
+.check_pop_succ{
+    display: none;
+    z-index:10000;
+}
+.check_pop_succ,
+.check_pop_succ .check_grey_layer{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+.check_pop_succ .check_grey_layer{
+    background: #000;
+    filter:alpha(opacity=60);
+    opacity: .6;
+}
+.check_pop_succ .check_pop_tip{
+    position: absolute;
+    top:248px;
+    z-index: 2;
+    width: 320px;
+    height: 237px;
+    background-color:#fff;
+    border-radius:4px;
+    text-align:center;
+}
+.check_pop_tip .check_pop_img{
+    width:69px;
+    height:69px;
+    margin:0 auto;
+    margin-top:20px;
+    background: url(//img.to8to.com/to8to_img/wx_xh/zxbj_wxxh.png?v=20170428) -384px 0 no-repeat;
+}
+.check_pop_tip .check_pop_text{
+    font-size:16px;
+    color:#333;
+}
+.check_pop_tip .check_pop_recall{
+    margin-top:4px;
+    font-size:12px;
+    color:#999;
+}
+.check_pop_tip .check_pop_recall span{
+    color:#fe6022;
+}
+.check_pop_tip .close_check_pop,
+.check_pop_tip .close_check_pop:hover{
+    display: block;
+    width:100px;
+    height:32px;
+    line-height:32px;
+    font-size:12px;
+    color:#666;
+    border-radius:2px;
+    border:1px solid #E8E8E8;
+    margin:0 auto;
+    margin-top:18px;
+}
+.pop-check-info .check-upload, .pop-check-info .check-upload:hover{
+    background-color: #feb338;
+}
+.window_box .window_box_title a{
+    z-index: 99;
+}
