@@ -22,10 +22,13 @@ class Shop extends Controller
     	$user=db('shop');
     	$fu=db('com_fuwuqy');
     	$lei = db('com_qiyecsleixing');
+        $fg= db('com_zhuancfg');
     	$res=$user->order("id")->paginate(10);
     	$qy=$fu->select();
     	$xing=$lei->select();
+        $zcfg=$fg->select();
     	$page=$res->render();
+        $this->assign("zcfg",$zcfg);
     	$this->assign("xing",$xing);
     	$this->assign("qy",$qy);
     	$this->assign("page",$page);

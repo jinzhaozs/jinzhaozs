@@ -18,8 +18,10 @@
 				<th>编号</th>
 				<th>公司名称</th>
 				<th>公司商标</th>
+				<th>公司所在区</th>
 				<th>公司地址</th>
 				<th>服务区域</th>
+				<th>服务风格</th>
 				<th>服务类型</th>
 				<th>操作</th>
 			</tr>
@@ -29,13 +31,15 @@
 			{foreach name="res" item="vores"}
 			
 				<tr>
-					<td style="display: none;"><span class="comid">{$vores.id}</span></td>
-					<td><span class="comname">{$i++}</span></td>
-					<td><span class="comname">{$vores.name}</span></td>
-					<td><span class="compaix">{$vores.logo}</span></td>
-					<td><span class="compaix">{$vores.dizhi}</span></td>
-					<td><span class="compaix">{$vores.com_fuqy}</span></td>
-					<td><span class="compaix">{$vores.com_leixing}</span></td>
+					<td style="display: none;"><span class="id">{$vores.id}</span></td>
+					<td><span class="">{$i++}</span></td>
+					<td><span class="name">{$vores.name}</span></td>
+					<td><span class="logo">{$vores.logo}</span></td>
+					<td><span class="comszqy">{$vores.com_szqy}</span></td>
+					<td><span class="dizhi">{$vores.dizhi}</span></td>
+					<td><span class="comfuqy">{$vores.com_fuqy}</span></td>
+					<td><span class="comzcfg">{$vores.com_zcfg}</span></td>
+					<td><span class="comleixing">{$vores.com_leixing}</span></td>
 					<td>
 						<span style=" cursor: pointer;" class="showModel2">修改</span> | 
 						<span style=" cursor: pointer;" class="delcom">删除</span>
@@ -52,7 +56,7 @@
 	<div id="modal" class="modal">  
 	    <div class="modal-content">  
 	        <header class="modal-header">  
-	            <h4>模态框标题</h4>  
+	            <h4>添加公司详情</h4>  
 	            <span class="close">×</span>  
 	        </header>  
 	        <div class="modal-body">  
@@ -64,6 +68,16 @@
 							<input type="text" class="form-control" id="name" placeholder="请输入名字">
 						</td>
 					</tr>
+					<tr>
+						<td>公司所在区</td>
+						<td>
+							  <select name="sz" id="sz">  
+                               <option value ="0">请选择</option>  
+                              {foreach name="qy" item="sz"}
+                               <option value ="{$sz.qycode}">{$sz.qyname}</option>  
+                              {/foreach}
+                    </select>    
+						</td>
 					<tr>
 						<td>地址</td>
 						<td>
@@ -81,6 +95,14 @@
 						<td id="com_fuqy">
 							{foreach name="qy" item="fu"}
 							<input type="checkbox" value="{$fu.qycode}" name="com_fuqy"  id="com_fuqy">{$fu.qyname}
+							{/foreach}
+						</td>
+					</tr>
+					<tr>
+						<td>服务风格</td>
+						<td id="com_fuqy">
+							{foreach name="zcfg" item="fg"}
+							<input type="checkbox" value="{$fg.zcfgcode}" name="com_zcfg"  id="com_zcfg">{$fg.zcfgname}
 							{/foreach}
 						</td>
 					</tr>
@@ -112,18 +134,59 @@
 	        <div class="modal-body">  
 	            
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
-					<tr>
+						<tr>
 						<td>名称</td>
 						<td>
-							<input type="text" class="form-control" id="qyname2" placeholder="请输入名字">
+							<input type="text" class="form-control" id="name2" placeholder="请输入名字">
 						</td>
 					</tr>
+					<tr>
+						<td>公司所在区</td>
+						<td>
+							  <select name="sz" id="sz2">  
+                               <option value ="0">请选择</option>  
+                              {foreach name="qy" item="sz"}
+                               <option value ="{$sz.qycode}">{$sz.qyname}</option>  
+                              {/foreach}
+                    </select>    
+						</td>
 					<tr>
 						<td>地址</td>
 						<td>
-							<input type="text" class="form-control" id="qypaixu2" placeholder="">
+							<input type="text" class="form-control" id="dizhi2" placeholder="请输入公司地址">
 						</td>
 					</tr>
+					<tr>
+						<td>商标</td>
+						<td>
+							<input type="file" name="image" class="form-control" id="logo2"  />
+						</td>
+					</tr>
+					<tr>
+						<td>服务区域</td>
+						<td id="com_fuqy">
+							{foreach name="qy" item="fu"}
+							<input type="checkbox" value="{$fu.qycode}" name="com_fuqy"  id="com_fuqy2">{$fu.qyname}
+							{/foreach}
+						</td>
+					</tr>
+					<tr>
+						<td>服务风格</td>
+						<td id="com_fuqy">
+							{foreach name="zcfg" item="fg"}
+							<input type="checkbox" value="{$fg.zcfgcode}" name="com_zcfg"  id="com_zcfg2">{$fg.zcfgname}
+							{/foreach}
+						</td>
+					</tr>
+					<tr>
+						<td>服务类型</td>
+						<td id="com_leixing">
+							{foreach name="xing" item="lei"}
+							<input type="checkbox" value="{$lei.lxcode}" name="com_leixing" id="com_leixing2">{$lei.lxname}
+							{/foreach}
+						</td>
+					</tr>
+
 
 				</table>
 	        </div>  
@@ -159,6 +222,8 @@
     	var name = $("#name").val();
     	var dizhi = $("#dizhi").val();
     	var logo = $("#logo").val();
+    	var sz = $("#sz").val();
+    	var com_zc=[];
     	var com_lei = [];
         var com_fu = [];
         $('#com_leixing input:checkbox:checked').each(function() {
@@ -167,6 +232,11 @@
         $('#com_fuqy input:checkbox:checked').each(function() {
             com_fu.push($(this).val());
         });
+         $('#com_zcfg input:checkbox:checked').each(function() {
+            com_zc.push($(this).val());
+        });
+         var com_zcf=com_zc.join();
+         var com_zcfg= com_zcf.concat(",");
          var com_fuq=com_fu.join();
          var com_fuqy= com_fuq.concat(",");
          var com_leixin=com_lei.join();
@@ -178,7 +248,7 @@
 	            dataType:'json',
 	            async:false,
 	            url:'{:url("admin/Shop/add")}',
-	            data:{"name":name,"dizhi":dizhi,"logo":logo,"com_leixing":com_leixing,"com_fuqy":com_fuqy},
+	            data:{"name":name,"dizhi":dizhi,"logo":logo,"com_leixing":com_leixing,"com_fuqy":com_fuqy,"com_zcfg":com_zcfg,"com_szqy":sz},
 	            success:function(dd){
 	            	// alert(dd);
 	                 console.log(dd);
@@ -205,12 +275,18 @@
     var modal2 = document.getElementById('modal2'); 
     //模态框展示 
     $(".showModel2").click(function(){
-    	comid = $(this).parent().parent().find(".comid").html();
-    	comname = $(this).parent().parent().find(".comname").html();//获取name
-    	compaix = $(this).parent().parent().find(".compaix").html();//获取compaix
+    	comid = $(this).parent().parent().find(".id").html();
+    	comname = $(this).parent().parent().find(".name").html();//获取name
+    	comdizhi = $(this).parent().parent().find(".dizhi").html();//获取compaix
+    	comszqy = $(this).parent().parent().find(".comszqy").html();
+    	comfuqy = $(this).parent().parent().find(".comfuqy").html();
+        var comfuqy = comfuqy.substring(0, comfuqy.lastIndexOf(','));
     	//赋值
-    	$("#qyname2").val(comname);
-    	$("#qypaixu2").val(compaix);
+    	$("#com_fuqy2input:checkbox").eq(comfuqy).attr('checked',true);
+    	$("#name2").val(comname);
+    	$("#dizhi2").val(comdizhi);
+    	$("#sz2").find('option[value="'+comszqy+'"]').attr("selected",true);
+    	
     	// alert(comid);comname
     	 modal2.style.display = "block";  
     	});
@@ -222,12 +298,32 @@
     });  
     sure2.addEventListener('click', function(){
     	// 获取信息
-    	var qyname2 = $("#qyname2").val();
-    	var qypaixu2 = $("#qypaixu2").val();
+    	var name2 = $("#name2").val();
+    	var dizhi2 = $("#dizhi2").val();
+    	var logo2 = $("#logo2").val();
+    	var sz2 = $("#sz2").val();
+    	var com_zc2=[];
+    	var com_lei2 = [];
+        var com_fu2 = [];
+        $('#com_leixing2 input:checkbox:checked').each(function() {
+            com_lei2.push($(this).val());
+        });
+        $('#com_fuqy2 input:checkbox:checked').each(function() {
+            com_fu2.push($(this).val());
+        });
+         $('#com_zcfg2 input:checkbox:checked').each(function() {
+            com_zc2.push($(this).val());
+        });
+         var com_zcf2=com_zc2.join();
+         var com_zcfg2= com_zcf2.concat(",");
+         var com_fuq2=com_fu2.join();
+         var com_fuqy2= com_fuq2.concat(",");
+         var com_leixin2=com_lei2.join();
+         var com_leixing2=com_leixin2.concat(",");
     	// alert(comid);
     	
     	// return false;
-    	if (qyname2) {
+    	if (name) {
     		$.ajax({
 	            type:"post",
 	            dataType:'json',
