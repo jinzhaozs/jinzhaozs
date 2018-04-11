@@ -40,3 +40,9 @@ Route::rule('/admin/gongsi/zhuancfg','admin/gongsi/zhuancfg');//服务风格
 Route::rule('/admin/gongsi/zhuancfgadd','admin/gongsi/zhuancfgadd');// 添加
 Route::rule('/admin/gongsi/zhuancfgedit','admin/gongsi/zhuancfgedit');// 修改
 Route::rule('/admin/gongsi/zhuancfgdel','admin/gongsi/zhuancfgdel');// 删除
+
+//公司
+Route::rule('/admin/shop/index','admin/shop/index');//公司详情
+Route::rule('/admin/shop/add','admin/shop/add');//添加
+Route::rule('/admin/shop/edit','admin/shop/edit');//修改
+Route::rule('/admin/shop/delete','admin/shop/delete');//删除

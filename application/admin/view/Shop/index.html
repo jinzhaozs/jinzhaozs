@@ -4,31 +4,38 @@
 <html>
 <head>
 	<meta charset="utf-8"> 
-	<title></title>
-	
-	
+	<title></title>	
 </head>
 <body>
 <div style="margin-left: 2%;margin-right: 2%;">
-		<h1 style="text-align: center;">房屋类型</h1>
-<button class="btn" style="margin-top: -5%;" id="showModel">添加类型</button> 
+		<h1 style="text-align: center;">服务区域</h1>
+<button class="btn" style="margin-top: -5%;" id="showModel">添加公司</button> 
 	<table class="table table-bordered" >
 
 		<thead>
 			<tr>
 				<!-- <th>id</th> -->
-				<th>名称</th>
-				<th>排序</th>
+				<th>编号</th>
+				<th>公司名称</th>
+				<th>公司商标</th>
+				<th>公司地址</th>
+				<th>服务区域</th>
+				<th>服务类型</th>
 				<th>操作</th>
 			</tr>
 		</thead>
 		<tbody id="yuansuzhijia">
-			
+			<td style="display: none;">{$i=1}</td>
 			{foreach name="res" item="vores"}
+			
 				<tr>
 					<td style="display: none;"><span class="comid">{$vores.id}</span></td>
-					<td><span class="comname">{$vores.lxname}</span></td>
-					<td><span class="compaix">{$vores.lxpaixu}</span></td>
+					<td><span class="comname">{$i++}</span></td>
+					<td><span class="comname">{$vores.name}</span></td>
+					<td><span class="compaix">{$vores.logo}</span></td>
+					<td><span class="compaix">{$vores.dizhi}</span></td>
+					<td><span class="compaix">{$vores.com_fuqy}</span></td>
+					<td><span class="compaix">{$vores.com_leixing}</span></td>
 					<td>
 						<span style=" cursor: pointer;" class="showModel2">修改</span> | 
 						<span style=" cursor: pointer;" class="delcom">删除</span>
@@ -36,6 +43,7 @@
 				</tr>
 			{/foreach}
 		</tbody>
+		{$page}
 	</table>
 </div>
 <!-- 模态框 -->
@@ -53,15 +61,38 @@
 					<tr>
 						<td>名称</td>
 						<td>
-							<input type="text" class="form-control" id="lxname" placeholder="请输入名字">
+							<input type="text" class="form-control" id="name" placeholder="请输入名字">
 						</td>
 					</tr>
 					<tr>
-						<td>排序</td>
+						<td>地址</td>
 						<td>
-							<input type="text" class="form-control" id="lxpaixu" placeholder="">
+							<input type="text" class="form-control" id="dizhi" placeholder="请输入公司地址">
 						</td>
 					</tr>
+					<tr>
+						<td>商标</td>
+						<td>
+							<input type="file" name="image" class="form-control" id="logo"  />
+						</td>
+					</tr>
+					<tr>
+						<td>服务区域</td>
+						<td id="com_fuqy">
+							{foreach name="qy" item="fu"}
+							<input type="checkbox" value="{$fu.qycode}" name="com_fuqy"  id="com_fuqy">{$fu.qyname}
+							{/foreach}
+						</td>
+					</tr>
+					<tr>
+						<td>服务类型</td>
+						<td id="com_leixing">
+							{foreach name="xing" item="lei"}
+							<input type="checkbox" value="{$lei.lxcode}" name="com_leixing" id="com_leixing">{$lei.lxname}
+							{/foreach}
+						</td>
+					</tr>
+
 
 				</table>
 	        </div>  
@@ -84,13 +115,13 @@
 					<tr>
 						<td>名称</td>
 						<td>
-							<input type="text" class="form-control" id="lxname2" placeholder="请输入名字">
+							<input type="text" class="form-control" id="qyname2" placeholder="请输入名字">
 						</td>
 					</tr>
 					<tr>
-						<td>排序</td>
+						<td>地址</td>
 						<td>
-							<input type="text" class="form-control" id="lxpaixu2" placeholder="">
+							<input type="text" class="form-control" id="qypaixu2" placeholder="">
 						</td>
 					</tr>
 
@@ -122,25 +153,41 @@
     cancel.addEventListener('click', function(){  
         modal.style.display = "none";  
     });  
+     
     sure.addEventListener('click', function(){  
     	// 获取信息
-    	var lxname = $("#lxname").val();
-    	var lxpaixu = $("#lxpaixu").val();
-    	if (lxname) {
+    	var name = $("#name").val();
+    	var dizhi = $("#dizhi").val();
+    	var logo = $("#logo").val();
+    	var com_lei = [];
+        var com_fu = [];
+        $('#com_leixing input:checkbox:checked').each(function() {
+            com_lei.push($(this).val());
+        });
+        $('#com_fuqy input:checkbox:checked').each(function() {
+            com_fu.push($(this).val());
+        });
+         var com_fuq=com_fu.join();
+         var com_fuqy= com_fuq.concat(",");
+         var com_leixin=com_lei.join();
+         var com_leixing=com_leixin.concat(",");
+         // alert(com_leixing);
+    	if (name) {
     		$.ajax({
 	            type:"post",
 	            dataType:'json',
 	            async:false,
-	            url:'{:url("admin/Gongsi/doadd")}',
-	            data:{"lxname":lxname,"lxpaixu":lxpaixu},
+	            url:'{:url("admin/Shop/add")}',
+	            data:{"name":name,"dizhi":dizhi,"logo":logo,"com_leixing":com_leixing,"com_fuqy":com_fuqy},
 	            success:function(dd){
-	                console.log(dd);
+	            	// alert(dd);
+	                 console.log(dd);
 	                if (dd.code == 200) {
-	                	window.location.reload();
-	                	modal.style.display = "none"; //模态框样式消失
-	                }else{
-	                	alert(msg);
-	                }
+	                window.location.reload();
+	                  	modal.style.display = "none"; //模态框样式消失
+	                 }else{
+	                 	alert(msg);
+	                  }
 	                 
 	            }
 	        })
@@ -162,8 +209,8 @@
     	comname = $(this).parent().parent().find(".comname").html();//获取name
     	compaix = $(this).parent().parent().find(".compaix").html();//获取compaix
     	//赋值
-    	$("#lxname2").val(comname);
-    	$("#lxpaixu2").val(compaix);
+    	$("#qyname2").val(comname);
+    	$("#qypaixu2").val(compaix);
     	// alert(comid);comname
     	 modal2.style.display = "block";  
     	});
@@ -175,18 +222,18 @@
     });  
     sure2.addEventListener('click', function(){
     	// 获取信息
-    	var lxname2 = $("#lxname2").val();
-    	var lxpaixu2 = $("#lxpaixu2").val();
+    	var qyname2 = $("#qyname2").val();
+    	var qypaixu2 = $("#qypaixu2").val();
     	// alert(comid);
     	
     	// return false;
-    	if (lxname2) {
+    	if (qyname2) {
     		$.ajax({
 	            type:"post",
 	            dataType:'json',
 	            async:false,
-	            url:'{:url("admin/Gongsi/doedit")}',
-	            data:{"id":comid,"lxname":lxname2,"lxpaixu":lxpaixu2},
+	            url:'{:url("admin/Gongsi/qyedit")}',
+	            data:{"id":comid,"qyname":qyname2,"qypaixu":qypaixu2},
 	            success:function(dd){
 	                console.log(dd);
 	                if (dd.code == 200) {
@@ -204,17 +251,18 @@
     	
         
     });
-    // 执行修改
+    // 执行删除
     $(".delcom").click(function(){
     	if(confirm("确定删除该类型吗？")){
     		var comid = $(this).parent().parent().find(".comid").html();
+    		// alert(comid);return false;
     		$(this).parent().parent().remove();
     		// console.log(aa);return false;
     		$.ajax({
 	            type:"post",
 	            dataType:'json',
 	            async:false,
-	            url:'{:url("admin/Gongsi/del")}',
+	            url:'{:url("admin/Shop/delete")}',
 	            data:{"id":comid},
 	            success:function(dd){
 	                // console.log(dd);

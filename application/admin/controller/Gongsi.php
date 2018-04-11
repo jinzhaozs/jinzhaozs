@@ -13,16 +13,17 @@ use think\Controller;
 
 class Gongsi extends Controller
 {
-	/**
+    /**
      * *类型
      * @return [type] [description]
      */
     public function fwleixing()
     {
-    	// 链接数据库赋值
+        // 链接数据库赋值
         $user = db('com_qiyecsleixing');
         //获取最大lxcode;
         // $lxcode = $user->code
+      
         $res = $user->order("lxpaixu")->order("id")->select();
         $this->assign("res",$res);
         // dump($res);die;
@@ -33,8 +34,11 @@ class Gongsi extends Controller
         $user = db('com_qiyecsleixing');
         $shuju = input('put.');//获取数据
         $shuju['time'] = date("Y-m-d h:i:s",time());
+        $lx=$user->max('lxcode');
+         $lxcode=$lx+1;
+        $shuju['lxcode']=$lxcode;//获取lxcode
         $user_info = $user->insert($shuju);
-    	if (!$user_info) {
+        if (!$user_info) {
             $data = array(
                     'data' => false,
                     'code' => 500,
@@ -52,13 +56,13 @@ class Gongsi extends Controller
     }
     //执行修改
     public function doedit(){
-    	$user = db('com_qiyecsleixing');
-    	$whid = input('post.id');//获取id
-    	$where['id'] = $whid;
-    	$shuju = input('put.');//获取数据
-    	$shuju['time'] = date("Y-m-d h:i:s",time());
-    	$res = $user->where($where)->update($shuju);
-    	if (!$res) {
+        $user = db('com_qiyecsleixing');
+        $whid = input('post.id');//获取id
+        $where['id'] = $whid;
+        $shuju = input('put.');//获取数据
+        $shuju['time'] = date("Y-m-d h:i:s",time());
+        $res = $user->where($where)->update($shuju);
+        if (!$res) {
             $data = array(
                     'data' => false,
                     'code' => 500,
@@ -76,10 +80,10 @@ class Gongsi extends Controller
     }
     //删除
     public function del($id){
-    	$user = db('com_qiyecsleixing');
+        $user = db('com_qiyecsleixing');
         $whid = input('post.id');//获取id
-    	$res = $user->where('id',$whid)->delete();
-    	if (!$res) {
+        $res = $user->where('id',$whid)->delete();
+        if (!$res) {
             $data = array(
                     'data' => false,
                     'code' => 500,
@@ -113,6 +117,9 @@ class Gongsi extends Controller
         $user = db('com_fuwuqy');
         $shuju = input('put.');//获取数据
         $shuju['time'] = date("Y-m-d h:i:s",time());
+         $lx=$user->max('qycode');
+         $qycode=$lx+1;
+        $shuju['qycode']=$qycode;//获取lxcode
         $user_info = $user->insert($shuju);
         if (!$user_info) {
             $data = array(
@@ -194,6 +201,9 @@ class Gongsi extends Controller
         $user = db('com_zhuancfg');
         $shuju = input('put.');//获取数据
         $shuju['time'] = date("Y-m-d h:i:s",time());
+        $lx=$user->max('zcfgcode');
+        $zcfgcode=$lx+1;
+        $shuju['zcfgcode']=$zcfgcode;
         $user_info = $user->insert($shuju);
         if (!$user_info) {
             $data = array(
@@ -275,6 +285,9 @@ class Gongsi extends Controller
         $user = db('com_suozaiqu');
         $shuju = input('put.');//获取数据
         $shuju['time'] = date("Y-m-d h:i:s",time());
+         $lx=$user->max('qycode');
+        $qycode=$lx+1;
+        $shuju['qycode']=$qycode;
         $user_info = $user->insert($shuju);
         if (!$user_info) {
             $data = array(
