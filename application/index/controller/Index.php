@@ -67,7 +67,4 @@ class Index extends \app\index\controller\Base
         $this->assign("count",$count);
         return $this->fetch();
     }
-    public function aa(){
-        return $this->fetch();
-    }
 }

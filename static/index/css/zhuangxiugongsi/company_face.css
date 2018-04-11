@@ -1,0 +1,66 @@
+/*脚部*/
+#footer{color:#111; padding-top:20px;}
+#footer p{margin-bottom:5px;}
+#footer a{color:#333;}
+#footer .t_bg{border-top:1px solid #DBDBDB;color:#aaa; padding-top:25px;}
+#footer .t_bg a{color:#222;}
+
+
+/*找装饰公司*/
+.search_zs .sousuo_c{color:#94aa86;background:#fff url(http://img.to8to.com/front_end/icon/bottom2.gif) no-repeat 440px center;}
+.search_zs .c_sou{border:0px;background:url(http://img.to8to.com/front_end/button/sjs_search2.gif);}
+.zs_photo{background:url(http://img.to8to.com/front_end/icon/ask.gif) no-repeat left center;font-size:14px;font-weight:bold; color:#333;}
+.zs_photo em{font-size:13px;}
+.zs_search{background:url(http://img.to8to.com/front_end/bg/zs_bg8.gif) no-repeat;}
+.zs_search .gsw118{background:#fff url(http://img.to8to.com/front_end/icon/bottom2.gif) no-repeat 110px center;border:1px solid #7b9ebd;}
+.search_left .title{background:#ffdbc5;border-top:1px solid #ffb985;color:#363425; font-weight:bold;}
+.search_left .title em{font-weight:normal; color:#f60;}
+.search_left .fast_search{border-top:1px dashed #ccc;}
+.search_left .fast_search b{background:url(http://img.to8to.com/front_end/icon/right2.gif) no-repeat left center;}
+.zs_tab1 th{border-bottom:1px dashed #ccc;}
+.zs_tab1 .headphoto img {border:1px solid #dedbde;background:#fff;}
+.zs_tab1 .zx_name{color:#646665;}
+.zs_tab1 .zx_name a{color:#021a48;text-decoration:underline;}
+.zs_tab1 .zx_name a:hover{color:#f60;text-decoration:none;}
+.zs_tab1 .zx_name span{color:#aea9ad;}
+.zs_tab1 .on{color:#f00;font-weight:bold;}
+.zs_tab1 li {color:#646665}
+.zs_tab1 .release a{background:url(http://img.to8to.com/front_end/button/button.gif) no-repeat;}
+.zs_tab1 code{color:#000;}
+.zs_tab1 td{border-bottom:1px dashed #ccc;}
+.zs_tab1 .yan_se{color:#001d49}
+.search_right{border-top:1px solid #ffb985;border-bottom:1px solid #ffdac7;border-left:1px solid #ffdac7;border-right:1px solid #ffdac7;}
+.search_right .sponsor{background:#ffdac7; font-size:14px;}
+.search_right a{color:#339ad5;font-size:14px; text-decoration:underline;}
+
+/*知识列表*/
+.craft_c{border:1px solid #e1e1e1;}
+.craft_c .pages{text-align:center;background:#f3f3f3;}
+.craft_c .craft_usher a{font-weight:bold;font-size:14px;color:#aa2716;}
+.craft_c .craft_usher a:hover{color:#f60;}
+.craft_c .craft_usher span{color:#666;}
+.craft_c .offer_n,.craft_c .craft_usher{font-family:"宋体";}
+.craft_c .title{text-align:center;border-bottom:1px dashed #cce70b;}
+.craft_c .title .color a,.craft_c .title .color{color:#b19a87;}
+.craft_c .title .color a:hover{color:#f60;}
+.craft_c .essay{color:#666;}
+.craft_c .bg{background:#f3f3f3;}
+
+/*下载按钮*/
+.show_bd .showtxt a.downloadfile {display:block;color:green;width:101px;height:33px;background:url(http://img.to8to.com/front_end/button/downloadfile.jpg) no-repeat;text-indent:-9999px;}
+
+/*装修宝界面start*/
+/*
+.new_bannel {clear:both;height:112px;}
+.new_bannel1 {height:64px;background:#5e8d01;line-height:64px;text-align:center;font-family:"微软雅黑","宋体";font-size:26px;color:#fff;}
+.new_bannel2 {background:url(http://img.to8to.com/front_end/bg/zxb_header_02.jpg);}
+.new_bannel3 {background:url(http://img.to8to.com/front_end/bg/zxb_header_03.jpg);}
+.new_bannel4 {background:url(http://img.to8to.com/front_end/bg/zxb_header_04.jpg);}
+.new_bannel5 {background:url(http://img.to8to.com/front_end/bg/zxb_header_05.jpg);}
+.find_compnay {clear:both;width:936px;margin:0 auto;}
+.find_compnay1 {height:223px;background:url(http://img.to8to.com/front_end/bg/zxb_findcom_1.gif);}
+.find_compnay1 {height:229px;background:url(http://img.to8to.com/front_end/bg/zxb_findcom_2.gif);}
+.find_compnay1 {height:213px;background:url(http://img.to8to.com/front_end/bg/zxb_findcom_3.gif);}
+.find_compnay1 {height:221px;background:url(http://img.to8to.com/front_end/bg/zxb_findcom_4.gif);}*/
+
+/*装修宝界面end*/
