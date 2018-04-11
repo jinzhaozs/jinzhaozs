@@ -47,6 +47,7 @@
 		<!--<script type="text/javascript" src="__STATIC__/index/js/zhuangxiugongsi/jQuery.js"></script>-->
 		<link rel="stylesheet" href="__STATIC__/index/css/zhuangxiugongsi/common_tender_pop.css">
 		<style></style>
+		
 	</head>
 
 	<body class="narrow_1220">
@@ -564,42 +565,52 @@
                 <a href="javascript:void(0);">北京装修公司</a>
                 <span class="nav_arrow_right"></span>
             </li>
+            <!-- 条件 -->
             <li class="nav_type_select">
-            	
+            <!-- 类型 -->
+            {neq name="$comtype['lxcode']" value=""}
+            	<a class="comtypedel" href="{:url('/index/index/index')}">
+            	<em>
+					<span id="lxcode" style="display: none;">{$comtype['lxcode']}</span>
+					<span>{$comtype['lxname']}</span>
+						<!-- <button><a class="comtypedel" href="{:url('/index/index/index')}">x</a></button> -->
+            	</em>
+            	<span class="nav_close"></span>
+            	</a>
+			{/neq}
+			<!-- 服务区域 -->
+			{neq name="$comservice['qycode']" value=""}
+				<a class="comservicedel" href="{:url('/index/index/index')}">
+            	<em>
+					<span id="qycode" style="display: none;">{$comservice['qycode']}</span>
+					<span>{$comservice['qyname']}</span>
+					<!-- <button><a class="comservicedel" href="{:url('/index/index/index')}">x</a></button> -->
+            	</em>
+            	<span class="nav_close"></span>
+            	</a>
+			
+			{/neq}
             </li>
         </ul>
-        <em class="xgt_meitu_nav_total">共 <b>1256</b> 结果</em>
+        <em class="xgt_meitu_nav_total">共 <b>{$count}</b> 结果</em>
         <a href="javascript:void(0);" target="_blank" class="lnk_r" title="北京装修公司排名">北京装修公司哪家强？</a>
     </h1>
+					<!--类型-->
 					<dl class="zgs_st_dl">
 						<dt>类型</dt>
-						<!--类型-->
 						<dd class="height_40">
 							{foreach name="com_leixing" item="vocom_leixing"}
-		<span><a class="comtype" href="{:url('/index/index/index',['type'=>$vocom_leixing.lxcode])}">{$vocom_leixing.lxname}</a></span>
-		{/foreach}
+							<span><a class="comtype" href="{:url('/index/index/index',['type'=>$vocom_leixing.lxcode])}">{$vocom_leixing.lxname}</a></span>
+							{/foreach}
 							<span class="xgt_nav_showMore" onclick="javascript:showMore(this)" title="点击展开"></span></dd>
 					</dl>
 					<dl class="zgs_st_dl">
 						<dt>服务区域</dt>
 						<!--服务区域-->
 						<dd class="height_40">
-							<a href="javascript:void(0);" rel="nofollow">朝阳区</a>
-							<a href="javascript:void(0);" rel="nofollow">大兴区</a>
-							<a href="javascript:void(0);" rel="nofollow">东城区</a>
-							<a href="javascript:void(0);" rel="nofollow">房山区</a>
-							<a href="javascript:void(0);" rel="nofollow">丰台区</a>
-							<a href="javascript:void(0);" rel="nofollow">海淀区</a>
-							<a href="javascript:void(0);" rel="nofollow">门头沟区</a>
-							<a href="javascript:void(0);" rel="nofollow">平谷区</a>
-							<a href="javascript:void(0);" rel="nofollow">石景山区</a>
-							<a href="javascript:void(0);" rel="nofollow">顺义区</a>
-							<a href="javascript:void(0);" rel="nofollow">通州区</a>
-							<a href="javascript:void(0);" rel="nofollow">西城区</a>
-							<a href="javascript:void(0);" rel="nofollow">昌平区</a>
-							<a href="javascript:void(0);" rel="nofollow">怀柔区</a>
-							<a href="javascript:void(0);" rel="nofollow">密云县</a>
-							<a href="javascript:void(0);" rel="nofollow">延庆县</a>
+							{foreach name="com_fuwuquyu" item="vocom_fuwuquyu"}
+								<span><a class="comservice" href="{:url('/index/index/index',['service'=>$vocom_fuwuquyu.qycode])}">{$vocom_fuwuquyu.qyname}</a></span>
+							{/foreach}
 							<span class="xgt_nav_showMore" onclick="javascript:showMore(this)" title="点击展开"></span></dd>
 					</dl>
 
@@ -621,42 +632,18 @@
 						<dt>专长风格</dt>
 						<!--风格-->
 						<dd>
-							<a href="javascript:void(0);" rel="nofollow">简约</a>
-							<a href="javascript:void(0);" rel="nofollow">现代</a>
-							<a href="javascript:void(0);" rel="nofollow">中式</a>
-							<a href="javascript:void(0);" rel="nofollow">欧式</a>
-							<a href="javascript:void(0);" rel="nofollow">美式</a>
-							<a href="javascript:void(0);" rel="nofollow">田园</a>
-							<a href="javascript:void(0);" rel="nofollow">新古典</a>
-							<a href="javascript:void(0);" rel="nofollow">混搭</a>
-							<a href="javascript:void(0);" rel="nofollow">地中海</a>
-							<a href="javascript:void(0);" rel="nofollow">东南亚</a>
-							<a href="javascript:void(0);" rel="nofollow">日式</a>
-							<a href="javascript:void(0);" rel="nofollow">宜家</a>
-							<a href="javascript:void(0);" rel="nofollow">北欧</a>
-							<a href="javascript:void(0);" rel="nofollow">简欧</a>
+							{foreach name="com_fengge" item="vocom_fengge"}
+							<span><a href="">{$vocom_fengge.zcfgname}</a></span>
+							{/foreach}
 						</dd>
 					</dl>
 					<dl class="zgs_st_dl" style="display: none;">
 						<dt>所在区域</dt>
 						<!--所在区域-->
 						<dd class="height_40">
-							<a href="javascript:void(0);">朝阳区</a>
-							<a href="javascript:void(0);">大兴区</a>
-							<a href="javascript:void(0);">东城区</a>
-							<a href="javascript:void(0);">房山区</a>
-							<a href="javascript:void(0);">丰台区</a>
-							<a href="javascript:void(0);">海淀区</a>
-							<a href="javascript:void(0);">门头沟区</a>
-							<a href="javascript:void(0);">平谷区</a>
-							<a href="javascript:void(0);">石景山区</a>
-							<a href="javascript:void(0);">顺义区</a>
-							<a href="javascript:void(0);">通州区</a>
-							<a href="javascript:void(0);">西城区</a>
-							<a href="javascript:void(0);">昌平区</a>
-							<a href="javascript:void(0);">怀柔区</a>
-							<a href="javascript:void(0);">密云县</a>
-							<a href="javascript:void(0);">延庆县</a>
+							{foreach name="com_fuwuquyu" item="vocom_fuwuquyu"}
+								<span><a  href="{:url('/index/index/index',['service'=>$vocom_fuwuquyu.qycode])}">{$vocom_fuwuquyu.qyname}</a></span>
+							{/foreach}
 							<span class="xgt_nav_showMore" onclick="javascript:showMore(this)" title="点击展开"></span></dd>
 					</dl>
 					<p class="more_type">
@@ -696,18 +683,19 @@
 				<div class="zgs_company_ad_icon">
 					<!--<span class="ad_icon" style="display: inline;"></span>-->
 				</div>
+				<!-- 公司详情 -->
 				<div class="zgs_company_list  ">
 					<ul style="">
-						
-						<li id="545874" data-ad="">
+						{foreach name="shop" item="voshop"}
+						<li  data-ad="">
 							<div class="zgscl_container">
 								<a href="javascript:void(0);" target="_blank" class="zgscl_logo" rel="nofollow">
-									<img src="__STATIC__/index/img/headphoto_545874.jpg" alt="北京克洛尼装饰有限公司 - 北京装修公司" width="138" height="138">
+									<img src="__STATIC__/index/img/headphoto_545874.jpg" alt="{$voshop.name}" width="138" height="138">
 								</a>
 								<div class="zgsclc_data">
 									<span class="zd_one">
                               <h3>
-                                  <a href="javascript:void(0);" target="_blank" class="zgscl_name">北京克洛尼装饰有限公司</a>
+                                  <a href="javascript:void(0);" target="_blank" class="zgscl_name">{$voshop.name}</a>
                               </h3>
                               							</span>
 									<span class="zd_two">
@@ -724,7 +712,7 @@
                                                         </span>
 									<span class="zd_three">
                                                                 <em></em>
-                                 安立路德邦写字楼二层                                                          </span>
+                                {$voshop.dizhi}                                                        </span>
 									<div class="zgsclc_consult">
 										<a href="javascript:void(0)" class="free_design on" onclick="javascript:companyTender(this,'545874')">免费帮我做设计</a>
 										<a href="javascript:void(0)" class="free_price" onclick="javascript:companyTender(this,545874)">免费帮我出报价</a>
@@ -765,83 +753,55 @@
 									<span class="diary_hd">《紫竹花园装修记》已更新至10篇：</span> 今天与克洛尼和土巴兔签订三方协议。支付50％托管工程款。开始抓紧空调、窗户等主材... </a>
 							</div>
 						</li>
-						<li id="593266" data-ad="">
-							<div class="zgscl_container">
-								<a href="javascript:void(0);" target="_blank" class="zgscl_logo" rel="nofollow">
-									<img src="__STATIC__/index/img/headphoto_593266.jpg" alt="中海建林（北京）装饰工程有限责任公... - 北京装修公司" width="138" height="138">
-								</a>
-								<div class="zgsclc_data">
-									<span class="zd_one">
-                              <h3>
-                                  <a href="javascript:void(0);" target="_blank" class="zgscl_name">中海建林（北京）装饰工程有限责任公...</a>
-                              </h3>
-                              							</span>
-									<span class="zd_two">
-                              <i class="zdq_3" title="该公司营业执照已认证"></i>                              <i class="zdq_4" title="认证公司"></i>                
-                                <i class="zdq_5_no"></i> 
-                              <i class="zdq_2" title="该公司已交49956.00元保障金"></i><em title="该公司已交49956.00元保障金">49956元</em>
-                                
-                               <a href="javascript:void(0);" title="设计方案" target="_blank"><i class="zdq_6" title="设计方案"></i><em>107套</em></a>
-                               <a href="javascript:void(0);" title="工地数量" target="_blank">                                <i class="zdq_7" title="工地数量"></i>
-                                <em>431个</em>  </a> 
-                              <a href="javascript:void(0);" title="评价次数" target="_blank" rel="nofollow">
-                                  <i class="zdq_8" title="评价次数"></i>
-                                  <em> 1691次</em> </a>
-                                                        </span>
-									<span class="zd_three">
-                                                                <em></em>
-                                 北京市朝阳区北四环亚运村天创世缘                                                          </span>
-									<div class="zgsclc_consult">
-										<a href="javascript:void(0)" class="free_design on" onclick="javascript:companyTender(this,'593266')">免费帮我做设计</a>
-										<a href="javascript:void(0)" class="free_price" onclick="javascript:companyTender(this,593266)">免费帮我出报价</a>
-									</div>
-
-								</div>
-								<div class="zgsclc_koubei big_city">
-									<div class="zgsclc_level">
-										<span class="text_gsdj">认证级别</span>
-										<div class="zgsclc_little_level">
-											<a href="javascript:void(0);" target="_blank" rel="nofollow" class="zgscl_golden zgscl_a_gloden">
-												<em class="zgs_ico_golden5" title="模范公司"></em>
-											</a>
-										</div>
-									</div>
-									<div class="clear">
-										<span class="koubei_text">口<em style="margin:0 6px;">碑</em>值</span>
-										<a class="zgscl_a_gloden" href="javascript:void(0);">
-											<span class="koubei_number">4433</span>
-										</a>
-									</div>
-									<div class="clear">
-										<span class="koubei_text">好<em style="margin:0 6px;">评</em>率</span>
-										<a class="zgscl_a_gloden" target="_blank" href="javascript:void(0);">
-											<span class="koubei_number haoping-text">99.21%</span>
-										</a>
-									</div>
-								</div>
-							</div>
-							<div class="special_service">
-								<p>
-									已有 <em>52750</em> 人咨询
-								</p>
-							</div>
-							<div class="relative_diary">
-								<span class="relative_hd"><i class="zgs_ico_rd"></i>业主真实经历</span>
-								<a href="javascript:void(0);" target="_blank" class="diary_lnk" rel="nofollow">
-									<span class="diary_hd">《小白装房》已更新至39篇：</span> 西门子烤箱 蒸烤一体：13900 烤箱：8459 </a>
-							</div>
-						</li>
+						{/foreach}
 					</ul>
 				</div>
-				<div class="pages"><em>共有<b>1256</b></em><strong>1</strong>
-					<a href="javascript:void(0);">2</a>
-					<a href="javascript:void(0);">3</a>
-					<a href="javascript:void(0);">4</a>
-					<a href="javascript:void(0);">5</a><i>...</i>
-					<a href="javascript:void(0);" class="last">84</a>
-					<a href="javascript:void(0);" class="next" id="nextpageid">下一页<b></b></a>
+				<!-- 分页 -->
+				<div>
+				{$shop->render()}
 				</div>
 			</div>
+			<!-- 条件js -->
+			<script type="text/javascript">
+				// 类型 闭包
+				function type(){
+					service = "";//服务区域信息
+					var qycode = jq("#qycode").html();//获取服务区域
+					if (qycode) {
+						service = "?service="+qycode;
+					}
+					
+				}
+				// 服务区域闭包
+				function service(){
+					type = "";//类型信息
+					var lxcode = jq("#lxcode").html();//获取类型
+					if (lxcode) {
+						type = "?type="+lxcode;
+					}
+					
+				}
+				//类型点击
+				jq(document).on("click",".comtype",function(){
+					type();
+					jq(this).attr("href",jq(this).attr("href")+service);
+				});
+				//类型删除
+				jq(document).on("click",".comtypedel",function(){
+					type();
+					jq(this).attr("href",jq(this).attr("href")+service);
+				})
+				//服务区域点击
+				jq(document).on("click",".comservice",function(){
+					service();
+					jq(this).attr("href",jq(this).attr("href")+type);
+				});
+				//服务区域删除
+				jq(document).on("click",".comservicedel",function(){
+					service();
+					jq(this).attr("href",jq(this).attr("href")+type);
+				});
+			</script>
 			<div class="zgs_cl_right">
 				<link rel="stylesheet" type="text/css" href="__STATIC__/index/css/zhuangxiugongsi/zxbj_widget_new.css">
 				<!-- <script  src="http://static.to8to.com/gb___STATIC__/index/js/common_new.js?v=1522225104" type="text/javascript"></script> -->

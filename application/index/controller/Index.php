@@ -44,7 +44,7 @@ class Index extends \app\index\controller\Base
          * 公司信息
          * @var [type]
          */
-        $shop = $this->uri("shop",$whereleixing,"3");//查询公司信息
+        $shop = $this->uri("shop",$whereleixing,"2");//查询公司信息
         // dump($shop);die;
         $count = db("shop")->where($whereleixing)->count();//查询公司信息总条数
 

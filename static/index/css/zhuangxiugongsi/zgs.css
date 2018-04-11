@@ -318,7 +318,7 @@ span.nav_arrow_right{margin:6px 0 0 14px; font-size:14px; background-position:-3
 .zgs_select_type dl.zgs_st_dl_two{border-top:1px solid #eaeaea;}
 .zgs_select_type dl dt{width:77px; border-right:1px solid #eaeaea; text-align:center;  position:absolute;top:0; left:0 ; height:100%;line-height:40px; z-index:1; color:#999; background-color: #f8f8f8}
 .ielt7 .zgs_select_type dl dt{height:999px}
-.zgs_select_type dl dd{float:left; width:820px; margin-left:110px; display:inline}
+.zgs_select_type dl dd{float:left; width: 840px; margin-left:110px; display:inline}
 .narrow_980 .zgs_select_type dl dd{width: 600px}
 .zgs_select_type dl.height_40,.zgs_select_type .height_40{height:40px ; position: relative; overflow: hidden}
 .zgs_select_type dl.height_auto,.zgs_select_type .height_auto{height:auto}
