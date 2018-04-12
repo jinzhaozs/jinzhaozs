@@ -101,7 +101,7 @@
 					</tr>
 					<tr>
 						<td>服务风格</td>
-						<td id="com_fuqy">
+						<td id="com_zcfg">
 							{foreach name="zcfg" item="fg"}
 							<input type="checkbox" value="{$fg.zcfgcode}" name="com_zcfg"  id="com_zcfg">{$fg.zcfgname}
 							{/foreach}
@@ -165,7 +165,7 @@
 					</tr>
 					<tr>
 						<td>服务区域</td>
-						<td id="com_fuqy">
+						<td id="com_fuqy2">
 							{foreach name="qy" item="fu"}
 							<input type="checkbox" value="{$fu.qycode}" name="com_fuqy"  id="com_fuqy2">{$fu.qyname}
 							{/foreach}
@@ -173,7 +173,7 @@
 					</tr>
 					<tr>
 						<td>服务风格</td>
-						<td id="com_fuqy">
+						<td id="com_zcfg2">
 							{foreach name="zcfg" item="fg"}
 							<input type="checkbox" value="{$fg.zcfgcode}" name="com_zcfg"  id="com_zcfg2">{$fg.zcfgname}
 							{/foreach}
@@ -181,7 +181,7 @@
 					</tr>
 					<tr>
 						<td>服务类型</td>
-						<td id="com_leixing">
+						<td id="com_leixing2">
 							{foreach name="xing" item="lei"}
 							<input type="checkbox" value="{$lei.lxcode}" name="com_leixing" id="com_leixing2">{$lei.lxname}
 							{/foreach}
@@ -227,13 +227,13 @@
     	var com_zc=[];
     	var com_lei = [];
         var com_fu = [];
-        $('#com_leixing input:checkbox:checked').each(function() {
+        $('#com_leixing2 input:checkbox:checked').each(function() {
             com_lei.push($(this).val());
         });
-        $('#com_fuqy input:checkbox:checked').each(function() {
+        $('#com_fuqy2 input:checkbox:checked').each(function() {
             com_fu.push($(this).val());
         });
-         $('#com_zcfg input:checkbox:checked').each(function() {
+         $('#com_zcfg2 input:checkbox:checked').each(function() {
             com_zc.push($(this).val());
         });
          var com_zcf=com_zc.join();
@@ -252,13 +252,13 @@
 	            data:{"name":name,"dizhi":dizhi,"logo":logo,"com_leixing":com_leixing,"com_fuqy":com_fuqy,"com_zcfg":com_zcfg,"com_szqy":sz},
 	            success:function(dd){
 	            	alert(dd);
-	             //     console.log(dd);
-	             //    if (dd.code == 200) {
-	             //    window.location.reload();
-	             //      	modal.style.display = "none"; //模态框样式消失
-	             //     }else{
-	             //     	alert(msg);
-	             //      }
+	                 console.log(dd);
+	                if (dd.code == 200) {
+	                window.location.reload();
+	                  	modal.style.display = "none"; //模态框样式消失
+	                 }else{
+	                 	alert(msg);
+	                  }
 	                 
 	            }
 	        })
@@ -281,10 +281,24 @@
     	comdizhi = $(this).parent().parent().find(".dizhi").html();//获取compaix
     	comszqy = $(this).parent().parent().find(".comszqy").html();
     	comfuqy = $(this).parent().parent().find(".comfuqy").html();
-        var comfuq = comfuqy.substring(0, comfuqy.lastIndexOf(','));
+    	comzcfg = $(this).parent().parent().find(".comzcfg").html();
+    	comleixing = $(this).parent().parent().find(".comleixing").html();
     	//赋值
-    	var s=comfuq.split(",");// 
-    	$("#com_fuqy2 input:checkbox").slice(s).attr('checked',true);
+        var comfuq = comfuqy.substring(0, comfuqy.lastIndexOf(','));
+        var comzcf = comzcfg.substring(0, comzcfg.lastIndexOf(','));
+        var comleixi= comleixing.substring(0, comleixing.lastIndexOf(','));	
+     $(comfuq.split(",")).each(function (i,dom){
+        $("#com_fuqy2 :checkbox[value='"+dom+"']").prop("checked",true);
+        $(" #com_fuqy2 :checkbox[id='"+dom+"']").prop("checked",true);
+    });
+     $(comzcf.split(",")).each(function (i,dom){
+        $("#com_zcfg2 :checkbox[value='"+dom+"']").prop("checked",true);
+        $(" #com_zcfg2 :checkbox[id='"+dom+"']").prop("checked",true);
+    });
+     $(comleixi.split(",")).each(function (i,dom){
+        $("#com_leixing2 :checkbox[value='"+dom+"']").prop("checked",true);
+        $(" #com_leixing2 :checkbox[id='"+dom+"']").prop("checked",true);
+    });//复选赋值
     	$("#name2").val(comname);
     	$("#dizhi2").val(comdizhi);
     	$("#sz2").find('option[value="'+comszqy+'"]').attr("selected",true);
@@ -331,7 +345,7 @@
 	            dataType:'json',
 	            async:false,
 	            url:'{:url("admin/Shop/edit")}',
-	            data:{"name":name2,"dizhi":dizhi2,"logo":logo2,"com_leixing":com_leixing2,"com_fuqy":com_fuqy2,"com_zcfg":com_zcfg2,"com_szqy":sz2},
+	            data:{"id":comid,"name":name2,"dizhi":dizhi2,"logo":logo2,"com_leixing":com_leixing2,"com_fuqy":com_fuqy2,"com_zcfg":com_zcfg2,"com_szqy":sz2},
 	            success:function(dd){
 	                console.log(dd);
 	                if (dd.code == 200) {
