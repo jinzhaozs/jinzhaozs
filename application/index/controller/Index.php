@@ -18,6 +18,7 @@ class Index extends \app\index\controller\Base
         // 统一变量说明
         $comtype = null;//类型数组
         $comservice = null;//服务区域数组
+        $comstyle = null;//装修风格数组
         $whereleixing = array();//公司条件数组
 
         //获取类型数据
@@ -39,6 +40,16 @@ class Index extends \app\index\controller\Base
             // dump($thpename);
             $whereleixing['com_fuqy'] = array('like',"%$service,%");
         }
+        
+        //获取装修风格数据
+        $style = input('style'); // 获取类型 code
+        if ($style) {
+            $comstyle['zcfgcode'] = $style;//type 的code
+            $stylename = $this->uri("com_zhuancfg",$comstyle);//转换数据
+            $comstyle['zcfgname'] = $stylename['0']['zcfgname'];// type 的name
+            // dump($thpename);
+            $whereleixing['com_zcfg'] = array('like',"%$style,%");
+        }
 
         /**
          * 公司信息
@@ -59,12 +70,18 @@ class Index extends \app\index\controller\Base
         $this->assign("com_fuwuquyu",$com_fuwuquyu);
         $this->assign("com_fengge",$com_fengge);
         $this->assign("com_suozaiqu",$com_suozaiqu);
+        // dump($comtype);
         //渲染条件信息
         $this->assign("comtype",$comtype);//类型
         $this->assign("comservice",$comservice);//服务区域
+        $this->assign("comstyle",$comstyle);//装修风格
        //渲染公司信息
         $this->assign("shop",$shop);
         $this->assign("count",$count);
+        return $this->fetch();
+    }
+    //测试
+    public function aa(){
         return $this->fetch();
     }
 }
