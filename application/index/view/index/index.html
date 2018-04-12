@@ -35,7 +35,7 @@
 		<!--<script type="text/javascript" src="__STATIC__/index/js/zhuangxiugongsi/to8torsas.js"></script>-->
 		<!--<script type="text/javascript" src="__STATIC__/index/js/zhuangxiugongsi/tender.js"></script>-->
 		<!--<script src="__STATIC__/index/js/zhuangxiugongsi/to8torsaszb.js" type="text/javascript"></script>-->
-		<script type="text/javascript" src="__STATIC__/index/js/zhuangxiugongsi/jQuery.js"></script>
+		<!-- <script type="text/javascript" src="__STATIC__/index/js/zhuangxiugongsi/jQuery.js"></script> -->
 		<!--<script type="text/javascript" src="__STATIC__/index/js/zhuangxiugongsi/icpcountvisit.js"></script>-->
 		<script type="text/javascript" src="__STATIC__/index/js/zhuangxiugongsi/common_new.js"></script>
 
@@ -47,7 +47,7 @@
 		<!--<script type="text/javascript" src="__STATIC__/index/js/zhuangxiugongsi/jQuery.js"></script>-->
 		<link rel="stylesheet" href="__STATIC__/index/css/zhuangxiugongsi/common_tender_pop.css">
 		<style></style>
-		
+		<script src="__STATIC__/assets/js/jquery.min.js"></script>
 	</head>
 
 	<body class="narrow_1220">
@@ -569,7 +569,7 @@
             <li class="nav_type_select">
             <!-- 类型 -->
             {neq name="$comtype['lxcode']" value=""}
-            	<a class="comtypedel" href="{:url('/index/index/index')}">
+            	<a class="comtypedel">
             	<em>
 					<span id="lxcode" style="display: none;">{$comtype['lxcode']}</span>
 					<span>{$comtype['lxname']}</span>
@@ -580,10 +580,22 @@
 			{/neq}
 			<!-- 服务区域 -->
 			{neq name="$comservice['qycode']" value=""}
-				<a class="comservicedel" href="{:url('/index/index/index')}">
+				<a class="comservicedel">
             	<em>
 					<span id="qycode" style="display: none;">{$comservice['qycode']}</span>
 					<span>{$comservice['qyname']}</span>
+					<!-- <button><a class="comservicedel" href="{:url('/index/index/index')}">x</a></button> -->
+            	</em>
+            	<span class="nav_close"></span>
+            	</a>
+			
+			{/neq}
+			<!-- 装修风格 -->
+			{neq name="$comstyle['zcfgcode']" value=""}
+				<a class="comstyledel">
+            	<em>
+					<span id="zcfgcode" style="display: none;">{$comstyle['zcfgcode']}</span>
+					<span>{$comstyle['zcfgname']}</span>
 					<!-- <button><a class="comservicedel" href="{:url('/index/index/index')}">x</a></button> -->
             	</em>
             	<span class="nav_close"></span>
@@ -595,12 +607,25 @@
         <em class="xgt_meitu_nav_total">共 <b>{$count}</b> 结果</em>
         <a href="javascript:void(0);" target="_blank" class="lnk_r" title="北京装修公司排名">北京装修公司哪家强？</a>
     </h1>
+    <!-- 隐藏form充当条件 -->
+    <form id="jiaojianquyu" action="{:url('/zxgs')}" style="display: none;" method="post">
+    	类型：<input type="text" id="leixing" name="type" value="{$comtype['lxcode']}">
+    	服务区域：<input type="text" id="fuwuquyu" name="service" value="{$comservice['qycode']}">
+    	专长风格：<input type="text" id="zhuanchangfg" name="style" value="{$comstyle['zcfgcode']}">
+    	<input type="submit" value="提交" >
+    </form>
+    <iframe id="jiaojianquyu" name="jiaojianquyu" style="display:none;"></iframe> 
 					<!--类型-->
 					<dl class="zgs_st_dl">
 						<dt>类型</dt>
 						<dd class="height_40">
 							{foreach name="com_leixing" item="vocom_leixing"}
-							<span><a class="comtype" href="{:url('/index/index/index',['type'=>$vocom_leixing.lxcode])}">{$vocom_leixing.lxname}</a></span>
+							<span >
+								<a class="comtype">
+									<input type="text" class="leixingid" style="display: none;" value="{$vocom_leixing.lxcode}">
+									{$vocom_leixing.lxname}
+								</a>
+							</span>
 							{/foreach}
 							<span class="xgt_nav_showMore" onclick="javascript:showMore(this)" title="点击展开"></span></dd>
 					</dl>
@@ -609,7 +634,12 @@
 						<!--服务区域-->
 						<dd class="height_40">
 							{foreach name="com_fuwuquyu" item="vocom_fuwuquyu"}
-								<span><a class="comservice" href="{:url('/index/index/index',['service'=>$vocom_fuwuquyu.qycode])}">{$vocom_fuwuquyu.qyname}</a></span>
+								<span>
+									<a class="comservice">
+									<input type="text" class="qyyuid" style="display: none;" value="{$vocom_fuwuquyu.qycode}">
+										{$vocom_fuwuquyu.qyname}
+									</a>
+								</span>
 							{/foreach}
 							<span class="xgt_nav_showMore" onclick="javascript:showMore(this)" title="点击展开"></span></dd>
 					</dl>
@@ -633,7 +663,12 @@
 						<!--风格-->
 						<dd>
 							{foreach name="com_fengge" item="vocom_fengge"}
-							<span><a class="comstyle" href="{:url('index/index/index')}">{$vocom_fengge.zcfgname}</a></span>
+							<span>
+									<a class="comstyle">
+									<input type="text" class="zhuanchangfgid" style="display: none;" value="{$vocom_fengge.zcfgcode}">
+										{$vocom_fengge.zcfgname}
+									</a>
+								</span>
 							{/foreach}
 						</dd>
 					</dl>
@@ -763,43 +798,43 @@
 			</div>
 			<!-- 条件js -->
 			<script type="text/javascript">
-				// 类型 闭包
-				function type(){
-					service = "";//服务区域信息
-					var qycode = jq("#qycode").html();//获取服务区域
-					if (qycode) {
-						service = "?service="+qycode;
-					}
-					
-				}
-				// 服务区域闭包
-				function service(){
-					type = "";//类型信息
-					var lxcode = jq("#lxcode").html();//获取类型
-					if (lxcode) {
-						type = "?type="+lxcode;
-					}
-					
-				}
+				
 				//类型点击
-				jq(document).on("click",".comtype",function(){
-					type();
-					jq(this).attr("href",jq(this).attr("href")+service);
+				$(document).on("click",".comtype",function(){
+					var leixingid = $(this).find(".leixingid").val();//获取类型id
+					$("#leixing").val(leixingid);//赋值
+					$("#jiaojianquyu").submit();//提交form
 				});
 				//类型删除
 				jq(document).on("click",".comtypedel",function(){
-					type();
-					jq(this).attr("href",jq(this).attr("href")+service);
+					var leixingid = "";//获取类型id
+					$("#leixing").val(leixingid);//赋值
+					$("#jiaojianquyu").submit();//提交form
 				})
 				//服务区域点击
 				jq(document).on("click",".comservice",function(){
-					service();
-					jq(this).attr("href",jq(this).attr("href")+type);
+					var qyyuid = $(this).find(".qyyuid").val();//获取类型id
+					$("#fuwuquyu").val(qyyuid);//赋值
+					$("#jiaojianquyu").submit();//提交form
+					
 				});
 				//服务区域删除
 				jq(document).on("click",".comservicedel",function(){
-					service();
-					jq(this).attr("href",jq(this).attr("href")+type);
+					var qyyuid = "";//获取类型id
+					$("#fuwuquyu").val(qyyuid);//赋值
+					$("#jiaojianquyu").submit();//提交form
+				});
+				//风格点击
+				jq(document).on("click",".comstyle",function(){
+					var zhuanchangfgid = $(this).find(".zhuanchangfgid").val();//获取类型id
+					$("#zhuanchangfg").val(zhuanchangfgid);//赋值
+					$("#jiaojianquyu").submit();//提交form
+				});
+				//风格删除
+				jq(document).on("click",".comstyledel",function(){
+					var zhuanchangfgid = "";//获取类型id
+					$("#zhuanchangfg").val(zhuanchangfgid);//赋值
+					$("#jiaojianquyu").submit();//提交form
 				});
 			</script>
 			<div class="zgs_cl_right">
