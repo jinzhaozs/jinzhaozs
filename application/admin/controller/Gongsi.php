@@ -60,7 +60,7 @@ class Gongsi extends Controller
         $whid = input('post.id');//获取id
         $where['id'] = $whid;
         $shuju = input('put.');//获取数据
-        $shuju['time'] = date("Y-m-d h:i:s",time());
+      
         $res = $user->where($where)->update($shuju);
         if (!$res) {
             $data = array(
