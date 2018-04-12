@@ -19,10 +19,12 @@ class Base extends \think\Controller
 	 * @param string $field 查询字段，为空时返回数组
 	 * @return array/string
 	*/
-	protected function uri($model, $filter,$pag=null)
+	protected function uri($model, $filter,$pag=null,$urlcanshu=null)
 	{
 		if($pag){
-			$info = db($model)->where($filter)->paginate($pag);
+			$info = db($model)->where($filter)->paginate($pag,false,[
+'query'=>$urlcanshu,
+]);
 		}else{
 			if($filter && is_numeric($filter)){
 		        $filter  = array("id" => $filter);
