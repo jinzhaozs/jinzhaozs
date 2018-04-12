@@ -10,7 +10,7 @@
 namespace app\admin\controller;
 
 use think\Controller;
-
+use think\Request;
 class Shop extends Controller
 {
     /**
@@ -23,11 +23,23 @@ class Shop extends Controller
     	$fu=db('com_fuwuqy');
     	$lei = db('com_qiyecsleixing');
         $fg= db('com_zhuancfg');
-    	$res=$user->order("id")->paginate(10);
+        $jw= db('com_price');
+        $where=array ();
+        $pageParam    = ['query' =>[]];
+        if(!empty($_POST['keyword']))
+        {
+            $where['name']=array('like','%'.$_POST['keyword'].'%');
+             //$this->assign('phone', $phone);
+            $pageParam['query']['phone'] = $_POST['keyword'];
+        }
+    	$res=$user->join('com_fuwuqy w','shop.com_szqy = w.qycode')->where($where)->order("shop.id")->paginate(10, false, $pageParam); 
+
     	$qy=$fu->select();
     	$xing=$lei->select();
         $zcfg=$fg->select();
     	$page=$res->render();
+        $jws=$jw->select();
+        $this->assign("jw",$jws);
         $this->assign("zcfg",$zcfg);
     	$this->assign("xing",$xing);
     	$this->assign("qy",$qy);
@@ -40,7 +52,7 @@ class Shop extends Controller
     	$user = db('shop');
         $shuju = input('put.');//获取数据
         $shuju['time'] = date("Y-m-d h:i:s",time());
-        $file=$shuju['logo'];
+        $shuju['dis']=2;
         
         $user_info = $user->insert($shuju);
 
