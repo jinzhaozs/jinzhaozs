@@ -50,6 +50,7 @@
 		{$page}
 	</table>
 </div>
+
 <!-- 模态框 -->
 <div>
 	 <!-- 模态框添加 -->
@@ -250,14 +251,14 @@
 	            url:'{:url("admin/Shop/add")}',
 	            data:{"name":name,"dizhi":dizhi,"logo":logo,"com_leixing":com_leixing,"com_fuqy":com_fuqy,"com_zcfg":com_zcfg,"com_szqy":sz},
 	            success:function(dd){
-	            	// alert(dd);
-	                 console.log(dd);
-	                if (dd.code == 200) {
-	                window.location.reload();
-	                  	modal.style.display = "none"; //模态框样式消失
-	                 }else{
-	                 	alert(msg);
-	                  }
+	            	alert(dd);
+	             //     console.log(dd);
+	             //    if (dd.code == 200) {
+	             //    window.location.reload();
+	             //      	modal.style.display = "none"; //模态框样式消失
+	             //     }else{
+	             //     	alert(msg);
+	             //      }
 	                 
 	            }
 	        })
@@ -280,9 +281,10 @@
     	comdizhi = $(this).parent().parent().find(".dizhi").html();//获取compaix
     	comszqy = $(this).parent().parent().find(".comszqy").html();
     	comfuqy = $(this).parent().parent().find(".comfuqy").html();
-        var comfuqy = comfuqy.substring(0, comfuqy.lastIndexOf(','));
+        var comfuq = comfuqy.substring(0, comfuqy.lastIndexOf(','));
     	//赋值
-    	$("#com_fuqy2 input:checkbox").eq(comfuqy).attr('checked',true);
+    	var s=comfuq.split(",");// 
+    	$("#com_fuqy2 input:checkbox").slice(s).attr('checked',true);
     	$("#name2").val(comname);
     	$("#dizhi2").val(comdizhi);
     	$("#sz2").find('option[value="'+comszqy+'"]').attr("selected",true);
@@ -323,13 +325,13 @@
     	// alert(comid);
     	
     	// return false;
-    	if (name) {
+    	if (name2) {
     		$.ajax({
 	            type:"post",
 	            dataType:'json',
 	            async:false,
-	            url:'{:url("admin/Gongsi/qyedit")}',
-	            data:{"id":comid,"qyname":qyname2,"qypaixu":qypaixu2},
+	            url:'{:url("admin/Shop/edit")}',
+	            data:{"name":name2,"dizhi":dizhi2,"logo":logo2,"com_leixing":com_leixing2,"com_fuqy":com_fuqy2,"com_zcfg":com_zcfg2,"com_szqy":sz2},
 	            success:function(dd){
 	                console.log(dd);
 	                if (dd.code == 200) {
