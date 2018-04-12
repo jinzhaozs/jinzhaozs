@@ -10,6 +10,15 @@
 <div style="margin-left: 2%;margin-right: 2%;">
 		<h1 style="text-align: center;">服务区域</h1>
 <button class="btn" style="margin-top: -5%;" id="showModel">添加公司</button> 
+ <form class="well form-search" method="post" action="">
+			<div class="search_type cc mb10">
+					<span class="mr20">
+						<input type="text" name="keyword" style="width: 200px;" value="" placeholder="请输入关键字...">
+						<input type="submit" class="btn btn-primary" value="搜索" />
+					</span>
+			</div>
+		</form> 
+		<div class="hei"></div>
 	<table class="table table-bordered" >
 
 		<thead>
@@ -18,16 +27,20 @@
 				<th>编号</th>
 				<th>公司名称</th>
 				<th>公司商标</th>
+				<th>运营</th>
+				<th>认证</th>
+				<th>保障金</th>
 				<th>公司所在区</th>
 				<th>公司地址</th>
-				<th>服务区域</th>
-				<th>服务风格</th>
-				<th>服务类型</th>
+				<th style="display: none;">服务区域</th>
+				<th style="display: none;">服务风格</th>
+				<th style="display: none;">服务价位</th>
+				<th style="display: none;">服务类型</th>
 				<th>操作</th>
 			</tr>
 		</thead>
 		<tbody id="yuansuzhijia">
-			<td style="display: none;">{$i=1}</td>
+			<tr><td style="display: none;">{$i=1}</td></tr>
 			{foreach name="res" item="vores"}
 			
 				<tr>
@@ -35,20 +48,26 @@
 					<td><span class="">{$i++}</span></td>
 					<td><span class="name">{$vores.name}</span></td>
 					<td><span class="logo">{$vores.logo}</span></td>
-					<td><span class="comszqy">{$vores.com_szqy}</span></td>
+					<td><span class="bl" name="{$vores.bl}">{if condition="($vores.bl == 1)"}有{else /} 无{/if}</span></td>
+					<td><span class="rz" name="{$vores.rz}">{if condition="($vores.rz == 1)"}已认证{else /} 未认证{/if}</span></td>
+					<td><span class="sum">{$vores.sum}</span></td>
+					<td><span class="comszqy" name="{$vores.com_szqy}">{$vores.qyname}</span></td>
 					<td><span class="dizhi">{$vores.dizhi}</span></td>
-					<td><span class="comfuqy">{$vores.com_fuqy}</span></td>
-					<td><span class="comzcfg">{$vores.com_zcfg}</span></td>
-					<td><span class="comleixing">{$vores.com_leixing}</span></td>
+					<td style="display: none;"><span class="comfuqy" >{$vores.com_fuqy}</span></td>
+					<td style="display: none;"><span class="comzcfg">{$vores.com_zcfg}</span></td>
+					<td style="display: none;"><span class="comprice">{$vores.com_price}</span></td>
+					<td style="display: none;"><span class="comleixing">{$vores.com_leixing}</span></td>
 					<td>
 						<span style=" cursor: pointer;" class="showModel2">修改</span> | 
 						<span style=" cursor: pointer;" class="delcom">删除</span>
 					</td>
 				</tr>
 			{/foreach}
+			
 		</tbody>
-		{$page}
+		
 	</table>
+	<div>{$page}</div>
 </div>
 
 <!-- 模态框 -->
@@ -64,54 +83,82 @@
 	            
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
 					<tr>
-						<td>名称</td>
+						<td class='wid'>名称</td>
 						<td>
 							<input type="text" class="form-control" id="name" placeholder="请输入名字">
 						</td>
 					</tr>
 					<tr>
-						<td>公司所在区</td>
+						<td class='wid'>公司所在区</td>
 						<td>
 							  <select name="sz" id="sz">  
                                <option value ="0">请选择</option>  
                               {foreach name="qy" item="sz"}
-                               <option value ="{$sz.qycode}">{$sz.qyname}</option>  
+                               <span class="qww"><option value ="{$sz.qycode}">{$sz.qyname}</option></span>  
                               {/foreach}
                     </select>    
 						</td>
 					<tr>
-						<td>地址</td>
+						<td class='wid'>地址</td>
 						<td>
 							<input type="text" class="form-control" id="dizhi" placeholder="请输入公司地址">
 						</td>
 					</tr>
 					<tr>
-						<td>商标</td>
+						<td class='wid'>商标</td>
 						<td>
 							<input type="file" name="image" class="form-control" id="logo"  />
 						</td>
 					</tr>
 					<tr>
-						<td>服务区域</td>
+						<td class='wid'>运营执照</td>
+						<td id="bl">
+						   <input type="radio"  name="radio1" value="1"/>是  
+	                       <input type="radio" name="radio1" value="2"/>否
+                       </td>
+					</tr>
+					<tr>
+						<td class='wid'>认证</td>
+						<td id="rz">
+						   <input type="radio"  name="radio2" value="1"/>是  
+	                       <input type="radio" name="radio2" value="2"/>否
+                       </td>
+					</tr>
+					<tr>
+						<td class='wid'>保障金</td>
+						<td>
+							<input type="text" class="form-control" id="sum" placeholder="请输入保障金">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>服务区域</td>
 						<td id="com_fuqy">
 							{foreach name="qy" item="fu"}
-							<input type="checkbox" value="{$fu.qycode}" name="com_fuqy"  id="com_fuqy">{$fu.qyname}
+							<input type="checkbox" value="{$fu.qycode}" name="com_fuqy"  >{$fu.qyname}
 							{/foreach}
 						</td>
 					</tr>
 					<tr>
-						<td>服务风格</td>
+						<td class='wid'>服务价位</td>
+						<td id="com_price">
+							{foreach name="jw" item="price"}
+							<input type="checkbox" value="{$price.pcode}" name="com_price"  >{$price.pname}
+							{/foreach}
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>服务风格</td>
 						<td id="com_zcfg">
 							{foreach name="zcfg" item="fg"}
-							<input type="checkbox" value="{$fg.zcfgcode}" name="com_zcfg"  id="com_zcfg">{$fg.zcfgname}
+							<input type="checkbox" value="{$fg.zcfgcode}" name="com_zcfg"  >{$fg.zcfgname}
 							{/foreach}
 						</td>
 					</tr>
 					<tr>
-						<td>服务类型</td>
+						<td class='wid'>服务类型</td>
 						<td id="com_leixing">
 							{foreach name="xing" item="lei"}
-							<input type="checkbox" value="{$lei.lxcode}" name="com_leixing" id="com_leixing">{$lei.lxname}
+							<input type="checkbox" value="{$lei.lxcode}" name="com_leixing" >{$lei.lxname}
 							{/foreach}
 						</td>
 					</tr>
@@ -136,13 +183,13 @@
 	            
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
 						<tr>
-						<td>名称</td>
+						<td class='wid'>名称</td>
 						<td>
 							<input type="text" class="form-control" id="name2" placeholder="请输入名字">
 						</td>
 					</tr>
 					<tr>
-						<td>公司所在区</td>
+						<td class='wid'>公司所在区</td>
 						<td>
 							  <select name="sz" id="sz2">  
                                <option value ="0">请选择</option>  
@@ -152,19 +199,40 @@
                     </select>    
 						</td>
 					<tr>
-						<td>地址</td>
+						<td class='wid'>地址</td>
 						<td>
 							<input type="text" class="form-control" id="dizhi2" placeholder="请输入公司地址">
 						</td>
 					</tr>
 					<tr>
-						<td>商标</td>
+						<td class='wid'>商标</td>
 						<td>
 							<input type="file" name="image" class="form-control" id="logo2"  />
 						</td>
 					</tr>
 					<tr>
-						<td>服务区域</td>
+						<tr>
+						<td class='wid'>运营执照</td>
+						<td id="bl2">
+						   <input type="radio"  name="radio3" value="1"/>是  
+	                       <input type="radio" name="radio3" value="2"/>否
+                       </td>
+					</tr>
+					<tr>
+						<td class='wid'>认证</td>
+						<td id="rz2">
+						   <input type="radio"  name="radio4" value="1"/>是  
+	                       <input type="radio" name="radio4" value="2"/>否
+                       </td>
+					</tr>
+					<tr>
+						<td class='wid'>保障金</td>
+						<td>
+							<input type="text" class="form-control" id="sum2" placeholder="请输入保障金">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>服务区域</td>
 						<td id="com_fuqy2">
 							{foreach name="qy" item="fu"}
 							<input type="checkbox" value="{$fu.qycode}" name="com_fuqy"  id="com_fuqy2">{$fu.qyname}
@@ -172,7 +240,15 @@
 						</td>
 					</tr>
 					<tr>
-						<td>服务风格</td>
+						<td class='wid'>服务价位</td>
+						<td id="com_price2">
+							{foreach name="jw" item="price"}
+							<input type="checkbox" value="{$price.pcode}" name="com_price"  id="com_price2">{$price.pname}
+							{/foreach}
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>服务风格</td>
 						<td id="com_zcfg2">
 							{foreach name="zcfg" item="fg"}
 							<input type="checkbox" value="{$fg.zcfgcode}" name="com_zcfg"  id="com_zcfg2">{$fg.zcfgname}
@@ -180,7 +256,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td>服务类型</td>
+						<td class='wid'>服务类型</td>
 						<td id="com_leixing2">
 							{foreach name="xing" item="lei"}
 							<input type="checkbox" value="{$lei.lxcode}" name="com_leixing" id="com_leixing2">{$lei.lxname}
@@ -224,18 +300,27 @@
     	var dizhi = $("#dizhi").val();
     	var logo = $("#logo").val();
     	var sz = $("#sz").val();
+    	var sum = $("#sum").val();
+    	var bl = $("#bl input[name='radio1']:checked").val();
+    	var rz = $("#rz input[name='radio2']:checked").val();
     	var com_zc=[];
     	var com_lei = [];
         var com_fu = [];
-        $('#com_leixing2 input:checkbox:checked').each(function() {
+        var com_pr =[];
+        $('#com_leixing input:checkbox:checked').each(function() {
             com_lei.push($(this).val());
         });
-        $('#com_fuqy2 input:checkbox:checked').each(function() {
+        $('#com_fuqy input:checkbox:checked').each(function() {
             com_fu.push($(this).val());
         });
-         $('#com_zcfg2 input:checkbox:checked').each(function() {
+         $('#com_zcfg input:checkbox:checked').each(function() {
             com_zc.push($(this).val());
         });
+         $('#com_price input:checkbox:checked').each(function() {
+            com_pr.push($(this).val());
+        });
+         var com_pri=com_pr.join();
+         var com_price= com_pri.concat(",");
          var com_zcf=com_zc.join();
          var com_zcfg= com_zcf.concat(",");
          var com_fuq=com_fu.join();
@@ -249,9 +334,9 @@
 	            dataType:'json',
 	            async:false,
 	            url:'{:url("admin/Shop/add")}',
-	            data:{"name":name,"dizhi":dizhi,"logo":logo,"com_leixing":com_leixing,"com_fuqy":com_fuqy,"com_zcfg":com_zcfg,"com_szqy":sz},
+	            data:{"name":name,"dizhi":dizhi,"logo":logo,"com_leixing":com_leixing,"com_fuqy":com_fuqy,"com_zcfg":com_zcfg,"com_szqy":sz,"bl":bl,"rz":rz,"sum":sum,"com_price":com_price},
 	            success:function(dd){
-	            	alert(dd);
+	            	
 	                 console.log(dd);
 	                if (dd.code == 200) {
 	                window.location.reload();
@@ -279,14 +364,23 @@
     	comid = $(this).parent().parent().find(".id").html();
     	comname = $(this).parent().parent().find(".name").html();//获取name
     	comdizhi = $(this).parent().parent().find(".dizhi").html();//获取compaix
-    	comszqy = $(this).parent().parent().find(".comszqy").html();
+    	comszqy = $(this).parent().parent().find(".comszqy").attr('name');
     	comfuqy = $(this).parent().parent().find(".comfuqy").html();
     	comzcfg = $(this).parent().parent().find(".comzcfg").html();
     	comleixing = $(this).parent().parent().find(".comleixing").html();
+    	combl=$(this).parent().parent().find(".bl").attr('name');
+        comrz=$(this).parent().parent().find(".rz").attr('name');
+        comsum=$(this).parent().parent().find(".sum").html();
+        comprice=$(this).parent().parent().find(".comprice").html();
     	//赋值
+    	var compri=comprice.substring(0, comprice.lastIndexOf(','));
         var comfuq = comfuqy.substring(0, comfuqy.lastIndexOf(','));
         var comzcf = comzcfg.substring(0, comzcfg.lastIndexOf(','));
         var comleixi= comleixing.substring(0, comleixing.lastIndexOf(','));	
+       $(compri.split(",")).each(function (i,dom){
+        $("#com_price2 :checkbox[value='"+dom+"']").prop("checked",true);
+        $(" #com_price2 :checkbox[id='"+dom+"']").prop("checked",true);
+    });
      $(comfuq.split(",")).each(function (i,dom){
         $("#com_fuqy2 :checkbox[value='"+dom+"']").prop("checked",true);
         $(" #com_fuqy2 :checkbox[id='"+dom+"']").prop("checked",true);
@@ -301,8 +395,10 @@
     });//复选赋值
     	$("#name2").val(comname);
     	$("#dizhi2").val(comdizhi);
+    	$("#sum2").val(comsum);
     	$("#sz2").find('option[value="'+comszqy+'"]').attr("selected",true);
-    	
+        $("#bl2 input[name='radio3'][value='"+combl+"']").attr("checked",true);  
+     	$("#rz2 input[name='radio4'][value='"+comrz+"']").attr("checked",true); 
     	// alert(comid);comname
     	 modal2.style.display = "block";  
     	});
@@ -318,9 +414,13 @@
     	var dizhi2 = $("#dizhi2").val();
     	var logo2 = $("#logo2").val();
     	var sz2 = $("#sz2").val();
+        var sum2 = $("#sum2").val();
+    	var bl2 = $("#bl2 input[name='radio1']:checked").val();
+    	var rz2 = $("#rz2 input[name='radio2']:checked").val();
     	var com_zc2=[];
     	var com_lei2 = [];
         var com_fu2 = [];
+        var com_pr2 =[];
         $('#com_leixing2 input:checkbox:checked').each(function() {
             com_lei2.push($(this).val());
         });
@@ -330,6 +430,11 @@
          $('#com_zcfg2 input:checkbox:checked').each(function() {
             com_zc2.push($(this).val());
         });
+         $('#com_price2 input:checkbox:checked').each(function() {
+            com_pr2.push($(this).val());
+        });
+         var com_pri2=com_pr2.join();
+         var com_price2= com_pri2.concat(",");
          var com_zcf2=com_zc2.join();
          var com_zcfg2= com_zcf2.concat(",");
          var com_fuq2=com_fu2.join();
@@ -345,7 +450,7 @@
 	            dataType:'json',
 	            async:false,
 	            url:'{:url("admin/Shop/edit")}',
-	            data:{"id":comid,"name":name2,"dizhi":dizhi2,"logo":logo2,"com_leixing":com_leixing2,"com_fuqy":com_fuqy2,"com_zcfg":com_zcfg2,"com_szqy":sz2},
+	            data:{"id":comid,"name":name2,"dizhi":dizhi2,"logo":logo2,"com_leixing":com_leixing2,"com_fuqy":com_fuqy2,"com_zcfg":com_zcfg2,"com_szqy":sz2,"bl":bl2,"rz":rz2,"sum":sum2,"com_price":com_price2},
 	            success:function(dd){
 	                console.log(dd);
 	                if (dd.code == 200) {

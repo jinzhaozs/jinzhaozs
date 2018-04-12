@@ -350,4 +350,84 @@ class Gongsi extends Controller
         );
         return $data;
     }
+    //服务价位
+    public function price()
+    {
+        // 链接数据库赋值
+        $user = db('com_price');
+        $res = $user->order("id")->select();
+        $this->assign("res",$res);
+        // dump($res);die;
+        return $this->view->fetch();
+    }
+    //执行添加
+    public function priceadd(){
+        $user = db('com_price');
+        $shuju = input('put.');//获取数据
+        $shuju['time'] = date("Y-m-d h:i:s",time());
+         $lx=$user->max('pcode');
+         $qycode=$lx+1;
+        $shuju['pcode']=$qycode;//获取lxcode
+        $user_info = $user->insert($shuju);
+        if (!$user_info) {
+            $data = array(
+                    'data' => false,
+                    'code' => 500,
+                    'msg'  => '添加失败',
+            );
+
+            return $data;
+        }
+        $data = array(
+                'data' => true,
+                'code' => 200,
+                'msg'  => '添加成功 !',
+        );
+        return $data;
+    }
+    //执行修改
+    public function priceedit(){
+        $user = db('com_price');
+        $whid = input('post.id');//获取id
+        $where['id'] = $whid;
+        $shuju = input('put.');//获取数据
+        $shuju['time'] = date("Y-m-d h:i:s",time());
+        $res = $user->where($where)->update($shuju);
+        if (!$res) {
+            $data = array(
+                    'data' => false,
+                    'code' => 500,
+                    'msg'  => '修改失败',
+            );
+
+            return $data;
+        }
+        $data = array(
+                'data' => true,
+                'code' => 200,
+                'msg'  => '修改成功 !',
+        );
+        return $data;
+    }
+    //删除
+    public function pricedel($id){
+        $user = db('com_price');
+        $whid = input('post.id');//获取id
+        $res = $user->where('id',$whid)->delete();
+        if (!$res) {
+            $data = array(
+                    'data' => false,
+                    'code' => 500,
+                    'msg'  => '删除失败',
+            );
+
+            return $data;
+        }
+        $data = array(
+                'data' => true,
+                'code' => 200,
+                'msg'  => '删除成功 !',
+        );
+        return $data;
+    }
 }
