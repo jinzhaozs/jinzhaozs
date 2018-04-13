@@ -11,6 +11,10 @@ namespace app\admin\controller;
 
 use think\Controller;
 use think\Request;
+use think\File;
+
+
+
 class Shop extends Controller
 {
     /**
@@ -49,28 +53,26 @@ class Shop extends Controller
     }
     public function add()
     {
-    	$user = db('shop');
-        $shuju = input('put.');//获取数据
+    	$user = db('shop'); 
+        $file = request()->file('logo');
+        $shuju = input('post.');//获取数据
         $shuju['time'] = date("Y-m-d h:i:s",time());
-        $shuju['dis']=2;
-        
-        $user_info = $user->insert($shuju);
+        $shuju['dis']=2; 
+       
 
+        $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');    
+        if($info){
+             $shuju['logo']=$info->getSaveName();
+        }        $user_info = $user->insert($shuju);
         if (!$user_info) {
-            $data = array(
-                    'data' => false,
-                    'code' => 500,
-                    'msg'  => '添加失败',
-            );
-
-            return $data;
+            echo "失败";
+           
         }
-        $data = array(
-                'data' => true,
-                'code' => 200,
-                'msg'  => '添加成功 !',
-        );
-        return $data;
+        else
+        {
+            echo "成功";
+        }
+        
     }
     //执行修改
     public function edit(){

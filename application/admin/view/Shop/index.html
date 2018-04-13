@@ -80,18 +80,18 @@
 	            <span class="close">×</span>  
 	        </header>  
 	        <div class="modal-body">  
-	            
+	            <form class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Shop/add')}">
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
 					<tr>
 						<td class='wid'>名称</td>
 						<td>
-							<input type="text" class="form-control" id="name" placeholder="请输入名字">
+							<input type="text" class="form-control" id="names" name="name" placeholder="请输入名字">
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>公司所在区</td>
 						<td>
-							  <select name="sz" id="sz">  
+							  <select name="com_szqy" id="sz">  
                                <option value ="0">请选择</option>  
                               {foreach name="qy" item="sz"}
                                <span class="qww"><option value ="{$sz.qycode}">{$sz.qyname}</option></span>  
@@ -101,65 +101,69 @@
 					<tr>
 						<td class='wid'>地址</td>
 						<td>
-							<input type="text" class="form-control" id="dizhi" placeholder="请输入公司地址">
+							<input type="text" class="form-control" name="dizhi"  placeholder="请输入公司地址">
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>商标</td>
 						<td>
-							<input type="file" name="image" class="form-control" id="logo"  />
+							<input type="file" name="logo" class="form-control"   />
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>运营执照</td>
 						<td id="bl">
-						   <input type="radio"  name="radio1" value="1"/>是  
-	                       <input type="radio" name="radio1" value="2"/>否
+						   <input type="radio"  name="bl" value="1"/>是  
+	                       <input type="radio" name="bl" value="2"/>否
                        </td>
 					</tr>
 					<tr>
 						<td class='wid'>认证</td>
 						<td id="rz">
-						   <input type="radio"  name="radio2" value="1"/>是  
-	                       <input type="radio" name="radio2" value="2"/>否
+						   <input type="radio"  name="rz" value="1"/>是  
+	                       <input type="radio" name="rz" value="2"/>否
                        </td>
 					</tr>
 					<tr>
 						<td class='wid'>保障金</td>
 						<td>
-							<input type="text" class="form-control" id="sum" placeholder="请输入保障金">
+							<input type="text" class="form-control" name="sum" id="suma" placeholder="请输入保障金">
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>服务区域</td>
 						<td id="com_fuqy">
 							{foreach name="qy" item="fu"}
-							<input type="checkbox" value="{$fu.qycode}" name="com_fuqy"  >{$fu.qyname}
+							<input type="checkbox" value="{$fu.qycode}"  >{$fu.qyname}
 							{/foreach}
+							<input type="hidden" name="com_fuqy" class="fuqy" value=""＞ 
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>服务价位</td>
 						<td id="com_price">
 							{foreach name="jw" item="price"}
-							<input type="checkbox" value="{$price.pcode}" name="com_price"  >{$price.pname}
+							<input type="checkbox" value="{$price.pcode}"   >{$price.pname}
 							{/foreach}
+							<input type="hidden" name="com_price" class="price" value=""＞ 
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>服务风格</td>
 						<td id="com_zcfg">
 							{foreach name="zcfg" item="fg"}
-							<input type="checkbox" value="{$fg.zcfgcode}" name="com_zcfg"  >{$fg.zcfgname}
+							<input type="checkbox" value="{$fg.zcfgcode}"   >{$fg.zcfgname}
 							{/foreach}
+							<input type="hidden" name="com_zcfg" class="zcfg" value=""＞ 
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>服务类型</td>
 						<td id="com_leixing">
 							{foreach name="xing" item="lei"}
-							<input type="checkbox" value="{$lei.lxcode}" name="com_leixing" >{$lei.lxname}
+							<input type="checkbox" value="{$lei.lxcode}"  >{$lei.lxname}
 							{/foreach}
+								<input type="hidden" name="com_leixing" class="leixing" value=""＞ 
 						</td>
 					</tr>
 
@@ -167,31 +171,33 @@
 				</table>
 	        </div>  
 	        <footer class="modal-footer">  
-	            <button id="cancel">取消</button>  
+	            <button type="button" id="cancel">取消</button>  
 	            <button id="sure">确定</button>  
-	        </footer>  
+	        </footer> 
+	        
+	        </form> 
 	    </div>  
 	</div> 
 	<!-- 模态框修改 -->
 	<div id="modal2" class="modal">  
 	    <div class="modal-content">  
 	        <header class="modal-header">  
-	            <h4>模态框标题2</h4>  
+	            <h4>信息修改</h4>  
 	            <span class="close2">×</span>  
 	        </header>  
 	        <div class="modal-body">  
-	            
+	             <form class="form-inline" method="post" action="{:url('admin/Shop/add')}">
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
 						<tr>
 						<td class='wid'>名称</td>
 						<td>
-							<input type="text" class="form-control" id="name2" placeholder="请输入名字">
+							<input type="text" class="form-control" name="name" id="name2" placeholder="请输入名字">
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>公司所在区</td>
 						<td>
-							  <select name="sz" id="sz2">  
+							  <select name="com_szqy" id="sz2">  
                                <option value ="0">请选择</option>  
                               {foreach name="qy" item="sz"}
                                <option value ="{$sz.qycode}">{$sz.qyname}</option>  
@@ -201,66 +207,70 @@
 					<tr>
 						<td class='wid'>地址</td>
 						<td>
-							<input type="text" class="form-control" id="dizhi2" placeholder="请输入公司地址">
+							<input type="text" class="form-control" namer="dizhi" id="dizhi2" placeholder="请输入公司地址">
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>商标</td>
 						<td>
-							<input type="file" name="image" class="form-control" id="logo2"  />
+							<input type="file" name="logo" class="form-control" id="logo2"  />
 						</td>
 					</tr>
 					<tr>
 						<tr>
 						<td class='wid'>运营执照</td>
 						<td id="bl2">
-						   <input type="radio"  name="radio3" value="1"/>是  
-	                       <input type="radio" name="radio3" value="2"/>否
+						   <input type="radio"  name="bl" value="1"/>是  
+	                       <input type="radio" name="bl" value="2"/>否
                        </td>
 					</tr>
 					<tr>
 						<td class='wid'>认证</td>
 						<td id="rz2">
-						   <input type="radio"  name="radio4" value="1"/>是  
-	                       <input type="radio" name="radio4" value="2"/>否
+						   <input type="radio"  name="rz" value="1"/>是  
+	                       <input type="radio" name="rz" value="2"/>否
                        </td>
 					</tr>
 					<tr>
 						<td class='wid'>保障金</td>
 						<td>
-							<input type="text" class="form-control" id="sum2" placeholder="请输入保障金">
+							<input type="text" class="form-control" name="sum" id="sum2" placeholder="请输入保障金">
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>服务区域</td>
 						<td id="com_fuqy2">
 							{foreach name="qy" item="fu"}
-							<input type="checkbox" value="{$fu.qycode}" name="com_fuqy"  id="com_fuqy2">{$fu.qyname}
+							<input type="checkbox" value="{$fu.qycode}"   ">{$fu.qyname}
 							{/foreach}
+							<input type="hidden" name="com_fuqy" class="fuqy" value=""＞ 
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>服务价位</td>
 						<td id="com_price2">
 							{foreach name="jw" item="price"}
-							<input type="checkbox" value="{$price.pcode}" name="com_price"  id="com_price2">{$price.pname}
+							<input type="checkbox" value="{$price.pcode}"  ">{$price.pname}
 							{/foreach}
+							<input type="hidden" name="com_price" class="price" value=""＞ 
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>服务风格</td>
 						<td id="com_zcfg2">
 							{foreach name="zcfg" item="fg"}
-							<input type="checkbox" value="{$fg.zcfgcode}" name="com_zcfg"  id="com_zcfg2">{$fg.zcfgname}
+							<input type="checkbox" value="{$fg.zcfgcode}"  ">{$fg.zcfgname}
 							{/foreach}
+							<input type="hidden" name="com_zcfg" class="zcfg" value=""＞ 
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>服务类型</td>
 						<td id="com_leixing2">
 							{foreach name="xing" item="lei"}
-							<input type="checkbox" value="{$lei.lxcode}" name="com_leixing" id="com_leixing2">{$lei.lxname}
+							<input type="checkbox" value="{$lei.lxcode}"  >{$lei.lxname}
 							{/foreach}
+							<input type="hidden" name="com_leixing" class="leixing" value=""＞ 
 						</td>
 					</tr>
 
@@ -270,7 +280,8 @@
 	        <footer class="modal-footer">  
 	            <button id="cancel2">取消</button>  
 	            <button id="sure2">确定</button>  
-	        </footer>  
+	        </footer>
+	       </form>  
 	    </div>  
 	</div>  
 </div>
@@ -299,10 +310,10 @@
     	var name = $("#name").val();
     	var dizhi = $("#dizhi").val();
     	var logo = $("#logo").val();
-    	var sz = $("#sz").val();
-    	var sum = $("#sum").val();
-    	var bl = $("#bl input[name='radio1']:checked").val();
-    	var rz = $("#rz input[name='radio2']:checked").val();
+    	var sz = $("#com_szqy").val();
+    	var sum = $("#suma").val();
+    	var bl = $("#bl input[name='bl']:checked").val();
+    	var rz = $("#rz input[name='rz']:checked").val();
     	var com_zc=[];
     	var com_lei = [];
         var com_fu = [];
@@ -327,29 +338,34 @@
          var com_fuqy= com_fuq.concat(",");
          var com_leixin=com_lei.join();
          var com_leixing=com_leixin.concat(",");
+         $('#com_fuqy .fuqy').val(com_fuqy);
+         $('#com_zcfg .zcfg').val(com_zcfg);
+         $('#com_leixing .leixing').val(com_leixing);
+          $('#com_price .price').val(com_price);
          // alert(com_leixing);
-    	if (name) {
-    		$.ajax({
-	            type:"post",
-	            dataType:'json',
-	            async:false,
-	            url:'{:url("admin/Shop/add")}',
-	            data:{"name":name,"dizhi":dizhi,"logo":logo,"com_leixing":com_leixing,"com_fuqy":com_fuqy,"com_zcfg":com_zcfg,"com_szqy":sz,"bl":bl,"rz":rz,"sum":sum,"com_price":com_price},
-	            success:function(dd){
+    	// if (name) {
+    	// 	$.ajax({
+	    //         type:"post",
+	    //         dataType:'json',
+	    //         async:false,
+	    //         url:'{:url("admin/Shop/add")}',
+	    //         data:{"name":name,"dizhi":dizhi,"logo":logo,"com_leixing":com_leixing,"com_fuqy":com_fuqy,"com_zcfg":com_zcfg,"com_szqy":sz,"bl":bl,"rz":rz,"sum":sum,"com_price":com_price},
+	           
+	    //         success:function(dd){
 	            	
-	                 console.log(dd);
-	                if (dd.code == 200) {
-	                window.location.reload();
-	                  	modal.style.display = "none"; //模态框样式消失
-	                 }else{
-	                 	alert(msg);
-	                  }
+	    //              console.log(dd);
+	    //             if (dd.code == 200) {
+	    //             window.location.reload();
+	    //               	modal.style.display = "none"; //模态框样式消失
+	    //              }else{
+	    //              	alert(msg);
+	    //               }
 	                 
-	            }
-	        })
-    	}else{
-    		alert("请填写名称");
-    	}
+	    //         }
+	    //     })
+    	// }else{
+    	// 	alert("请填写名称");
+    	// }
     	
         
     });
@@ -397,8 +413,8 @@
     	$("#dizhi2").val(comdizhi);
     	$("#sum2").val(comsum);
     	$("#sz2").find('option[value="'+comszqy+'"]').attr("selected",true);
-        $("#bl2 input[name='radio3'][value='"+combl+"']").attr("checked",true);  
-     	$("#rz2 input[name='radio4'][value='"+comrz+"']").attr("checked",true); 
+        $("#bl2 input[name='bl'][value='"+combl+"']").attr("checked",true);  
+     	$("#rz2 input[name='rz'][value='"+comrz+"']").attr("checked",true); 
     	// alert(comid);comname
     	 modal2.style.display = "block";  
     	});
@@ -441,30 +457,34 @@
          var com_fuqy2= com_fuq2.concat(",");
          var com_leixin2=com_lei2.join();
          var com_leixing2=com_leixin2.concat(",");
+          $('#com_fuqy2 .fuqy').val(com_fuqy);
+         $('#com_zcfg2 .zcfg').val(com_zcfg);
+         $('#com_leixing2 .leixing').val(com_leixing);
+          $('#com_price2 .price').val(com_price);
     	// alert(comid);
     	
     	// return false;
-    	if (name2) {
-    		$.ajax({
-	            type:"post",
-	            dataType:'json',
-	            async:false,
-	            url:'{:url("admin/Shop/edit")}',
-	            data:{"id":comid,"name":name2,"dizhi":dizhi2,"logo":logo2,"com_leixing":com_leixing2,"com_fuqy":com_fuqy2,"com_zcfg":com_zcfg2,"com_szqy":sz2,"bl":bl2,"rz":rz2,"sum":sum2,"com_price":com_price2},
-	            success:function(dd){
-	                console.log(dd);
-	                if (dd.code == 200) {
-	                	window.location.reload();
-	                	modal2.style.display = "none"; //模态框样式消失
-	                }else{
-	                	alert(msg);
-	                }
+    	// if (name2) {
+    	// 	$.ajax({
+	    //         type:"post",
+	    //         dataType:'json',
+	    //         async:false,
+	    //         url:'{:url("admin/Shop/edit")}',
+	    //         data:{"id":comid,"name":name2,"dizhi":dizhi2,"logo":logo2,"com_leixing":com_leixing2,"com_fuqy":com_fuqy2,"com_zcfg":com_zcfg2,"com_szqy":sz2,"bl":bl2,"rz":rz2,"sum":sum2,"com_price":com_price2},
+	    //         success:function(dd){
+	    //             console.log(dd);
+	    //             if (dd.code == 200) {
+	    //             	window.location.reload();
+	    //             	modal2.style.display = "none"; //模态框样式消失
+	    //             }else{
+	    //             	alert(msg);
+	    //             }
 	                 
-	            }
-	        })
-    	}else{
-    		alert("请填写名称");
-    	}
+	    //         }
+	    //     })
+    	// }else{
+    	// 	alert("请填写名称");
+    	// }
     	
         
     });

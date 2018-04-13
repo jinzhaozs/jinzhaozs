@@ -24,7 +24,9 @@ class Gongsi extends Controller
         //获取最大lxcode;
         // $lxcode = $user->code
       
-        $res = $user->order("lxpaixu")->order("id")->select();
+        $res = $user->order("lxpaixu")->order("id")->paginate(10);
+        $page=$res->render();
+        $this->assign("page",$page);
         $this->assign("res",$res);
         // dump($res);die;
         return $this->view->fetch();
@@ -107,7 +109,9 @@ class Gongsi extends Controller
     {
         // 链接数据库赋值
         $user = db('com_fuwuqy');
-        $res = $user->order("qypaixu")->order("id")->select();
+        $res = $user->order("qypaixu")->order("id")->paginate(10);
+        $page=$res->render();
+        $this->assign("page",$page);
         $this->assign("res",$res);
         // dump($res);die;
         return $this->view->fetch();
@@ -190,7 +194,9 @@ class Gongsi extends Controller
     {
         // 链接数据库赋值
         $user = db('com_zhuancfg');
-        $res = $user->order("zcfgpaixu asc")->select();
+        $res = $user->order("zcfgpaixu asc")->paginate(10);
+        $page=$res->render();
+        $this->assign("page",$page);
         // echo $user->getlastsql();die;
         $this->assign("res",$res);
         // dump($res);die;
@@ -355,7 +361,9 @@ class Gongsi extends Controller
     {
         // 链接数据库赋值
         $user = db('com_price');
-        $res = $user->order("id")->select();
+        $res = $user->order("id")->paginate(10);
+        $page=$res->render();
+        $this->assign("page",$page);
         $this->assign("res",$res);
         // dump($res);die;
         return $this->view->fetch();
