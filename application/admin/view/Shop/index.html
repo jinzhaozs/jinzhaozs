@@ -4,7 +4,12 @@
 <html>
 <head>
 	<meta charset="utf-8"> 
-	<title></title>	
+	<title></title>
+	  <style type="text/css">  
+	#preview,  
+   .img,  
+ img {    width: 200px;    height: 200px;  }    
+ #preview {    border: 1px solid #000;  }  </style>	
 </head>
 <body>
 <div style="margin-left: 2%;margin-right: 2%; margin-top: 1%;">
@@ -30,6 +35,7 @@
 				<th>编号</th>
 				<th>公司名称</th>
 				<th>公司商标</th>
+				<th>电话</th>
 				<th>运营</th>
 				<th>认证</th>
 				<th>保障金</th>
@@ -50,7 +56,8 @@
 					<td style="display: none;"><span class="id">{$vores.id}</span></td>
 					<td><span class="">{$i++}</span></td>
 					<td><span class="name">{$vores.name}</span></td>
-					<td><span class="logo">{$vores.logo}</span></td>
+					<td><span class="logo" name="{$vores.logo}"  ><img src="__STATIC__/uploads/{$vores.logo}" style="width:100px;height: 100px" class="img"></span></td>
+					<td><span class="tel">{$vores.com_tel}</span></td>
 					<td><span class="bl" name="{$vores.bl}">{if condition="($vores.bl == 1)"}有{else /} 无{/if}</span></td>
 					<td><span class="rz" name="{$vores.rz}">{if condition="($vores.rz == 1)"}已认证{else /} 未认证{/if}</span></td>
 					<td><span class="sum">{$vores.sum}</span></td>
@@ -83,7 +90,7 @@
 	            <span class="close">×</span>  
 	        </header>  
 	        <div class="modal-body">  
-	            <form class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Shop/add')}">
+	            <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Shop/add')}" >
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
 					<tr>
 						<td class='wid'>名称</td>
@@ -104,15 +111,24 @@
 					<tr>
 						<td class='wid'>地址</td>
 						<td>
-							<input type="text" class="form-control" name="dizhi"  placeholder="请输入公司地址">
+							<input type="text" class="form-control" name="dizhi" id="dizhi"  placeholder="请输入公司地址">
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>商标</td>
 						<td>
-							<input type="file" name="logo" class="form-control"   />
+							
+							<input type="file" name="logo" class="logo" />
+							
 						</td>
 					</tr>
+					<tr>
+						<td class='wid'>电话</td>
+						<td>
+							<input type="text"  name="com_tel" id="com_tel" placeholder="请输入联系电话">
+						</td>
+					</tr>
+					<tr>
 					<tr>
 						<td class='wid'>运营执照</td>
 						<td id="bl">
@@ -175,7 +191,7 @@
 	        </div>  
 	        <footer class="modal-footer">  
 	            <button type="button" id="cancel">取消</button>  
-	            <button id="sure">确定</button>  
+	            <button type="button" id="sure">确定</button>  
 	        </footer> 
 	        
 	        </form> 
@@ -189,15 +205,16 @@
 	            <span class="close2">×</span>  
 	        </header>  
 	        <div class="modal-body">  
-<<<<<<< HEAD
+
 	            
-				<table  style="border-collapse:separate; border-spacing:20px; width: 100%;" >
-=======
-	             <form class="form-inline" method="post" action="{:url('admin/Shop/add')}">
+				
+	             <form class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Shop/edit')}">
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
->>>>>>> 9d70164d6d36923449a20172bd1a86c071b93afe
+
 						<tr>
 						<td class='wid'>名称</td>
+						<input type="hidden" name="id" class="ids" value="">
+						<input type="hidden" name="image" class="imgs" value="">
 						<td>
 							<input type="text" class="form-control" name="name" id="name2" placeholder="请输入名字">
 						</td>
@@ -221,7 +238,14 @@
 					<tr>
 						<td class='wid'>商标</td>
 						<td>
+							<div id="img"><img src="" style="width:100px;height: 100px" ></div>
 							<input type="file" name="logo" class="form-control" id="logo2"  />
+						</td>
+					</tr>
+						<tr>
+						<td class='wid'>电话</td>
+						<td>
+							<input type="text"  name="com_tel" id="com_tel2" placeholder="请输入联系电话">
 						</td>
 					</tr>
 					<tr>
@@ -286,8 +310,8 @@
 				</table>
 	        </div>  
 	        <footer class="modal-footer">  
-	            <button id="cancel2">取消</button>  
-	            <button id="sure2">确定</button>  
+	            <button type="button" id="cancel2">取消</button>  
+	            <button type="button" id="sure2">确定</button>  
 	        </footer>
 	       </form>  
 	    </div>  
@@ -298,6 +322,7 @@
 <!-- 模态框js -->
 <script>  
 // 添加
+
     var btn = document.getElementById('showModel');  
     var close = document.getElementsByClassName('close')[0];  
     var cancel = document.getElementById('cancel');  
@@ -315,10 +340,12 @@
      
     sure.addEventListener('click', function(){  
     	// 获取信息
-    	var name = $("#name").val();
+    	var name = $("#names").val();
     	var dizhi = $("#dizhi").val();
     	var logo = $("#logo").val();
-    	var sz = $("#com_szqy").val();
+    	var sz = $("#com_szqy").val()
+    	var tel = $("#com_tel").val();
+
     	var sum = $("#suma").val();
     	var bl = $("#bl input[name='bl']:checked").val();
     	var rz = $("#rz input[name='rz']:checked").val();
@@ -350,6 +377,21 @@
          $('#com_zcfg .zcfg').val(com_zcfg);
          $('#com_leixing .leixing').val(com_leixing);
           $('#com_price .price').val(com_price);
+          
+          if (name == "" || dizhi == "" || logo == "" || sz == "" || tel == "" || sum == "" || bl == "") {
+          	alert("请完善信息");
+          	// return false;
+          }
+          else if (!tel.match(/^(((13[0-9]{1})|159|153)+\d{8})$/)) { 
+            alert("手机号码格式不正确！"); 
+        }
+          	else{
+          	$("#formsubadd").submit();
+
+          }
+         
+        
+    
          // alert(com_leixing);
     	// if (name) {
     	// 	$.ajax({
@@ -396,6 +438,9 @@
         comrz=$(this).parent().parent().find(".rz").attr('name');
         comsum=$(this).parent().parent().find(".sum").html();
         comprice=$(this).parent().parent().find(".comprice").html();
+        comlogo=$(this).parent().parent().find(".comlogo").attr('name');
+        image=$(this).parent().parent().find(".img").attr('src');
+        tel=$(this).parent().parent().find(".tel").html();
     	//赋值
     	var compri=comprice.substring(0, comprice.lastIndexOf(','));
         var comfuq = comfuqy.substring(0, comfuqy.lastIndexOf(','));
@@ -418,11 +463,16 @@
         $(" #com_leixing2 :checkbox[id='"+dom+"']").prop("checked",true);
     });//复选赋值
     	$("#name2").val(comname);
+    	$("#com_tel2").val(tel);
     	$("#dizhi2").val(comdizhi);
     	$("#sum2").val(comsum);
+    	$("#logo2").val(comlogo);
     	$("#sz2").find('option[value="'+comszqy+'"]').attr("selected",true);
         $("#bl2 input[name='bl'][value='"+combl+"']").attr("checked",true);  
      	$("#rz2 input[name='rz'][value='"+comrz+"']").attr("checked",true); 
+     	$(".ids").val(comid);
+     	 $("#img img").attr("src",image);
+        
     	// alert(comid);comname
     	 modal2.style.display = "block";  
     	});
@@ -469,6 +519,7 @@
          $('#com_zcfg2 .zcfg').val(com_zcfg);
          $('#com_leixing2 .leixing').val(com_leixing);
           $('#com_price2 .price').val(com_price);
+
     	// alert(comid);
     	
     	// return false;
@@ -499,7 +550,8 @@
     // 执行删除
     $(".delcom").click(function(){
     	if(confirm("确定删除该类型吗？")){
-    		var comid = $(this).parent().parent().find(".comid").html();
+    		comid = $(this).parent().parent().find(".id").html();
+    		var image=$(this).parent().parent().find(".img").attr('src');
     		// alert(comid);return false;
     		$(this).parent().parent().remove();
     		// console.log(aa);return false;
@@ -508,7 +560,7 @@
 	            dataType:'json',
 	            async:false,
 	            url:'{:url("admin/Shop/delete")}',
-	            data:{"id":comid},
+	            data:{"id":comid,"image":image},
 	            success:function(dd){
 	                // console.log(dd);
 	                if (dd.code == 200) {
