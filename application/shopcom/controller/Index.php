@@ -18,6 +18,7 @@ class Index extends \app\shopcom\controller\Base
     {
         //获取商家id
         $comid = input('comid');  
+        
         dump($comid);
         return $this->fetch();
     }
