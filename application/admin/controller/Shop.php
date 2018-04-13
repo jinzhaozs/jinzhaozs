@@ -33,16 +33,17 @@ class Shop extends Controller
         if (!empty($urlcanshu)) {
            $where['name']=array('like','%'.$urlcanshu['keyword'].'%');
         }
-    	$res=$user->join('com_fuwuqy w','shop.com_szqy = w.qycode')->where($where)->order("shop.id")->paginate(10,false,[
+
+    	$res=$user->field("shop.id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_koubei,com_haoping,com_tel,qyname")->join('com_fuwuqy w','shop.com_szqy = w.qycode')->where($where)->order("shop.id")->->paginate(10,false,[
 'query'=>$urlcanshu,
 ]); 
-
+        
     	$qy=$fu->select();
     	$xing=$lei->select();
         $zcfg=$fg->select();
     	$page=$res->render();
         $jws=$jw->select();
-        
+
         $this->assign("jw",$jws);
         $this->assign("zcfg",$zcfg);
     	$this->assign("xing",$xing);
@@ -60,17 +61,17 @@ class Shop extends Controller
         $shuju['dis']=2; 
        
 
-        $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');    
+        $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
         if($info){
              $shuju['logo']=$info->getSaveName();
-        }        $user_info = $user->insert($shuju);
+        }        
+        $user_info = $user->insert($shuju);
         if (!$user_info) {
-            echo "失败";
-           
+           $this->error("添加失败","admin/Shop/index");
         }
         else
         {
-            echo "成功";
+          $this->success("添加成功","admin/Shop/index");
         }
         
     }
@@ -79,29 +80,31 @@ class Shop extends Controller
         $user = db('shop');
         $whid = input('post.id');//获取id
         $where['id'] = $whid;
+        $rs = $user->where($where)->find();
+        
+       
+        // $result = @unlink ($file);
+        $file = request()->file('logo');
+
         $shuju = input('put.');//获取数据
         $shuju['time'] = date("Y-m-d h:i:s",time());
+         $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');    
+        if($info){
+             $shuju['logo']=$info->getSaveName();
+        } 
         $res = $user->where($where)->update($shuju);
         if (!$res) {
-            $data = array(
-                    'data' => false,
-                    'code' => 500,
-                    'msg'  => '修改失败',
-            );
-
-            return $data;
-        }
-        $data = array(
-                'data' => true,
-                'code' => 200,
-                'msg'  => '修改成功 !',
-        );
-        return $data;
+            echo 'as';
+           }
     }
     //
     public function delete($id){
         $user = db('shop');
         $whid = input('post.id');//获取id
+          $file = input('post.image'); 
+       
+         $result = @unlink ($file);
+  
         $res = $user->where('id',$whid)->delete();
         if (!$res) {
             $data = array(
@@ -119,40 +122,5 @@ class Shop extends Controller
         );
         return $data;
     }
-     public function upload_photo(){
-        $file = $this->request->file('file');
-        $uid = session('ydyl_weixin_user.id');
-        // if(empty($uid)){
-        //     return ['code'=>404,'msg'=>'用户未登录'];
-        // }
-                if(!empty($file)){
-                    // 移动到框架应用根目录/public/uploads/ 目录下
-                    $info = $file->validate(['size'=>1048576,'ext'=>'jpg,png,gif'])->rule('uniqid')->move(ROOT_PATH . 'public' . DS . 'uploads');
-                    $error = $file->getError();
-                    //验证文件后缀后大小
-                    if(!empty($error)){
-                        dump($error);exit;
-                    }
-                    if($info){
-                        // 成功上传后 获取上传信息
-                        // 输出 jpg
-                        $info->getExtension();
-                        // 输出 20160820/42a79759f284b767dfcb2a0197904287.jpg
-                        $info->getSaveName();
-                        // 输出 42a79759f284b767dfcb2a0197904287.jpg
-                        $photo = $info->getFilename();
-
-                    }else{
-                        // 上传失败获取错误信息
-                        $file->getError();
-                    }
-                }else{
-                    $photo = '';
-                }
-        if($photo !== ''){
-            return ['code'=>1,'msg'=>'成功','photo'=>$photo];
-        }else{
-            return ['code'=>404,'msg'=>'失败'];
-        }
-    }
+    
 }
