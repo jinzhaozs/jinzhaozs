@@ -60,4 +60,6 @@ Route::rule('/admin/shop/index','admin/shop/index');//公司详情
 Route::rule('/admin/shop/add','admin/shop/add');//添加
 Route::rule('/admin/shop/edit','admin/shop/edit');//修改
 Route::rule('/admin/shop/delete','admin/shop/delete');//删除admin/Shop/upload_photo
+//公司案例
+Route::rule('/admin/plan/index','admin/plan/index')//公司 案例列表
 

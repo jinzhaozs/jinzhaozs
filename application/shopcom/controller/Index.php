@@ -18,8 +18,15 @@ class Index extends \app\shopcom\controller\Base
     {
         //获取商家id
         $comid = input('comid');  
-        
-        dump($comid);
+        $where['id'] = $comid;
+        //获取商家信息
+        $shopcom = $this->uri("shop",$where);
+        //获取装修案例
+        $plan = $this->uri("plan",$where);
+        //获取装修工地
+        $struction = $this->uri("plan",$struction);
+        // dump($shopcom);
+        $this->assign("shopcom",$shopcom);
         return $this->fetch();
     }
     //测试
