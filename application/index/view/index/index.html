@@ -232,24 +232,15 @@
 										<span class="nav-type-title">按服务区域<i class="icon icon-right-sign"></i></span>
 									</a>
 									<ul class="nav-zxgs-area">
+									
+									{foreach name="com_fuwuqytou" item="vocom_fuwuqytou"}
 										<li>
-											<a href="javascript:void(0);" rel="nofollow">朝阳</a>
+											<a class="comservice">
+											<input type="text" class="qyyuid" style="display: none;" value="{$vocom_fuwuqytou.qycode}">
+												{$vocom_fuwuqytou.qyname}
+											</a>
 										</li>
-										<li>
-											<a href="javascript:void(0);" rel="nofollow">大兴</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" rel="nofollow">东城</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" rel="nofollow">房山</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" rel="nofollow">丰台</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" rel="nofollow">海淀</a>
-										</li>
+									{/foreach}
 									</ul>
 								</div>
 								<div class="nav-type-list nav-right-dashed nav-type-price">
@@ -257,24 +248,14 @@
 										<span class="nav-type-title">按价格<i class="icon icon-right-sign"></i></span>
 									</a>
 									<ul>
+									{foreach name="com_pricetou" item="vocom_pricetou"}
 										<li>
-											<a href="javascript:void(0);" rel="nofollow">3万以下</a>
+											<a class="comprice">
+											<input type="text" class="jiaweiid" style="display: none;" value="{$vocom_pricetou.pcode}">
+												{$vocom_pricetou.pname}
+											</a>
 										</li>
-										<li>
-											<a href="javascript:void(0);" rel="nofollow">3-5万</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" rel="nofollow">5-8万</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" rel="nofollow">8-12万</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" rel="nofollow">12-18万</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" rel="nofollow">18-30万</a>
-										</li>
+									{/foreach}
 									</ul>
 								</div>
 								<div class="nav-right-dashed nav-type-genre">
@@ -282,18 +263,14 @@
 										<span class="nav-type-title">按类型<i class="icon icon-right-sign"></i></span>
 									</a>
 									<ul>
+										{foreach name="com_leixingtou" item="vocom_leixingtou"}
 										<li>
-											<a href="javascript:void(0);" class="nav-fzlink">普通住宅</a>
+											<a class="comtype">
+												<input type="text" class="leixingid" style="display: none;" value="{$vocom_leixingtou.lxcode}">
+												{$vocom_leixingtou.lxname}
+											</a>
 										</li>
-										<li>
-											<a href="javascript:void(0);" class="nav-fzlink">小户型</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" class="nav-fzlink">别墅</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" class="nav-fzlink">局部装修</a>
-										</li>
+										{/foreach}
 									</ul>
 								</div>
 								<div class="nav-type-list nav-type-style">
@@ -302,24 +279,14 @@
                                     </span>
 									</a>
 									<ul>
-										<li>
-											<a href="javascript:void(0);" class="nav-fzlink" rel="nofollow">简约</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" class="nav-fzlink" rel="nofollow">现代</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" class="nav-fzlink" rel="nofollow">中式</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" class="nav-fzlink" rel="nofollow">简欧</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" class="nav-fzlink" rel="nofollow">美式</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" class="nav-fzlink" rel="nofollow">北欧</a>
-										</li>
+										{foreach name="com_fenggetou" item="vocom_fenggetou"}
+										<span>
+											<a class="comstyle">
+											<input type="text" class="zhuanchangfgid" style="display: none;" value="{$vocom_fenggetou.zcfgcode}">
+												{$vocom_fenggetou.zcfgname}
+											</a>
+										</span>
+										{/foreach}
 									</ul>
 								</div>
 							</div>
@@ -759,7 +726,8 @@
 								<div class="zgsclc_data">
 									<span class="zd_one">
                               <h3>
-                                  <a href="javascript:void(0);" target="_blank" class="zgscl_name">{$voshop.name}</a>
+                                  <!-- <a href="{:url('/shopcom')}" target="_blank" class="zgscl_name">{$voshop.name}</a> -->
+                                  <a href="{:url('/shopcom',['comid'=>$voshop.id])}" >{$voshop.name}</a>
                               </h3>
                               							</span>
 									<span class="zd_two">
