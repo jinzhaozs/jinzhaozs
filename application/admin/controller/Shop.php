@@ -13,8 +13,6 @@ use think\Controller;
 use think\Request;
 use think\File;
 
-
-
 class Shop extends Controller
 {
     /**
@@ -43,6 +41,7 @@ class Shop extends Controller
         $zcfg=$fg->select();
     	$page=$res->render();
         $jws=$jw->select();
+        
         $this->assign("jw",$jws);
         $this->assign("zcfg",$zcfg);
     	$this->assign("xing",$xing);
