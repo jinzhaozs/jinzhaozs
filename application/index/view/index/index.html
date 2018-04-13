@@ -9,7 +9,7 @@
 		<meta name="renderer" content="webkit">
 		<title>今朝装饰</title>
 		<meta name="keywords" content="北京装修公司,北京装修公司排名,北京装修公司大全">
-		<meta name="description" content="土巴兔装修网汇集了北京装修公司排名大全,免费提供北京装修公司设计与报价，以及北京装修知识。免费拨打电话将直接转接到装修公司，无额外收费！">
+		<meta name="description" content="金朝装修网汇集了北京装修公司排名大全,免费提供北京装修公司设计与报价，以及北京装修知识。免费拨打电话将直接转接到装修公司，无额外收费！">
 		<meta name="location" content="province=北京;city=北京;coord=116.39564503788,39.92998577808">
 		<link rel="stylesheet" type="text/css" href="__STATIC__/index/css/zhuangxiugongsi/new_global.css">
 		<link rel="stylesheet" href="__STATIC__/index/css/zhuangxiugongsi/consult_online.css">
@@ -81,7 +81,7 @@
 							</ul>
 						</div>
 						<div class="nav-my-tubatu">
-							<div class="nav-my-tubatu-title">我的土巴兔<i class="icon icon-arrow-bottom"></i><i class="cut-line cut-line-left"></i><i class="cut-line cut-line-right"></i></div>
+							<div class="nav-my-tubatu-title">我的金朝<i class="icon icon-arrow-bottom"></i><i class="cut-line cut-line-left"></i><i class="cut-line cut-line-right"></i></div>
 							<i class="cover-line"></i>
 							<ul>
 								<li>
@@ -121,7 +121,7 @@
 										</ul>
 									</div>
 									<div class="nav-my-tubatu">
-										<div class="nav-my-tubatu-title">我的土巴兔<i class="icon icon-arrow-bottom"></i><i class="cut-line cut-line-left"></i><i class="cut-line cut-line-right"></i></div>
+										<div class="nav-my-tubatu-title">我的金朝<i class="icon icon-arrow-bottom"></i><i class="cut-line cut-line-left"></i><i class="cut-line cut-line-right"></i></div>
 										<i class="cover-line"></i>
 										<ul>
 											<li>
@@ -143,10 +143,11 @@
 				<div class="header-nav-box">
 					<div class="nav-content-left">
 						<div class="to8to-logo-box">
-							<a href="javascript:void(0);" class="nav-fzlink"><i class="icon header-logo"></i></a>
+							<a href="javascript:void(0);" class="nav-fzlink">
+								<img style="width: 80%;" src="__STATIC__/index/img/logo.png" alt="">
+							</a>
 							<a href="javascript:void(0);" rel="nofollow" target="_blank">
-								<img class="header-logo-gif" src="__STATIC__/index/img/header_icon.gif">
-								<img class="header-logo-png" src="__STATIC__/index/img/header_icon.png">
+							<!-- <img src="__STATIC__/index/img/" alt=""> -->
 							</a>
 						</div>
 					</div>
@@ -792,12 +793,12 @@
 								{/switch}
                               <em title="该公司已交{$voshop.sum}元保障金">{$voshop.sum}元</em>
                                 
-                               <a href="javascript:void(0);" title="设计方案" target="_blank"><i class="zdq_6" title="设计方案"></i><em>156套</em></a>
+                               <a href="javascript:void(0);" title="设计方案" target="_blank"><i class="zdq_6" title="设计方案"></i><em>{$voshop.fangancount}套</em></a>
                                <a href="javascript:void(0);" title="工地数量" target="_blank">                                <i class="zdq_7" title="工地数量"></i>
-                                <em>656个</em>  </a> 
+                                <em>{$voshop.gongdicount}个</em>  </a> 
                               <a href="javascript:void(0);" title="评价次数" target="_blank" rel="nofollow">
                                   <i class="zdq_8" title="评价次数"></i>
-                                  <em> 2381次</em> </a>
+                                  <em> {$voshop.gspjcount}次</em> </a>
                                                         </span>
 									<span class="zd_three">
                                                                 <em></em>
@@ -820,26 +821,26 @@
 									<div class="clear">
 										<span class="koubei_text">口<em style="margin:0 6px;">碑</em>值</span>
 										<a class="zgscl_a_gloden" href="javascript:void(0);">
-											<span class="koubei_number">6407</span>
+											<span class="koubei_number">{$voshop.com_koubei}</span>
 										</a>
 									</div>
 									<div class="clear">
 										<span class="koubei_text">好<em style="margin:0 6px;">评</em>率</span>
 										<a class="zgscl_a_gloden" target="_blank" href="javascript:void(0);">
-											<span class="koubei_number haoping-text">96.06%</span>
+											<span class="koubei_number haoping-text">{$voshop.com_haoping}%</span>
 										</a>
 									</div>
 								</div>
 							</div>
 							<div class="special_service">
 								<p>
-									已有 <em>1085035</em> 人咨询
+									已有 <em>{$voshop.zixurenshu}  </em> 人咨询
 								</p>
 							</div>
 							<div class="relative_diary">
-								<span class="relative_hd"><i class="zgs_ico_rd"></i>业主真实经历</span>
+								<span class="relative_hd"><i class="zgs_ico_rd"></i></span>
 								<a href="javascript:void(0);" target="_blank" class="diary_lnk" rel="nofollow">
-									<span class="diary_hd">《紫竹花园装修记》已更新至10篇：</span> 今天与克洛尼和土巴兔签订三方协议。支付50％托管工程款。开始抓紧空调、窗户等主材... </a>
+									<span class="diary_hd">{$voshop.com_jianjie} </span> {$voshop.com_jianjiexq} </a>
 							</div>
 						</li>
 						{/foreach}
@@ -1089,12 +1090,12 @@
 					})()
 				</script>
 				<div class="zgs_clr_fc">
-					<span class="zcf_title">在土巴兔找装修公司价格实惠；<br>施工质量严格监管，不低于行业标准。</span>
+					<span class="zcf_title">在金朝找装修公司价格实惠；<br>施工质量严格监管，不低于行业标准。</span>
 					<ul>
 						<li>
 							<span class="zcf_kxy"></span>
 							<b>不懂装修注意事项？</b>
-							<em>土巴兔300名家装顾问.免费一对一帮你解疑惑。</em>
+							<em>金朝300名家装顾问.免费一对一帮你解疑惑。</em>
 						</li>
 						<li>
 							<span class="zcf_bfa"></span>
@@ -1596,7 +1597,7 @@
 							</div>
 							<div class="footer-weixin-code">
 								<img src="__STATIC__/index/img/qrcode_app.jpg">
-								<p>土巴兔APP</p>
+								<p>金朝APP</p>
 							</div>
 						</div>
 						<div class="footer-company-info">
@@ -1630,7 +1631,7 @@
 								</li>
 							</ul>
 							<p class="footer-company-state">
-								免责声明：本网站部分内容由用户自行上传，如权利人发现存在误传其作品情形，请及时与本站联系。© 2017 Tubatu.com 土巴兔装修网和设计师社区 保留所有权利
+								免责声明：本网站部分内容由用户自行上传，如权利人发现存在误传其作品情形，请及时与本站联系。© 2017 Tubatu.com 金朝装修网和设计师社区 保留所有权利
 							</p>
 							<p class="footer-company-icp">
 								<span>中国装修网&nbsp; <a href="javascript:void(0);" target="_blank" rel="nofollow">粤ICP备08125558号</a></span>
@@ -1723,7 +1724,7 @@
 			<div class="slide-attention">
 				<div class="attention-box top">
 					<div class="attention-item"><span class="attention-item-img attention-item-img-app"></span>
-						<p class="attention-app">下载土巴兔APP<br>查看业主真实装修日记</p>
+						<p class="attention-app">下载金朝APP<br>查看业主真实装修日记</p>
 					</div>
 					<div class="attention-item"><span class="attention-item-img attention-item-img-t8t"></span>
 						<p class="attention-wx">扫微信，获10000套家居设计案例</p>

@@ -82,6 +82,7 @@ class Index extends \app\index\controller\Base
          * @var [type]
          */
         $shop = $this->uri("shop",$whereleixing,"10",$urlcanshu);//查询公司信息
+        // echo db("shop")->getLastsql();
         // dump($shop);die;
         $count = db("shop")->where($whereleixing)->count();//查询公司信息总条数
 
