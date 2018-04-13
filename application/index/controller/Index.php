@@ -98,6 +98,11 @@ class Index extends \app\index\controller\Base
         $this->assign("com_fuwuquyu",$com_fuwuquyu);
         $this->assign("com_price",$com_price);
         $this->assign("com_fengge",$com_fengge);
+        // 渲染类别信息头部
+        $this->assign("com_fuwuqytou",db("com_fuwuqy")->limit(6)->select());//服务区域
+        $this->assign("com_pricetou",db("com_price")->limit(6)->select());//价位
+        $this->assign("com_leixingtou",db("com_qiyecsleixing")->limit(6)->select());//类型
+         $this->assign("com_fenggetou",db("com_zhuancfg")->limit(6)->select());//风格
         // $this->assign("com_suozaiqu",$com_suozaiqu);
         // dump($comtype);
         //渲染条件信息

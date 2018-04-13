@@ -143,11 +143,13 @@
 				<div class="header-nav-box">
 					<div class="nav-content-left">
 						<div class="to8to-logo-box">
-							<a href="javascript:void(0);" class="nav-fzlink">
-								<img style="width: 80%;" src="__STATIC__/index/img/logo.png" alt="">
-							</a>
+							<!-- <a href="javascript:void(0);" class="nav-fzlink">
+								<img style="width: 80%; margin-top: -5%;"  src="__STATIC__/index/img/logo.jpg" alt="">
+							</a> -->
+							<a href="javascript:void(0);" class="nav-fzlink"><img style="width: 80%; margin-top: %;"  src="__STATIC__/index/img/logo.png" alt=""></a>
 							<a href="javascript:void(0);" rel="nofollow" target="_blank">
-							<!-- <img src="__STATIC__/index/img/" alt=""> -->
+								<!-- <img class="header-logo-gif"  style="width: 80%;"  src="__STATIC__/index/img/logo.jpg"> -->
+								<!-- <img class="header-logo-png" src="__STATIC__/index/img/logo.jpg"> -->
 							</a>
 						</div>
 					</div>
@@ -232,24 +234,15 @@
 										<span class="nav-type-title">按服务区域<i class="icon icon-right-sign"></i></span>
 									</a>
 									<ul class="nav-zxgs-area">
+									
+									{foreach name="com_fuwuqytou" item="vocom_fuwuqytou"}
 										<li>
-											<a href="javascript:void(0);" rel="nofollow">朝阳</a>
+											<a class="comservice">
+											<input type="text" class="qyyuid" style="display: none;" value="{$vocom_fuwuqytou.qycode}">
+												{$vocom_fuwuqytou.qyname}
+											</a>
 										</li>
-										<li>
-											<a href="javascript:void(0);" rel="nofollow">大兴</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" rel="nofollow">东城</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" rel="nofollow">房山</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" rel="nofollow">丰台</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" rel="nofollow">海淀</a>
-										</li>
+									{/foreach}
 									</ul>
 								</div>
 								<div class="nav-type-list nav-right-dashed nav-type-price">
@@ -257,24 +250,14 @@
 										<span class="nav-type-title">按价格<i class="icon icon-right-sign"></i></span>
 									</a>
 									<ul>
+									{foreach name="com_pricetou" item="vocom_pricetou"}
 										<li>
-											<a href="javascript:void(0);" rel="nofollow">3万以下</a>
+											<a class="comprice">
+											<input type="text" class="jiaweiid" style="display: none;" value="{$vocom_pricetou.pcode}">
+												{$vocom_pricetou.pname}
+											</a>
 										</li>
-										<li>
-											<a href="javascript:void(0);" rel="nofollow">3-5万</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" rel="nofollow">5-8万</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" rel="nofollow">8-12万</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" rel="nofollow">12-18万</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" rel="nofollow">18-30万</a>
-										</li>
+									{/foreach}
 									</ul>
 								</div>
 								<div class="nav-right-dashed nav-type-genre">
@@ -282,18 +265,14 @@
 										<span class="nav-type-title">按类型<i class="icon icon-right-sign"></i></span>
 									</a>
 									<ul>
+										{foreach name="com_leixingtou" item="vocom_leixingtou"}
 										<li>
-											<a href="javascript:void(0);" class="nav-fzlink">普通住宅</a>
+											<a class="comtype">
+												<input type="text" class="leixingid" style="display: none;" value="{$vocom_leixingtou.lxcode}">
+												{$vocom_leixingtou.lxname}
+											</a>
 										</li>
-										<li>
-											<a href="javascript:void(0);" class="nav-fzlink">小户型</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" class="nav-fzlink">别墅</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" class="nav-fzlink">局部装修</a>
-										</li>
+										{/foreach}
 									</ul>
 								</div>
 								<div class="nav-type-list nav-type-style">
@@ -302,24 +281,14 @@
                                     </span>
 									</a>
 									<ul>
-										<li>
-											<a href="javascript:void(0);" class="nav-fzlink" rel="nofollow">简约</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" class="nav-fzlink" rel="nofollow">现代</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" class="nav-fzlink" rel="nofollow">中式</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" class="nav-fzlink" rel="nofollow">简欧</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" class="nav-fzlink" rel="nofollow">美式</a>
-										</li>
-										<li>
-											<a href="javascript:void(0);" class="nav-fzlink" rel="nofollow">北欧</a>
-										</li>
+										{foreach name="com_fenggetou" item="vocom_fenggetou"}
+										<span>
+											<a class="comstyle">
+											<input type="text" class="zhuanchangfgid" style="display: none;" value="{$vocom_fenggetou.zcfgcode}">
+												{$vocom_fenggetou.zcfgname}
+											</a>
+										</span>
+										{/foreach}
 									</ul>
 								</div>
 							</div>
@@ -754,12 +723,13 @@
 						<li  data-ad="">
 							<div class="zgscl_container">
 								<a href="javascript:void(0);" target="_blank" class="zgscl_logo" rel="nofollow">
-									<img src="/uploads/{$voshop.logo}" alt="{$voshop.name}" width="138" height="138">
+									<img src="__STATIC__/uploads/{$voshop.logo}" alt="{$voshop.name}" width="138" height="138">
 								</a>
 								<div class="zgsclc_data">
 									<span class="zd_one">
                               <h3>
-                                  <a href="javascript:void(0);" target="_blank" class="zgscl_name">{$voshop.name}</a>
+                                  <!-- <a href="{:url('/shopcom')}" target="_blank" class="zgscl_name">{$voshop.name}</a> -->
+                                  <a href="{:url('/shopcom',['comid'=>$voshop.id])}" >{$voshop.name}</a>
                               </h3>
                               							</span>
 									<span class="zd_two">
@@ -837,10 +807,13 @@
 									已有 <em>{$voshop.zixurenshu}  </em> 人咨询
 								</p>
 							</div>
-							<div class="relative_diary">
-								<span class="relative_hd"><i class="zgs_ico_rd"></i></span>
-								<a href="javascript:void(0);" target="_blank" class="diary_lnk" rel="nofollow">
-									<span class="diary_hd">{$voshop.com_jianjie} </span> {$voshop.com_jianjiexq} </a>
+							
+							<!-- <div class="special_service">
+								<span class="ad-tips"><i></i>巧装家特约咨询单位</span>
+							</div> -->
+							<div class="tell">
+								<em class="ico_tell"></em>
+								<p class="tel_phone">免费设计与装修咨询：<i>{$voshop.com_tel}</i></p>
 							</div>
 						</li>
 						{/foreach}

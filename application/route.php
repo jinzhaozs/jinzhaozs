@@ -10,11 +10,20 @@
 // +----------------------------------------------------------------------
 
 use think\Route;
+/**
+ * 前台主页
+ */
 // 注册路由到index模块的News控制器的read操作
 Route::rule('/','index/Index/index');//查询
 Route::rule('/zxgs','index/Index/index');//查询
 Route::rule('/aa','index/Index/aa');//查询
-//后台
+/**
+ * 前台公司
+ */
+Route::rule('/shopcom','shopcom/Index/index');
+/**
+ * 后台
+ */
 Route::rule('/admin/index/index','admin/index/index');//主页
 
 // 服务类型
@@ -51,3 +60,6 @@ Route::rule('/admin/shop/index','admin/shop/index');//公司详情
 Route::rule('/admin/shop/add','admin/shop/add');//添加
 Route::rule('/admin/shop/edit','admin/shop/edit');//修改
 Route::rule('/admin/shop/delete','admin/shop/delete');//删除admin/Shop/upload_photo
+//公司案例
+Route::rule('/admin/plan/index','admin/plan/index')//公司 案例列表
+

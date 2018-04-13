@@ -27,14 +27,16 @@ class Shop extends Controller
         $fg= db('com_zhuancfg');
         $jw= db('com_price');
         $where=array ();
-        $pageParam    = ['query' =>[]];
-        if(!empty($_POST['keyword']))
-        {
-            $where['name']=array('like','%'.$_POST['keyword'].'%');
-             //$this->assign('phone', $phone);
-            $pageParam['query']['phone'] = $_POST['keyword'];
+        //获取参数
+        $request = Request::instance();
+        $urlcanshu = $request->param();
+        if (!empty($urlcanshu)) {
+           $where['name']=array('like','%'.$urlcanshu['keyword'].'%');
         }
-    	$res=$user->field("shop.id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_koubei,com_haoping,com_tel,qyname")->join('com_fuwuqy w','shop.com_szqy = w.qycode')->where($where)->order("shop.id")->paginate(10, false, $pageParam); 
+
+    	$res=$user->field("shop.id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_koubei,com_haoping,com_tel,qyname")->join('com_fuwuqy w','shop.com_szqy = w.qycode')->where($where)->order("shop.id")->->paginate(10,false,[
+'query'=>$urlcanshu,
+]); 
         
     	$qy=$fu->select();
     	$xing=$lei->select();
