@@ -68,4 +68,8 @@ Route::rule('/admin/shop/edit','admin/shop/edit');//修改
 Route::rule('/admin/shop/delete','admin/shop/delete');//删除admin/Shop/upload_photo
 //公司案例
 Route::rule('/admin/plan/index','admin/plan/index');//公司 案例列表
+Route::rule('/admin/plan/add','admin/plan/add');//添加
+Route::rule('/admin/plan/ajaxedit','admin/plan/ajaxedit');//修改参数
+Route::rule('/admin/plan/edit','admin/plan/edit');//修改
+Route::rule('/admin/plan/delete','admin/plan/delete');//删除
 

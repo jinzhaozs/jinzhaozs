@@ -5,9 +5,413 @@
 <head>
 	<meta charset="utf-8"> 
 	<title></title>
+	
 </head>
 <body>
-	alsdf
+<div style="margin-left: 2%;margin-right: 2%; margin-top: 1%;">
+		<h1 style="text-align: center;">装修案例</h1>
+<button class="btn" style="margin-top: -5%;" id="showModel">添加案例</button> 
+ 		<form class="well form-search" method="post" action="{:url('/admin/shop/index')}">
+			<div class="search_type cc mb10" style="margin-top: -4%;margin-left: 70%;">
+					<span class="mr20">
+
+
+						<input type="text" name="keyword" style="width: 160px;" value="" placeholder="请输入关键字...">
+
+						<input type="submit" class="btn btn-primary" value="搜索" />
+					</span>
+			</div>
+		</form> 
+		<div class="hei"></div>
+	<table class="table table-bordered" >
+
+		<thead>
+			<tr>
+				<!-- <th>id</th> -->
+				<th>编号</th>
+				<th>方案名称</th>
+				<th>类型</th>
+				<th>人员</th>
+				<th>对应公司</th>
+				<th>房屋面积</th>
+				<th>装修预算</th>
+				<th>户型</th>
+				<th>风格</th>
+				<th>装修方式</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody id="yuansuzhijia">
+			<tr><td style="display: none;">{$i=1}</td></tr>
+			{foreach name="res" item="vores"}
+			
+				<tr>
+					<td style="display: block;"><span class="planid">{$vores.id}</span></td>
+					<td><span>{$vores.fname}</span></td>
+					<td><span>{$vores.ftype}</span></td>
+					<td><span>{$vores.frenyuan}</span></td>
+					<td><span>{$vores.comid}</span></td>
+					<td><span>{$vores.fmianji}</span></td>
+					<td><span>{$vores.fyusuan}</span></td>
+					<td><span>{$vores.fhuxing}</span></td>
+					<td><span>{$vores.ffengge}</span></td>
+					<td><span>{$vores.ffangshi}</span></td>
+					<td>
+						<span style=" cursor: pointer;" class="showModel2">修改</span> | 
+						<span style=" cursor: pointer;" class="delcom">删除</span>  |
+						<span class="showModel3">图片管理</span>
+					</td>
+				</tr>
+			{/foreach}
+			
+		</tbody>
+		
+	</table>
+	<div>{$page}</div>
+</div>
+
+<!-- 模态框 -->
+<div>
+	 <!-- 模态框添加 -->
+	<div id="modal" class="modal">  
+	    <div class="modal-content">  
+	        <header class="modal-header">  
+	            <h4>添加公司案例</h4>  
+	            <span class="close">×</span>  
+	        </header>  
+	        <div class="modal-body">  
+	            <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Plan/add')}" >
+				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
+				<input type="text" style="display:none;" name="comid" value="{$comid}">
+					<tr>
+						<td class='wid'>方案名称</td>
+						<td>
+							<input type="text" class="form-control" name="fname" placeholder="请输入名称">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>方案类型</td>
+						<td>
+							<select name="ftype"> 
+							<option value ="0">请选择</option>  
+                              {foreach name="reslx" item="voreslx"}
+                               <span ><option value ="{$voreslx.lxcode}">{$voreslx.lxname}</option></span>  
+                              {/foreach}
+                            </select>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>参与人员</td>
+						<td>
+							<input type="text" name="frenyuan" class="form-control" placeholder="请输入名称">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>房屋面积</td>
+						<td>
+							<input type="text" class="form-control" name="fmianji" placeholder="请输入面积(平方米)">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>装修预算</td>
+						<td>
+							<input type="text" class="form-control"  name="fyusuan" placeholder="请输入装修预算">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>户型</td>
+						<td>
+							<select name="fhuxing"> 
+							<option value ="0">请选择</option>  
+                              {foreach name="userhx" item="vouserhx"}
+                               <span ><option value ="{$vouserhx.lcode}">{$vouserhx.lname}</option></span>  
+                              {/foreach}
+                            </select>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>风格</td>
+						<td>
+							<select name="ffengge"> 
+							<option value ="0">请选择</option>  
+                              {foreach name="userfg" item="vouserfg"}
+                               <span ><option value ="{$vouserfg.zcfgcode}">{$vouserfg.zcfgname}</option></span>  
+                              {/foreach}
+                            </select>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>装修方式</td>
+						<td>
+							<input type="text" class="form-control" name="ffangshi" placeholder="请输入装修方式">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>案例简介</td>
+						<td>
+							<textarea name="fjianjie" class="form-control" rows="5" cols="80"></textarea>
+						</td>
+					</tr>
+				</table>
+	        </form> 
+	        </div>  
+	        <footer class="modal-footer">  
+	            <button type="button" id="cancel">取消</button>  
+	            <button type="button" id="sure">确定</button>  
+	        </footer> 
+	        
+	    </div>  
+	</div> 
+
+	<!-- 模态框修改 -->
+	<div id="modal2" class="modal">  
+	    <div class="modal-content">  
+	        <header class="modal-header">  
+	            <h4>信息修改</h4>  
+	            <span class="close2">×</span>  
+	        </header>  
+	        <div class="modal-body">  
+	            <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Plan/edit')}" >
+				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
+				<input type="text" style="display:none;" name="planid" id="planid" value="1">
+				<input type="text" style="display:none;" name="comid" value="{$comid}">
+					<tr>
+						<td class='wid'>方案名称</td>
+						<td>
+							<input type="text" class="form-control" name="fname" id = "fname"placeholder="请输入名称">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>方案类型</td>
+						<td>
+							<select name="ftype" class="leixing"> 
+							<option value ="0">请选择</option>  
+                              {foreach name="reslx" item="voreslx"}
+                               <span ><option value ="{$voreslx.lxcode}">{$voreslx.lxname}</option></span>  
+                              {/foreach}
+                            </select>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>参与人员</td>
+						<td>
+							<input type="text" name="frenyuan" id="frenyuan" class="form-control" placeholder="请输入名称">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>房屋面积</td>
+						<td>
+							<input type="text" class="form-control" id="fmianji" name="fmianji" placeholder="请输入面积(平方米)">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>装修预算</td>
+						<td>
+							<input type="text" class="form-control" id="fyusuan" name="fyusuan" placeholder="请输入装修预算">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>户型</td>
+						<td>
+							<select name="fhuxing" id="fhuxing"> 
+							<option value ="0">请选择</option>  
+                              {foreach name="userhx" item="vouserhx"}
+                               <span ><option value ="{$vouserhx.lcode}">{$vouserhx.lname}</option></span>  
+                              {/foreach}
+                            </select>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>风格</td>
+						<td>
+							<select name="ffengge" id="ffengge"> 
+							<option value ="0">请选择</option>  
+                              {foreach name="userfg" item="vouserfg"}
+                               <span ><option value ="{$vouserfg.zcfgcode}">{$vouserfg.zcfgname}</option></span>  
+                              {/foreach}
+                            </select>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>装修方式</td>
+						<td>
+							<input type="text" class="form-control" id="ffangshi" name="ffangshi" placeholder="请输入装修方式">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>案例简介</td>
+						<td>
+							<textarea class="form-control" name="fjianjie" id="fjianjie" rows="5" cols="80"></textarea>
+						</td>
+					</tr>
+				</table>
+	       </form>  
+	        </div>   
+	        <footer class="modal-footer">  
+	            <button type="button" id="cancel2">取消</button>  
+	            <button type="button" id="sure2">确定</button>  
+	        </footer>
+	    </div>  
+	</div>  
+	<!-- 模态框图片管理 -->
+	<div id="modal3" class="modal">  
+	    <div class="modal-content">  
+	        <header class="modal-header">  
+	            <h4>添加公司案例</h4>  
+	            <span class="close3">×</span>  
+	        </header>  
+	        <div class="modal-body">  
+	            <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Plan/add')}" >
+				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
+				<input type="text" style="display:none;" name="comid" value="{$comid}">
+					<tr>
+						<td class='wid'>公司名称</td>
+						<td>
+							<input type="text" class="form-control"  placeholder="请输入名称">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>方案名称</td>
+						<td>
+							<input type="text" class="form-control"  placeholder="请输入名称">
+						</td>
+					</tr>
+					
+				</table>
+	        </form> 
+	        </div>  
+	        <footer class="modal-footer">  
+	            <button type="button" id="cancel3">取消</button>  
+	            <button type="button" id="sure3">确定</button>  
+	        </footer> 
+	        
+	    </div>  
+	</div> 
+</div>
+
 </body>
+<!-- 模态框js -->
+<script>  
+// 添加
+
+    var btn = document.getElementById('showModel');  
+    var close = document.getElementsByClassName('close')[0];  
+    var cancel = document.getElementById('cancel');  
+    var sure = document.getElementById('sure');  
+    var modal = document.getElementById('modal');  
+    btn.addEventListener('click', function(){
+        modal.style.display = "block";  
+    });  
+    close.addEventListener('click', function(){  
+        modal.style.display = "none";  
+    });  
+    cancel.addEventListener('click', function(){  
+        modal.style.display = "none";  
+    });  
+     
+    sure.addEventListener('click', function(){  
+    	// 获取信息
+          	$("#formsubadd").submit();
+    	
+        
+    });
+    // 图片管理模态框
+	var close3 = document.getElementsByClassName('close3')[0];  
+    var cancel3 = document.getElementById('cancel3');  
+    var sure3 = document.getElementById('sure3');  
+    var modal3 = document.getElementById('modal3'); 
+    //模态框展示 
+    $(".showModel3").click(function(){
+    	modal3.style.display = "block"; 
+    });
+    close3.addEventListener('click', function(){  
+        modal3.style.display = "none";  
+    }); 
+    cancel3.addEventListener('click', function(){  
+        modal3.style.display = "none";  
+    });  
+    //执行修改
+    sure3.addEventListener('click', function(){
+    	// 获取信息
+    		// $("#formsubedit").submit();
+    	modal3.style.display = "none";  
+        
+    });
+    // 修改   
+    var close2 = document.getElementsByClassName('close2')[0];  
+    var cancel2 = document.getElementById('cancel2');  
+    var sure2 = document.getElementById('sure2');  
+    var modal2 = document.getElementById('modal2'); 
+    //模态框展示 
+    $(".showModel2").click(function(){
+    	// 获取案例id
+    	var planid = $(this).parent().parent().find(".planid").html();
+    	$.ajax({
+            type:"post",
+            dataType:'json',
+            async:false,
+            url:'{:url("admin/plan/ajaxedit")}',
+            data:{"planid":planid},
+            success:function(dd){
+                console.log(dd);
+                // console.log(dd[0]['fjianjie']);
+                //赋值planid
+                $("#planid").val(dd[0]['id']);
+                $("#fname").val(dd[0]['fname']);
+                // 类型
+                $(".leixing").find("option[value = '"+dd[0]['ftype']+"']").attr("selected","selected");
+                $("#frenyuan").val(dd[0]['frenyuan']);
+                $("#fmianji").val(dd[0]['fmianji']);
+                $("#fyusuan").val(dd[0]['fyusuan']);
+                $("#fhuxing").find("option[value = '"+dd[0]['fhuxing']+"']").attr("selected","selected");
+                $("#ffengge").find("option[value = '"+dd[0]['ffengge']+"']").attr("selected","selected");
+                $("#ffangshi").val(dd[0]['ffangshi']);
+                $("#fjianjie").html(dd[0]['fjianjie']);
+    			modal2.style.display = "block";  
+                
+            }
+        })
+    });
+    close2.addEventListener('click', function(){  
+        modal2.style.display = "none";  
+    }); 
+    cancel2.addEventListener('click', function(){  
+        modal2.style.display = "none";  
+    });  
+    //执行修改
+    sure2.addEventListener('click', function(){
+    	// 获取信息
+    		$("#formsubedit").submit();
+    	
+        
+    });
+    // 执行删除
+    $(".delcom").click(function(){
+    	if(confirm("确定删除该类型吗？")){
+    		var planid = $(this).parent().parent().find(".planid").html();
+    		// alert(planid);return false;
+    		$(this).parent().parent().remove();
+    		// console.log(aa);return false;
+    		$.ajax({
+	            type:"post",
+	            dataType:'json',
+	            async:false,
+	            url:'{:url("/admin/plan/delete")}',
+	            data:{"planid":planid},
+	            success:function(dd){
+	            	// alert(dd);
+	             //    console.log(dd);
+	                if (dd.code == 200) {
+	                	//jq 删除元素
+
+	                }else{
+	                	alert(msg);
+	                }
+	                 
+	            }
+	        })
+    	}
+    });
+</script> 
 </html>
 {/block}
