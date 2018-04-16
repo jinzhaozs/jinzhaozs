@@ -69,7 +69,8 @@
 					<td style="display: none;"><span class="comleixing">{$vores.com_leixing}</span></td>
 					<td>
 						<span style=" cursor: pointer;" class="showModel2">修改</span> | 
-						<span style=" cursor: pointer;" class="delcom">删除</span>
+						<span style=" cursor: pointer;" class="delcom">删除</span> |
+						<span style=" cursor: pointer;" ><a style="color: #000;" href="{:url('/admin/plan/index')}">案例管理</a></span> 
 					</td>
 				</tr>
 			{/foreach}
@@ -205,17 +206,12 @@
 	            <span class="close2">×</span>  
 	        </header>  
 	        <div class="modal-body">  
-<<<<<<< HEAD
 
 	            
 				
 	             <form class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Shop/edit')}">
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
 
-=======
-	             <form class="form-inline" method="post" action="{:url('admin/Shop/add')}">
-				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
->>>>>>> 346cbfeaf32b10d7b4f81074b29b6e6816345ae8
 						<tr>
 						<td class='wid'>名称</td>
 						<input type="hidden" name="id" class="ids" value="">
@@ -316,7 +312,7 @@
 	        </div>  
 	        <footer class="modal-footer">  
 	            <button type="button" id="cancel2">取消</button>  
-	            <button type="button" id="sure2">确定</button>  
+	            <button type="submit" id="sure2">确定</button>  
 	        </footer>
 	       </form>  
 	    </div>  

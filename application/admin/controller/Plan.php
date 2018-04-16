@@ -19,7 +19,7 @@ class Plan extends Controller
      */
     public function index()
     {
-        echo "案例";die;
+        // echo "案例";die;
         return $this->view->fetch();
     }
 }

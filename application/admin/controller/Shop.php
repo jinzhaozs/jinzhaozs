@@ -34,7 +34,7 @@ class Shop extends Controller
            $where['name']=array('like','%'.$urlcanshu['keyword'].'%');
         }
 
-    	$res=$user->field("shop.id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_koubei,com_haoping,com_tel,qyname")->join('com_fuwuqy w','shop.com_szqy = w.qycode')->where($where)->order("shop.id")->->paginate(10,false,[
+    	$res=$user->field("shop.id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_koubei,com_haoping,com_tel,qyname")->join('com_fuwuqy w','shop.com_szqy = w.qycode')->where($where)->order("shop.id")->paginate(10,false,[
 'query'=>$urlcanshu,
 ]); 
         
@@ -88,7 +88,7 @@ class Shop extends Controller
 
         $shuju = input('put.');//获取数据
         $shuju['time'] = date("Y-m-d h:i:s",time());
-         $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');    
+         $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
         if($info){
              $shuju['logo']=$info->getSaveName();
         } 
