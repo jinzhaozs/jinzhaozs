@@ -1,0 +1,549 @@
+{extend name="layoutextend"}
+{block name="nav"}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<div style="margin-left: 2%;margin-right: 2%;">
+	<h1 style="text-align: center;">设计师</h1>
+	<button class="btn" style="margin-top: -5%;" id="showModel">添加设计师信息</button>
+	<table class="table table-bordered">
+	<thead>
+	<tr>
+		<!-- <th>id
+	</th>
+	 -->
+	<th>
+		编号
+	</th>
+	<th>
+		姓名
+	</th>
+	<th>
+		头像
+	</th>
+	<th>
+		性别
+	</th>
+	<th>
+		从业年限
+	</th>
+	<th>
+		风格
+	</th>
+	<th>
+		所属公司
+	</th>
+	<th>
+		设计费用区间
+	</th>
+	<th>
+		设计理念
+	</th>
+	<th>
+		擅长领域
+	</th>
+	<th>
+		毕业院校
+	</th>
+	<th>
+		工作经历
+	</th>
+	<th>
+		个人简介
+	</th>
+	<th>
+		所获奖项
+	</th>
+	<th>
+		业绩
+	</th>
+	<th>
+		设计等级
+	</th>
+	<th>
+		操作
+	</th>
+</tr>
+</thead>
+<tbody id="yuansuzhijia">
+<tr>
+	<td style="display: none;">
+		{$i=1}
+	</td>
+</tr>
+			{foreach name="res" item="vores"}
+<tr>
+	<td style="display: none;">
+		<span class="comid">{$vores.id}</span>
+	</td>
+	<td>
+		<span class="">{$i++}</span>
+	</td>
+	<td>
+		<span class="dname">{$vores.dname}</span>
+	</td>
+	<td>
+		<span class="davatar" name="{$vores.davatar}"><img src="__STATIC__/uploads/{$vores.davatar}" style="width:100px;height: 100px" class="img"></span>
+	</td>
+	<td>
+		<span class="sex" name="{$vores.sex}">{if condition="($vores.sex == 1)"}男{else /} 女{/if}</span>
+	</td>
+	<td>
+		<span class="jobage">{$vores.jobage}</span>
+	</td>
+	<td>
+		<span class="com_dzcfg">{$vores.com_dzcfg}</span>
+	</td>
+	<td>
+		<span class="shop" name="{$vores.shop}">{$vores.name}</span>
+	</td>
+	<td>
+		<span class="price_range">{$vores.price_range}</span>
+	</td>
+	<td>
+		<span class="idea">{$vores.idea}</span>
+	</td>
+	<td>
+		<span class="field">{$vores.field}</span>
+	</td>
+	<td>
+		<span class="school">{$vores.school}</span>
+	</td>
+	<td>
+		<span class="experience">{$vores.experience}</span>
+	</td>
+	<td>
+		<span class="intro">{$vores.intro}</span>
+	</td>
+	<td>
+		<span class="prize">{$vores.prize}</span>
+	</td>
+	<td>
+		<span class="achievement">{$vores.achievement}</span>
+	</td>
+	<td>
+		<span class="grade">{$vores.grade}</span>
+	</td>
+	<td>
+		<span style=" cursor: pointer;" class="showModel2">修改</span> | 
+		<span style=" cursor: pointer;" class="delcom">删除</span>
+	</td>
+</tr>
+			{/foreach}
+</tbody>
+</table>
+<div>
+	{$page}
+</div>
+</div>
+<!-- 模态框 -->
+<div>
+<!-- 模态框添加 -->
+<div id="modal" class="modal">
+	<div class="modal-content">
+		<header class="modal-header">
+		<h4>请添加设计师</h4>
+		<span class="close">×</span>
+		</header>
+		<div class="modal-body">
+			<form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Designer/add')}">
+				<table style="border-collapse:separate; border-spacing:10px; width: 100%;">
+				<tr>
+					<input type="hidden" name="shop" id="shop" value="">
+					<td>
+						姓名
+					</td>
+					<td>
+						<input type="text" id="dname" name="dname" placeholder="请输入名字">
+					</td>
+				</tr>
+				<tr>
+					<td class='wid'>
+						头像
+					</td>
+					<td>
+						<input type="file" name="davatar" class="davatar"/>
+					</td>
+				</tr>
+				<tr>
+					<td class='wid'>
+						性别
+					</td>
+					<td id="sex">
+						<input type="radio" name="sex" value="1"/>男 
+						<input type="radio" name="sex" value="2"/>女
+					</td>
+				</tr>
+				<tr>
+					<td>
+						从业年限
+					</td>
+					<td>
+						<input type="text" name="jobage" id="jobage" placeholder="请输入">年
+					</td>
+				</tr>
+				<tr>
+					<td>
+						设计费用区间
+					</td>
+					<td>
+						<input type="text" name="price_range" id="price_range" placeholder="请输入金额">元/m²
+					</td>
+				</tr>
+				<tr>
+					<td>
+						设计理念
+					</td>
+					<td>
+						<input type="text" name="idea" id="idea" placeholder="请输入设计理念">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						擅长领域
+					</td>
+					<td>
+						<input type="text" name="field" id="field" placeholder="请输入设计理念">
+					</td>
+				</tr>
+				<tr>
+					<td class='wid'>
+						服务风格
+					</td>
+					<td id="com_zcfg">
+							{foreach name="zcfg" item="fg"}
+						<input type="checkbox" value="{$fg.zcfgcode}">{$fg.zcfgname}
+							{/foreach}
+						<input type="hidden" name="com_dzcfg" class="zcfg" value="">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						毕业院校
+					</td>
+					<td>
+						<input type="text" name="school" id="school" placeholder="请输入">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						工作经历
+					</td>
+					<td>
+						<textarea name='experience' id='experience' style='width:98%;height:50px;' placeholder='请填写从业经历'></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						个人简历
+					</td>
+					<td>
+						<textarea name='intro' id='intro' style='width:98%;height:50px;' placeholder='请填写个人简介'></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						奖项
+					</td>
+					<td>
+						<textarea name='prize' id='prize' style='width:98%;height:50px;' placeholder='请填写所获奖项'></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						业绩
+					</td>
+					<td>
+						<textarea name='achievement' id='achievement' style='width:98%;height:50px;' placeholder='请填写业绩'></textarea>
+					</td>
+				</tr>
+				</table>
+			</div>
+			<footer class="modal-footer">
+			<button type="button" id="cancel">取消</button>
+			<button type="button" id="sure">确定</button>
+			</footer>
+		</form>
+	</div>
+</div>
+<!-- 模态框修改 -->
+<div id="modal2" class="modal">
+	<div class="modal-content">
+		<header class="modal-header">
+		<h4>修改信息</h4>
+		<span class="close2">×</span>
+		</header>
+		<div class="modal-body">
+			<form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Designer/edit')}">
+				<table style="border-collapse:separate; border-spacing:10px; width: 100%;">
+				<tr>
+					<input type="hidden" name="shop" id="shop2" value="">
+					<input type="hidden" name="id" class="ids" value="">
+					<td>
+						姓名
+					</td>
+					<td>
+						<input type="text" id="dname2" name="dname" placeholder="请输入名字">
+					</td>
+				</tr>
+				<tr>
+					<td class='wid'>
+						头像
+					</td>
+					<td>
+						<input type="file" name="davatar" class="davatar"/>
+					</td>
+				</tr>
+				<tr>
+					<td class='wid'>
+						性别
+					</td>
+					<td id="sex2">
+						<input type="radio" name="sex" value="1"/>男 
+						<input type="radio" name="sex" value="2"/>女
+					</td>
+				</tr>
+				<tr>
+					<td>
+						从业年限
+					</td>
+					<td>
+						<input type="text" name="jobage" id="jobage2" placeholder="请输入">年
+					</td>
+				</tr>
+				<tr>
+					<td>
+						设计费用区间
+					</td>
+					<td>
+						<input type="text" name="price_range" id="price_range2" placeholder="请输入金额">元/m²
+					</td>
+				</tr>
+				<tr>
+					<td>
+						设计理念
+					</td>
+					<td>
+						<input type="text" name="idea" id="idea2" placeholder="请输入设计理念">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						擅长领域
+					</td>
+					<td>
+						<input type="text" name="field" id="field2" placeholder="请输入设计理念">
+					</td>
+				</tr>
+				<tr>
+					<td class='wid'>
+						服务风格
+					</td>
+					<td id="com_zcfg2">
+							{foreach name="zcfg" item="fg"}
+						<input type="checkbox" value="{$fg.zcfgcode}">{$fg.zcfgname}
+							{/foreach}
+						<input type="hidden" name="com_dzcfg" class="zcfg" value="">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						毕业院校
+					</td>
+					<td>
+						<input type="text" name="school" id="school2" placeholder="请输入">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						工作经历
+					</td>
+					<td>
+						<textarea name='experience' id='experience2' style='width:98%;height:50px;' placeholder='请填写从业经历'></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						个人简历
+					</td>
+					<td>
+						<textarea name='intro' id='intro2' style='width:98%;height:50px;' placeholder='请填写个人简介'></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						奖项
+					</td>
+					<td>
+						<textarea name='prize' id='prize2' style='width:98%;height:50px;' placeholder='请填写所获奖项'></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						业绩
+					</td>
+					<td>
+						<textarea name='achievement' id='achievement2' style='width:98%;height:50px;' placeholder='请填写业绩'></textarea>
+					</td>
+				</tr>
+				</table>
+			</div>
+			<footer class="modal-footer">
+			<button type="button" id="cancel2">取消</button>
+			<button type="button" id="sure2">确定</button>
+			</footer>
+		</form>
+	</div>
+</div>
+</div>
+</body>
+<!-- 模态框js -->
+<script>  
+// 添加
+    var btn = document.getElementById('showModel');  
+    var close = document.getElementsByClassName('close')[0];  
+    var cancel = document.getElementById('cancel');  
+    var sure = document.getElementById('sure');  
+    var modal = document.getElementById('modal');  
+    btn.addEventListener('click', function(){
+        modal.style.display = "block"; 
+        var shop = $(this).parent().parent().find(".shop").attr('name');
+    	$("#shop").val(shop); 
+    });  
+    close.addEventListener('click', function(){  
+        modal.style.display = "none";  
+    });  
+    cancel.addEventListener('click', function(){  
+        modal.style.display = "none";  
+    });  
+    sure.addEventListener('click', function(){  
+    	// 获取信息
+    	// $(this).parent().parent().find(".comszqy").attr('name');
+    	// var com_fu = [];
+        var com_zc =[];
+         $('#com_zcfg input:checkbox:checked').each(function() {
+            com_zc.push($(this).val());
+        });
+         var com_zcf=com_zc.join();
+         var com_zcfg= com_zcf.concat(",");
+         $('#com_zcfg .zcfg').val(com_zcfg);
+         var jobage=$("#jobage").val();
+         var r = /^[0-9]*[1-9][0-9]*$/;
+         if(!r.test(jobage))
+         {
+         	alert('请正确输入工作年限')；
+         }
+         else
+    	{
+    		$("#formsubadd").submit();
+		}
+    	
+    	
+    });
+
+    // 修改   
+    var close2 = document.getElementsByClassName('close2')[0];  
+    var cancel2 = document.getElementById('cancel2');  
+    var sure2 = document.getElementById('sure2');  
+    var modal2 = document.getElementById('modal2'); 
+    //模态框展示 
+    $(".showModel2").click(function(){
+    	comid = $(this).parent().parent().find(".comid").html();
+    	comname = $(this).parent().parent().find(".dname").html();//获取name
+    	comdavatar = $(this).parent().parent().find(".davatar").html();
+    	comjobage = $(this).parent().parent().find(".jobage").html();
+    	comprice_range = $(this).parent().parent().find(".price_range").html();
+    	comsex=$(this).parent().parent().find(".sex").attr('name');
+    	comdzcfg = $(this).parent().parent().find(".com_dzcfg").html();
+    	comidea = $(this).parent().parent().find(".idea").html();
+    	comfield = $(this).parent().parent().find(".field").html();
+    	comschool = $(this).parent().parent().find(".school").html();
+    	comexperience = $(this).parent().parent().find(".experience").html();
+    	comintro = $(this).parent().parent().find(".intro").html();
+    	comprize = $(this).parent().parent().find(".prize").html();
+    	comachievement = $(this).parent().parent().find(".achievement").html();
+    	var shop = $(this).parent().parent().find(".shop").attr('name');
+    	//赋值
+        var comzcf = comdzcfg.substring(0, comdzcfg.lastIndexOf(','));
+      
+     $(comzcf.split(",")).each(function (i,dom){
+        $("#com_zcfg2 :checkbox[value='"+dom+"']").prop("checked",true);
+        $(" #com_zcfg2 :checkbox[id='"+dom+"']").prop("checked",true);
+    });
+    //复选赋值
+    	$("#dname2").val(comname);
+    	$("#davatar2").val(comdavatar);
+        $("#sex2 input[name='sex'][value='"+comsex+"']").attr("checked",true);  
+     	$(".ids").val(comid);
+     	$("#jobage2").val(comjobage);
+     	$("#price_range2").val(comprice_range);
+     	$("#idea2").val(comidea);
+     	$("#field2").val(comfield);
+     	$("#school2").val(comschool);
+     	$("#experience2").val(comexperience);
+     	$("#expintro2").val(comintro);
+     	$("#prize2").val(comprize);
+     	$("#achievement2").val(comachievement);
+     	$("#shop2").val(shop); 
+    	// alert(comid);comname
+    	 modal2.style.display = "block";  
+    	});
+    close2.addEventListener('click', function(){  
+        modal2.style.display = "none";  
+    }); 
+    cancel2.addEventListener('click', function(){  
+        modal2.style.display = "none";  
+    });  
+    sure2.addEventListener('click', function(){
+    	// 获取信息
+    var jobage2=$("#jobage2").val();
+    var r = /^[0-9]*[1-9][0-9]*$/;
+    if(!r.test(jobage2))
+         {
+         	alert('请正确输入工作年限')；
+         }
+         else
+         {
+         	 $("#formsubedit").submit()
+         }
+   ;
+    	// alert(comid);
+    	
+    	// return false;
+    	
+        
+    });
+    // 执行删除
+    $(".delcom").click(function(){
+    	if(confirm("确定删除该类型吗？")){
+    		var comid = $(this).parent().parent().find(".comid").html();
+    		var image=$(this).parent().parent().find(".img").attr('src');
+    		// alert(comid);return false;
+    		$(this).parent().parent().remove();
+    		// console.log(aa);return false;
+    		$.ajax({
+	            type:"post",
+	            dataType:'json',
+	            async:false,
+	            url:'{:url("admin/Gongsi/qydel")}',
+	            data:{"id":comid,"image":image},
+	            success:function(dd){
+	                // console.log(dd);
+	                if (dd.code == 200) {
+	                	//jq 删除元素
+
+	                }else{
+	                	alert(msg);
+	                }
+	                 
+	            }
+	        })
+    	}
+    });
+</script> 
+</html>
+{/block}

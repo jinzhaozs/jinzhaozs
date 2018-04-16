@@ -51,21 +51,27 @@ Route::rule('/admin/gongsi/zhuancfgedit','admin/gongsi/zhuancfgedit');// 修改
 Route::rule('/admin/gongsi/zhuancfgdel','admin/gongsi/zhuancfgdel');// 删除
 
 // 服务价位
-Route::rule('/admin/gongsi/price','admin/gongsi/price');//服务风格
+Route::rule('/admin/gongsi/price','admin/gongsi/price');//服务价位
 Route::rule('/admin/gongsi/priceadd','admin/gongsi/priceadd');// 添加
 Route::rule('/admin/gongsi/priceedit','admin/gongsi/priceedit');// 修改
 Route::rule('/admin/gongsi/pricedel','admin/gongsi/pricedel');// 删除
 
 //户型
-Route::rule('/admin/gongsi/price','admin/gongsi/layout');//服务风格
-Route::rule('/admin/gongsi/priceadd','admin/gongsi/layoutadd');// 添加
-Route::rule('/admin/gongsi/priceedit','admin/gongsi/layoutedit');// 修改
-Route::rule('/admin/gongsi/pricedel','admin/gongsi/layoutdel');// 删除
+Route::rule('/admin/gongsi/layout','admin/gongsi/layout');//户型风格
+Route::rule('/admin/gongsi/layoutadd','admin/gongsi/layoutadd');// 添加
+Route::rule('/admin/gongsi/layoutedit','admin/gongsi/layoutedit');// 修改
+Route::rule('/admin/gongsi/layoutdel','admin/gongsi/layoutdel');// 删除
 //公司
 Route::rule('/admin/shop/index','admin/shop/index');//公司详情
 Route::rule('/admin/shop/add','admin/shop/add');//添加
 Route::rule('/admin/shop/edit','admin/shop/edit');//修改
-Route::rule('/admin/shop/delete','admin/shop/delete');//删除admin/Shop/upload_photo
+Route::rule('/admin/shop/delete','admin/shop/delete');//删除
 //公司案例
 Route::rule('/admin/plan/index','admin/plan/index');//公司 案例列表
+//公司设计师designer
+Route::rule('/admin/designer/index','admin/designer/index');//公司详情
+Route::rule('/admin/designer/add','admin/designer/add');//添加
+Route::rule('/admin/designer/edit','admin/designer/edit');//修改
+Route::rule('/admin/designer/delete','admin/designer/delete');//删除
+
 
