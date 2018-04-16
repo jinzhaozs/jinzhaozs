@@ -55,6 +55,12 @@ Route::rule('/admin/gongsi/price','admin/gongsi/price');//服务风格
 Route::rule('/admin/gongsi/priceadd','admin/gongsi/priceadd');// 添加
 Route::rule('/admin/gongsi/priceedit','admin/gongsi/priceedit');// 修改
 Route::rule('/admin/gongsi/pricedel','admin/gongsi/pricedel');// 删除
+
+//户型
+Route::rule('/admin/gongsi/price','admin/gongsi/layout');//服务风格
+Route::rule('/admin/gongsi/priceadd','admin/gongsi/layoutadd');// 添加
+Route::rule('/admin/gongsi/priceedit','admin/gongsi/layoutedit');// 修改
+Route::rule('/admin/gongsi/pricedel','admin/gongsi/layoutdel');// 删除
 //公司
 Route::rule('/admin/shop/index','admin/shop/index');//公司详情
 Route::rule('/admin/shop/add','admin/shop/add');//添加
