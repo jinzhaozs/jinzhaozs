@@ -30,7 +30,8 @@ class Shop extends Controller
         //获取参数
         $request = Request::instance();
         $urlcanshu = $request->param();
-        if (!empty($urlcanshu)) {
+        if (!empty($urlcanshu['keyword'])) {
+
            $where['name']=array('like','%'.$urlcanshu['keyword'].'%');
         }
 
@@ -80,13 +81,9 @@ class Shop extends Controller
         $user = db('shop');
         $whid = input('post.id');//获取id
         $where['id'] = $whid;
-        $rs = $user->where($where)->find();
-        
-       
-        // $result = @unlink ($file);
-        $file = request()->file('logo');
-
+          $file = request()->file('logo');
         $shuju = input('put.');//获取数据
+
         $shuju['time'] = date("Y-m-d h:i:s",time());
          $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
         if($info){
@@ -94,8 +91,13 @@ class Shop extends Controller
         } 
         $res = $user->where($where)->update($shuju);
         if (!$res) {
-            echo 'as';
-           }
+           $this->error("修改失败","admin/Shop/index");
+        }
+        else
+        {
+          $this->success("修改成功","admin/Shop/index");
+        }
+        
     }
     //
     public function delete($id){
