@@ -5,7 +5,6 @@
 <head>
 	<meta charset="utf-8"> 
 	<title></title>
-	
 </head>
 <body>
 <div style="margin-left: 2%;margin-right: 2%; margin-top: 1%;">
@@ -65,8 +64,12 @@
 					<td style="display: none;"><span class="comleixing">{$vores.com_leixing}</span></td>
 					<td>
 						<span style=" cursor: pointer;" class="showModel2">修改</span> | 
-						<span style=" cursor: pointer;" class="delcom">删除</span> |
+
+						<span style=" cursor: pointer;" class="delcom">删除</span> | 
+						<span style=" cursor: pointer;"><a style="color: #000;" href="{:url('admin/designer/index',['id'=>$vores['id']])}">设计师</a></span> | 
+
 						<span style=" cursor: pointer;" ><a style="color: #000;" href="{:url('/admin/plan/index',['comid'=>$vores.id])}">案例管理</a></span> 
+
 					</td>
 				</tr>
 			{/foreach}
@@ -152,7 +155,7 @@
 							{foreach name="qy" item="fu"}
 							<input type="checkbox" value="{$fu.qycode}"  >{$fu.qyname}
 							{/foreach}
-							<input type="hidden" name="com_fuqy" class="fuqy" value=""＞ 
+							<input type="hidden" name="com_fuqy" class="fuqy" value=""> 
 						</td>
 					</tr>
 					<tr>
@@ -161,7 +164,7 @@
 							{foreach name="jw" item="price"}
 							<input type="checkbox" value="{$price.pcode}"   >{$price.pname}
 							{/foreach}
-							<input type="hidden" name="com_price" class="price" value=""＞ 
+							<input type="hidden" name="com_price" class="price" value=""> 
 						</td>
 					</tr>
 					<tr>
@@ -170,7 +173,7 @@
 							{foreach name="zcfg" item="fg"}
 							<input type="checkbox" value="{$fg.zcfgcode}"   >{$fg.zcfgname}
 							{/foreach}
-							<input type="hidden" name="com_zcfg" class="zcfg" value=""＞ 
+							<input type="hidden" name="com_zcfg" class="zcfg" value=""> 
 						</td>
 					</tr>
 					<tr>
@@ -179,7 +182,7 @@
 							{foreach name="xing" item="lei"}
 							<input type="checkbox" value="{$lei.lxcode}"  >{$lei.lxname}
 							{/foreach}
-								<input type="hidden" name="com_leixing" class="leixing" value=""＞ 
+								<input type="hidden" name="com_leixing" class="leixing" value=""> 
 						</td>
 					</tr>
 
@@ -203,13 +206,13 @@
 	        </header>  
 	        <div class="modal-body">  
 
-	             <form class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Shop/edit')}">
+	             <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Shop/edit')}">
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
 
 						<tr>
 						<td class='wid'>名称</td>
 						<input type="hidden" name="id" class="ids" value="">
-						<input type="hidden" name="image" class="imgs" value="">
+						
 						<td>
 							<input type="text" class="form-control" name="name" id="name2" placeholder="请输入名字">
 						</td>
@@ -306,7 +309,7 @@
 	        </div>  
 	        <footer class="modal-footer">  
 	            <button type="button" id="cancel2">取消</button>  
-	            <button type="submit" id="sure2">确定</button>  
+	            <button type="button" id="sure2">确定</button>  
 	        </footer>
 	       </form>  
 	    </div>  
@@ -486,6 +489,7 @@
         var sum2 = $("#sum2").val();
     	var bl2 = $("#bl2 input[name='radio1']:checked").val();
     	var rz2 = $("#rz2 input[name='radio2']:checked").val();
+    	var tel2 = $("#com_tel2").val();
     	var com_zc2=[];
     	var com_lei2 = [];
         var com_fu2 = [];
@@ -510,11 +514,22 @@
          var com_fuqy2= com_fuq2.concat(",");
          var com_leixin2=com_lei2.join();
          var com_leixing2=com_leixin2.concat(",");
-          $('#com_fuqy2 .fuqy').val(com_fuqy);
-         $('#com_zcfg2 .zcfg').val(com_zcfg);
-         $('#com_leixing2 .leixing').val(com_leixing);
-          $('#com_price2 .price').val(com_price);
+        
+          $('#com_fuqy2 .fuqy').val(com_fuqy2);
+         $('#com_zcfg2 .zcfg').val(com_zcfg2);
+         $('#com_leixing2 .leixing').val(com_leixing2);
 
+          if (name2 == "" || dizhi2 == "" || logo2 == "" || sz2 == "" || tel2 == "" || sum2 == "" || bl2 == "") {
+          	alert("请完善信息");
+          	// return false;
+          }
+          else if(!tel2.match(/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/)){
+            alert("号码不正确");
+        }
+          	else{
+          	$("#formsubedit").submit();
+
+          }
     	// alert(comid);
     	
     	// return false;

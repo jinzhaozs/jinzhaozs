@@ -1,6 +1,6 @@
 <?php
 /**
- * 后台公司类型控制器 LoginController.class.php
+ * 后台公司设计师控制器 LoginController.class.php
  * ============================================================================
  * 许可声明：这是一个开源程序，未经许可不得将本软件的整体或任何部分用于商业用途及再发布。
  * ============================================================================
@@ -13,94 +13,75 @@ use think\Controller;
 use think\Request;
 use think\File;
 
-class Shop extends Controller
+
+class Designer extends Controller
 {
-    /**
-     * *类型
-     * @return [type] [description]
-     */
-    public function index()
-    {
-    	$user=db('shop');
-    	$fu=db('com_fuwuqy');
-    	$lei = db('com_qiyecsleixing');
-        $fg= db('com_zhuancfg');
-        $jw= db('com_price');
-        $where=array ();
+	public function index()
+	{
+		$where=array ();
+		$where['shop']= input('param.id');
+		$user=db('designer');
+		$fg= db('com_zhuancfg');
         //获取参数
         $request = Request::instance();
         $urlcanshu = $request->param();
         if (!empty($urlcanshu['keyword'])) {
-
            $where['name']=array('like','%'.$urlcanshu['keyword'].'%');
         }
-
-    	$res=$user->field("shop.id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_koubei,com_haoping,com_tel,qyname")->join('com_fuwuqy w','shop.com_szqy = w.qycode')->where($where)->order("shop.id")->paginate(10,false,[
-'query'=>$urlcanshu,
-]); 
-        
-    	$qy=$fu->select();
-    	$xing=$lei->select();
-        $zcfg=$fg->select();
+    	$res=$user->field("designer.id,dname,davatar,sex,jobage,designer.com_dzcfg,shop,price_range,idea,field,school,experience,intro,prize,achievement,grade,name")->join('shop s','designer.shop = s.id')->where($where)->order("designer.id")->paginate(10,false,['query'=>$urlcanshu,]);
+    	 $zcfg=$fg->select(); 
     	$page=$res->render();
-        $jws=$jw->select();
-
-        $this->assign("jw",$jws);
-        $this->assign("zcfg",$zcfg);
-    	$this->assign("xing",$xing);
-    	$this->assign("qy",$qy);
+    	$this->assign("zcfg",$zcfg);
     	$this->assign("page",$page);
     	$this->assign("res",$res);
-        return $this->view->fetch();
-    }
-    public function add()
+		return $this->view->fetch();
+	}
+	 public function add()
     {
-    	$user = db('shop'); 
-        $file = request()->file('logo');
+         $user = db('designer'); 
+        $file = request()->file('davatar');
         $shuju = input('post.');//获取数据
-        $shuju['time'] = date("Y-m-d h:i:s",time());
-        $shuju['dis']=2; 
-       
-
+        $shuju['dtime'] = date("Y-m-d h:i:s",time());
+        $shuju['grade']='A级信用设计师';  
         $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
         if($info){
-             $shuju['logo']=$info->getSaveName();
+             $shuju['davatar']=$info->getSaveName();
         }        
         $user_info = $user->insert($shuju);
         if (!$user_info) {
-           $this->error("添加失败","admin/Shop/index");
+           $this->error("添加失败","admin/Designer/index");
         }
         else
         {
-          $this->success("添加成功","admin/Shop/index");
+          $this->success("添加成功",url("admin/Designer/index",array('id'=>$shuju['shop'])));
         }
-        
+      
     }
-    //执行修改
+     //执行修改
     public function edit(){
-        $user = db('shop');
+        $user = db('designer');
         $whid = input('post.id');//获取id
         $where['id'] = $whid; 
         $shuju = input('post.');//获取数据
-        $file = request()->file('logo');
-        $shuju['time'] = date("Y-m-d h:i:s",time());
+        $file = request()->file('davatar');
+     
          $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
         if($info){
-             $shuju['logo']=$info->getSaveName();
+             $shuju['davatar']=$info->getSaveName();
         } 
         $res = $user->where($where)->update($shuju);
         if (!$res) {
-           $this->error("修改失败","admin/Shop/index");
+           $this->error("修改失败","admin/Designer/index");
         }
         else
         {
-          $this->success("修改成功","admin/Shop/index");
+          $this->success("修改成功",url("admin/Designer/index",array('id'=>'1')));
         }
         
     }
     //
     public function delete($id){
-        $user = db('shop');
+        $user = db('designer');
         $whid = input('post.id');//获取id
           $file = input('post.image'); 
           if($file){
@@ -126,4 +107,5 @@ class Shop extends Controller
         return $data;
     }
     
+
 }

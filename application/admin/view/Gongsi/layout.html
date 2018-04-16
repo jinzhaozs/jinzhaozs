@@ -1,0 +1,219 @@
+{extend name="layoutextend"}
+{block name="nav"}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title></title>
+
+</head>
+<body>
+<div style="margin-left: 2%;margin-right: 2%;">
+		<h1 style="text-align: center;">户型</h1>
+<button class="btn" style="margin-top: -5%;" id="showModel">添加户型</button> 
+	<table class="table table-bordered" >
+
+		<thead>
+			<tr>
+				<!-- <th>id</th> -->
+				<th>名称</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody id="yuansuzhijia">
+			
+			{foreach name="res" item="vores"}
+				<tr>
+					<td style="display: none;"><span class="comid">{$vores.id}</span></td>
+					<td><span class="comname">{$vores.lname}</span></td>
+					<td>
+						<span style=" cursor: pointer;" class="showModel2">修改</span> | 
+						<span style=" cursor: pointer;" class="delcom">删除</span>
+					</td>
+				</tr>
+			{/foreach}
+		</tbody>
+	</table>
+	<div>{$page}</div>
+</div>
+<!-- 模态框 -->
+<div>
+	 <!-- 模态框添加 -->
+	<div id="modal" class="modal">  
+	    <div class="modal-content">  
+	        <header class="modal-header">  
+	            <h4>户型添加</h4>  
+	            <span class="close">×</span>  
+	        </header>  
+	        <div class="modal-body">  
+	            
+				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
+					<tr>
+						<td>名称</td>
+						<td>
+							<input type="text" class="form-control" id="qyname" placeholder="请输入名字">
+						</td>
+					</tr>
+				</table>
+	        </div>  
+	        <footer class="modal-footer">  
+	            <button id="cancel">取消</button>  
+	            <button id="sure">确定</button>  
+	        </footer>  
+	    </div>  
+	</div> 
+	<!-- 模态框修改 -->
+	<div id="modal2" class="modal">  
+	    <div class="modal-content">  
+	        <header class="modal-header">  
+	            <h4>户型修改</h4>  
+	            <span class="close2">×</span>  
+	        </header>  
+	        <div class="modal-body">  
+	            
+				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
+					<tr>
+						<td>名称</td>
+						<td>
+							<input type="text" class="form-control" id="qyname2" placeholder="请输入名字">
+						</td>
+					</tr>
+				</table>
+	        </div>  
+	        <footer class="modal-footer">  
+	            <button id="cancel2">取消</button>  
+	            <button id="sure2">确定</button>  
+	        </footer>  
+	    </div>  
+	</div>  
+</div>
+
+</body>
+<!-- 模态框js -->
+<script>  
+// 添加
+    var btn = document.getElementById('showModel');  
+    var close = document.getElementsByClassName('close')[0];  
+    var cancel = document.getElementById('cancel');  
+    var sure = document.getElementById('sure');  
+    var modal = document.getElementById('modal');  
+    btn.addEventListener('click', function(){
+        modal.style.display = "block";  
+    });  
+    close.addEventListener('click', function(){  
+        modal.style.display = "none";  
+    });  
+    cancel.addEventListener('click', function(){  
+        modal.style.display = "none";  
+    });  
+    sure.addEventListener('click', function(){  
+    	// 获取信息
+    	var qyname = $("#qyname").val();
+    	
+    	if (qyname) {
+    		$.ajax({
+	            type:"post",
+	            dataType:'json',
+	            async:false,
+	            url:'{:url("admin/Gongsi/layoutadd")}',
+	            data:{"lname":qyname,},
+	            success:function(dd){
+	                console.log(dd);
+	                if (dd.code == 200) {
+	                	window.location.reload();
+	                	modal.style.display = "none"; //模态框样式消失
+	                }else{
+	                	alert(msg);
+	                }
+	                 
+	            }
+	        })
+    	}else{
+    		alert("请填写名称");
+    	}
+    	
+        
+    });
+
+    // 修改   
+    var close2 = document.getElementsByClassName('close2')[0];  
+    var cancel2 = document.getElementById('cancel2');  
+    var sure2 = document.getElementById('sure2');  
+    var modal2 = document.getElementById('modal2'); 
+    //模态框展示 
+    $(".showModel2").click(function(){
+    	comid = $(this).parent().parent().find(".comid").html();
+    	comname = $(this).parent().parent().find(".comname").html();//获取name
+    	
+    	//赋值
+    	$("#qyname2").val(comname);
+    	
+    	// alert(comid);comname
+    	 modal2.style.display = "block";  
+    	});
+    close2.addEventListener('click', function(){  
+        modal2.style.display = "none";  
+    }); 
+    cancel2.addEventListener('click', function(){  
+        modal2.style.display = "none";  
+    });  
+    sure2.addEventListener('click', function(){
+    	// 获取信息
+    	var qyname2 = $("#qyname2").val();
+    
+    	// alert(comid);
+    	
+    	// return false;
+    	if (qyname2) {
+    		$.ajax({
+	            type:"post",
+	            dataType:'json',
+	            async:false,
+	            url:'{:url("admin/Gongsi/layoutedit")}',
+	            data:{"id":comid,"lname":qyname2},
+	            success:function(dd){
+	                console.log(dd);
+	                if (dd.code == 200) {
+	                	window.location.reload();
+	                	modal2.style.display = "none"; //模态框样式消失
+	                }else{
+	                	alert(msg);
+	                }
+	                 
+	            }
+	        })
+    	}else{
+    		alert("请填写名称");
+    	}
+    	
+        
+    });
+    // 执行删除
+    $(".delcom").click(function(){
+    	if(confirm("确定删除该类型吗？")){
+    		var comid = $(this).parent().parent().find(".comid").html();
+    		// alert(comid);return false;
+    		$(this).parent().parent().remove();
+    		// console.log(aa);return false;
+    		$.ajax({
+	            type:"post",
+	            dataType:'json',
+	            async:false,
+	            url:'{:url("admin/Gongsi/layoutdel")}',
+	            data:{"id":comid},
+	            success:function(dd){
+	                // console.log(dd);
+	                if (dd.code == 200) {
+	                	//jq 删除元素
+
+	                }else{
+	                	alert(msg);
+	                }
+	                 
+	            }
+	        })
+    	}
+    });
+</script> 
+</html>
+{/block}
