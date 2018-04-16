@@ -5,8 +5,6 @@
 <head>
 	<meta charset="utf-8"> 
 	<title></title>
-	  <style type="text/css">  
-	  </style>	
 </head>
 <body>
 <div style="margin-left: 2%;margin-right: 2%; margin-top: 1%;">
@@ -66,8 +64,12 @@
 					<td style="display: none;"><span class="comleixing">{$vores.com_leixing}</span></td>
 					<td>
 						<span style=" cursor: pointer;" class="showModel2">修改</span> | 
-						<span style=" cursor: pointer;" class="delcom">删除</span>
-						<span><a href="{:url('admin/designer/index',['id'=>$vores['id']])}">设计师</a></span>
+
+						<span style=" cursor: pointer;" class="delcom">删除</span> | 
+						<span style=" cursor: pointer;"><a style="color: #000;" href="{:url('admin/designer/index',['id'=>$vores['id']])}">设计师</a></span> | 
+
+						<span style=" cursor: pointer;" ><a style="color: #000;" href="{:url('/admin/plan/index',['comid'=>$vores.id])}">案例管理</a></span> 
+
 					</td>
 				</tr>
 			{/foreach}
