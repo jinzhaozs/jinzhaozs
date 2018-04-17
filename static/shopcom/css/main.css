@@ -1,0 +1,339 @@
+﻿@charset "utf-8";
+
+/*底部弹出层开始*/
+.bottom-float {
+	background: #212121;
+	opacity: 0.8;
+	height: 120px;
+	width: 100%;
+	min-width: 1230px;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	z-index: 99999;
+	display: none;
+}
+.bottom-float .float-body {
+	margin: 0 auto;
+	width: 1230px;
+	height: 120px;
+	position: relative;
+}
+.bottom-float .float-body .explain {
+	float: left;
+	margin: 13px 10px 0px 0px;
+}
+.bottom-float .float-body .forms {
+	float: left;
+	height: 100px;
+	margin: 10px 25px 0px 30px;
+	padding: 0px;
+	background-color: transparent;
+}
+.bottom-float .float-body .forms .form-area {
+	height: 80px;
+	position: relative;
+}
+.bottom-float .float-body .forms .form-area .col1 {
+	margin: 0px 80px 0px 0px;
+	height: 80px;
+}
+.bottom-float .float-body .forms .form-area .col1 .s1 {
+	float: left;
+	width: 120px;
+	margin: 0px 5px 0px 0px;
+	height: 80px;
+}
+.bottom-float .float-body .forms .form-area .col1 .s2 {
+	float: left;
+	margin: 0px 10px 0px 0px;
+	height: 80px;
+}
+.bottom-float .float-body .forms .form-area .col1 .ele {
+	height: 35px;
+	position: relative;
+}
+.bottom-float .float-body .forms .form-area .col1 .ele input {
+	border: 0px;
+	width: 120px;
+	text-indent: 7px;
+	height: 15px;
+	line-height:15px;
+	padding:10px 0;
+	font-size: 12px;
+	border: 0px;
+	background: #FFFFFF;
+	*padding: 10px 5px;
+	*height: 15px;
+	color: #999;
+	display: block;
+	float: left;
+}
+.bottom-float .float-body .forms .form-area .col1 .ele input.area {
+	width: 85px;
+}
+.bottom-float .float-body .forms .form-area .col1 .ele .area-tips {
+	display: block;
+	width: 35px;
+	height: 35px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	color: #888;
+	background: #FFFFFF;
+	font-size: 14px;
+	text-align: center;
+	line-height: 35px;
+}
+.bottom-float .float-body .forms .form-area .col1 .ele select {
+	border: 0px;
+	background: #fff;
+	display:inline-block;
+	height: 34px;
+	margin: 0px;
+	margin-right: 5px;
+	padding: 6px 0 8px 0;
+	font-size: 12px;
+	color: #999;
+	width: 116px;
+	*width: 100px;
+	_width: 100px;
+	*height:15px;
+	
+
+}
+
+
+.bottom-float .float-body .forms .form-area .col1 .ele select.select1 {
+	float: left;
+}
+.bottom-float .float-body .forms .form-area .col1 .ele.t {
+	margin: 0px 0px 10px 0px;
+}
+.bottom-float .float-body .forms .form-area .col1 .ele.t .mobilecode {
+	width: 90px;
+	margin-left: 5px;
+}
+.bottom-float .float-body .forms .form-area .col1 .ele.t .get_tupian_box {
+	height: 35px;
+	display: block;
+	border: medium none;
+	outline: medium none;
+	cursor: pointer;
+	float: right;
+	width: 80px;
+}
+.bottom-float .float-body .forms .form-area .col1 .ele.t .check-code .picturecode {
+	height: 20px;
+	width: 72px;
+	border: 1px solid gray;
+	padding:0!important;
+}
+.bottom-float .float-body .forms .form-area .col3 {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 80px;
+	height: 58px;
+	color: #FFFFFF;
+	font-size: 14px;
+	background: #FF8A00;
+	text-align: center;
+	line-height: 18px;
+	padding: 22px 0px 0px;
+}
+.bottom-float .float-body .forms .form-area .col3 input {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 80px;
+	height: 80px;
+	background-color: transparent;
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+}
+.bottom-float .float-body .forms .num-text {
+	height: 20px;
+	line-height: 28px;
+	color: #E98003;
+	font-size: 12px;
+}
+.bottom-float .float-body .close1 {
+	position: absolute;
+	top: 10px;
+	right: 0px;
+	cursor: pointer;
+}
+.bottom-float .float-body .qrcode {
+	position: relative;
+	width: 80px;
+	top: 10px;
+	right:20px;
+	cursor: pointer;
+}
+.bottom-open {
+	position: fixed;
+	height: 135px;
+	background-color: rgba(0, 0, 0, .8);
+	bottom: -30px;
+	left: -60px;
+	z-index: 13;
+	cursor: pointer;
+	display: none;
+}
+.bottom-open img {
+	position: absolute;
+	margin: -8px 0px 0px -5px;
+}
+.bottom-float .float-body .forms .form-area .col3 .submitFabu {
+	cursor: pointer;
+}
+
+/*底部弹出层结束*/
+
+/*返回顶部-二维码  开始*/
+.sub-back-top, .sub-back-top * {
+	margin: 0px;
+	padding: 0px;
+}
+.sub-back-top {
+	width: 60px;
+	height: 170px;
+	position: fixed;
+	right: 15px;
+	bottom: 15px;
+	display: none;
+	z-index: 999;
+}
+.sub-back-top .back-top {
+	cursor: pointer;
+	width: 60px;
+	height: 50px;
+	background: rgba(0, 0, 0, 0.6);
+	border-radius: 2px;
+	margin: 0px 0px 10px 0px;
+	background: rgba(0, 0, 0, 0.6) url('../images/icon_top.png') no-repeat 50% 50%;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px;
+}
+.sub-back-top .qr-btn {
+	cursor: pointer;
+	width: 60px;
+	height: 40px;
+	margin-bottom: 10px;
+	border-radius: 2px;
+	background: rgba(0, 0, 0, 0.6) url('../images/icon_code.png') no-repeat 50% 50%;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px;
+}
+.sub-back-top .qr-code {
+	width: 170px;
+	height: 200px;
+	background: #FFF;
+	border-radius: 2px;
+	position: absolute;
+	left: -180px;
+	bottom: 60px;
+	border: 1px #E1E1E1 solid;
+	display: none;
+}
+.sub-back-top .qr-code img {
+	float: left;
+	width: 100%;
+}
+.sub-back-top .qr-code span {
+	float: left;
+	width: 100%;
+	text-align: center;
+	height: 30px;
+	line-height: 20px;
+	font-size: 14px;
+	color: #555;
+	font-family: "Microsoft Yahei";
+}
+.sub-back-top .qr-code:before {
+	position: absolute;
+	left: 170px;
+	top: 175px;
+	z-index: 5;
+	border-style: solid;
+	border-width: 6px;
+	border-color: transparent transparent transparent #E1E1E1;
+	content: "";
+	display: block;
+	width: 0;
+	height: 0;
+	line-height: 0;
+}
+.sub-back-top .qr-code:after {
+	position: absolute;
+	left: 169px;
+	top: 175px;
+	z-index: 6;
+	border-style: solid;
+	border-width: 6px;
+	border-color: transparent transparent transparent #FFF;
+	content: "";
+	display: block;
+	width: 0;
+	height: 0;
+	line-height: 0;
+}
+.link-qq {
+	width: 60px;
+	height: 50px;
+	background: rgba(0, 0, 0, 0.6);
+	border-radius: 2px;
+	margin: 0px 0px 10px 0px;
+	background: rgba(0, 0, 0, 0.6) url('../images/icon_qq.png') no-repeat 50% 7px;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px;
+}
+.link-qq a {
+	display: block;
+	color: #fff;
+	text-align: center;
+	line-height: 80px;
+}
+.link-qq a:hover {
+	color: #fff !important;
+}
+
+/*返回顶部-二维码  结束*/
+#KF_Online {
+	position: absolute;
+	right: expression(eval(document.documentElement.scrollLeft+10));
+	top: expression(eval(document.documentElement.scrollTop+90));
+	display: block !important;
+	*width: 190px;
+}
+.online_left {
+	display: block !important;
+	float: left !important;
+}
+.zhezhao{
+	width: 100%;
+	height: 100%;
+	background: black;
+	opacity: 0.5;
+	position: fixed;
+	top: 0;	
+	left: 0;
+	z-index: 999997;
+}
+.whole_popup_box{
+	background: white;
+	z-index: 999998;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	margin-left: -250px;
+}
+.whole_popup_tit{
+	position: relative;
+}
+.close_cha{
+	display: inline-block;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	cursor:pointer;
+}

@@ -28,7 +28,7 @@
 			<tr>
 				<!-- <th>id</th> -->
 				<th>编号</th>
-				<th>公司名称</th>
+				<th width="100">公司名称</th>
 				<th>公司商标</th>
 				<th>电话</th>
 				<th>运营</th>
@@ -53,7 +53,7 @@
 					<td style="display: none;"><span class="id">{$vores.id}</span></td>
 					<td><span class="">{$i++}</span></td>
 					<td><span class="name">{$vores.name}</span></td>
-					<td><span class="logo" name="{$vores.logo}"  ><img src="__STATIC__/uploads/{$vores.logo}" style="width:100px;height: 100px" class="img"></span></td>
+					<td><span class="logo" name="{$vores.logo}"  ><img src="__STATIC__/uploads/{$vores.logo}" style="width:50px;height: 50px" class="img"></span></td>
 					<td><span class="tel">{$vores.com_tel}</span></td>
 					<td><span class="bl" name="{$vores.bl}">{if condition="($vores.bl == 1)"}有{else /} 无{/if}</span></td>
 					<td><span class="rz" name="{$vores.rz}">{if condition="($vores.rz == 1)"}已认证{else /} 未认证{/if}</span></td>
@@ -65,7 +65,8 @@
 					<td style="display: none;"><span class="comzcfg">{$vores.com_zcfg}</span></td>
 					<td style="display: none;"><span class="comprice">{$vores.com_price}</span></td>
 					<td style="display: none;"><span class="comleixing">{$vores.com_leixing}</span></td>
-					<td><span style=" cursor: pointer;">{if condition="($vores.com_paixu == 1)"} <button type="button" class="zhi" name="{$vores.id}">置顶</button>{else /} <button type="button" class="qzhi" name="{$vores.id}">未置顶</button> {/if}</span></td>
+					<td ><span style=" cursor: pointer;">{if condition="($vores.com_paixu == 1)"} <button style="width: 60px;" type="button" class="btn zhi" name="{$vores.id}">置顶</button>{else /} <button style="width: 60px;text-align: center;" type="button" class="btn qzhi" name="{$vores.id}">未置顶</button> {/if}</span></td>
+
 					<td>
 						<span style=" cursor: pointer;" class="showModel2">修改</span> | 
 

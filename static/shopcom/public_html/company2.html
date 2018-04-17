@@ -1,0 +1,57 @@
+<style type="text/css">
+.cover .show img {
+    top: 0 !important;
+    left:0 !important;
+}
+.cover .lrow, .cover .rrow {
+    padding: 0 !important;
+}
+</style>
+<div class="intro_row">
+    <p class="intro_title">营业执照</p>
+        <ul class="clearfix">
+                <li>
+            <img src="http://pic.to8to.com/c_zhengshu/day_151210/20151210_6521bfbc845a936f4d6fkPV6BwtkT7et.jpg" width="175" height="175">
+            <span></span>
+        </li>
+            </ul>
+    </div>
+<div class="intro_row">
+    <p class="intro_title">资质证书</p>
+        <ul class="clearfix">
+                <li>
+            <img src="http://pic.to8to.com/c_zhengshu/day_140522/20140522_740d40a5be935bb9076eIQv4Ua1IqR5q.jpg" width="175" height="175">
+            <span>资质证书</span>
+        </li>
+            </ul>
+    </div>
+<div class="intro_row">
+    <p class="intro_title">荣誉证书</p>
+            <span class="not_upload">暂未上传相关证书</span>
+    </div>
+<div class="intro_row">
+    <p class="intro_title">其他</p>
+        <ul class="clearfix">
+                <li>
+            <img src="http://pic.to8to.com/c_zhengshu/day_140522/20140522_3fa03dcb1688135b9a2d6MiOH6wMMNNB.jpg" width="175" height="175">
+            <span>税务登记</span>
+        </li>
+                <li>
+            <img src="http://pic.to8to.com/c_zhengshu/day_140522/20140522_8f1317c71f12dae74c805bpt3SLziL4p.jpg" width="175" height="175">
+            <span>组织机构</span>
+        </li>
+            </ul>
+    </div>
+<script type="text/javascript">
+    headerFooter.init();
+    jq(".intro_row > ul > li >  img").click(function() {
+        var curNum = jq(".intro_row > ul > li > img").index(jq(this));
+
+        jq(".intro_row > ul > li > img").ppt({
+                    isFirst:true,
+                    isLast:false,
+                    curNum: curNum,
+                    imgParent:".intro_row"}
+        );
+    });
+</script>
