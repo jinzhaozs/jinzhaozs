@@ -486,7 +486,7 @@
      	$("#field2").val(comfield);
      	$("#school2").val(comschool);
      	$("#experience2").val(comexperience);
-     	$("#expintro2").val(comintro);
+     	$("#intro2").val(comintro);
      	$("#prize2").val(comprize);
      	$("#achievement2").val(comachievement);
      	$("#shop2").val(shop); 
@@ -501,6 +501,13 @@
     });  
     sure2.addEventListener('click', function(){
     	// 获取信息
+    	  var com_zc =[];
+         $('#com_zcfg2 input:checkbox:checked').each(function() {
+            com_zc.push($(this).val());
+        });
+         var com_zcf=com_zc.join();
+         var com_zcfg= com_zcf.concat(",");
+         $('#com_zcfg2 .zcfg').val(com_zcfg);
     var jobage2=$("#jobage2").val();
     var r = /^[0-9]*[1-9][0-9]*$/;
     if(!r.test(jobage2))
