@@ -10,7 +10,7 @@
 <div style="margin-left: 2%;margin-right: 2%; margin-top: 1%;">
 		<h1 style="text-align: center;">文章管理</h1>
 <button class="btn" style="margin-top: -5%;" id="showModel">添加文章</button> 
- 		<form class="well form-search" method="post" action="{:url('/admin/shop/index')}">
+ 		<form class="well form-search" method="post" action="{:url('/admin/Article/index')}">
 			<div class="search_type cc mb10" style="margin-top: -4%;margin-left: 70%;">
 					<span class="mr20">
 
@@ -33,9 +33,8 @@
 				<th>缩略图</th>
 				<th>摘要</th>
 				<th>审核</th>
-				<th>置顶</th>
-				<th>内容</th>
 				
+				<th>内容</th>
 				<th>操作</th>
 			</tr>
 		</thead>
@@ -47,11 +46,11 @@
 					<td style="display: none;"><span class="id">{$vores.id}</span></td>
 					<td><span class="">{$i++}</span></td>
 					<td><span class="aname">{$vores.aname}</span></td>
-					<td><span class="aname">{$vores.ashop}</span></td>
-					<td><span class="logo" name="{$vores.pic}"  ><img src="__STATIC__/uploads/{$vores.pic}" style="width:100px;height: 100px" class="img"></span></td>
-					<td><span class="tel">{$vores.abstract}</span></td>
+					<td><span class="shop" name="{$vores.ashop}">{$vores.name}</span></td>
+					<td><span  name="{$vores.pic}"  ><img src="__STATIC__/uploads/{$vores.pic}" style="width:100px;height: 100px" class="pic"></span></td>
+					<td><span class="abstract">{$vores.abstract}</span></td>
 					<td><span class="ischeck" name="{$vores.ischeck}">{if condition="($vores.ischeck == 1)"}已审核{else /}未审核{/if}</span></td>
-					<td><span class="istop" name="{$vores.istop}">{if condition="($vores.istop == 1)"}已置顶{else /} 未置顶{/if}</span></td>
+					
 					<td><span class="content">{$vores.content}</span></td>
 
 					<td>
@@ -75,14 +74,38 @@
 	<div id="modal" class="modal">  
 	    <div class="modal-content">  
 	        <header class="modal-header">  
-	            <h4>添加公司详情</h4>  
+	            <h4>添加文章</h4>  
 	            <span class="close">×</span>  
 	        </header>  
 	        <div class="modal-body">  
-	            <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Shop/add')}" >
+	            <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Article/add')}" >
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
-
-
+          <tr>
+            <input type="hidden" name="shop" id="shop" value="">
+            <td class='wid'>标题</td>
+            <td>
+              <input type="text"  id="aname" name="aname" placeholder="请输入标题">
+            </td>
+          </tr>
+          <tr>
+            <td class='wid'>缩略图</td>
+            <td>
+             <input type="file" name="pic" class="pic" />
+            </td>
+          </tr>
+          <tr>
+            <td class='wid'>摘要</td>
+            <td>
+              <textarea id="abstract" name="abstract" style="height: 50px;" placeholder="请填写摘要"></textarea>
+             
+            </td>
+          </tr>
+          <tr>
+            <td class='wid'>内容</td>
+            <td>
+              <textarea id="content" name="content" style="height: 50px;" placeholder="请填写内容"></textarea>
+            </td>
+          </tr>
 
 				</table>
 	        </div>  
@@ -103,9 +126,43 @@
 	        </header>  
 	        <div class="modal-body">  
 
-	             <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Shop/edit')}">
+	             <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Article/edit')}">
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
-
+          <input type="hidden" name="shop" id="shop2" value="">
+          <input type="hidden" name="id" class="ids" value="">
+                  <td class='wid'>标题</td>
+            <td>
+              <input type="text"  id="aname2" name="aname" placeholder="请输入标题">
+            </td>
+          </tr>
+          <tr>
+            <td class='wid'>缩略图</td>
+            <td>
+             <input type="file" name="pic" class="pic" />
+            </td>
+          </tr>
+          <tr>
+            <td class='wid'>摘要</td>
+            <td>
+              <textarea id="abstract2" name="abstract" style="height: 50px;" placeholder="请填写摘要"></textarea>
+             
+            </td>
+          </tr>
+          <tr>
+            <td class='wid'>内容</td>
+            <td>
+              <textarea id="content2" name="content" style="height: 50px;" placeholder="请填写内容"></textarea>
+            </td>
+          </tr>
+          <tr>
+          <td class='wid'>
+            审核
+          </td>
+          <td id="ischeck">
+            <input type="radio" name="ischeck" value="1"/>通过 
+            <input type="radio" name="ischeck" value="2"/>未通过
+          </td>
+        </tr>
 						
 
 				</table>
@@ -131,6 +188,8 @@
     var modal = document.getElementById('modal');  
     btn.addEventListener('click', function(){
         modal.style.display = "block";  
+        var shop = $(this).parent().parent().find(".shop").attr('name');
+      $("#shop").val(shop); 
     });  
     close.addEventListener('click', function(){  
         modal.style.display = "none";  
@@ -141,56 +200,13 @@
      
     sure.addEventListener('click', function(){  
     	// 获取信息
-    	var name = $("#names").val();
-    	var dizhi = $("#dizhi").val();
-    	var logo = $("#logo").val();
-    	var sz = $("#com_szqy").val()
-    	var tel = $("#com_tel").val();
+    	var name = $("#aname").val();
+    
 
-    	var sum = $("#suma").val();
-    	var bl = $("#bl input[name='bl']:checked").val();
-    	var rz = $("#rz input[name='rz']:checked").val();
-    	var com_zc=[];
-    	var com_lei = [];
-        var com_fu = [];
-        var com_pr =[];
-        $('#com_leixing input:checkbox:checked').each(function() {
-            com_lei.push($(this).val());
-        });
-        $('#com_fuqy input:checkbox:checked').each(function() {
-            com_fu.push($(this).val());
-        });
-         $('#com_zcfg input:checkbox:checked').each(function() {
-            com_zc.push($(this).val());
-        });
-         $('#com_price input:checkbox:checked').each(function() {
-            com_pr.push($(this).val());
-        });
-         var com_pri=com_pr.join();
-         var com_price= com_pri.concat(",");
-         var com_zcf=com_zc.join();
-         var com_zcfg= com_zcf.concat(",");
-         var com_fuq=com_fu.join();
-         var com_fuqy= com_fuq.concat(",");
-         var com_leixin=com_lei.join();
-         var com_leixing=com_leixin.concat(",");
-         $('#com_fuqy .fuqy').val(com_fuqy);
-         $('#com_zcfg .zcfg').val(com_zcfg);
-         $('#com_leixing .leixing').val(com_leixing);
-          $('#com_price .price').val(com_price);
-          
-          if (name == "" || dizhi == "" || logo == "" || sz == "" || tel == "" || sum == "" || bl == "") {
-          	alert("请完善信息");
-          	// return false;
-          }
-          else if (!tel.match(/^(((13[0-9]{1})|159|153)+\d{8})$/)) { 
-            alert("手机号码格式不正确！"); 
-        }
-          	else{
+    	
           	$("#formsubadd").submit();
 
-          }
-         
+       
         
     
       
@@ -206,50 +222,19 @@
     //模态框展示 
     $(".showModel2").click(function(){
     	comid = $(this).parent().parent().find(".id").html();
-    	comname = $(this).parent().parent().find(".name").html();//获取name
-    	comdizhi = $(this).parent().parent().find(".dizhi").html();//获取compaix
-    	comszqy = $(this).parent().parent().find(".comszqy").attr('name');
-    	comfuqy = $(this).parent().parent().find(".comfuqy").html();
-    	comzcfg = $(this).parent().parent().find(".comzcfg").html();
-    	comleixing = $(this).parent().parent().find(".comleixing").html();
-    	combl=$(this).parent().parent().find(".bl").attr('name');
-        comrz=$(this).parent().parent().find(".rz").attr('name');
-        comsum=$(this).parent().parent().find(".sum").html();
-        comprice=$(this).parent().parent().find(".comprice").html();
-        comlogo=$(this).parent().parent().find(".comlogo").attr('name');
-        image=$(this).parent().parent().find(".img").attr('src');
-        tel=$(this).parent().parent().find(".tel").html();
+    	comname = $(this).parent().parent().find(".aname").html();//获取name
+    	comshop = $(this).parent().parent().find(".shop").attr('name');
+      comischeck=$(this).parent().parent().find(".ischeck").attr('name');
+      comabstract =$(this).parent().parent().find(".abstract").html();
+      comcontent =$(this).parent().parent().find(".content").html()
     	//赋值
-    	var compri=comprice.substring(0, comprice.lastIndexOf(','));
-        var comfuq = comfuqy.substring(0, comfuqy.lastIndexOf(','));
-        var comzcf = comzcfg.substring(0, comzcfg.lastIndexOf(','));
-        var comleixi= comleixing.substring(0, comleixing.lastIndexOf(','));	
-       $(compri.split(",")).each(function (i,dom){
-        $("#com_price2 :checkbox[value='"+dom+"']").prop("checked",true);
-        $(" #com_price2 :checkbox[id='"+dom+"']").prop("checked",true);
-    });
-     $(comfuq.split(",")).each(function (i,dom){
-        $("#com_fuqy2 :checkbox[value='"+dom+"']").prop("checked",true);
-        $(" #com_fuqy2 :checkbox[id='"+dom+"']").prop("checked",true);
-    });
-     $(comzcf.split(",")).each(function (i,dom){
-        $("#com_zcfg2 :checkbox[value='"+dom+"']").prop("checked",true);
-        $(" #com_zcfg2 :checkbox[id='"+dom+"']").prop("checked",true);
-    });
-     $(comleixi.split(",")).each(function (i,dom){
-        $("#com_leixing2 :checkbox[value='"+dom+"']").prop("checked",true);
-        $(" #com_leixing2 :checkbox[id='"+dom+"']").prop("checked",true);
-    });//复选赋值
-    	$("#name2").val(comname);
-    	$("#com_tel2").val(tel);
-    	$("#dizhi2").val(comdizhi);
-    	$("#sum2").val(comsum);
-    	$("#logo2").val(comlogo);
-    	$("#sz2").find('option[value="'+comszqy+'"]').attr("selected",true);
-        $("#bl2 input[name='bl'][value='"+combl+"']").attr("checked",true);  
-     	$("#rz2 input[name='rz'][value='"+comrz+"']").attr("checked",true); 
+    	$("#aname2").val(comname);
+    	$("#shop2").val(comshop);
+      $("#abstract2").val(comabstract);
+      $("#content2").val(comcontent);
+      $("#ischeck input[name='ischeck'][value='"+comischeck+"']").attr("checked",true);  
      	$(".ids").val(comid);
-     	 $("#img img").attr("src",image);
+     	 
         
     	// alert(comid);comname
     	 modal2.style.display = "block";  
@@ -262,61 +247,19 @@
     });  
     sure2.addEventListener('click', function(){
     	// 获取信息
-    	var name2 = $("#name2").val();
-    	var dizhi2 = $("#dizhi2").val();
-    	var logo2 = $("#logo2").val();
-    	var sz2 = $("#sz2").val();
-        var sum2 = $("#sum2").val();
-    	var bl2 = $("#bl2 input[name='radio1']:checked").val();
-    	var rz2 = $("#rz2 input[name='radio2']:checked").val();
-    	var tel2 = $("#com_tel2").val();
-    	var com_zc2=[];
-    	var com_lei2 = [];
-        var com_fu2 = [];
-        var com_pr2 =[];
-        $('#com_leixing2 input:checkbox:checked').each(function() {
-            com_lei2.push($(this).val());
-        });
-        $('#com_fuqy2 input:checkbox:checked').each(function() {
-            com_fu2.push($(this).val());
-        });
-         $('#com_zcfg2 input:checkbox:checked').each(function() {
-            com_zc2.push($(this).val());
-        });
-         $('#com_price2 input:checkbox:checked').each(function() {
-            com_pr2.push($(this).val());
-        });
-         var com_pri2=com_pr2.join();
-         var com_price2= com_pri2.concat(",");
-         var com_zcf2=com_zc2.join();
-         var com_zcfg2= com_zcf2.concat(",");
-         var com_fuq2=com_fu2.join();
-         var com_fuqy2= com_fuq2.concat(",");
-         var com_leixin2=com_lei2.join();
-         var com_leixing2=com_leixin2.concat(",");
-        
-          $('#com_fuqy2 .fuqy').val(com_fuqy2);
-         $('#com_zcfg2 .zcfg').val(com_zcfg2);
-         $('#com_leixing2 .leixing').val(com_leixing2);
+    
 
-          if (name2 == "" || dizhi2 == "" || logo2 == "" || sz2 == "" || tel2 == "" || sum2 == "" || bl2 == "") {
-          	alert("请完善信息");
-          	// return false;
-          }
-          else if(!tel2.match(/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/)){
-            alert("号码不正确");
-        }
-          	else{
+         
           	$("#formsubedit").submit();
 
-          }
-    	
+         
+    
     });
     // 执行删除
     $(".delcom").click(function(){
     	if(confirm("确定删除该类型吗？")){
     		comid = $(this).parent().parent().find(".id").html();
-    		var image=$(this).parent().parent().find(".img").attr('src');
+    		var image=$(this).parent().parent().find(".pic").attr('src');
     		// alert(comid);return false;
     		$(this).parent().parent().remove();
     		// console.log(aa);return false;
@@ -324,8 +267,8 @@
 	            type:"post",
 	            dataType:'json',
 	            async:false,
-	            url:'{:url("admin/Shop/delete")}',
-	            data:{"id":comid,"image":image},
+	            url:'{:url("admin/Article/delete")}',
+	            data:{"id":comid,"pic":image},
 	            success:function(dd){
 	                // console.log(dd);
 	                if (dd.code == 200) {
@@ -339,43 +282,9 @@
 	        })
     	}
     });
-     $(".zhi").click(function(){
-     	var shopid=$(this).attr('name');
-     	
-        $.ajax({
-            type:"post",
-            dataType:'json',
-            async:false,
-            url:'{:url("admin/shop/ajaxedit")}',
-            data:{"shopid":shopid},
-              success:function(dd){
-              	if(dd)
-              	{
-              		window.location.reload();
-              	}
-              }
-        })
-        });
+    
 
-        $(".qzhi").click(function(){
-     	var shopid=$(this).attr('name');
-     	
-        $.ajax({
-            type:"post",
-            dataType:'json',
-            async:false,
-            url:'{:url("admin/shop/ajaxqzhi")}',
-            data:{"shopid":shopid},
-              success:function(dd){
-              	if(dd)
-              	{
-              		window.location.reload();
-              	}
-              }
-        })
-
-
-     });
+     
 </script> 
 </html>
 {/block}
