@@ -11,6 +11,9 @@ namespace app\admin\controller;
 
 use think\Controller;
 
+use think\Request;
+
+use think\File;
 class Plan extends Controller
 {
 	/**
@@ -36,7 +39,7 @@ class Plan extends Controller
         $this->assign("comid",$comid);//公司id
         $where['plan.comid'] = $comid;
          //分页
-        $res = $plan->field("plan.id,plan.fname,plan.frenyuan,plan.fmianji,plan.fyusuan,plan.ffangshi,lx.lxname as ftype,shop.name as comid,com_layout.lname as fhuxing,com_zhuancfg.zcfgname as ffengge")
+        $res = $plan->field("plan.id,plan.fname,plan.flogo,plan.frenyuan,plan.fmianji,plan.fyusuan,plan.ffangshi,lx.lxname as ftype,shop.name as comid,com_layout.lname as fhuxing,com_zhuancfg.zcfgname as ffengge")
         ->join('com_qiyecsleixing lx','plan.ftype = lx.lxcode','left')//类型
         ->join('shop','plan.comid = shop.id','left')//公司
         ->join('com_layout','plan.fhuxing = com_layout.lcode','left')//户型
@@ -55,8 +58,13 @@ class Plan extends Controller
     {
     	// 主表添加
     	$user = db('plan'); 
+    	$file = request()->file('flogo');
         $shuju = input('post.');//获取数据
-        $shuju['time'] = date("Y-m-d h:i:s",time());            
+        $shuju['time'] = date("Y-m-d h:i:s",time());    
+        $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
+        if($info){
+             $shuju['flogo']=$info->getSaveName();
+        }           
         $user_info = $user->insert($shuju);//主表添加 
         //副表添加
         $shuju_do['planid'] = db('plan')->getLastInsID();  
