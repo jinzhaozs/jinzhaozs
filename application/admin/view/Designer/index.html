@@ -108,7 +108,7 @@
 		<span class="idea">{$vores.idea}</span>
 	</td>
 	<td>
-		<span class="field">{$vores.field}</span>
+		<span class="field"  name="{$vores.field}">{$vores.lxname}</span>
 	</td>
 	<td>
 		<span class="school">{$vores.school}</span>
@@ -207,7 +207,12 @@
 						擅长领域
 					</td>
 					<td>
-						<input type="text" name="field" id="field" placeholder="请输入设计理念">
+							<select name="field" id="field"> 
+							<option value ="0">请选择</option>  
+                              {foreach name="reslx" item="voreslx"}
+                               <span ><option value ="{$voreslx.lxcode}">{$voreslx.lxname}</option></span>  
+                              {/foreach}
+                            </select>
 					</td>
 				</tr>
 				<tr>
@@ -336,7 +341,12 @@
 						擅长领域
 					</td>
 					<td>
-						<input type="text" name="field" id="field2" placeholder="请输入设计理念">
+						<select name="field" id="field2"> 
+							<option value ="0">请选择</option>  
+                              {foreach name="reslx" item="voreslx"}
+                               <span ><option value ="{$voreslx.lxcode}">{$voreslx.lxname}</option></span>  
+                              {/foreach}
+                            </select>
 					</td>
 				</tr>
 				<tr>
@@ -461,7 +471,7 @@
     	comsex=$(this).parent().parent().find(".sex").attr('name');
     	comdzcfg = $(this).parent().parent().find(".com_dzcfg").html();
     	comidea = $(this).parent().parent().find(".idea").html();
-    	comfield = $(this).parent().parent().find(".field").html();
+    	comfield =  $(this).parent().parent().find(".field ").attr('name');
     	comschool = $(this).parent().parent().find(".school").html();
     	comexperience = $(this).parent().parent().find(".experience").html();
     	comintro = $(this).parent().parent().find(".intro").html();
@@ -470,12 +480,12 @@
     	var shop = $(this).parent().parent().find(".shop").attr('name');
     	//赋值
         var comzcf = comdzcfg.substring(0, comdzcfg.lastIndexOf(','));
-      
+       //复选赋值
      $(comzcf.split(",")).each(function (i,dom){
         $("#com_zcfg2 :checkbox[value='"+dom+"']").prop("checked",true);
         $(" #com_zcfg2 :checkbox[id='"+dom+"']").prop("checked",true);
     });
-    //复选赋值
+   		$("#field2").find('option[value="'+comfield+'"]').attr("selected",true);
     	$("#dname2").val(comname);
     	$("#davatar2").val(comdavatar);
         $("#sex2 input[name='sex'][value='"+comsex+"']").attr("checked",true);  

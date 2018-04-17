@@ -66,6 +66,9 @@ Route::rule('/admin/shop/index','admin/shop/index');//公司详情
 Route::rule('/admin/shop/add','admin/shop/add');//添加
 Route::rule('/admin/shop/edit','admin/shop/edit');//修改
 Route::rule('/admin/shop/delete','admin/shop/delete');//删除
+Route::rule('/admin/shop/ajaxedit','admin/shop/ajaxedit');//置顶
+Route::rule('/admin/shop/ajaxqzhi','admin/shop/ajaxqzhi');//取消置顶
+
 //公司案例
 Route::rule('/admin/plan/index','admin/plan/index');//公司 案例列表
 Route::rule('/admin/plan/add','admin/plan/add');//添加
@@ -78,6 +81,13 @@ Route::rule('/admin/designer/index','admin/designer/index');//公司详情
 Route::rule('/admin/designer/add','admin/designer/add');//添加
 Route::rule('/admin/designer/edit','admin/designer/edit');//修改
 Route::rule('/admin/designer/delete','admin/designer/delete');//删除
+
+//
+Route::rule('/admin/article/index','admin/article/index');//公司 文章列表
+Route::rule('/admin/article/add','admin/article/add');//添加
+Route::rule('/admin/article/edit','admin/article/edit');//修改
+Route::rule('/admin/article/delete','admin/article/delete');//删除
+
 
 
 
