@@ -35,7 +35,7 @@ class Shop extends Controller
            $where['name']=array('like','%'.$urlcanshu['keyword'].'%');
         }
 
-    	$res=$user->field("shop.id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_koubei,com_haoping,com_tel,qyname")->join('com_fuwuqy w','shop.com_szqy = w.qycode')->where($where)->order("shop.id")->paginate(10,false,[
+    	$res=$user->field("shop.id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_koubei,com_haoping,com_tel,qyname,top")->join('com_fuwuqy w','shop.com_szqy = w.qycode')->where($where)->order("shop.id")->paginate(10,false,[
 'query'=>$urlcanshu,
 ]); 
         
@@ -60,6 +60,7 @@ class Shop extends Controller
         $shuju = input('post.');//获取数据
         $shuju['time'] = date("Y-m-d h:i:s",time());
         $shuju['dis']=2; 
+        $shuju['top']=2;
        if($file)
        { 
             $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads'); 
@@ -129,6 +130,27 @@ class Shop extends Controller
                 'msg'  => '删除成功 !',
         );
         return $data;
+    }
+    //置顶
+       public function ajaxedit(){
+        //获取 id
+        $where['id'] = input('put.shopid');
+        
+        $lx= db("shop")->max('com_paixu');
+         $shuju['com_paixu']=$lx+1;
+        $shuju['top']=1;
+
+        $res = db("shop")->where($where)->update($shuju);
+        return $res;
+    
+    }
+    public function ajaxqzhi()
+    {
+         $where['id'] = input('put.shopid');
+         $shuju['com_paixu']=1;
+        $shuju['top']=2;
+        $res = db("shop")->where($where)->update($shuju);
+        return $res;
     }
     
 }
