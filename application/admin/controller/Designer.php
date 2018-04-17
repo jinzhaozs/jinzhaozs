@@ -43,10 +43,13 @@ class Designer extends Controller
         $shuju = input('post.');//获取数据
         $shuju['dtime'] = date("Y-m-d h:i:s",time());
         $shuju['grade']='A级信用设计师';  
+         if($file)
+       { 
         $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
         if($info){
              $shuju['davatar']=$info->getSaveName();
-        }        
+        }  
+        }      
         $user_info = $user->insert($shuju);
         if (!$user_info) {
            $this->error("添加失败","admin/Designer/index");
@@ -64,10 +67,12 @@ class Designer extends Controller
         $where['id'] = $whid; 
         $shuju = input('post.');//获取数据
         $file = request()->file('davatar');
-     
+      if($file)
+       { 
          $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
         if($info){
              $shuju['davatar']=$info->getSaveName();
+        }
         } 
         $res = $user->where($where)->update($shuju);
         if (!$res) {
