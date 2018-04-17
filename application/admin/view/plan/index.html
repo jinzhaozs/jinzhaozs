@@ -30,6 +30,7 @@
 				<!-- <th>id</th> -->
 				<th>编号</th>
 				<th>方案名称</th>
+				<th>方案logo</th>
 				<th>类型</th>
 				<th>人员</th>
 				<th>对应公司</th>
@@ -48,6 +49,7 @@
 				<tr>
 					<td style="display: block;"><span class="planid">{$vores.id}</span></td>
 					<td><span>{$vores.fname}</span></td>
+					<td><span><img src="__STATIC__/uploads/{$vores.flogo}" style="width:100px;height: 100px" class="img"></span></td>
 					<td><span>{$vores.ftype}</span></td>
 					<td><span>{$vores.frenyuan}</span></td>
 					<td><span>{$vores.comid}</span></td>
@@ -87,6 +89,14 @@
 						<td class='wid'>方案名称</td>
 						<td>
 							<input type="text" class="form-control" name="fname" placeholder="请输入名称">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>方案logo</td>
+						<td>
+							
+							<input type="file" name="flogo" />
+							
 						</td>
 					</tr>
 					<tr>
@@ -179,6 +189,13 @@
 						<td class='wid'>方案名称</td>
 						<td>
 							<input type="text" class="form-control" name="fname" id = "fname"placeholder="请输入名称">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>方案logo</td>
+						<td>
+							<div ><img id="img" src="__STATIC__/uploads/" style="width:100px;height: 100px" ></div>
+							<input type="file" name="flogo" class="form-control" id="logo2"  />
 						</td>
 					</tr>
 					<tr>
@@ -353,7 +370,7 @@
             url:'{:url("admin/plan/ajaxedit")}',
             data:{"planid":planid},
             success:function(dd){
-                console.log(dd);
+                // console.log(dd);
                 // console.log(dd[0]['fjianjie']);
                 //赋值planid
                 $("#planid").val(dd[0]['id']);
@@ -367,6 +384,9 @@
                 $("#ffengge").find("option[value = '"+dd[0]['ffengge']+"']").attr("selected","selected");
                 $("#ffangshi").val(dd[0]['ffangshi']);
                 $("#fjianjie").html(dd[0]['fjianjie']);
+                // var image=$("#img").attr();
+                // alert(image);
+                // $("#img").attr("src",image+dd[0]['flogo']);
     			modal2.style.display = "block";  
                 
             }
