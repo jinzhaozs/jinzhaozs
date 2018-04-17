@@ -81,6 +81,7 @@ class Index extends \app\index\controller\Base
          * 公司信息
          * @var [type]
          */
+        $whereleixing['top']=1;
         $shop = $this->uri("shop",$whereleixing,"10",$urlcanshu);//查询公司信息
         // echo db("shop")->getLastsql();
         // dump($shop);die;
