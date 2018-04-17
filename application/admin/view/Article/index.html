@@ -81,7 +81,7 @@
 	            <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Article/add')}" >
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
           <tr>
-            <input type="hidden" name="shop" id="shop" value="">
+            <input type="hidden" name="shop" id="shop" value="{$comid}">
             <td class='wid'>标题</td>
             <td>
               <input type="text"  id="aname" name="aname" placeholder="请输入标题">
@@ -188,8 +188,7 @@
     var modal = document.getElementById('modal');  
     btn.addEventListener('click', function(){
         modal.style.display = "block";  
-        var shop = $(this).parent().parent().find(".shop").attr('name');
-      $("#shop").val(shop); 
+      
     });  
     close.addEventListener('click', function(){  
         modal.style.display = "none";  
