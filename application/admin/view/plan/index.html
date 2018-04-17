@@ -32,7 +32,7 @@
 				<th>方案名称</th>
 				<th>方案logo</th>
 				<th>类型</th>
-				<th>人员</th>
+				<th>设计师</th>
 				<th>对应公司</th>
 				<th>房屋面积</th>
 				<th>装修预算</th>
@@ -49,7 +49,7 @@
 				<tr>
 					<td style="display: block;"><span class="planid">{$vores.id}</span></td>
 					<td><span class="fname">{$vores.fname}</span></td>
-					<td><span class="img"><img src="__STATIC__/uploads/{$vores.flogo}" style="width:100px;height: 100px" ></span></td>
+					<td><span class="img"><img src="__STATIC__/uploads/{$vores.flogo}" style="width:50px;height: 50px" ></span></td>
 					<td><span>{$vores.ftype}</span></td>
 					<td><span>{$vores.frenyuan}</span></td>
 					<td><span class="comname">{$vores.comid}</span></td>
@@ -111,9 +111,14 @@
 						</td>
 					</tr>
 					<tr>
-						<td class='wid'>参与人员</td>
+						<td class='wid'>设计师</td>
 						<td>
-							<input type="text" name="frenyuan" class="form-control" placeholder="请输入名称">
+							<select name="frenyuan"> 
+							<option value ="0">请选择</option>  
+                              {foreach name="usersjs" item="vousersjs"}
+                               <span ><option value ="{$vousersjs.id}">{$vousersjs.dname}</option></span>  
+                              {/foreach}
+                            </select>
 						</td>
 					</tr>
 					<tr>
@@ -210,9 +215,14 @@
 						</td>
 					</tr>
 					<tr>
-						<td class='wid'>参与人员</td>
+						<td class='wid'>设计师</td>
 						<td>
-							<input type="text" name="frenyuan" id="frenyuan" class="form-control" placeholder="请输入名称">
+							<select name="frenyuan" class="shejishi"> 
+							<option value ="0">请选择</option>  
+                              {foreach name="usersjs" item="vousersjs"}
+                               <span ><option value ="{$vousersjs.id}">{$vousersjs.dname}</option></span>  
+                              {/foreach}
+                            </select>
 						</td>
 					</tr>
 					<tr>
@@ -459,6 +469,7 @@
                 $("#fname").val(dd[0]['fname']);
                 // 类型
                 $(".leixing").find("option[value = '"+dd[0]['ftype']+"']").attr("selected","selected");
+                $(".shejishi").find("option[value = '"+dd[0]['frenyuan']+"']").attr("selected","selected");
                 $("#frenyuan").val(dd[0]['frenyuan']);
                 $("#fmianji").val(dd[0]['fmianji']);
                 $("#fyusuan").val(dd[0]['fyusuan']);

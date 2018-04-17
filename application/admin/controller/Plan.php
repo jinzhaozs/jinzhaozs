@@ -28,22 +28,26 @@ class Plan extends Controller
         $userlx = db("com_qiyecsleixing");//类型
         $userhx = db("com_layout");//户型
         $userfg = db("com_zhuancfg");//风格
+        $usersjs = db("designer");//设计师
        
         $reslx = $userlx->select();//类型
         $userhx = $userhx->select();//户型
         $userfg = $userfg->select();//风格
+        $usersjs = $usersjs->select();//设计师
         // dump($reslx);	
         $this->assign("reslx",$reslx);//类型
         $this->assign("userhx",$userhx);//户型.
         $this->assign("userfg",$userfg);//风格.
+        $this->assign("usersjs",$usersjs);//设计师
         $this->assign("comid",$comid);//公司id
         $where['plan.comid'] = $comid;
          //分页
-        $res = $plan->field("plan.id,plan.fname,plan.flogo,plan.frenyuan,plan.fmianji,plan.fyusuan,plan.ffangshi,lx.lxname as ftype,shop.name as comid,com_layout.lname as fhuxing,com_zhuancfg.zcfgname as ffengge")
+        $res = $plan->field("plan.id,plan.fname,plan.flogo,plan.frenyuan,plan.fmianji,plan.fyusuan,plan.ffangshi,lx.lxname as ftype,shop.name as comid,com_layout.lname as fhuxing,com_zhuancfg.zcfgname as ffengge,designer.dname as frenyuan")
         ->join('com_qiyecsleixing lx','plan.ftype = lx.lxcode','left')//类型
         ->join('shop','plan.comid = shop.id','left')//公司
         ->join('com_layout','plan.fhuxing = com_layout.lcode','left')//户型
         ->join('com_zhuancfg','plan.ffengge = com_zhuancfg.zcfgcode','left')//风格
+        ->join('designer','plan.frenyuan = designer.id','left')//设计师
         ->order("plan.id")
         ->where($where)
         ->paginate(10);
@@ -61,8 +65,8 @@ class Plan extends Controller
     	$file = request()->file('flogo');
         $shuju = input('post.');//获取数据
         $shuju['time'] = date("Y-m-d h:i:s",time());    
+        if($file){
         $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
-        if($info){
              $shuju['flogo']=$info->getSaveName();
         }           
         $user_info = $user->insert($shuju);//主表添加 
