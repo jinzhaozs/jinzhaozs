@@ -1,0 +1,185 @@
+{include file="base/header" /}
+{block name="nav"}	
+<nav class="top">
+    <div class="wrapper ">
+        <div class="top-box-left ">
+            <ul>
+                    <li class="back-home "><a href=" " title="中国装修网 ">金朝装饰</a></li>
+                <li class="city ">
+                    <span class="cityBox" style="z-index:9999; ">
+                        <a class="change" href="javascript:void()" title="装修金朝装饰北京站 ">
+                        	<i class="icon-weizhi"></i>
+                        	<span>北京站</span>[切换]<s></s></a>
+		<div id="CityTab" class="citytab" style="display: none; ">
+    <div class="city-title">当前城市：<span id="now_cityname ">北京</span> <a href=" ">[城市导航]</a></div>
+                <div class="topcity ">
+                    <a href="http://www.bzw315.com/index.html "><em class="all ">全国</em></a>
+                    <a href="http://bj.bzw315.com/ ">北京</a>
+                    <a href="http://sh.bzw315.com/ ">上海</a>
+                    <a href="http://gz.bzw315.com/ ">广州</a>
+                    <a href="http://0755.bzw315.com/ ">深圳</a>
+                    <a href="http://cd.bzw315.com/ ">成都</a>
+                    <a href="http://xa.bzw315.com/ ">西安</a>
+                    <a href="http://tj.bzw315.com/ ">天津</a>
+                    <a href="http://wh.bzw315.com/ ">武汉</a>
+                    <a href="http://cq.bzw315.com/ ">重庆</a>
+                    <a href="http://nj.bzw315.com/ ">南京</a>
+                </div>
+
+                <div class="findtab ">
+                    <div class="tabmeun ">
+                        <span class="onspan active ">推荐城市</span>
+                        <span class=" ">ABCDE</span>
+                        <span class=" ">FGHIJ</span>
+                        <span class=" ">KLMNO</span>
+                        <span class=" ">PQRST</span>
+                        <span class=" ">UVWXYZ</span>
+                    </div>
+                    
+                </div>
+            </div>
+<script>
+    $('select').mouseleave(function () {
+        return false;
+    });
+    $(function () {
+        $(document).on('mousemove', '.tabmeun span', function () {
+            var i = $(this).index();
+            $(this).addClass('active').siblings().removeClass('active');
+            $('.tabboty table:eq(' + i + ')').show().siblings().hide();
+        });
+    });
+</script>
+     </span>
+                </li>
+                <li class="m-box ">
+                    <a href="" class="pho"><i class="icon-app "></i> 手机版<s></s></a>
+                    <div class="m-open ">
+                        <div class="follow_app_ewm ">
+                            <div class="app_download ">
+                                <img src="__STATIC__/shopcom/img/icon_bzw315app_ewm.jpg " alt=" " class="img ">
+                                <span>app扫 </span>
+                                <a href="http://www.bzw315.com/app/index.html " title= ios版">iphone版</a>
+		<a href="http://www.bzw315.com/app/index.html" title=安 卓版 ">安卓版</a>
+                            </div>
+                            <div class="bzw_ewm ">
+                                <img src="__STATIC__/shopcom/img/icon_bzw315_web.jpg " alt=" " class="img ">
+                                <span>金朝装饰手机站</span>
+                                <em class="sub-title ">手机访问同样精彩</em>
+                            </div>
+                        </div>
+                        <div class="follow_ours "> <strong><i class="i01 "></i>关注我们<i class="i02 "></i></strong> </div>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+        <div class="top-box-right ">
+            <ul>
+                
+                <li id="SSO_LoginShow " style="display:none; ">
+                    <div class="RegLogin ">
+                        <input type="hidden " id="userguid ">
+                        <span class="f1 ">您好，<label id="lblSSOUserName "></label></span>
+                        <a href="http://usercenter.bzw315.com/index.html " target="_blank ">[会员中心]</a>
+                        <a href="javascript:void(0); " id="SSOLoginOff ">[退出]</a>
+                    </div>
+                </li>
+
+                <li class="login clearfix " id="SSO_NoLogin ">
+                    <div class="signIn_box fl ">
+                        <span class="signIn_box_tit "><a href="http://usercenter.bzw315.com/index.html " target="_blank ">登录</a></span>
+                        <div class="signIn_box_bd " style="display: none; ">
+                            <div class="signIn_box_relative ">
+                                <a href="http://usercenter.bzw315.com/ " title="账户登录 " class="general_account_login " target="_blank ">账户登录</a>
+                                <a href="http://usercenter.bzw315.com/loginphone.html " title="手机快速登录 " class="phone_fast_signIn " target="_blank ">手机快速登录</a>
+                                <div class="account_tit "> <strong><i class="i01 "></i>社交账号登录<i class="i02 "></i></strong> </div>
+                                <div class="account_container clearfix ">
+                                    
+                                </div>
+                            </div>
+                            <div class="weixin_signIn_box ">
+                                <strong>微信登录</strong>
+                                <div class="weixin-code "></div>
+                                <span>请使用微信扫描二维码登录“金朝装饰通行证”</span> <a href="javascript:void(0) " title=" " class="other_ways " id="other_ways ">其它方式登录</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="register_box fl "> <a href="http://usercenter.bzw315.com/register.html " title="免费注册 ">免费注册</a> </div>
+                </li>
+
+                <li class="settled-box "><a target="_blank " href="http://www.bzw315.com/zhaoshang/ " class="settled "><i class="icon-vipshangjia "></i> 商家入驻</a></li>
+
+                <li class="kefu-box ">
+                    <a href="javascript:void(0) ">服务热线：400-9907-315</a>
+                    
+                </li>
+                <li class="nav-box-nn">
+                    <a href="javascript:; " class="nav-nn">网站导航<i></i></a>
+                <div class="top-nav open clearfix ">
+                <div class="open-wrap ">
+                    <div class="nn ">
+                        <h4 class="c01 "><i></i>装修服务</h4>
+                        <a target="_blank " href="http://www.bzw315.com/zhuangxiu/ ">装修立省30%</a>
+                        <a target="_blank " href="http://www.bzw315.com/zhaobiao/ ">免费装修报价</a>
+                        <a target="_blank " href="http://www.bzw315.com/baozhang/ ">装修保障金</a>
+                        <div class="sub_classify ">
+                            <div class="sub_classify_bd ">
+                                <a target="_blank " title="装修贷款 " href="http://www.bzw315.com/daikuan/ ">贷款</a>
+                                <a target="_blank " title="装修保险 " href="http://www.bzw315.com/baoxian/ ">保险</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nn ">
+                        <h4 class="c02 "><i></i>效果图</h4>
+                        <a target="_blank " href="http://www.bzw315.com/xiaoguotu/ ">效果图库</a>
+                        <a target="_blank " href="http://www.bzw315.com/xiaoguotu/item/ ">美图专题</a>
+                        <a target="_blank " href="http://www.bzw315.com/xiaoguotu/home/ ">家装风格</a>
+                        <a target="_blank " href="http://www.bzw315.com/xiaoguotu/public/ ">工装效果图</a>
+                    </div>
+                    <div class="nn ">
+                        <h4 class="c03 "><i></i>装修攻略</h4>
+                        <a target="_blank " href="http://www.bzw315.com/zx/ ">装修资讯</a>
+                        <a target="_blank " href="http://www.bzw315.com/zx/item/fengshui/ ">装修风水</a>
+                        <a target="_blank " href="http://www.bzw315.com/baike/ ">装修百科</a>
+                        <a target="_blank " href="http://www.bzw315.com/ask/ ">装修问答</a>
+                    </div>
+                    <div class="nn ">
+                        <h4 class="c04 "><i></i>装修设计</h4>
+                        <a target="_blank " href="http://bj.bzw315.com/shops/ ">装修公司</a>
+                        <a target="_blank " href="http://bj.bzw315.com/designs/ ">设计师</a>
+                        <a target="_blank " href="http://www.bzw315.com/zx/hyzx/zxgspm/ ">装修公司排名</a>
+                        <a target="_blank " href="http://www.bzw315.com/learndecorate/ ">3分钟学装修</a>
+                    </div>
+                    <div class="nn ">
+                        <h4 class="c06 "><i></i>装修工具</h4>
+
+                        <a target="_blank " href="http://www.bzw315.com/item/jsq/index.html ">装修计算器</a>
+                        <div class="sub_classify ">
+                            <div class="sub_classify_bd ">
+                                <a target="_blank " title="装修涂料计算器 " href="http://www.bzw315.com/item/jsq/tuliao.html ">涂料</a>
+                                <a target="_blank " title="装修地板计算器 " href="http://www.bzw315.com/item/jsq/diban.html ">地板</a>
+                                <a target="_blank " title="装修壁纸计算器 " href="http://www.bzw315.com/item/jsq/bizhi.html ">壁纸</a>
+                                <a target="_blank " title="装修墙砖计算器 " href="http://www.bzw315.com/item/jsq/qiangzhuan.html ">墙砖</a>
+                                <a target="_blank " title="装修窗帘计算器 " href="http://www.bzw315.com/item/jsq/chuanglian.html ">窗帘</a>
+                                <a target="_blank " title="装修地砖计算器 " href="http://www.bzw315.com/item/jsq/dizhuan.html ">地砖</a>
+                            </div>
+                        </div>
+                        <a target="_blank " href="http://www.bzw315.com/huangli/index.html ">装修黄历</a>
+                    </div>
+                    <div class="nn ">
+                        <h4 class="c05 "><i></i>更多精彩</h4>
+                        <a target="_blank " href="http://www.bzw315.com/app/ ">金朝装饰APP</a>
+                        <a target="_blank " href="http://www.bzw315.com/kuajie/ ">跨界合作</a>
+                        <a target="_blank " href="http://www.bzw315.com/abouts/introduction/ ">关于我们</a>
+                        <a target="_blank " href="http://www.bzw315.com/abouts/contact/ ">联系我们</a>
+                    </div>
+                </div>
+            </div></li>
+            </ul>
+        </div>
+    </div>
+</nav>{/block}
+{block name="info"}信息列表{/block}
+{block name="link"}{/block}
+{include file="base/footer" /}

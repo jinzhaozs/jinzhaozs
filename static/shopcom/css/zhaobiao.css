@@ -1,0 +1,58 @@
+﻿.check-code {
+    background: transparent url(../images/input_tupian.png) no-repeat scroll 0 0 !important;
+    display: none;
+    height: 64px;
+    padding: 15px;
+    position: absolute;
+    right: -25px;
+    top: -97px;
+    width: 136px;
+}
+
+    .check-code span {
+        display: initial !important;
+        height: initial !important;
+        line-height: initial !important;
+    }
+
+        .check-code span a {
+            color: #ff6929;
+            display: inline-block;
+            float: right;
+            font-size: 12px;
+            height: 20px;
+            line-height: 20px;
+            width: 40px;
+        }
+
+        .check-code span input {
+            display: inline-block;
+            float: left;
+            height: 20px;
+            line-height: 20px;
+            margin-top: 7px;
+            padding-left: 5px;
+            width: 65px;
+        }
+
+            .check-code span input:focus {
+                border: 1px solid #ff6929;
+            }
+
+        .check-code span button {
+            background: #ff6929 none repeat scroll 0 0;
+            border: 0 none;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            float: right;
+            height: 22px;
+            line-height: 20px;
+            margin-top: 7px;
+            width: 50px;
+        }
+
+.zhaobiao-focus {
+    background-color: #ffffcd !important;
+    /*border: 1px solid #FF9966 !important;*/
+}
