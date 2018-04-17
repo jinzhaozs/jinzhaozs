@@ -60,12 +60,14 @@ class Shop extends Controller
         $shuju = input('post.');//获取数据
         $shuju['time'] = date("Y-m-d h:i:s",time());
         $shuju['dis']=2; 
+       if($file)
+       { 
+            $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads'); 
        
-
-        $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
         if($info){
              $shuju['logo']=$info->getSaveName();
-        }        
+        } 
+      }       
         $user_info = $user->insert($shuju);
         if (!$user_info) {
            $this->error("添加失败","admin/Shop/index");
@@ -84,10 +86,13 @@ class Shop extends Controller
         $shuju = input('post.');//获取数据
         $file = request()->file('logo');
         $shuju['time'] = date("Y-m-d h:i:s",time());
+         if($file)
+       { 
          $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
         if($info){
              $shuju['logo']=$info->getSaveName();
         } 
+       }
         $res = $user->where($where)->update($shuju);
         if (!$res) {
            $this->error("修改失败","admin/Shop/index");

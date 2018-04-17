@@ -9,7 +9,7 @@
 <body>
 <div style="margin-left: 2%;margin-right: 2%;">
 	<h1 style="text-align: center;">设计师</h1>
-	<button class="btn" style="margin-top: -5%;" id="showModel">添加设计师信息</button>
+	<button class="btn" style="margin-top: -5%;" id="showModel">添加设计师</button>
 	<table class="table table-bordered">
 	<thead>
 	<tr>
@@ -435,7 +435,8 @@
          var r = /^[0-9]*[1-9][0-9]*$/;
          if(!r.test(jobage))
          {
-         	alert('请正确输入工作年限')；
+         
+         	alert("请正确输入工作年限");
          }
          else
     	{
@@ -504,13 +505,13 @@
     var r = /^[0-9]*[1-9][0-9]*$/;
     if(!r.test(jobage2))
          {
-         	alert('请正确输入工作年限')；
+         	alert('请正确输入工作年限');
          }
          else
          {
-         	 $("#formsubedit").submit()
+         	 $("#formsubedit").submit();
          }
-   ;
+   
     	// alert(comid);
     	
     	// return false;
