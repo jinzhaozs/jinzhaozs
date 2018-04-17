@@ -135,11 +135,15 @@ class Shop extends Controller
        public function ajaxedit(){
         //获取 id
         $where['id'] = input('put.shopid');
-        
+        $zhi=db("shop")->field('com_paixu')->select();
+        if(deep_in_array('2', $zhi))
+        {
+            $re=db("shop")->where('com_paixu',2)->update(['com_paixu' => 1]);
+        }
         $lx= db("shop")->max('com_paixu');
          $shuju['com_paixu']=$lx+1;
        
-
+        
         $res = db("shop")->where($where)->update($shuju);
         return $res;
     
