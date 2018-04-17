@@ -52,7 +52,7 @@ class Article extends Controller
         }      
         $user_info = $user->insert($shuju);
         if (!$user_info) {
-           $this->error("添加失败","admin/Article/index");
+           $this->error("添加失败","admin/Article/index"，array('id'=>$shuju['shop'])));
         }
         else
         {
