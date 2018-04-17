@@ -19,7 +19,8 @@ class Designer extends Controller
 	public function index()
 	{
 		$where=array ();
-		$where['shop']= input('param.id');
+		$comid= input('param.id');
+    $where['shop']=$comid;
 		$user=db('designer');
 		$fg= db('com_zhuancfg');
 		$userlx = db("com_qiyecsleixing");//类型
@@ -34,6 +35,7 @@ class Designer extends Controller
     	$page=$res->render();
     	$reslx = $userlx->select();//类型
     	 $this->assign("reslx",$reslx);//类型
+       $this->assign("comid",$comid);
     	$this->assign("zcfg",$zcfg);
     	$this->assign("page",$page);
     	$this->assign("res",$res);
@@ -59,7 +61,8 @@ class Designer extends Controller
         }
         else
         {
-          $this->success("添加成功",url("admin/Designer/index",array('id'=>$shuju['shop'])));
+          $this->redirect("admin/Designer/index",['comid'=>$shuju['shop']]);
+         
         }
       
     }

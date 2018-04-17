@@ -23,7 +23,8 @@ class Article extends Controller
     {
     	$user=db('article');
     	$where=array ();
-		$where['ashop']= input('param.id');
+		$comid= input('param.id');
+		$where['ashop']=$comid;
 		 $request = Request::instance();
         $urlcanshu = $request->param();
         if (!empty($urlcanshu['keyword'])) {
@@ -31,6 +32,7 @@ class Article extends Controller
         }
     	$res=$user->field("article.id,aname,ashop,abstract,pic,content,ischeck,istop,name,atime")->join('shop s','article.ashop = s.id')->where($where)->order("article.id")->paginate(10,false,['query'=>$urlcanshu,]);
     	$page=$res->render();
+    	$this->assign("comid",$comid);
     	$this->assign("page",$page);
     	$this->assign("res",$res);
 		return $this->view->fetch();
