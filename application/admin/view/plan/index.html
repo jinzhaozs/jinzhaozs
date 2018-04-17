@@ -48,11 +48,11 @@
 			
 				<tr>
 					<td style="display: block;"><span class="planid">{$vores.id}</span></td>
-					<td><span>{$vores.fname}</span></td>
+					<td><span class="fname">{$vores.fname}</span></td>
 					<td><span class="img"><img src="__STATIC__/uploads/{$vores.flogo}" style="width:100px;height: 100px" ></span></td>
 					<td><span>{$vores.ftype}</span></td>
 					<td><span>{$vores.frenyuan}</span></td>
-					<td><span>{$vores.comid}</span></td>
+					<td><span class="comname">{$vores.comid}</span></td>
 					<td><span>{$vores.fmianji}</span></td>
 					<td><span>{$vores.fyusuan}</span></td>
 					<td><span>{$vores.fhuxing}</span></td>
@@ -119,13 +119,13 @@
 					<tr>
 						<td class='wid'>房屋面积</td>
 						<td>
-							<input type="text" class="form-control" name="fmianji" placeholder="请输入面积(平方米)">
+							<input type="text" class="form-control" name="fmianji" placeholder="请输入面积">m²
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>装修预算</td>
 						<td>
-							<input type="text" class="form-control"  name="fyusuan" placeholder="请输入装修预算">
+							<input type="text" class="form-control"  name="fyusuan" placeholder="请输入装修预算">万
 						</td>
 					</tr>
 					<tr>
@@ -188,7 +188,7 @@
 					<tr>
 						<td class='wid'>方案名称</td>
 						<td>
-							<input type="text" class="form-control" name="fname" id = "fname"placeholder="请输入名称">
+							<input type="text" class="form-control" name="fname" readonly="true" id ="fname"placeholder="请输入名称">
 						</td>
 					</tr>
 					<tr>
@@ -218,13 +218,13 @@
 					<tr>
 						<td class='wid'>房屋面积</td>
 						<td>
-							<input type="text" class="form-control" id="fmianji" name="fmianji" placeholder="请输入面积(平方米)">
+							<input type="text" class="form-control" id="fmianji" name="fmianji" placeholder="请输入面积">m²
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>装修预算</td>
 						<td>
-							<input type="text" class="form-control" id="fyusuan" name="fyusuan" placeholder="请输入装修预算">
+							<input type="text" class="form-control" id="fyusuan" name="fyusuan" placeholder="请输入装修预算">万
 						</td>
 					</tr>
 					<tr>
@@ -278,22 +278,72 @@
 	            <span class="close3">×</span>  
 	        </header>  
 	        <div class="modal-body">  
-	            <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Plan/add')}" >
+	            <form id="formtupiansub" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Plan/tupianguanli')}" >
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
+				<input type="text" style="display:none;" name="planid" id="planidtp" value="1">
 				<input type="text" style="display:none;" name="comid" value="{$comid}">
 					<tr>
 						<td class='wid'>公司名称</td>
 						<td>
-							<input type="text" class="form-control"  placeholder="请输入名称">
+							<input type="text" class="form-control" id="tupiancomname" readonly="true" placeholder="请输入名称">
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>方案名称</td>
 						<td>
-							<input type="text" class="form-control"  placeholder="请输入名称">
+							<input type="text" class="form-control" id="tupianfname" readonly="true" placeholder="请输入名称">
 						</td>
 					</tr>
-					
+					<tr>
+						<td class='wid'>书房logo</td>
+						<td>
+							<div ><img id="img_shufang" src="" style="width:100px;height: 100px" ></div>
+							<input type="file" name="img_shufang" class="form-control"/>
+						</td>
+					</tr>
+
+					<tr>
+						<td class='wid'>卧室logo</td>
+						<td>
+							<div ><img id="logo_woshi" src="" style="width:100px;height: 100px" ></div>
+							<input type="file" name="logo_woshi" class="form-control"/>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>儿童间logo</td>
+						<td>
+							<div ><img id="logo_ertong" src="" style="width:100px;height: 100px" ></div>
+							<input type="file" name="logo_ertong" class="form-control"/>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>卫生间logo</td>
+						<td>
+							<div ><img id="logo_weishengj" src="" style="width:100px;height: 100px" ></div>
+							<input type="file" name="logo_weishengj" class="form-control"/>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>客厅logo</td>
+						<td>
+							<div ><img id="logo_keting" src="" style="width:100px;height: 100px" ></div>
+							<input type="file" name="logo_keting" class="form-control"/>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>厨房logo</td>
+						<td>
+							<div ><img id="logo_chufang" src="" style="width:100px;height: 100px" ></div>
+							<input type="file" name="logo_chufang" class="form-control"/>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>餐厅logo</td>
+						<td>
+							<div ><img id="logo_canting" src="" style="width:100px;height: 100px" ></div>
+							<input type="file" name="logo_canting" class="form-control"/>
+						</td>
+					</tr>
 				</table>
 	        </form> 
 	        </div>  
@@ -305,7 +355,7 @@
 	    </div>  
 	</div> 
 </div>
-
+<img id="img_morenlujing" src="__STATIC__/uploads/" style="width:100px;height: 100px ;display:none;" >
 </body>
 <!-- 模态框js -->
 <script>  
@@ -339,7 +389,37 @@
     var modal3 = document.getElementById('modal3'); 
     //模态框展示 
     $(".showModel3").click(function(){
-    	modal3.style.display = "block"; 
+    	// 获取案例id
+    	var planid = $(this).parent().parent().find(".planid").html();
+    	var str = $("#img_morenlujing").attr("src");//图片前缀地址
+    	// 公司名称
+		var fname = $(this).parent().parent().find(".fname").html();
+		$("#tupiancomname").val(fname);
+    	// 案例名称
+		var comname = $(this).parent().parent().find(".comname").html();
+		$("#tupianfname").val(comname);
+    	// alert(str);
+    	$.ajax({
+            type:"post",
+            dataType:'json',
+            async:false,
+            url:'{:url("admin/plan/ajaxtpguanli")}',
+            data:{"planid":planid},
+            success:function(dd){
+                // console.log(dd);
+                //赋值
+                $("#planidtp").val(planid);
+                $("#img_shufang").attr("src",str+dd[0]['logo_shufang']);//书房
+                $("#logo_woshi").attr("src",str+dd[0]['logo_woshi']);//卧室
+                $("#logo_ertong").attr("src",str+dd[0]['logo_ertong']);//儿童间
+                $("#logo_weishengj").attr("src",str+dd[0]['logo_weishengj']);//卫生间
+                $("#logo_keting").attr("src",str+dd[0]['logo_keting']);//卫生间
+                $("#logo_chufang").attr("src",str+dd[0]['logo_chufang']);//卫生间
+                $("#logo_canting").attr("src",str+dd[0]['logo_canting']);//卫生间
+    			modal3.style.display = "block"; 
+                
+            }
+        })
     });
     close3.addEventListener('click', function(){  
         modal3.style.display = "none";  
@@ -350,7 +430,7 @@
     //执行修改
     sure3.addEventListener('click', function(){
     	// 获取信息
-    		// $("#formsubedit").submit();
+    		$("#formtupiansub").submit();
     	modal3.style.display = "none";  
         
     });

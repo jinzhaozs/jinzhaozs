@@ -78,19 +78,85 @@ class Plan extends Controller
         }
         
     }
-    //获取参数
+    //获取参数tupianguanli
     public function ajaxedit(){
     	//获取 id
     	$where['id'] = input('put.planid');
     	$res = db("plan")->where($where)->select();
     	return $res;
     }
+    //图片管理
+    public function ajaxtpguanli(){
+    	//获取 案例id
+    	$where['planid'] = input('put.planid');
+    	$res = db("plan_do")->where($where)->select();
+    	return $res;
+    }
+    public function tupianguanli(){
+    	$user = db('plan_do');
+        $where['planid'] = input('post.planid');//获取id
+        $where['comid'] = input('post.comid');//获取id
+        $shuju['logo_time'] = date("Y-m-d h:i:s",time());
+        //添加图片书房
+        $filesf = request()->file('img_shufang');
+        if($filesf){
+         $info = $filesf->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
+            $shuju['logo_shufang']=$info->getSaveName();
+        } 
+        //添加图片卧室
+        $filews = request()->file('logo_woshi');
+        if($filews){
+         $info = $filews->move(ROOT_PATH . 'public/static/' . DS . 'uploads');
+            $shuju['logo_woshi']=$info->getSaveName();
+        } 
+        //添加图片儿童间
+        $fileetj = request()->file('logo_ertong');
+        if($fileetj){
+         $info = $fileetj->move(ROOT_PATH . 'public/static/' . DS . 'uploads');
+            $shuju['logo_ertong']=$info->getSaveName();
+        } 
+
+        //添加图片卫生间
+        $filewsj = request()->file('logo_weishengj');
+        if($filewsj){
+         $info = $filewsj->move(ROOT_PATH . 'public/static/' . DS . 'uploads');
+            $shuju['logo_weishengj']=$info->getSaveName();
+        } 
+        //添加图片客厅
+        $filekt = request()->file('logo_keting');
+        if($filekt){
+         $info = $filekt->move(ROOT_PATH . 'public/static/' . DS . 'uploads');
+            $shuju['logo_keting']=$info->getSaveName();
+        } 
+        //添加图片厨房
+        $filecf = request()->file('logo_chufang');
+        if($filecf){
+         $info = $filecf->move(ROOT_PATH . 'public/static/' . DS . 'uploads');
+            $shuju['logo_chufang']=$info->getSaveName();
+        } 
+        //添加图片餐厅
+        $filect = request()->file('logo_canting');
+        if($filect){
+         $info = $filect->move(ROOT_PATH . 'public/static/' . DS . 'uploads');
+            $shuju['logo_canting']=$info->getSaveName();
+        } 
+        //修改数据库
+        $res = $user->where($where)->update($shuju);
+        // echo $user->getLastsql();die;
+        if (!$res) {
+            $this->error("添加失败","admin/plan/index",['comid'=>input('post.comid')]);
+        }
+        else
+        {
+         $this->redirect("admin/plan/index",['comid'=>input('post.comid')]);
+        }
+    }
     //执行修改
     public function edit(){
         $user = db('plan');
         $where['id'] = input('post.planid');//获取id
         $where['comid'] = input('post.comid');//获取id
-          $file = request()->file('flogo');
+          
         // $shuju = input('post.');//获取数据
         $shuju['fname'] = input('post.fname');
         $shuju['ftype'] = input('post.ftype');
@@ -103,8 +169,9 @@ class Plan extends Controller
         $shuju['fjianjie'] = input('post.fjianjie');
         $shuju['time'] = date("Y-m-d h:i:s",time());
         // dump($shuju);
+        $file = request()->file('flogo');
+        if($file){
          $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
-        if($info){
              $shuju['flogo']=$info->getSaveName();
         } 
         $res = $user->where($where)->update($shuju);

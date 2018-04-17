@@ -70,7 +70,9 @@ Route::rule('/admin/shop/delete','admin/shop/delete');//删除
 Route::rule('/admin/plan/index','admin/plan/index');//公司 案例列表
 Route::rule('/admin/plan/add','admin/plan/add');//添加
 Route::rule('/admin/plan/ajaxedit','admin/plan/ajaxedit');//修改参数
+Route::rule('/admin/plan/ajaxtpguanli','admin/plan/ajaxtpguanli');//图片管理
 Route::rule('/admin/plan/edit','admin/plan/edit');//修改
+Route::rule('/admin/Plan/tupianguanli','admin/Plan/tupianguanli');//图片管理修改
 Route::rule('/admin/plan/delete','admin/plan/delete');//删除
 
 //公司设计师
