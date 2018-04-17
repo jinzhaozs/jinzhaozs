@@ -11,7 +11,7 @@
 <div style="margin-left: 2%;margin-right: 2%; margin-top: 1%;">
 		<h1 style="text-align: center;">装修案例</h1>
 <button class="btn" style="margin-top: -5%;" id="showModel">添加案例</button> 
- 		<form class="well form-search" method="post" action="{:url('/admin/shop/index')}">
+ 		<form style="display: none;" class="well form-search" method="post" action="{:url('/admin/shop/index')}">
 			<div class="search_type cc mb10" style="margin-top: -4%;margin-left: 70%;">
 					<span class="mr20">
 
@@ -49,7 +49,7 @@
 				<tr>
 					<td style="display: block;"><span class="planid">{$vores.id}</span></td>
 					<td><span>{$vores.fname}</span></td>
-					<td><span><img src="__STATIC__/uploads/{$vores.flogo}" style="width:100px;height: 100px" class="img"></span></td>
+					<td><span class="img"><img src="__STATIC__/uploads/{$vores.flogo}" style="width:100px;height: 100px" ></span></td>
 					<td><span>{$vores.ftype}</span></td>
 					<td><span>{$vores.frenyuan}</span></td>
 					<td><span>{$vores.comid}</span></td>
@@ -363,6 +363,8 @@
     $(".showModel2").click(function(){
     	// 获取案例id
     	var planid = $(this).parent().parent().find(".planid").html();
+    	var src = $(this).parent().parent().find(".img img").attr("src");
+    	// alert(src);
     	$.ajax({
             type:"post",
             dataType:'json',
@@ -384,9 +386,7 @@
                 $("#ffengge").find("option[value = '"+dd[0]['ffengge']+"']").attr("selected","selected");
                 $("#ffangshi").val(dd[0]['ffangshi']);
                 $("#fjianjie").html(dd[0]['fjianjie']);
-                // var image=$("#img").attr();
-                // alert(image);
-                // $("#img").attr("src",image+dd[0]['flogo']);
+                $("#img").attr("src",src);
     			modal2.style.display = "block";  
                 
             }

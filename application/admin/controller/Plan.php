@@ -90,7 +90,7 @@ class Plan extends Controller
         $user = db('plan');
         $where['id'] = input('post.planid');//获取id
         $where['comid'] = input('post.comid');//获取id
-          // $file = request()->file('logo');
+          $file = request()->file('flogo');
         // $shuju = input('post.');//获取数据
         $shuju['fname'] = input('post.fname');
         $shuju['ftype'] = input('post.ftype');
@@ -103,10 +103,10 @@ class Plan extends Controller
         $shuju['fjianjie'] = input('post.fjianjie');
         $shuju['time'] = date("Y-m-d h:i:s",time());
         // dump($shuju);
-         // $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
-        // if($info){
-        //      $shuju['logo']=$info->getSaveName();
-        // } 
+         $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
+        if($info){
+             $shuju['flogo']=$info->getSaveName();
+        } 
         $res = $user->where($where)->update($shuju);
         // echo $user->getLastsql();die;
         if (!$res) {
