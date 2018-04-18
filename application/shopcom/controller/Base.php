@@ -38,15 +38,21 @@ class Base extends \think\Controller
 		}
 		return $info;
 	}
+	//查询文章
 	protected function wen($model, $filter)
 	{
 		$article=db($model)->field("id,aname")->where($filter)->order("id desc")->limit(5)->select();
       	return $article;
 	}
+	//设计师
 	protected function des($model, $filter)
 	{
 		$designer=db($model)->field("id,dname,jobage,davatar")->where($filter)->order("id desc")->limit(5)->select();
-		
+		  foreach($designer as $k=>$v){
+            $map['frenyuan'] = $v['id'];
+               $an=db('plan')->where($map)->select();
+               $designer[$k]['an']=count($an);
+           }
       	return $designer;
 	}
 }
