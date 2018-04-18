@@ -61,7 +61,7 @@ class Designer extends Controller
         }
         else
         {
-          $this->redirect("admin/Designer/index",['comid'=>$shuju['shop']]);
+          $this->redirect("admin/Designer/index",['id'=>$shuju['shop']]);
          
         }
       
@@ -82,11 +82,11 @@ class Designer extends Controller
         } 
         $res = $user->where($where)->update($shuju);
         if (!$res) {
-           $this->error("修改失败","admin/Designer/index");
+           $this->error("修改失败","admin/Designer/index",['id'=>$shuju['shop']]);
         }
         else
         {
-          $this->success("修改成功",url("admin/Designer/index",array('id'=>'1')));
+          $this->redirect("admin/Designer/index",['id'=>$shuju['shop']]);
         }
         
     }

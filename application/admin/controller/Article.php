@@ -54,11 +54,11 @@ class Article extends Controller
         }      
         $user_info = $user->insert($shuju);
         if (!$user_info) {
-           $this->error("添加失败","admin/Article/index"，array('id'=>$shuju['shop'])));
+           $this->error("添加失败","admin/Article/index"，array('id'=>$shuju['ashop'])));
         }
         else
         {
-          $this->success("添加成功",url("admin/Article/index",array('id'=>$shuju['shop'])));
+          $this->redirect("admin/Article/index",['id'=>$shuju['ashop']]);
         }
       
     }
@@ -82,7 +82,7 @@ class Article extends Controller
         }
         else
         {
-          $this->success("修改成功","admin/Article/index",array('id'=>$shuju['ashop']));
+          $this->redirect("admin/Article/index",['id'=>$shuju['ashop']]);
         }
         
     }

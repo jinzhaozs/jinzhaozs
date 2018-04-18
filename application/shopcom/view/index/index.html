@@ -314,11 +314,9 @@ $(document).ready(function(e) {
                     <img class="lazy " src="__STATIC__/shopcom/img/201801311114164728.jpg " alt="在选择装修公司之前要了解哪些内容?如何选择适合自己的装修公司) " style="display: block; ">
                 </a>
                 <div class="txt ">
-                            <a href=" " title="卫生间装修防水应该怎么做好? " target="_blank ">·卫生间装修防水应该怎么做好?</a>
-                            <a href=" " title="卫生间装修防水应该怎么做好? " target="_blank ">·卫生间装修防水应该怎么做好?</a>
-                            <a href=" " title="卫生间装修防水应该怎么做好? " target="_blank ">·卫生间装修防水应该怎么做好?</a>
-                            <a href=" " title="卫生间装修防水应该怎么做好? " target="_blank ">·卫生间装修防水应该怎么做好?</a>
-                            <a href=" " title="卫生间装修防水应该怎么做好? " target="_blank ">·卫生间装修防水应该怎么做好?</a>
+                    {foreach name="article" item="vo"}
+                            <a href=" " title="{$vo.aname}" target="_blank ">{$vo.aname}</a>
+                    {/foreach}
                 </div>
         </div>
     </div>
@@ -369,13 +367,14 @@ $(document).ready(function(e) {
     </div>
     <div class="team ">
             <ul>
+               {foreach name="designer" item="des"}
                     <li>
-                        <a href=" " title="邵英鹏 " class="img_txt " target="_blank ">
-                            <img class="lazy " src="__STATIC__/shopcom/img/636472945226301143.jpg " alt="邵英鹏 " style="display: block; ">
+                        <a href=" " title="{$des.dname} " class="img_txt " target="_blank ">
+                            <img class="lazy " src="__STATIC__/uploads/{$des.davatar} " alt="{$des.dname} " style="display: block; ">
                             <div class="txt ">
-                                <h6><strong>邵英鹏</strong>设计师</h6>
+                                <h6><strong>{$des.dname}</strong>设计师</h6>
                                 <p>
-                                    <span>从业年限：<i class="num ">8年以上</i></span>
+                                    <span>从业年限：<i class="num ">{$des.jobage}年以上</i></span>
                                         <i class="num ">2</i>套作品
                                 </p>
                             </div>
@@ -385,6 +384,7 @@ $(document).ready(function(e) {
                             <a href="javascript:; " class="bzw_popup_01 " title="预约设计师 ">预约设计师</a>
                         </div>
                     </li>
+                    {/foreach}
             </ul>
     </div>
 </div><div class="construction_site ">

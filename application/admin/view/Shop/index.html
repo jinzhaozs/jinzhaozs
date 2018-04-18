@@ -36,7 +36,7 @@
 				<th>保障金</th>
 				<th>公司所在区</th>
 				<th>公司地址</th>
-				<th style="display: none;">置顶</th>
+				<th style="display: none;">审核</th>
 				<th style="display: none;">服务区域</th>
 				<th style="display: none;">服务风格</th>
 				<th style="display: none;">服务价位</th>
@@ -65,7 +65,7 @@
 					<td style="display: none;"><span class="comzcfg">{$vores.com_zcfg}</span></td>
 					<td style="display: none;"><span class="comprice">{$vores.com_price}</span></td>
 					<td style="display: none;"><span class="comleixing">{$vores.com_leixing}</span></td>
-					<td ><span style=" cursor: pointer;">{if condition="($vores.com_paixu == 1)"} <button style="width: 60px;" type="button" class="btn zhi" name="{$vores.id}">置顶</button>{else /} <button style="width: 60px;text-align: center;" type="button" class="btn qzhi" name="{$vores.id}">未置顶</button> {/if}</span></td>
+					<td ><span style=" cursor: pointer;">{if condition="($vores.zhi ==2)"} <button style="width: 60px;" type="button" class="btn zhi" name="{$vores.id}">置顶</button>{else /} <button style="width: 60px;text-align: center;" type="button" class="btn qzhi" name="{$vores.id}">未置顶</button> {/if}</span></td>
 
 					<td>
 						<span style=" cursor: pointer;" class="showModel2">修改</span> | 
@@ -270,10 +270,10 @@
                        </td>
 					</tr>
 					<tr>
-						<td class='wid'>显示</td>
+						<td class='wid'>审核</td>
 						<td id="top2">
-						   <input type="radio"  name="top" value="1"/>是  
-	                       <input type="radio"   name="top" value="2"/>否
+						   <input type="radio"  name="top" value="1"/>通过  
+	                       <input type="radio"   name="top" value="2"/>未通过
                        </td>
 					</tr>
 					<tr>
@@ -453,9 +453,9 @@
         comprice=$(this).parent().parent().find(".comprice").html();
         comlogo=$(this).parent().parent().find(".comlogo").attr('name');
         image=$(this).parent().parent().find(".img").attr('src');
-        tel=$(this).parent().parent().find(".tel").html();
-        top=$(this).parent().parent().find(".top").html();
-       
+        comtel=$(this).parent().parent().find(".tel").html();
+        comtop=$(this).parent().parent().find(".top").html();
+     
     	//赋值
     	var compri=comprice.substring(0, comprice.lastIndexOf(','));
         var comfuq = comfuqy.substring(0, comfuqy.lastIndexOf(','));
@@ -478,14 +478,14 @@
         $(" #com_leixing2 :checkbox[id='"+dom+"']").prop("checked",true);
     });//复选赋值
     	$("#name2").val(comname);
-    	$("#com_tel2").val(tel);
+    	$("#com_tel2").val(comtel);
     	$("#dizhi2").val(comdizhi);
     	$("#sum2").val(comsum);
     	$("#logo2").val(comlogo);
     	$("#sz2").find('option[value="'+comszqy+'"]').attr("selected",true);
         $("#bl2 input[name='bl'][value='"+combl+"']").attr("checked",true);  
      	$("#rz2 input[name='rz'][value='"+comrz+"']").attr("checked",true);
-     	$("#top2 input[name='top'][value='"+top+"']").attr("checked",true); 
+     	$("#top2 input[name='top'][value='"+comtop+"']").attr("checked",true); 
      	$(".ids").val(comid);
      	 $("#img img").attr("src",image);
         
@@ -612,6 +612,7 @@
             url:'{:url("admin/shop/ajaxedit")}',
             data:{"shopid":shopid},
               success:function(dd){
+              	alert(dd);
               	if(dd)
               	{
               		window.location.reload();

@@ -35,7 +35,7 @@ class Shop extends Controller
            $where['name']=array('like','%'.$urlcanshu['keyword'].'%');
         }
 
-    	$res=$user->field("shop.id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_koubei,com_haoping,com_tel,qyname,top,com_paixu")->join('com_fuwuqy w','shop.com_szqy = w.qycode')->where($where)->order("com_paixu desc")->paginate(10,false,[
+    	$res=$user->field("shop.id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_koubei,com_haoping,com_tel,qyname,top,com_paixu,zhi")->join('com_fuwuqy w','shop.com_szqy = w.qycode')->where($where)->order("com_paixu desc")->paginate(10,false,[
 'query'=>$urlcanshu,
 ]); 
         
@@ -135,20 +135,31 @@ class Shop extends Controller
        public function ajaxedit(){
         //获取 id
         $where['id'] = input('put.shopid');
-        
+        $zhi=db("shop")->field("zhi,id")->order("com_paixu desc")->find();
+        if($zhi['zhi']==1)
+        {
+            $whid['id']=$zhi['id'];
+
+             $shuju['zhi']=2;
+              $lx= db("shop")->max('com_paixu');
+             $shuju['com_paixu']=$lx-2;
+           $qzhi=db("shop")->where($whid)->update($shuju); 
+        }
         $lx= db("shop")->max('com_paixu');
          $shuju['com_paixu']=$lx+1;
-       
+         $shuju['zhi']=1;
 
         $res = db("shop")->where($where)->update($shuju);
-        return $res;
+      return $res;
     
     }
     public function ajaxqzhi()
     {
          $where['id'] = input('put.shopid');
-         $shuju['com_paixu']=1;
-        
+         $lx= db("shop")->max('com_paixu');
+         $shuju['com_paixu']=$lx-2;
+         $shuju['zhi']=2;
+          
         $res = db("shop")->where($where)->update($shuju);
         return $res;
     }
