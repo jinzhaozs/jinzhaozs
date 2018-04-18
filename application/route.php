@@ -78,6 +78,12 @@ Route::rule('/admin/plan/edit','admin/plan/edit');//修改
 Route::rule('/admin/Plan/tupianguanli','admin/Plan/tupianguanli');//图片管理修改
 Route::rule('/admin/plan/delete','admin/plan/delete');//删除
 
+// 公司轮播图管理
+Route::rule('/admin/Shoplbt/index','admin/Shoplbt/index');//服务价位
+Route::rule('/admin/Shoplbt/add','admin/Shoplbt/add');// 添加
+Route::rule('/admin/Shoplbt/edit','admin/Shoplbt/edit');// 修改
+Route::rule('/admin/Shoplbt/del','admin/Shoplbt/del');// 删除
+
 //公司设计师
 Route::rule('/admin/designer/index','admin/designer/index');//公司详情
 Route::rule('/admin/designer/add','admin/designer/add');//添加
