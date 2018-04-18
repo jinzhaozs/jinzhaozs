@@ -65,6 +65,8 @@
 					<td style="display: none;"><span class="comzcfg">{$vores.com_zcfg}</span></td>
 					<td style="display: none;"><span class="comprice">{$vores.com_price}</span></td>
 					<td style="display: none;"><span class="comleixing">{$vores.com_leixing}</span></td>
+					<td style="display: none;"><span class="comjianjie">{$vores.com_jianjie}</span></td>
+					<td style="display: none;"><span class="comslogan">{$vores.com_slogan}</span></td>
 					<td ><span style=" cursor: pointer;">{if condition="($vores.zhi ==2)"} <button style="width: 60px;" type="button" class="btn zhi" name="{$vores.id}">置顶</button>{else /} <button style="width: 60px;text-align: center;" type="button" class="btn qzhi" name="{$vores.id}">未置顶</button> {/if}</span></td>
 
 					<td>
@@ -193,6 +195,18 @@
 								<input type="hidden" name="com_leixing" class="leixing" value=""> 
 						</td>
 					</tr>
+					<tr>
+						<td class='wid'>公司标语</td>
+						<td >
+						<textarea name='com_slogan' id="com_slogan" style='width:98%;height:50px;' placeholder='请填写简介'></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>公司简介</td>
+						<td >
+						<textarea name='com_jianjie' id="com_jianjie" style='width:98%;height:50px;' placeholder='请填写简介'></textarea>
+						</td>
+					</tr>
 
 
 				</table>
@@ -238,7 +252,7 @@
 					<tr>
 						<td class='wid'>地址</td>
 						<td>
-							<input type="text" class="form-control" namer="dizhi" id="dizhi2" placeholder="请输入公司地址">
+							<input type="text" class="form-control" name="dizhi" id="dizhi2" placeholder="请输入公司地址">
 						</td>
 					</tr>
 					<tr>
@@ -318,7 +332,18 @@
 							<input type="hidden" name="com_leixing" class="leixing" value=""> 
 						</td>
 					</tr>
-
+					<tr>
+						<td class='wid'>公司标语</td>
+						<td >
+						<textarea name='com_slogan' id="com_slogan2" style='width:98%;height:50px;' placeholder='请填写简介'></textarea>
+						</td>
+					</tr
+					<tr>
+						<td class='wid'>公司简介</td>
+						<td >
+						<textarea name='com_jianjie' id="com_jianjie2" style='width:98%;height:50px;' placeholder='请填写简介'></textarea>
+						</td>
+					</tr>
 
 				</table>
 	        </div>  
@@ -455,7 +480,9 @@
         image=$(this).parent().parent().find(".img").attr('src');
         comtel=$(this).parent().parent().find(".tel").html();
         comtop=$(this).parent().parent().find(".top").html();
-     
+        comjianjie=$(this).parent().parent().find(".comjianjie").html();
+        comslogan=$(this).parent().parent().find(".comslogan").html();
+
     	//赋值
     	var compri=comprice.substring(0, comprice.lastIndexOf(','));
         var comfuq = comfuqy.substring(0, comfuqy.lastIndexOf(','));
@@ -487,6 +514,8 @@
      	$("#rz2 input[name='rz'][value='"+comrz+"']").attr("checked",true);
      	$("#top2 input[name='top'][value='"+comtop+"']").attr("checked",true); 
      	$(".ids").val(comid);
+     	$("#com_jianjie2").val(comjianjie);
+     	$("#com_slogan2").val(comslogan);
      	 $("#img img").attr("src",image);
         
     	// alert(comid);comname
