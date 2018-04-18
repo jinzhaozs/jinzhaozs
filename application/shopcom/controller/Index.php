@@ -24,9 +24,19 @@ class Index extends \app\shopcom\controller\Base
         //获取装修案例
         $plan = $this->uri("plan",$where);
         //获取装修工地
+        $wheres['ischeck']=1;
+        $wheres['ashop']=$comid;
+        $article = $this->wen("article",$wheres);
+        //获取文章
+        $whid['shop']=$comid;
+        $designer=$this->des("designer",$whid);
+      
+        //设计师
         // $struction = $this->uri("plan",$struction);
         // dump($shopcom);
+        $this->assign("designer",$designer);
         $this->assign("shopcom",$shopcom);
+        $this->assign("article",$article);
         return $this->fetch();
     }
     //测试

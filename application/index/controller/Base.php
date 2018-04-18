@@ -38,5 +38,6 @@ class Base extends \think\Controller
 		}
 		return $info;
 	}
+	
 }
 ?>
