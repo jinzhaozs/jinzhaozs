@@ -5,13 +5,13 @@
     <div class="wrapper ">
         <div class="header-logo ">
             <a href=" " title="北京今朝装饰设计有限公司 " class="logo ">
-                <img src="__STATIC__/shopcom/img/201711301413196990.jpg " alt="北京今朝装饰设计有限公司 ">
+                <img src="__STATIC__/uploads/{$shopcom[0]['logo']}" alt="北京今朝装饰设计有限公司 ">
             </a>
             <div class="company_explain ">
                 <h1>
-                    北京今朝装饰设计有限公司<i></i>
+                    {$shopcom[0]['name']}
                 </h1>
-                <p class="addr ">地址：北京市丰台区东铁营顺一条8号院 <a href=" " class="map "></a></p>
+                <p class="addr ">地址：{$shopcom[0]['dizhi']} <a href=" " class="map "></a></p>
                 <p class="tel ">
                     <span title="还在抄写地址电话吗？点一下，免费短信发给您 " class="GetMobile ">免费发送至手机</span>
 
@@ -73,22 +73,43 @@
                 <div class="text-l ">
                     <div class="company ">
                         <h6>
-                            今朝装饰
+                            {$shopcom[0]['name']}
                                 <i class="i-A " title="金朝装饰A级信用 "></i>
                                                             <i class="i-V " title="金朝装饰Vip会员 "></i>
                                                             <i class="i-S " title="金朝装饰诚信认证 "></i>
                         </h6>
                         <p class="autn ">
-                                <span class="s01 " title="营业执照已上传 ">营</span>
-                                                        <span class="s04 " title="优惠活动 ">惠</span>0个
-                            <span class="s07 " title="设计师数量 ">设</span>9个
-                            <span class="s02 " title="案例 ">案</span>24个
-                            <span class="s06 " title="评论 ">评</span>2条
-                            <span class="s05 " title="访问量 ">访</span>6250次
+                            <!-- 营业执照 -->
+                            {eq name="$shopcom[0]['bl']" value="1"}
+                               <span class="s01" title="营业执照已上传 ">营</span>                              
+                            {else/}
+                               <span class="s01" style="background-color: #999;">营</span>                              
+                            {/eq} 
+                             <!-- 判断是否有优惠活动 -->
+                            {eq name="$shopcom[0]['dis']" value="1"}
+                                <span class="s04 " title="优惠活动 ">惠</span>{$shopcom[0]['dis']}个
+                            {else/}
+                                <span class="s04 " style="background-color: #999;" title="优惠活动 ">惠</span>{$shopcom[0]['dis']}个
+                            {/eq}
+                            <!-- 设计师 -->
+                            {eq name="$shejishicount" value="0"}
+                                <span class="s07 " style="background-color: #999;" title="设计师数量 ">设</span>{$shejishicount}个
+                            {else/}
+                                <span class="s07 " title="设计师数量 ">设</span>{$shejishicount}个
+                            {/eq}
+                            <!-- 案例 -->
+                            {eq name="$plancount" value="0"}
+                                 <span class="s02 " style="background-color: #999;"  title="案例 ">案</span>{$plancount}个
+                            {else/}
+                                 <span class="s02 " title="案例 ">案</span>{$plancount}个
+                            {/eq}
+                           
+                            <span class="s06 " title="评论 ">评</span>{$pingluncount}条
+                            <span class="s05 " title="访问量 ">访</span>{$shopcom[0]['com_fangweicishu']}次
                         </p>
                         <div class="text-r ">
                             <div class="mouth ">
-                                <strong>8</strong>
+                                <strong>{$shopcom[0]['com_koubei']}</strong>
                                 <p>口碑值</p>
                             </div>
                         </div>
@@ -96,7 +117,11 @@
                     <div class="text_con ">
                         <p class="text_con_server ">
                             <span class="title ">服务区域：</span>
-                                <span class="content " style="width: 80%;">东城区、西城区、崇文区、宣武区、朝阳区、丰台区、石景山区、海淀区、门头沟区、房山区、通州区、顺义区、昌平区、大兴区、怀柔区、平谷区</span>
+                                <span class="content " style="width: 80%;">
+                                    {foreach name="arrayfu" item="voarrayfu"}
+                                        {$voarrayfu['name']}
+                                    {/foreach}
+                                </span>
                         </p>
                         <p class="text_con_work ">
                             <span class="title ">业务范畴：</span>
@@ -112,7 +137,7 @@
                 <span><i></i>支持免费预算报价</span>
                     <span title="已支持装修保障金 "><i></i>支持装修保障金</span>
             </div>
-            <div class="text_middel "><span>已有<i>301</i>人预约</span><span>预约热线：<i>400-9907-315</i></span><button type="button " class="btn bzw_popup_05" id=" ">立即预约</button></div>
+            <div class="text_middel "><span>已有<i>301</i>人预约</span><span>预约热线：<i>{$shopcom[0]['com_tel']}</i></span><button type="button " class="btn bzw_popup_05" id=" ">立即预约</button></div>
         </div>
 </div><div class="case_box ">
     <div class="nav_menu_title ">
@@ -237,7 +262,7 @@
             <a href="http://bj.bzw315.com/shop/78219/ " title=" ">竣工阶段</a>
             <a href="http://bj.bzw315.com/shop/78219/build/ " title=" " class="navbar-menu-more " target="_blank ">更多</a>
         </div>
-        <h3>施工工地<span> 今朝装饰施工工地(<i>8</i>)</span></h3>
+        <h3>施工工地<span> 今朝装饰施工工地(<i>{$shigcount}</i>)</span></h3>
     </div>
     <div class="construction_site_bd ">
             <ul>

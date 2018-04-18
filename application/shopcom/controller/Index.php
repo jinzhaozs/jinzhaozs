@@ -19,39 +19,62 @@ class Index extends \app\shopcom\controller\Base
         //获取商家id
         $comid = input('comid');  
         $where['id'] = $comid;
+        //获取服务区域列表
+        $com_fuwuqy = db('com_fuwuqy')->select();
         //获取商家信息
         $shopcom = $this->uri("shop",$where);
-        $whplan['comid']= input('comid');
+        //获取公司的服务区域
+        $arrayfu = array();
+        //去除 最后，号 以，分割为数组
+        $fuquyu = explode(",", substr($shopcom['0']['com_fuqy'],0,strlen($shopcom['0']['com_fuqy'])-1));
+        foreach ($fuquyu as $key => $value) {
+            foreach($com_fuwuqy as $k => $v){
+                if($v['qycode'] == $value){
+                    $arrayfu[]['name'] = $v['qyname'];
+                }
+            }
+        } 
         //获取装修案例
+        $whplan['comid']= input('comid');
         $whplan['schedule']=5;
         $plan = $this->uri("plan",$whplan);
         $plancount = db("plan")->where($whplan)->count();
-        // dump($plan);die;
-       //获取文章
+
+      
+
+        //获取评论总数
+        $whpla['comid']= input('comid');
+        $pingluncount = db("evaluate")->where($whpla)->count();
+       
+        //获取文章
         $wheres['ischeck']=1;
         $wheres['ashop']=$comid;
         $article = $this->wen("article",$wheres);
         //设计师
         $whid['shop']=$comid;
         $designer=$this->des("designer",$whid);
+       $shejishicount = db("designer")->where($whid)->count();
       //工地
         $gong['comid']=$comid;
         $gong['schedule']=array('neq',5);
          $shig = $this->uri("plan",$gong);
-       
-        // $struction = $this->uri("plan",$struction);
-        // dump($shopcom);
+         $shigcount = db("plan")->where($gong)->count();
         // 轮播图
         $wherelbt['comid'] = input('comid');
         $lbt = $this->uri("shop_lbt",$wherelbt);
-        // dump($lbt);die;
+        
         $this->assign("lbt",$lbt);//轮播图信息
         $this->assign("plan",$plan);//装修案例
-        $this->assign("plancount",$plancount);//装修案例
-        $this->assign("designer",$designer);//设计师
+
+        $this->assign("plancount",$plancount);//装修案例总数
+        $this->assign("shejishicount",$shejishicount);//设计师总数pingluncount
+        $this->assign("pingluncount",$pingluncount);//评论总数
+        $this->assign("arrayfu",$arrayfu);//服务区域
+        $this->assign("designer",$designer);
         $this->assign("shopcom",$shopcom);
         $this->assign("article",$article);//文章
          $this->assign("shig",$shig);//施工工地
+         $this->assign("shigcount",$shigcount);//工地总数
         return $this->fetch();
     }
     //测试
