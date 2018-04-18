@@ -23,18 +23,22 @@ class Index extends \app\shopcom\controller\Base
         $shopcom = $this->uri("shop",$where);
         $whplan['comid']= input('comid');
         //获取装修案例
+        $whplan['schedule']=5;
         $plan = $this->uri("plan",$whplan);
         $plancount = db("plan")->where($whplan)->count();
         // dump($plan);die;
-        //获取装修工地
+       //获取文章
         $wheres['ischeck']=1;
         $wheres['ashop']=$comid;
         $article = $this->wen("article",$wheres);
-        //获取文章
+        //设计师
         $whid['shop']=$comid;
         $designer=$this->des("designer",$whid);
-      
-        //设计师
+      //工地
+        $gong['comid']=$comid;
+        $gong['schedule']=array('neq',5);
+         $shig = $this->uri("plan",$gong);
+       
         // $struction = $this->uri("plan",$struction);
         // dump($shopcom);
         // 轮播图
@@ -44,9 +48,10 @@ class Index extends \app\shopcom\controller\Base
         $this->assign("lbt",$lbt);//轮播图信息
         $this->assign("plan",$plan);//装修案例
         $this->assign("plancount",$plancount);//装修案例
-        $this->assign("designer",$designer);
+        $this->assign("designer",$designer);//设计师
         $this->assign("shopcom",$shopcom);
-        $this->assign("article",$article);
+        $this->assign("article",$article);//文章
+         $this->assign("shig",$shig);//施工工地
         return $this->fetch();
     }
     //测试

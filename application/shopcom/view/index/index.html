@@ -241,38 +241,36 @@
     </div>
     <div class="construction_site_bd ">
             <ul>
+                 {foreach name="shig" item="sg"}
                     <li>
                         <a href=" " title="蔚来城 " target="_blank ">
-                            <img class="lazy " src="__STATIC__/shopcom/img/201711301623539405.jpg " alt="蔚来城 " style="display: block; ">
-                            <h6>蔚来城</h6><span>别墅</span>
+                            <img class="lazy " src="__STATIC__/uploads/{$voplan.flogo}  " alt="{$sg.fname} " style="display: block; ">
+                            <h6>{$sg.fname}</h6><span>别墅</span>
                         </a>
                     </li>
-                    <li>
-                        <a href=" " title="蔚来城 " target="_blank ">
-                            <img class="lazy " src="__STATIC__/shopcom/img/201711301623539405.jpg " alt="蔚来城 " style="display: block; ">
-                            <h6>蔚来城</h6><span>别墅</span>
-                        </a>
-                    </li>
+                    {/foreach}
             </ul>
     </div>
 </div><div class="company_profile ">
+    {foreach name="shopcom" item="sh"}
         <div class="nav_menu_title ">
-            <a href="http://bj.bzw315.com/shop/78219/aboutus/ " title=" 今朝装饰公司简介 " class="navbar-menu-more " target="_blank ">详细</a>
-            <h3><a title=" 今朝装饰公司简介 " target="_blank " href="http://bj.bzw315.com/shop/78219/aboutus/ ">公司简介</a><span> 今朝装饰公司简介</span></h3>
+            <a href="http://bj.bzw315.com/shop/78219/aboutus/ " title="  {$sh.name}简介 " class="navbar-menu-more " target="_blank ">详细</a>
+            <h3><a title=" {$sh.name}简介 " target="_blank " href="http://bj.bzw315.com/shop/78219/aboutus/ ">公司简介</a><span> {$sh.name}简介</span></h3>
         </div>
         <div class="company_profile_bd ">
             <div class="video ">
-                
+                 
                 <img class="lazy img " src="__STATIC__/shopcom/img/video.png "  alt=" " style="display: block; ">
                 <a class="play "><img class="lazy " src="__STATIC__/shopcom/img/play.png "  alt=" " style="display: block; "></a>
             </div>
             <div class="txt ">
-                <h4> 今朝装饰设计有限公司</h4>
+
+                <h4> {$sh.name}</h4>
                 <span class="tit ">
-                    <i class="i01 "></i>先作人，后做事，再赚钱<i class="i02 "></i>
+                    <i class="i01 "></i>{$sh.com_slogan}<i class="i02 "></i>
                 </span>
                 <div class="art ">
-                    <p> 今朝装饰，中国家装行业上市品牌，1997年成立至今，凭借国际化的设计理念，高品质的服务团队和欧洲生态工艺体系及家居产品，为客户提供高品质的家装服务。 经营理念：诚信为本、全力以赴，以良好的信誉，优质的工程质量，完善的服务体系，来提高客户的满意度。质量理念：高素质人＋优质材料＋科学的工艺、规范的操作＝优质工程。 管理理念：公司内部的工作人员全程管理，绝对不外包、不转包。设计理念：我们一直坚持，每一项新的工......</p>
+                    <p> {$sh.com_jianjie}......</p>
                 </div>
                 <div class="look ">
                     <a href="javascript:void(0)" title="预约装修设计 " class="active bzw_popup_05">预约装修设计</a>
@@ -280,6 +278,7 @@
                 </div>
             </div>
         </div>
+        {/foreach}
 </div>
 <div class="introduction ">
     <ul>
