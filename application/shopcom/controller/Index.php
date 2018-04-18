@@ -21,8 +21,11 @@ class Index extends \app\shopcom\controller\Base
         $where['id'] = $comid;
         //获取商家信息
         $shopcom = $this->uri("shop",$where);
+        $whplan['comid']= input('comid');
         //获取装修案例
-        $plan = $this->uri("plan",$where);
+        $plan = $this->uri("plan",$whplan);
+        $plancount = db("plan")->where($whplan)->count();
+        // dump($plan);die;
         //获取装修工地
         $wheres['ischeck']=1;
         $wheres['ashop']=$comid;
@@ -34,6 +37,13 @@ class Index extends \app\shopcom\controller\Base
         //设计师
         // $struction = $this->uri("plan",$struction);
         // dump($shopcom);
+        // 轮播图
+        $wherelbt['comid'] = input('comid');
+        $lbt = $this->uri("shop_lbt",$wherelbt);
+        // dump($lbt);die;
+        $this->assign("lbt",$lbt);//轮播图信息
+        $this->assign("plan",$plan);//装修案例
+        $this->assign("plancount",$plancount);//装修案例
         $this->assign("designer",$designer);
         $this->assign("shopcom",$shopcom);
         $this->assign("article",$article);
