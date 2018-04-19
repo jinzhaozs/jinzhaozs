@@ -96,6 +96,17 @@ Route::rule('/admin/article/add','admin/article/add');//添加
 Route::rule('/admin/article/edit','admin/article/edit');//修改
 Route::rule('/admin/article/delete','admin/article/delete');//删除
 
+//图册-面积
+Route::rule('/admin/tuce/mianji','admin/tuce/mianji');//公司 文章列表
+Route::rule('/admin/tuce/mianjiadd','admin/tuce/mianjiadd');//添加
+Route::rule('/admin/tuce/mianjiedit','admin/tuce/mianjiedit');//修改
+Route::rule('/admin/tuce/mianjidel','admin/tuce/mianjidel');//删除
+
+//图册-局部
+Route::rule('/admin/tuce/jubu','admin/tuce/jubu');//公司 文章列表
+Route::rule('/admin/tuce/jubuadd','admin/tuce/jubuadd');//添加
+Route::rule('/admin/tuce/jubuedit','admin/tuce/jubuedit');//修改
+Route::rule('/admin/tuce/jubudel','admin/tuce/jubudel');//删除
 
 
 
