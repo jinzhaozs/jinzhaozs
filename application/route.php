@@ -95,6 +95,12 @@ Route::rule('/admin/article/index','admin/article/index');//公司 文章列表
 Route::rule('/admin/article/add','admin/article/add');//添加
 Route::rule('/admin/article/edit','admin/article/edit');//修改
 Route::rule('/admin/article/delete','admin/article/delete');//删除
+//效果图
+//效果图--空间
+Route::rule('/admin/ectkj/index','admin/ectkj/index');//户型风格
+Route::rule('/admin/ectkj/add','admin/ectkj/add');// 添加
+Route::rule('/admin/ectkj/edit','admin/ectkj/edit');// 修改
+Route::rule('/admin/ectkj/del','admin/ectkj/del');// 删除
 
 //图册-面积
 Route::rule('/admin/tuce/mianji','admin/tuce/mianji');//公司 文章列表
