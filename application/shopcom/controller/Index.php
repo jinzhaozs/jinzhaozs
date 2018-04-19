@@ -14,6 +14,7 @@ use \think\Request;
 class Index extends \app\shopcom\controller\Base
 {
 	//查询
+    //
     public function index()
     {
         //获取商家id

@@ -54,7 +54,7 @@ class Article extends Controller
         }      
         $user_info = $user->insert($shuju);
         if (!$user_info) {
-           $this->error("添加失败","admin/Article/index"，array('id'=>$shuju['ashop'])));
+           $this->error("admin/Article/index",['id'=>$shuju['ashop']]);
         }
         else
         {
@@ -78,7 +78,7 @@ class Article extends Controller
         } 
         $res = $user->where($where)->update($shuju);
         if (!$res) {
-           $this->error("修改失败","admin/Article/index",array('id'=>$shuju['ashop']));
+           $this->error("修改失败","admin/Article/index",['id'=>$shuju['ashop']]);
         }
         else
         {

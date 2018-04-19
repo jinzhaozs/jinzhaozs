@@ -57,7 +57,7 @@ class Designer extends Controller
         }      
         $user_info = $user->insert($shuju);
         if (!$user_info) {
-           $this->error("添加失败","admin/Designer/index");
+           $this->error("添加失败","admin/Designer/index",['id'=>$shuju['shop']]);
         }
         else
         {
