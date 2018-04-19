@@ -28,6 +28,7 @@ class Shoplbt extends Controller
        
         $reslbt = db("shop_lbt")->field("shop_lbt.id,shop_lbt.shop_logo,shop_lbt.comid,shop_lbt.lbtname,shop_lbt.time,shop.name as comname")
         ->join('shop','shop_lbt.comid = shop.id','left')//公司
+        ->where($where)
         ->select();//轮播图
         // dump($reslbt);die;	
         $this->assign("res",$reslbt);//轮播图
