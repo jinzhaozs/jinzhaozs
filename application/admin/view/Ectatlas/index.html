@@ -22,10 +22,7 @@
       名称
         </th>
         <th>
-      code
-        </th>
-        <th>
-      排序
+      上传者名称
         </th>
         <th>
       操作
@@ -39,17 +36,15 @@
             <span class="id">{$vores.id}</span>
         </td>
         <td>
-            <span class="ekname">{$vores.ekname}</span>
+            <span class="ekname">{$vores.name}</span>
         </td>
         <td>
-            <span class="ekcode">{$vores.ekcode}</span>
-        </td>
-        <td>
-            <span class="paixu">{$vores.paixu}</span>
+            <span class="ekcode">{$vores.scz_name}</span>
         </td>
         <td>
             <span style=" cursor: pointer;" class="showModel2">修改</span> | 
-            <span style=" cursor: pointer;" class="delcom">删除</span>
+            <span style=" cursor: pointer;" class="delcom">删除</span> |
+            <span style=" cursor: pointer;" ><a style="color: #000;" href="{:url('',['id'=>$vores.id])}">图片管理</a></span>  
         </td>
     </tr>
       {/foreach}
