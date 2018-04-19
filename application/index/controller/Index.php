@@ -121,6 +121,9 @@ class Index extends \app\index\controller\Base
     }
     //测试
     public function aa(){
+        $aa = aaurl(123);
+        dump($aa);
+        $this->assign("res",34);
         return $this->fetch();
     }
 }
