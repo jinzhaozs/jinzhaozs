@@ -166,7 +166,7 @@ class Tuce extends Controller
     }
     //删除
     public function jubudel($id){
-        $user = db('ect_mianji');
+        $user = db('ect_jubu');
         $whid = input('post.id');//获取id
         $res = $user->where('id',$whid)->delete();
         if (!$res) {
@@ -185,5 +185,6 @@ class Tuce extends Controller
         );
         return $data;
     }
+    
     
 }
