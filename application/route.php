@@ -96,6 +96,11 @@ Route::rule('/admin/article/add','admin/article/add');//添加
 Route::rule('/admin/article/edit','admin/article/edit');//修改
 Route::rule('/admin/article/delete','admin/article/delete');//删除
 //效果图
+//效果图--图册列表
+Route::rule('/admin/ectatlas/index','admin/ectatlas/index');//户型风格
+Route::rule('/admin/ectatlas/add','admin/ectatlas/add');// 添加
+Route::rule('/admin/ectatlas/edit','admin/ectatlas/edit');// 修改
+Route::rule('/admin/ectatlas/del','admin/ectatlas/del');// 删除
 //效果图--空间
 Route::rule('/admin/ectkj/index','admin/ectkj/index');//户型风格
 Route::rule('/admin/ectkj/add','admin/ectkj/add');// 添加
