@@ -35,7 +35,7 @@ class Shop extends Controller
            $where['name']=array('like','%'.$urlcanshu['keyword'].'%');
         }
 
-    	$res=$user->field("shop.id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_koubei,com_haoping,com_tel,qyname,top,com_paixu,zhi,com_slogan,code,pass")->join('com_fuwuqy w','shop.com_szqy = w.qycode')->where($where)->order("com_paixu desc")->paginate(10,false,[
+    	$res=$user->field("shop.id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_koubei,com_haoping,com_tel,qyname,top,com_paixu,zhi,com_slogan,code,pass")->join('com_fuwuqy w','shop.com_szqy = w.qycode','left')->where($where)->order("com_paixu desc")->paginate(10,false,[
 'query'=>$urlcanshu,
 ]); 
         
@@ -76,7 +76,7 @@ class Shop extends Controller
         }
         else
         {
-          $this->success("添加成功","admin/Shop/index");
+          $this->redirect("admin/Shop/index");
         }
         
     }
@@ -101,7 +101,7 @@ class Shop extends Controller
         }
         else
         {
-          $this->success("修改成功","admin/Shop/index");
+           $this->redirect("admin/Shop/index");
         }
         
     }
