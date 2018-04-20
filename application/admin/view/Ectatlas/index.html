@@ -41,6 +41,18 @@
         <td>
             <span class="scz_name">{$vores.scz_name}</span>
         </td>
+        <!-- 户型 -->
+        <td style="display: none;">
+            <span class="hxcode" >{$vores.hxcode}</span>
+        </td>
+        <!-- 风格 -->
+        <td style="display: none;">
+            <span class="fgcode">{$vores.fgcode}</span>
+        </td>
+        <!-- 面积 -->
+        <td style="display: none;">
+            <span class="mjcode">{$vores.mjcode}</span>
+        </td>
         <td>
             <span style=" cursor: pointer;" class="showModel2">修改</span> | 
             <span style=" cursor: pointer;" class="delcom">删除</span> |
@@ -172,9 +184,9 @@
             <span class="close2">×</span>
             </header>
             <div class="modal-body">
-                <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/ectatlas/add')}">
+                <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/ectatlas/edit')}">
                     <table style="border-collapse:separate; border-spacing:10px; width: 100%;">
-                    <input type="text" style="display: none;" id="id">
+                    <input type="text" style="display: none;" name="id" id="id">
                     <tr>
                         <td class='wid'>
             名称
@@ -195,47 +207,74 @@
                         <td>
                             户型
                         </td>
-                        <td>
-                        <div>
-                            <input type="text"  style="display: none;" name="hxcode" id="huxingfuxuan">
+                        <td id="hxcodeedit">
+                            <input type="text"  style="display: none;" name="hxcode" id="huxingfuxuanedit">
                             {foreach name="layout" item="volayout"}
-                            <input type="checkbox" class ="hxcodefx" value="{$volayout.lcode}"> <span style="margin-right: 10px;" >{$volayout.lname}</span> 
-                            {/foreach}
-                        </div>
-                            
+                            <input type="checkbox" class ="hxcodefxedit" value="{$volayout.lcode}"> <span style="margin-right: 10px;" >{$volayout.lname}</span> 
+                            {/foreach}                            
                         </td>
                     </tr>
-
+                    <script type="text/javascript">
+                        // 户型
+                        $("input[class='hxcodefxedit']").change(function(){  
+                            var result="";  
+                            $("input[class='hxcodefxedit']:checked").each(function(){  
+                                   result+=$(this).val()+',';  
+                            });  
+                             
+                            $("#huxingfuxuanedit").val(result);      
+                      
+                        });
+                    </script>
                     <tr>
                         <td>
                             风格
                         </td>
-                        <td>
-                        <div>
-                            <input type="text"  style="display: none;" name="fgcode" id="fenggefuxu">
+                        <td id="fgcodeedit">
+                            <input type="text"  style="display: none;" name="fgcode" id="fenggefuxuedit">
                             {foreach name="fengge" item="vofengge"}
-                            <input type="checkbox" class ="fenggefuxu" value="{$vofengge.zcfgcode}">
+                            <input type="checkbox" class ="fenggefuxuedit" value="{$vofengge.zcfgcode}">
                             <span style="margin-right: 10px;"> {$vofengge.zcfgname}</span>
                             {/foreach}
-                        </div>
                             
                         </td>
                     </tr>
+                     <script type="text/javascript">
+                        // 户型
+                        $("input[class='fenggefuxuedit']").change(function(){  
+                            var result="";  
+                            $("input[class='fenggefuxuedit']:checked").each(function(){  
+                                   result+=$(this).val()+',';  
+                            });  
+                             
+                            $("#fenggefuxuedit").val(result);      
+                      
+                        });
+                    </script>
                     <tr>
                         <td>
                             面积
                         </td>
-                        <td>
-                        <div>
-                            <input type="text"  style="display: none;" name="mjcode" id="mianjifu">
+                        <td id="mjcodeedit">
+                            <input type="text"  style="display: none;" name="mjcode" id="mianjifuedit">
                             {foreach name="mianji" item="vomianji"}
-                            <input type="checkbox" class ="mianjifu" value="{$vomianji.emcode}">
+                            <input type="checkbox" class ="mianjifuedit" value="{$vomianji.emcode}">
                             <span style="margin-right: 10px;">{$vomianji.emname}</span> 
                             {/foreach}
-                        </div>
-                            
                         </td>
                     </tr>
+                    <script type="text/javascript">
+                        // 面积
+                        $("input[class='mianjifuedit']").change(function(){  
+                            var result="";  
+                            $("input[class='mianjifuedit']:checked").each(function(){  
+                                   result+=$(this).val()+',';  
+                            });  
+                             
+                            $("#mianjifuedit").val(result);      
+                      
+                        });
+                    </script>
                     </table>
                 </div>
                 <footer class="modal-footer">
@@ -278,13 +317,33 @@
     $(".showModel2").click(function(){
         var id = $(this).parent().parent().find(".id").html();
         var ekname = $(this).parent().parent().find(".ekname").html();//获取name
-        var scz_name = $(this).parent().parent().find(".scz_name").html();//获取name
+        var scz_name = $(this).parent().parent().find(".scz_name").html();//获取上传者name
+        var hxcode = $(this).parent().parent().find(".hxcode").html();//获取户型
+        var fgcode = $(this).parent().parent().find(".fgcode").html();//获取风格
+        var mjcode = $(this).parent().parent().find(".mjcode").html();//获取面积
+        console.log(mjcode);
         //赋值
         $("#id").val(id);
         $("#ekname").val(ekname);
         $("#scz_name").val(scz_name);
-        
-        // alert(comid);comname
+        // 复选框赋值户型
+        $("#huxingfuxuanedit").val(hxcode);
+        var hxcodeedit = hxcode.substring(0, hxcode.lastIndexOf(','));
+        $(hxcodeedit.split(",")).each(function (i,dom){
+            $("#hxcodeedit :checkbox[value='"+dom+"']").prop("checked",true);
+        });
+        // 复选框赋值风格
+        $("#fenggefuxuedit").val(fgcode);
+        var fgcodeedit = fgcode.substring(0, fgcode.lastIndexOf(','));
+        $(fgcodeedit.split(",")).each(function (i,dom){
+            $("#fgcodeedit :checkbox[value='"+dom+"']").prop("checked",true);
+        });
+        // 复选框赋值面积
+        $("#mianjifuedit").val(mjcode);
+        var mjcodeedit = mjcode.substring(0, mjcode.lastIndexOf(','));
+        $(mjcodeedit.split(",")).each(function (i,dom){
+            $("#mjcodeedit :checkbox[value='"+dom+"']").prop("checked",true);
+        });
          modal2.style.display = "block";  
     });
     close2.addEventListener('click', function(){  
@@ -308,7 +367,7 @@
                 type:"post",
                 dataType:'json',
                 async:false,
-                url:'{:url("admin/ectkj/del")}',
+                url:'{:url("admin/ectatlas/del")}',
                 data:{"id":comid},
                 success:function(dd){
                     // console.log(dd);

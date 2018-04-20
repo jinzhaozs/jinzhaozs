@@ -17,7 +17,8 @@
 			<tr>
 				<!-- <th>id</th> -->
 				<th>名称</th>
-				<th>排序</th>
+                <th>排序</th>
+				<th>code</th>
 				<th>操作</th>
 			</tr>
 		</thead>
@@ -27,7 +28,8 @@
 				<tr>
 					<td style="display: none;"><span class="comid">{$vores.id}</span></td>
 					<td><span class="emname">{$vores.emname}</span></td>
-					<td><span class="paixu">{$vores.paixu}</span></td>
+                    <td><span class="paixu">{$vores.paixu}</span></td>
+					<td><span class="emcode">{$vores.emcode}</span></td>
 					<td>
 						<span style=" cursor: pointer;" class="showModel2">修改</span> | 
 						<span style=" cursor: pointer;" class="delcom">删除</span>
@@ -55,12 +57,18 @@
 							<input type="text" class="form-control" id="emname" placeholder="请输入名字">
 						</td>
 					</tr>
-					<tr>
-						<td>排序</td>
-						<td>
-							<input type="text" class="form-control" id="paixu" placeholder="">
-						</td>
-					</tr>
+                    <tr>
+                        <td>排序</td>
+                        <td>
+                            <input type="text" class="form-control" id="paixu" placeholder="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>code</td>
+                        <td>
+                            <input type="text" class="form-control" id="emcode" placeholder="">
+                        </td>
+                    </tr>
 
 				</table>
 	        </div>  
@@ -86,12 +94,18 @@
 							<input type="text" class="form-control" id="emname2" placeholder="请输入名字">
 						</td>
 					</tr>
-					<tr>
-						<td>排序</td>
-						<td>
-							<input type="text" class="form-control" id="paixu2" placeholder="">
-						</td>
-					</tr>
+                    <tr>
+                        <td>排序</td>
+                        <td>
+                            <input type="text" class="form-control" id="paixu2" placeholder="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>code</td>
+                        <td>
+                            <input type="text" class="form-control" id="emcode2" placeholder="">
+                        </td>
+                    </tr>
 
 				</table>
 	        </div>  
@@ -124,14 +138,15 @@
     sure.addEventListener('click', function(){  
     	// 获取信息
     	var qyname = $("#emname").val();
-    	var qypaixu = $("#paixu").val();
+        var qypaixu = $("#paixu").val();
+    	var emcode = $("#emcode").val();
     	if (qyname) {
     		$.ajax({
 	            type:"post",
 	            dataType:'json',
 	            async:false,
 	            url:'{:url("admin/Tuce/mianjiadd")}',
-	            data:{"emname":qyname,"paixu":qypaixu},
+	            data:{"emname":qyname,"paixu":qypaixu,"emcode":emcode},
 	            success:function(dd){
 	                console.log(dd);
 	                if (dd.code == 200) {
@@ -159,10 +174,12 @@
     $(".showModel2").click(function(){
     	comid = $(this).parent().parent().find(".comid").html();
     	comname = $(this).parent().parent().find(".emname").html();//获取name
-    	compaix = $(this).parent().parent().find(".paixu").html();//获取compaix
+        compaix = $(this).parent().parent().find(".paixu").html();//获取compaix
+    	emcode = $(this).parent().parent().find(".emcode").html();//获取compaix
     	//赋值
     	$("#emname2").val(comname);
-    	$("#paixu2").val(compaix);
+        $("#paixu2").val(compaix);
+    	$("#emcode2").val(emcode);
     	// alert(comid);comname
     	 modal2.style.display = "block";  
     	});
@@ -175,8 +192,9 @@
     sure2.addEventListener('click', function(){
     	// 获取信息
     	var qyname2 = $("#emname2").val();
-    	var qypaixu2 = $("#paixu2").val();
-    	// alert(comid);
+        var qypaixu2 = $("#paixu2").val();
+    	var emcode2 = $("#emcode2").val();
+    	// alert(emcode2);
     	
     	// return false;
     	if (qyname2) {
@@ -185,7 +203,7 @@
 	            dataType:'json',
 	            async:false,
 	            url:'{:url("admin/Tuce/mianjiedit")}',
-	            data:{"id":comid,"emname":qyname2,"paixu":qypaixu2},
+	            data:{"id":comid,"emname":qyname2,"paixu":qypaixu2,"emcode":emcode2},
 	            success:function(dd){
 	                console.log(dd);
 	                if (dd.code == 200) {

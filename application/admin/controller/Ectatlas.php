@@ -50,24 +50,24 @@ class Ectatlas extends Controller
     }
      //执行修改
     public function edit(){
-        $user = db('ect_kongjian');
+        $user = db('ect_atlas');
         $whid = input('post.id');//获取id
         $where['id'] = $whid; 
         $shuju = input('post.');//获取数据
         $shuju['time'] = date("Y-m-d h:i:s",time());
         $res = $user->where($where)->update($shuju);
-        if (!$res) {
-          $this->error("admin/ectkj/index");
+         if (!$res) {
+           $this->error("admin/ectatlas/index");
         }
         else
         {
-          $this->redirect("admin/ectkj/index");
+          $this->redirect("admin/ectatlas/index");
         }
         
     }
     //
     public function del($id){
-        $user = db('ect_kongjian');
+        $user = db('ect_atlas');
         $whid = input('post.id');//获取id
         $res = $user->where('id',$whid)->delete();
         if (!$res) {
