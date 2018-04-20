@@ -32,7 +32,7 @@ class Photo extends Controller
         if (!empty($urlcanshu['keyword'])) {
            $where['phname']=array('like','%'.$urlcanshu['keyword'].'%');
         }
-    	$res=$user->field("ect_photo.id,phname,shangcz,extatlas,pimage,ect_kongjian,ect_jubu,ect_zcfg,ect_remen,zcfgcode,zcfgname,ername,ercode,ekname,ekcode")->join('com_zhuancfg zc','ect_photo.ect_zcfg= zc.zcfgcode')->join('ect_kongjian kj','ect_photo.ect_kongjian= kj.ekcode')->join('ect_remen rm','ect_photo.ect_remen= rm.ercode')->where($where)->order("ect_photo.id")->paginate(10,false,['query'=>$urlcanshu,]);
+    	$res=$user->field("ect_photo.id,phname,shangcz,extatlas,pimage,ect_kongjian,ect_jubu,ect_zcfg,ect_remen,zcfgcode,zcfgname,ername,ercode,ekname,ekcode,name")->join('com_zhuancfg zc','ect_photo.ect_zcfg= zc.zcfgcode')->join('ect_kongjian kj','ect_photo.ect_kongjian= kj.ekcode')->join('ect_remen rm','ect_photo.ect_remen= rm.ercode')->join('ect_atlas at','ect_photo.extatlas= at.id')->where($where)->order("ect_photo.id")->paginate(10,false,['query'=>$urlcanshu,]);
     	 $zcfg=$fg->select(); 
     	$page=$res->render();
     	$kong=$kj->select();
@@ -49,11 +49,59 @@ class Photo extends Controller
 	}
 	public function add()
 	{
-		
+		$user = db('ect_photo');
+		$atlas=db('ect_atlas'); 
+        $file = request()->file('pimage');
+        $shuju = input('post.');//获取数据
+        $shuju['time'] = date("Y-m-d h:i:s",time());
+       if($file)
+       { 
+            $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads'); 
+       
+        if($info){
+             $shuju['pimage']=$info->getSaveName();
+        } 
+      }       
+        $user_info = $user->insert($shuju);
+       if (!$user_info) {
+           $this->error("添加失败","admin/Photo/index",['id'=>$shuju['extatlas']]);
+        }
+        else
+        {
+        	  // $lx=$user->min('id');
+        	  // $tu=$user->field('pimage')->where($lx)->find();
+
+        	  // $xtu['logo']=$tu['pimage'];
+        	  // $where['id']=$shuju['extatlas'];
+        	  // $tian=$atlas->where($where)->update($xtu);
+
+          $this->redirect("admin/Photo/index",['id'=>$shuju['extatlas']]);
+         
+        }
+        
 	}
 	public function edit()
 	{
-		
+		 $user = db('photo');
+        $whid = input('post.id');//获取id
+        $where['id'] = $whid; 
+        $shuju = input('post.');//获取数据
+        $file = request()->file('pimage');
+      if($file)
+       { 
+         $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
+        if($info){
+             $shuju['pimage']=$info->getSaveName();
+        }
+        } 
+        $res = $user->where($where)->update($shuju);
+        if (!$res) {
+           $this->error("修改失败","admin/Photo/index",['id'=>$shuju['extatlas']]);
+        }
+        else
+        {
+          $this->redirect("admin/Photo/index",['id'=>$shuju['extatlas']]);
+        }
 	}
 	 public function del($id){
         $user = db('ect_photo');

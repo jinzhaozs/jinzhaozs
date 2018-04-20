@@ -8,8 +8,8 @@
 </head>
 <body>
 <div style="margin-left: 2%;margin-right: 2%; margin-top: 1%;">
-    <h1 style="text-align: center;">效果图空间</h1>
-    <button class="btn" style="margin-top: -5%;" id="showModel">添加空间</button>
+    <h1 style="text-align: center;">效果图</h1>
+    <button class="btn" style="margin-top: -5%;" id="showModel">添加效果图</button>
     <div class="hei">
     </div>
     <table class="table table-bordered">
@@ -20,6 +20,9 @@
         </th>
         <th>
       名称
+        </th>
+         <th>
+      图片
         </th>
         <th>
       上传者名称
@@ -51,25 +54,26 @@
             <span class="id">{$vores.id}</span>
         </td>
         <td>
-            <span class="ekname">{$vores.phname}</span>
+            <span class="phname">{$vores.phname}</span>
+        </td>
+        <td><span class="pimage" name="{$vores.pimage}"  ><img src="__STATIC__/uploads/{$vores.pimage}" style="width:50px;height: 50px" class="img"></span></td>
+        <td>
+            <span class="shangcz">{$vores.shangcz}</span>
         </td>
         <td>
-            <span class="ekcode">{$vores.shangcz}</span>
-        </td>
-        <td>
-            <span class="ekcode">{$vores.extatlas}</span>
+            <span class="extatlas" name="{$vores.extatlas}">{$vores.name}</span>
         </td>
          <td>
-            <span class="ekcode" name="{$vores.ect_kongjian}">{$vores.ekname}</span>
+            <span class="ect_kongjian" name="{$vores.ect_kongjian}">{$vores.ekname}</span>
         </td>
          <td>
-            <span class="ekcode">{$vores.ect_jubu}</span>
+            <span class="ect_jubu">{$vores.ect_jubu}</span>
         </td>
         <td>
-            <span class="ekcode">{$vores.ect_zcfg}</span>
+            <span class="ect_zcfg" name="{$vores.ect_zcfg}">{$vores.zcfgname}</span>
         </td>
         <td>
-            <span class="ekcode">{$vores.ect_remen}</span>
+            <span class="ect_remen" name="{$vores.ect_remen}"> {$vores.ername}</span>
         </td>
 
         <td>
@@ -92,30 +96,82 @@
             <span class="close">×</span>
             </header>
             <div class="modal-body">
-                <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/ectkj/add')}">
+                <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/photo/add')}">
                     <table style="border-collapse:separate; border-spacing:10px; width: 100%;">
+                            <input type="hidden" name="extatlas" id="extatlas" value="{$comid}">
                     <tr>
                         <td class='wid'>
-            名称
+            图片名称
                         </td>
                         <td>
-                            <input type="text" name="ekname" placeholder="请输入名称">
+                            <input type="text" name="phname" id="phname" placeholder="请输入图片名称">
+                        </td>
+                    </tr>
+                    <tr>
+                    <td class='wid'>
+                       图片
+                    </td>
+                    <td>
+                        <input type="file" name="pimage" class="pimage"/>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class='wid'>
+                        上传者
+                        </td>
+                        <td>
+                            <input type="text" name="shangcz" id="shangcz" placeholder="请输入上传者名称">
                         </td>
                     </tr>
                     <tr>
                         <td class='wid'>
-            code
+                    所属空间
                         </td>
                         <td>
-                            <input type="text" name="ekcode" placeholder="请输入code">
+                            <select name="ect_kongjian" id="kj">  
+                               <option value ="0">请选择</option>  
+                              {foreach name="kong" item="kj"}
+                               <span class="qww"><option value ="{$kj.ekcode}">{$kj.ekname}</option></span>  
+                              {/foreach}
+                    </select>
                         </td>
                     </tr>
                     <tr>
                         <td class='wid'>
-            排序
+                    局部
+                        </td>
+                    
+                        <td id="ect_jubu">
+                            {foreach name="jubu" item="jb"}
+                            <input type="checkbox" value="{$jb.ejcode}"  >{$jb.ejname}
+                            {/foreach}
+                            <input type="hidden" name="ect_jubu" class="jubu" value=""> 
+                        </td>
+                    </tr>
+                        <tr>
+                        <td class='wid'>
+                        风格
                         </td>
                         <td>
-                            <input type="text" name="paixu" placeholder="请输入排序">
+                            <select name="ect_zcfg" id="zc">  
+                               <option value ="0">请选择</option>  
+                              {foreach name="zcfg" item="zc"}
+                               <span class="qww"><option value ="{$zc.zcfgcode}">{$zc.zcfgname}</option></span>  
+                              {/foreach}
+                    </select>
+                        </td>
+                    </tr>
+                        <tr>
+                        <td class='wid'>
+                        标签
+                        </td>
+                        <td>
+                            <select name="ect_remen" id="rm">  
+                               <option value ="0">请选择</option>  
+                              {foreach name="remen" item="rm"}
+                               <span class="qww"><option value ="{$rm.ercode}">{$rm.ername}</option></span>  
+                              {/foreach}
+                    </select>
                         </td>
                     </tr>
                     </table>
@@ -135,38 +191,90 @@
             <span class="close2">×</span>
             </header>
             <div class="modal-body">
-                <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/ectkj/edit')}">
+                <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/photo/edit')}">
                     <table style="border-collapse:separate; border-spacing:10px; width: 100%;">
-                    <input type="text" style="display: none;" id="id" name="id" placeholder="请输入名称">
+                            <input type="hidden" name="extatlas" id="extatlas" value="{$comid}">
+                            <input type="hidden" name="id" class="pid2" value="">
                     <tr>
                         <td class='wid'>
-            名称
+                 图片名称
                         </td>
                         <td>
-                            <input type="text" id="ekname" name="ekname" placeholder="请输入名称">
+                            <input type="text" name="phname" id="phname2" placeholder="请输入图片名称">
+                        </td>
+                    </tr>
+                    <tr>
+                    <td class='wid'>
+                       图片
+                    </td>
+                    <td>
+                        <input type="file" name="pimage" class="pimage"/>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class='wid'>
+                        上传者
+                        </td>
+                        <td>
+                            <input type="text" name="shangcz" id="shangcz2" placeholder="请输入上传者名称">
                         </td>
                     </tr>
                     <tr>
                         <td class='wid'>
-            code
+                    所属空间
                         </td>
                         <td>
-                            <input type="text" id="ekcode" name="ekcode" placeholder="请输入code">
+                            <select name="ect_kongjian" id="kj2">  
+                               <option value ="0">请选择</option>  
+                              {foreach name="kong" item="kj"}
+                               <span class="qww"><option value ="{$kj.ekcode}">{$kj.ekname}</option></span>  
+                              {/foreach}
+                    </select>
                         </td>
                     </tr>
                     <tr>
                         <td class='wid'>
-            排序
+                    局部
+                        </td>
+                    
+                        <td id="ect_jubu2">
+                            {foreach name="jubu" item="jb"}
+                            <input type="checkbox" value="{$jb.ejcode}"  >{$jb.ejname}
+                            {/foreach}
+                            <input type="hidden" name="ect_jubu" class="jubu2" value=""> 
+                        </td>
+                    </tr>
+                        <tr>
+                        <td class='wid'>
+                        风格
                         </td>
                         <td>
-                            <input type="text" id="paixu" name="paixu" placeholder="请输入排序">
+                            <select name="ect_zcfg" id="zc2">  
+                               <option value ="0">请选择</option>  
+                              {foreach name="zcfg" item="zc"}
+                               <span class="qww"><option value ="{$zc.zcfgcode}">{$zc.zcfgname}</option></span>  
+                              {/foreach}
+                    </select>
+                        </td>
+                    </tr>
+                        <tr>
+                        <td class='wid'>
+                        标签
+                        </td>
+                        <td>
+                            <select name="ect_remen" id="rm2">  
+                               <option value ="0">请选择</option>  
+                              {foreach name="remen" item="rm"}
+                               <span class="qww"><option value ="{$rm.ercode}">{$rm.ername}</option></span>  
+                              {/foreach}
+                    </select>
                         </td>
                     </tr>
                     </table>
                 </div>
                 <footer class="modal-footer">
-                <button type="button" id="cancel2">取消</button>
-                <button type="button" id="sure2">确定</button>
+              <button type="button" id="cancel2">取消</button>
+            <button type="button" id="sure2">确定</button>
                 </footer>
             </form>
         </div>
@@ -193,6 +301,13 @@
     sure.addEventListener('click', function(){  
         // 获取信息
         // var name = $("#aname").val();
+         var ect_jb =[];
+        $('#ect_jubu input:checkbox:checked').each(function() {
+            ect_jb.push($(this).val());
+        });
+         var ect_jub=ect_jb.join();
+         var ect_jubu= ect_jub.concat(",");
+       $('#ect_jubu .jubu').val(ect_jubu);
             $("#formsubadd").submit();
     });
     // 修改   
@@ -203,14 +318,24 @@
     //模态框展示 
     $(".showModel2").click(function(){
         var id = $(this).parent().parent().find(".id").html();
-      var ekname = $(this).parent().parent().find(".ekname").html();//获取name
-      var ekcode = $(this).parent().parent().find(".ekcode").html();//获取name
-        var paixu = $(this).parent().parent().find(".paixu").html();//获取name
+        var pname = $(this).parent().parent().find(".phname").html();//获取name
+        var shangcz = $(this).parent().parent().find(".shangcz").html();
+        var  kongjian= $(this).parent().parent().find(".ect_kongjian").attr('name');
+        var  zcfg= $(this).parent().parent().find(".ect_zcfg").attr('name');
+        var  remen= $(this).parent().parent().find(".ect_remen").attr('name');
+        var  jubu = $(this).parent().parent().find(".ect_jubu").html();
         //赋值
-        $("#id").val(id);
-      $("#ekname").val(ekname);
-      $("#ekcode").val(ekcode);
-        $("#paixu").val(paixu);
+        var jub=jubu.substring(0, jubu.lastIndexOf(','));
+          $(jub.split(",")).each(function (i,dom){
+        $("#ect_jubu2 :checkbox[value='"+dom+"']").prop("checked",true);
+        $(" #ect_jubu2 :checkbox[id='"+dom+"']").prop("checked",true);
+    });
+        $("#pid").val(id);
+        $("#phname2").val(pname);
+        $("#shangcz2").val(shangcz);
+        $("#kj2").find('option[value="'+kongjian+'"]').attr("selected",true);
+        $("#zc2").find('option[value="'+zcfg+'"]').attr("selected",true);
+        $("#rm2").find('option[value="'+remen+'"]').attr("selected",true);
         // alert(comid);comname
          modal2.style.display = "block";  
         });
@@ -222,12 +347,20 @@
     });  
     sure2.addEventListener('click', function(){
         // 获取信息
+        //   var ect_jb =[];
+        $('#ect_jubu2 input:checkbox:checked').each(function() {
+            ect_jb.push($(this).val());
+        });
+         var ect_jub=ect_jb.join();
+         var ect_jubu= ect_jub.concat(",");
+       $('#ect_jubu2 .jubu2').val(ect_jubu);
             $("#formsubedit").submit();
     });
     // 执行删除
     $(".delcom").click(function(){
         if(confirm("确定删除该类型吗？")){
             comid = $(this).parent().parent().find(".id").html();
+           var image=$(this).parent().parent().find(".img").attr('src');
             // alert(comid);return false;
             $(this).parent().parent().remove();
             // console.log(aa);return false;
@@ -235,8 +368,8 @@
                 type:"post",
                 dataType:'json',
                 async:false,
-                url:'{:url("admin/ectkj/del")}',
-                data:{"id":comid},
+                url:'{:url("admin/photo/del")}',
+                data:{"id":comid,"image":image},
                 success:function(dd){
                     // console.log(dd);
                     if (dd.code == 200) {
