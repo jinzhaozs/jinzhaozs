@@ -50,7 +50,7 @@
     <tbody id="yuansuzhijia">
       {foreach name="res" item="vores"}
     <tr>
-        <td style="display: block;">
+        <td >
             <span class="id">{$vores.id}</span>
         </td>
         <td>
@@ -78,7 +78,7 @@
 
         <td>
             <span style=" cursor: pointer;" class="showModel2">修改</span> | 
-            <span style=" cursor: pointer;" class="delcom">删除</span> |
+            <span style=" cursor: pointer;" class="delcom">删除</span> 
            
         </td>
     </tr>
@@ -347,7 +347,7 @@
     });  
     sure2.addEventListener('click', function(){
         // 获取信息
-        //   var ect_jb =[];
+          var ect_jb =[];
         $('#ect_jubu2 input:checkbox:checked').each(function() {
             ect_jb.push($(this).val());
         });
