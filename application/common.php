@@ -41,9 +41,10 @@
      * 将最小图片的路径添加到图册中
      * @return [type] [description]
      */
-    function tucemixadd()
+    function tucemixadd($tcid)
     {
-        $mixid = db("ect_photo")->order('id')->select();
+        $wheretp['extatlas'] = $tcid;
+        $mixid = db("ect_photo")->where($wheretp)->order('id')->select();
         if ($mixid) {
             $where['id'] = $mixid[0]['extatlas'];
             $shuju['logo'] = $mixid[0]['pimage'];
