@@ -76,13 +76,13 @@ class Photo extends Controller
         	  // $tian=$atlas->where($where)->update($xtu);
 
           $this->redirect("admin/Photo/index",['id'=>$shuju['extatlas']]);
-         
+        
         }
         
 	}
 	public function edit()
 	{
-		 $user = db('photo');
+		 $user = db('ect_photo');
         $whid = input('post.id');//获取id
         $where['id'] = $whid; 
         $shuju = input('post.');//获取数据
