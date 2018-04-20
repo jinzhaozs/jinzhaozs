@@ -74,17 +74,18 @@ class Photo extends Controller
         	  // $xtu['logo']=$tu['pimage'];
         	  // $where['id']=$shuju['extatlas'];
         	  // $tian=$atlas->where($where)->update($xtu);
-
+          tucemixadd($shuju['extatlas']);//图册封面图修改
           $this->redirect("admin/Photo/index",['id'=>$shuju['extatlas']]);
-         
+        
         }
         
 	}
 	public function edit()
 	{
-		 $user = db('photo');
+		 $user = db('ect_photo');
         $whid = input('post.id');//获取id
         $where['id'] = $whid; 
+
         $shuju = input('post.');//获取数据
         $file = request()->file('pimage');
       if($file)
@@ -94,12 +95,14 @@ class Photo extends Controller
              $shuju['pimage']=$info->getSaveName();
         }
         } 
+
         $res = $user->where($where)->update($shuju);
         if (!$res) {
-           $this->error("修改失败","admin/Photo/index",['id'=>$shuju['extatlas']]);
+           $this->error("admin/Photo/index",['id'=>$shuju['extatlas']]);
         }
         else
         {
+        	 tucemixadd($shuju['extatlas']);//图册封面图修改
           $this->redirect("admin/Photo/index",['id'=>$shuju['extatlas']]);
         }
 	}
@@ -113,6 +116,7 @@ class Photo extends Controller
         
   
         $res = $user->where('id',$whid)->delete();
+         tucemixadd($shuju['extatlas']);//图册封面图修改
         if (!$res) {
             $data = array(
                     'data' => false,
