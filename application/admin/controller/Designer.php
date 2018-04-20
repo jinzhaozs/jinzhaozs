@@ -30,7 +30,7 @@ class Designer extends Controller
         if (!empty($urlcanshu['keyword'])) {
            $where['dname']=array('like','%'.$urlcanshu['keyword'].'%');
         }
-    	$res=$user->field("designer.id,dname,davatar,sex,jobage,designer.com_dzcfg,shop,price_range,idea,field,school,experience,intro,prize,achievement,grade,name,lxname")->join('shop s','designer.shop = s.id')->join('com_qiyecsleixing lx','designer.field = lx.lxcode','left')->where($where)->order("designer.id")->paginate(10,false,['query'=>$urlcanshu,]);
+    	$res=$user->field("designer.id,dname,davatar,sex,jobage,designer.com_dzcfg,shop,price_range,idea,field,school,experience,intro,prize,achievement,grade,name,lxname")->join('shop s','designer.shop = s.id','left')->join('com_qiyecsleixing lx','designer.field = lx.lxcode','left')->where($where)->order("designer.id")->paginate(10,false,['query'=>$urlcanshu,]);
     	 $zcfg=$fg->select(); 
     	$page=$res->render();
     	$reslx = $userlx->select();//类型
