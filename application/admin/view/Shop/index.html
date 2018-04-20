@@ -29,6 +29,7 @@
 				<!-- <th>id</th> -->
 				<th>编号</th>
 				<th width="100">公司名称</th>
+				<th>账号</th>
 				<th>公司商标</th>
 				<th>电话</th>
 				<th>运营</th>
@@ -36,6 +37,7 @@
 				<th>保障金</th>
 				<th>公司所在区</th>
 				<th>公司地址</th>
+				<th style="display: none;">密码</th>
 				<th style="display: none;">审核</th>
 				<th style="display: none;">服务区域</th>
 				<th style="display: none;">服务风格</th>
@@ -53,6 +55,7 @@
 					<td style="display: none;"><span class="id">{$vores.id}</span></td>
 					<td><span class="">{$i++}</span></td>
 					<td><span class="name">{$vores.name}</span></td>
+					<td><span class="code">{$vores.code}</span></td>
 					<td><span class="logo" name="{$vores.logo}"  ><img src="__STATIC__/uploads/{$vores.logo}" style="width:50px;height: 50px" class="img"></span></td>
 					<td><span class="tel">{$vores.com_tel}</span></td>
 					<td><span class="bl" name="{$vores.bl}">{if condition="($vores.bl == 1)"}有{else /} 无{/if}</span></td>
@@ -60,6 +63,7 @@
 					<td><span class="sum">{$vores.sum}</span></td>
 					<td><span class="comszqy" name="{$vores.com_szqy}">{$vores.qyname}</span></td>
 					<td><span class="dizhi">{$vores.dizhi}</span></td>
+					<td style="display: none;"><span class="pass">{$vores.pass}</span></td>
 					<td style="display: none;"><span class="top">{$vores.top}</span></td>
 					<td style="display: none;"><span class="comfuqy" >{$vores.com_fuqy}</span></td>
 					<td style="display: none;"><span class="comzcfg">{$vores.com_zcfg}</span></td>
@@ -122,6 +126,24 @@
 						<td class='wid'>地址</td>
 						<td>
 							<input type="text" class="form-control" name="dizhi" id="dizhi"  placeholder="请输入公司地址">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>账号</td>
+						<td>
+							<input type="text" class="form-control" name="code" id="code"  placeholder="请输入账号">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>密码</td>
+						<td>
+							<input type="password" class="form-control" name="pass" id="pass"  placeholder="请输入密码">
+						</td>
+					</tr>
+						<tr>
+						<td class='wid'>确认密码</td>
+						<td>
+							<input type="password" class="form-control"  id="pass1"  placeholder="请再次输入密码">
 						</td>
 					</tr>
 					<tr>
@@ -256,6 +278,12 @@
 						</td>
 					</tr>
 					<tr>
+						<td class='wid'>账号</td>
+						<td>
+							<input type="text" class="form-control"  id="code2" readonly="readonly">
+						</td>
+					</tr>
+					<tr>
 						<td class='wid'>商标</td>
 						<td>
 							<div id="img"><img src="" style="width:100px;height: 100px" ></div>
@@ -355,6 +383,28 @@
 	    </div>  
 	</div>  
 </div>
+<!-- 修改密码 -->
+	<div id="modal3" class="modal">  
+	    <div class="modal-content">  
+	        <header class="modal-header">  
+	            <h4>密码修改</h4>  
+	            <span class="close3">×</span>  
+	        </header>  
+	        <div class="modal-body">  
+
+	             <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Shop/edit')}">
+				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
+
+				</table>
+	        </div>  
+	        <footer class="modal-footer">  
+	            <button type="button" id="cancel3">取消</button>  
+	            <button type="button" id="sure3">确定</button>  
+	        </footer>
+	       </form>  
+	    </div>  
+	</div>  
+</div>
 
 </body>
 <!-- 模态框js -->
@@ -383,7 +433,9 @@
     	var logo = $("#logo").val();
     	var sz = $("#com_szqy").val()
     	var tel = $("#com_tel").val();
-
+    	var code= $("#code").val();
+    	var pass =$("#pass").val();
+    	var pass1 =$("#pass1").val();
     	var sum = $("#suma").val();
     	var bl = $("#bl input[name='bl']:checked").val();
     	var rz = $("#rz input[name='rz']:checked").val();
@@ -419,6 +471,18 @@
           if (name == "" || dizhi == "" || logo == "" || sz == "" || tel == "" || sum == "" || bl == "") {
           	alert("请完善信息");
           	// return false;
+          }
+          else if(code == "")
+          {
+          	alert("请填写账号");
+          }
+           else if(pass == "")
+          {
+          	alert("请填写密码");
+          }
+           else if(pass != pass1)
+          {
+          	alert("密码验证错误");
           }
           else if (!tel.match(/^(((13[0-9]{1})|159|153)+\d{8})$/)) { 
             alert("手机号码格式不正确！"); 
@@ -482,7 +546,7 @@
         comtop=$(this).parent().parent().find(".top").html();
         comjianjie=$(this).parent().parent().find(".comjianjie").html();
         comslogan=$(this).parent().parent().find(".comslogan").html();
-
+        var code=$(this).parent().parent().find(".code").html();
     	//赋值
     	var compri=comprice.substring(0, comprice.lastIndexOf(','));
         var comfuq = comfuqy.substring(0, comfuqy.lastIndexOf(','));
@@ -505,6 +569,7 @@
         $(" #com_leixing2 :checkbox[id='"+dom+"']").prop("checked",true);
     });//复选赋值
     	$("#name2").val(comname);
+    	$("#code2").val(code);
     	$("#com_tel2").val(comtel);
     	$("#dizhi2").val(comdizhi);
     	$("#sum2").val(comsum);
