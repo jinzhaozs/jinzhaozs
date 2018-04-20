@@ -37,3 +37,19 @@
         }
         return $info;
     }
+    /**
+     * 将最小图片的路径添加到图册中
+     * @return [type] [description]
+     */
+    function tucemixadd()
+    {
+        $mixid = db("ect_photo")->order('id')->select();
+        if ($mixid) {
+            $where['id'] = $mixid[0]['extatlas'];
+            $shuju['logo'] = $mixid[0]['pimage'];
+            db("ect_atlas")->where($where)->update($shuju);
+        }else{
+            return "数据有误";
+        }
+        return $mixid;
+    }
