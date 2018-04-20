@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<meta http-equiv="Pragma" content="no-cache"> 
+<meta http-equiv="Cache-Control" content="no-cache"> 
+<meta http-equiv="Expires" content="0"> 
+<title>后台登录</title> 
+<link href="__STATIC__/adminshop/login/css/login.css" type="text/css" rel="stylesheet"> 
+<script src="__STATIC__/index/js/zhuangxiugongsi/jquery-1.js"></script>
+</head> 
+<body> 
+<!-- 提示 -->
+<div style="border:1px #A70000 solid;width: 26%;height: 6%;line-height:2.6em;z-index:99;display:block;position:absolute;margin-top: 4%;margin-left: 37%;background-color: red;border-radius: 5px;text-align: center;color:#fff;" >
+    阿萨德
+</div>
+<div class="login">
+    <div class="message">今朝装饰-后台管理</div>
+    <div id="darkbannerwrap"></div>
+    
+    <form method="post">
+        <input name="action" value="login" type="hidden">
+        <input name="username" placeholder="用户名" required="" type="text">
+        <hr class="hr15">
+        <input name="password" placeholder="密码" required="" type="password">
+        <hr class="hr15">
+        <input value="登录" style="width:100%;" id="submit" type="button">
+        <hr class="hr20">
+    </form>
+
+    
+</div>
+<script type="text/javascript">
+    $("#submit").click(function(){
+        alert(132);
+    });
+</script>
+</body>
+</html>

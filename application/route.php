@@ -21,6 +21,7 @@ Route::rule('/aa','index/Index/aa');//查询
  * 前台公司
  */
 Route::rule('/shopcom','shopcom/Index/index');
+
 /**
  * 后台
  */
@@ -130,6 +131,11 @@ Route::rule('/admin/photo/index','admin/photo/index');//户型风格
 Route::rule('/admin/photo/add','admin/photo/add');// 添加
 Route::rule('/admin/photo/edit','admin/photo/edit');// 修改
 Route::rule('/admin/photo/del','admin/photo/del');// 删除
+
+/**
+ * 公司后台
+ */
+Route::rule('/adminshop','adminshop/login/index');
 
 
 
