@@ -33,7 +33,7 @@
         <th>
         空间
         </th>
-         <th>
+         <th style="display: none;">
         局部
         </th>
         <th>
@@ -66,7 +66,7 @@
          <td>
             <span class="ect_kongjian" name="{$vores.ect_kongjian}">{$vores.ekname}</span>
         </td>
-         <td>
+         <td style="display: none;">
             <span class="ect_jubu">{$vores.ect_jubu}</span>
         </td>
         <td>
@@ -330,7 +330,7 @@
         $("#ect_jubu2 :checkbox[value='"+dom+"']").prop("checked",true);
         $(" #ect_jubu2 :checkbox[id='"+dom+"']").prop("checked",true);
     });
-         
+
         $("#pid2").val(id);
         $("#phname2").val(pname);
         $("#shangcz2").val(shangcz);

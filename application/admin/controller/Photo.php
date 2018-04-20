@@ -32,7 +32,7 @@ class Photo extends Controller
         if (!empty($urlcanshu['keyword'])) {
            $where['phname']=array('like','%'.$urlcanshu['keyword'].'%');
         }
-    	$res=$user->field("ect_photo.id,phname,shangcz,extatlas,pimage,ect_kongjian,ect_jubu,ect_zcfg,ect_remen,zcfgcode,zcfgname,ername,ercode,ekname,ekcode,name")->join('com_zhuancfg zc','ect_photo.ect_zcfg= zc.zcfgcode')->join('ect_kongjian kj','ect_photo.ect_kongjian= kj.ekcode')->join('ect_remen rm','ect_photo.ect_remen= rm.ercode')->join('ect_atlas at','ect_photo.extatlas= at.id')->where($where)->order("ect_photo.id")->paginate(10,false,['query'=>$urlcanshu,]);
+    	$res=$user->field("ect_photo.id,phname,shangcz,extatlas,pimage,ect_kongjian,ect_jubu,ect_zcfg,ect_remen,zcfgcode,zcfgname,ername,ercode,ekname,ekcode,name")->join('com_zhuancfg zc','ect_photo.ect_zcfg= zc.zcfgcode','left')->join('ect_kongjian kj','ect_photo.ect_kongjian= kj.ekcode','left')->join('ect_remen rm','ect_photo.ect_remen= rm.ercode','left')->join('ect_atlas at','ect_photo.extatlas= at.id','left')->where($where)->order("ect_photo.id")->paginate(10,false,['query'=>$urlcanshu,]);
     	 $zcfg=$fg->select(); 
     	$page=$res->render();
     	$kong=$kj->select();
