@@ -135,7 +135,12 @@ Route::rule('/admin/photo/del','admin/photo/del');// 删除
 /**
  * 公司后台
  */
+// 登陆页面
 Route::rule('/adminshop','adminshop/login/index');
+//执行登陆
+Route::rule('/adminshop/login/dologin','adminshop/login/dologin');
+// 主页
+Route::rule('/adminshop/index/index','adminshop/index/index');
 
 
 
