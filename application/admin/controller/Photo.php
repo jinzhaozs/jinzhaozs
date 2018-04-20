@@ -49,7 +49,8 @@ class Photo extends Controller
 	}
 	public function add()
 	{
-		$user = db('ect_photo'); 
+		$user = db('ect_photo');
+		$atlas=db('ect_atlas'); 
         $file = request()->file('pimage');
         $shuju = input('post.');//获取数据
         $shuju['time'] = date("Y-m-d h:i:s",time());
@@ -67,6 +68,13 @@ class Photo extends Controller
         }
         else
         {
+        	  // $lx=$user->min('id');
+        	  // $tu=$user->field('pimage')->where($lx)->find();
+
+        	  // $xtu['logo']=$tu['pimage'];
+        	  // $where['id']=$shuju['extatlas'];
+        	  // $tian=$atlas->where($where)->update($xtu);
+
           $this->redirect("admin/Photo/index",['id'=>$shuju['extatlas']]);
          
         }
