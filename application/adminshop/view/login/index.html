@@ -11,7 +11,7 @@
 </head> 
 <body> 
 <!-- 提示 -->
-<div id="tishi" style="border:1px #A70000 solid;width: 26%;height: 6%;line-height:2.6em;z-index:99;display:none;position:absolute;margin-top: 4%;margin-left: 37%;background-color: red;border-radius: 5px;text-align: center;color:#fff;" >
+<div id="tishi" style="border:1px #A70000 solid;width: 26%;height: 6%;line-height:2.6em;z-index:99;display:none;position:absolute;top: 4%;margin-left: 37%;background-color: red;border-radius: 5px;text-align: center;color:#fff;" >
     
 </div>
 <div class="login">
@@ -27,7 +27,6 @@
         <input value="登录" style="width:100%;" id="submit" type="button">
         <hr class="hr20">
     </form>
-
     
 </div>
 <script type="text/javascript">
@@ -35,9 +34,40 @@
         var username = $("#username").val();
         var password = $("#password").val();
         if (username && password) {
-            alert(123);
+            $.ajax({
+                type:"post",
+                dataType:'json',
+                async:false,
+                url:'{:url("adminshop/login/dologin")}',
+                data:{"username":username,"password":password},
+                success:function(dd){
+                    if (dd.code == 200) {
+                        $("#tishi").html(dd.msg);
+                        $("#tishi").css("background-color","#90EE90");
+                        $("#tishi").css("color","#000");
+                        $("#tishi").css("border-color","#60CD5E");
+                        $("#tishi").slideToggle();
+                        setTimeout(function(){
+
+                            $("#tishi").slideToggle();
+                            window.location.href = "{:url('adminshop/index/index')}";
+                        },1500);
+                    }else{
+                        $("#tishi").html(dd.msg);
+                        $("#tishi").slideToggle();
+                        setTimeout(function(){
+                            $("#tishi").slideToggle();
+                        },1500);
+                    }
+                     
+                }
+            })
         }else{
-            alert(456);
+            $("#tishi").html("用户名或密码不为空");
+            $("#tishi").slideToggle();
+            setTimeout(function(){
+                $("#tishi").slideToggle();
+            },1500);
         }
     });
 </script>

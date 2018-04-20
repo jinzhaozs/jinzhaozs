@@ -10,7 +10,7 @@
 namespace app\index\controller;
 
 use \think\Request;
-
+use think\Session;
 class Index extends \app\index\controller\Base
 {
 	//查询
@@ -121,6 +121,12 @@ class Index extends \app\index\controller\Base
     }
     //测试
     public function aa(){
+        Session::set('name','thinkphp');
+        echo Session::get('name');die;
+        // session
+        $_SESSION['user']="张三";
+        echo $_SESSION['user'];
+       echo 123;die;
         $aa = tucemixadd();
         dump($aa);die;
         return $this->fetch();

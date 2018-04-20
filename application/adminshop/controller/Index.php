@@ -11,6 +11,9 @@ namespace app\adminshop\controller;
 
 use \think\Request;
 
+use think\Session;
+
+
 class Index extends \app\adminshop\controller\Base
 {
 	//查询
