@@ -50,7 +50,7 @@
     <tbody id="yuansuzhijia">
       {foreach name="res" item="vores"}
     <tr>
-        <td style="display: block;">
+        <td >
             <span class="id">{$vores.id}</span>
         </td>
         <td>
@@ -194,7 +194,7 @@
                 <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/photo/edit')}">
                     <table style="border-collapse:separate; border-spacing:10px; width: 100%;">
                             <input type="hidden" name="extatlas" id="extatlas" value="{$comid}">
-                            <input type="hidden" name="id" class="pid2" value="">
+                            <input type="hidden" name="id" id="pid2" value="">
                     <tr>
                         <td class='wid'>
                  图片名称
@@ -330,7 +330,8 @@
         $("#ect_jubu2 :checkbox[value='"+dom+"']").prop("checked",true);
         $(" #ect_jubu2 :checkbox[id='"+dom+"']").prop("checked",true);
     });
-        $("#pid").val(id);
+         
+        $("#pid2").val(id);
         $("#phname2").val(pname);
         $("#shangcz2").val(shangcz);
         $("#kj2").find('option[value="'+kongjian+'"]').attr("selected",true);
