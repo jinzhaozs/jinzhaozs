@@ -31,6 +31,9 @@ class Gongsi extends Controller
         // dump($res);die;
         return $this->view->fetch();
     }
+    public function ceishi(){
+        
+    }
     //执行添加
     public function doadd(){
         $user = db('com_qiyecsleixing');
