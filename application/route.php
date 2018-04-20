@@ -136,6 +136,7 @@ Route::rule('/admin/photo/del','admin/photo/del');// 删除
  * 公司后台
  */
 Route::rule('/adminshop','adminshop/login/index');
+Route::rule('/adminshop/index/index','adminshop/index/index');
 
 
 
