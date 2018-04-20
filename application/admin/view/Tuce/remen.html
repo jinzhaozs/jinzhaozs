@@ -9,8 +9,8 @@
 </head>
 <body>
 <div style="margin-left: 2%;margin-right: 2%;">
-		<h1 style="text-align: center;">局部</h1>
-<button class="btn" style="margin-top: -5%;" id="showModel">添加</button> 
+		<h1 style="text-align: center;">热门标签</h1>
+<button class="btn" style="margin-top: -5%;" id="showModel">添加标签</button> 
 	<table class="table table-bordered" >
 
 		<thead>
@@ -27,8 +27,8 @@
 			{foreach name="res" item="vores"}
 				<tr>
 					<td style="display: none;"><span class="comid">{$vores.id}</span></td>
-					<td><span class="ejname">{$vores.ejname}</span></td>
-					<td><span class="ejcode">{$vores.ejcode}</span></td>
+					<td><span class="ername">{$vores.ername}</span></td>
+					<td><span class="ercode">{$vores.ercode}</span></td>
 					<td><span class="paixu">{$vores.paixu}</span></td>
 					<td>
 						<span style=" cursor: pointer;" class="showModel2">修改</span> | 
@@ -54,7 +54,7 @@
 					<tr>
 						<td>名称</td>
 						<td>
-							<input type="text" class="form-control" id="ejname" placeholder="请输入名字">
+							<input type="text" class="form-control" id="ername" placeholder="请输入名字">
 						</td>
 					</tr>
 					<tr>
@@ -85,7 +85,7 @@
 					<tr>
 						<td>名称</td>
 						<td>
-							<input type="text" class="form-control" id="ejname2" placeholder="请输入名字">
+							<input type="text" class="form-control" id="ername2" placeholder="请输入名字">
 						</td>
 					</tr>
 					<tr>
@@ -125,15 +125,15 @@
     });  
     sure.addEventListener('click', function(){  
     	// 获取信息
-    	var qyname = $("#ejname").val();
+    	var qyname = $("#ername").val();
     	var qypaixu = $("#paixu").val();
     	if (qyname) {
     		$.ajax({
 	            type:"post",
 	            dataType:'json',
 	            async:false,
-	            url:'{:url("admin/Tuce/jubuadd")}',
-	            data:{"ejname":qyname,"paixu":qypaixu},
+	            url:'{:url("admin/Tuce/remenadd")}',
+	            data:{"ername":qyname,"paixu":qypaixu},
 	            success:function(dd){
 	                console.log(dd);
 	                if (dd.code == 200) {
@@ -176,7 +176,7 @@
     });  
     sure2.addEventListener('click', function(){
     	// 获取信息
-    	var qyname2 = $("#ejname2").val();
+    	var qyname2 = $("#ername2").val();
     	var qypaixu2 = $("#paixu2").val();
     	// alert(comid);
     	
@@ -186,8 +186,8 @@
 	            type:"post",
 	            dataType:'json',
 	            async:false,
-	            url:'{:url("admin/Tuce/jubuedit")}',
-	            data:{"id":comid,"ejname":qyname2,"paixu":qypaixu2},
+	            url:'{:url("admin/Tuce/remenedit")}',
+	            data:{"id":comid,"ername":qyname2,"paixu":qypaixu2},
 	            success:function(dd){
 	                console.log(dd);
 	                if (dd.code == 200) {
@@ -216,7 +216,7 @@
 	            type:"post",
 	            dataType:'json',
 	            async:false,
-	            url:'{:url("admin/Tuce/mianjidel")}',
+	            url:'{:url("admin/Tuce/remendel")}',
 	            data:{"id":comid},
 	            success:function(dd){
 	                // console.log(dd);

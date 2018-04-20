@@ -25,6 +25,21 @@
       上传者名称
         </th>
         <th>
+       所属图册
+        </th>
+        <th>
+        空间
+        </th>
+         <th>
+        局部
+        </th>
+        <th>
+        风格
+        </th>
+        <th>
+        热门标签
+        </th>
+        <th>
       操作
         </th>
     </tr>
@@ -36,15 +51,31 @@
             <span class="id">{$vores.id}</span>
         </td>
         <td>
-            <span class="ekname">{$vores.name}</span>
+            <span class="ekname">{$vores.phname}</span>
         </td>
         <td>
-            <span class="ekcode">{$vores.scz_name}</span>
+            <span class="ekcode">{$vores.shangcz}</span>
         </td>
+        <td>
+            <span class="ekcode">{$vores.extatlas}</span>
+        </td>
+         <td>
+            <span class="ekcode" name="{$vores.ect_kongjian}">{$vores.ect_kongjian}</span>
+        </td>
+         <td>
+            <span class="ekcode">{$vores.ect_jubu}</span>
+        </td>
+        <td>
+            <span class="ekcode">{$vores.ect_zcfg}</span>
+        </td>
+        <td>
+            <span class="ekcode">{$vores.ect_remen}</span>
+        </td>
+
         <td>
             <span style=" cursor: pointer;" class="showModel2">修改</span> | 
             <span style=" cursor: pointer;" class="delcom">删除</span> |
-            <span style=" cursor: pointer;" ><a style="color: #000;" href="{:url('admin/photo/index',['id'=>$vores.id])}">图片管理</a></span>  
+           
         </td>
     </tr>
       {/foreach}
