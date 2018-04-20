@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2018-04-18 17:01:00
+Date: 2018-04-20 17:38:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,7 +20,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `article`;
 CREATE TABLE `article` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `aname` varchar(255) DEFAULT NULL COMMENT '标题',
   `ashop` int(11) DEFAULT NULL COMMENT '编辑（所属公司）',
   `abstract` varchar(255) DEFAULT NULL COMMENT '摘要',
@@ -30,13 +30,15 @@ CREATE TABLE `article` (
   `istop` int(11) DEFAULT NULL COMMENT '置顶（1：置顶；2：未置顶）',
   `atime` datetime DEFAULT NULL COMMENT '发布时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of article
 -- ----------------------------
 INSERT INTO `article` VALUES ('1', 'ha ', '1', 'ss', 'qq', 'qq', '1', '1', '2018-04-17 14:33:39');
-INSERT INTO `article` VALUES ('0', '3w', '1', '12', '20180417\\be336863e6afdd87d0ded43b2efcfa97.jpg', '', '2', '2', '2018-04-17 03:58:41');
+INSERT INTO `article` VALUES ('2', '3w', '1', '12', '20180417\\be336863e6afdd87d0ded43b2efcfa97.jpg', '', '2', '2', '2018-04-17 03:58:41');
+INSERT INTO `article` VALUES ('3', '12', '51', '12', '20180419\\1f9d475eeb917fbb9acfe89ae26cf803.jpg', '111', '2', '2', '2018-04-19 02:22:23');
+INSERT INTO `article` VALUES ('4', 'a', '51', '', null, '', '2', '2', '2018-04-19 02:23:36');
 
 -- ----------------------------
 -- Table structure for ceshi
@@ -276,6 +278,193 @@ INSERT INTO `designer` VALUES ('8', 'yh', '20180417\\24b0f99cec3af121e23664cff43
 INSERT INTO `designer` VALUES ('9', 'aq', '20180417\\1ad3d2b288e2dc4dda1d44cd9ce104c6.jpg', '1', '3', null, null, ',', '16', '3', '3', '117', '', '', '', '', '', 'A级信用设计师', '2018-04-17 05:36:40');
 
 -- ----------------------------
+-- Table structure for ect_atlas
+-- ----------------------------
+DROP TABLE IF EXISTS `ect_atlas`;
+CREATE TABLE `ect_atlas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL COMMENT '图册名称',
+  `scz_name` varchar(255) DEFAULT NULL COMMENT '上传者名称',
+  `time` datetime DEFAULT NULL,
+  `logo` varchar(255) DEFAULT NULL COMMENT '第一种图片的路径',
+  `hxcode` varchar(255) DEFAULT NULL COMMENT '户型code',
+  `fgcode` varchar(255) DEFAULT NULL COMMENT '风格code',
+  `mjcode` varchar(255) DEFAULT NULL COMMENT '面积code',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='效果图--图册信息';
+
+-- ----------------------------
+-- Records of ect_atlas
+-- ----------------------------
+INSERT INTO `ect_atlas` VALUES ('1', 'AA', '阿萨德', '2018-04-20 11:35:36', '20180420\\34e3bbe25f1ef919a28bc228c693771a.jpg', '100,101,', '100,101,102,', '100,102,103,');
+INSERT INTO `ect_atlas` VALUES ('2', '试试', '嗯', '2018-04-20 11:36:09', '20180420\\b34dca00fe32e1af83e0a03b02815127.jpg', '100,101,', '101,102,', '101，');
+INSERT INTO `ect_atlas` VALUES ('3', '问', '问', '2018-04-20 09:09:37', null, '101,102,', '101,102,', '101,102,');
+INSERT INTO `ect_atlas` VALUES ('5', 'sdf', 'asd', '2018-04-20 11:08:55', null, '100,102,', '100,101,', '100,');
+INSERT INTO `ect_atlas` VALUES ('6', '说说', '说说', '2018-04-20 11:51:49', '20180420\\2d623146bbbc03a93cd338688d4ede3e.jpg', '100,107,108,', '100,', '100,');
+INSERT INTO `ect_atlas` VALUES ('7', '是否', '水电费', '2018-04-20 11:55:17', '20180420\\3897d939b7fa68cae1f586e5356cff66.jpg', '100,', '100,109,', '101,');
+INSERT INTO `ect_atlas` VALUES ('8', '是', '让他', '2018-04-20 01:33:39', '20180420\\576df197c69151389acf7c0831f8af14.jpg', '100,108,', '102,', '104,');
+
+-- ----------------------------
+-- Table structure for ect_jubu
+-- ----------------------------
+DROP TABLE IF EXISTS `ect_jubu`;
+CREATE TABLE `ect_jubu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ejname` varchar(255) DEFAULT NULL COMMENT '局部名称',
+  `ejcode` varchar(255) DEFAULT NULL COMMENT '局部code',
+  `paixu` int(255) DEFAULT NULL COMMENT '排序',
+  `time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='效果图+局部表';
+
+-- ----------------------------
+-- Records of ect_jubu
+-- ----------------------------
+INSERT INTO `ect_jubu` VALUES ('1', '背景墙', '100', '1', '2018-04-19 03:15:36');
+INSERT INTO `ect_jubu` VALUES ('2', '吊灯', '101', '2', '2018-04-19 15:21:12');
+INSERT INTO `ect_jubu` VALUES ('3', '隔断', '102', '3', '2018-04-19 15:21:30');
+INSERT INTO `ect_jubu` VALUES ('4', '窗帘', '103', '4', '2018-04-19 15:21:58');
+INSERT INTO `ect_jubu` VALUES ('5', '飘窗', '104', '5', '2018-04-19 15:22:21');
+INSERT INTO `ect_jubu` VALUES ('6', '榻榻米', '105', '6', '2018-04-19 15:22:43');
+INSERT INTO `ect_jubu` VALUES ('7', '橱柜', '106', '7', '2018-04-19 15:23:03');
+INSERT INTO `ect_jubu` VALUES ('8', '博古架', '107', '8', '2018-04-19 15:23:28');
+INSERT INTO `ect_jubu` VALUES ('9', '阁楼', '108', '9', '2018-04-19 15:23:41');
+INSERT INTO `ect_jubu` VALUES ('10', '隐形门', '109', '10', '2018-04-19 15:24:18');
+INSERT INTO `ect_jubu` VALUES ('11', '吧台', '110', '11', '2018-04-19 15:24:45');
+INSERT INTO `ect_jubu` VALUES ('12', '酒柜', '111', '12', '2018-04-19 15:25:17');
+INSERT INTO `ect_jubu` VALUES ('13', '鞋柜', '112', '13', '2018-04-19 15:25:37');
+INSERT INTO `ect_jubu` VALUES ('14', '衣柜', '113', '14', '2018-04-19 15:26:00');
+INSERT INTO `ect_jubu` VALUES ('15', '窗户', '114', '15', '2018-04-19 15:26:37');
+INSERT INTO `ect_jubu` VALUES ('16', '相片墙', '115', '16', '2018-04-19 15:27:42');
+INSERT INTO `ect_jubu` VALUES ('17', '楼梯', '116', '17', '2018-04-19 15:59:09');
+INSERT INTO `ect_jubu` VALUES ('18', '窗台', '117', '18', '2018-04-19 15:59:35');
+INSERT INTO `ect_jubu` VALUES ('19', '罗马柱', '118', '19', '2018-04-19 16:00:14');
+INSERT INTO `ect_jubu` VALUES ('20', '垭口', '119', '20', '2018-04-19 16:00:37');
+INSERT INTO `ect_jubu` VALUES ('21', '壁橱', '120', '21', '2018-04-19 16:00:58');
+INSERT INTO `ect_jubu` VALUES ('22', '门口/大门', '121', '22', '2018-04-19 16:01:29');
+INSERT INTO `ect_jubu` VALUES ('23', '落地窗', '122', '23', '2018-04-19 16:01:54');
+INSERT INTO `ect_jubu` VALUES ('24', '其他', '123', '24', '2018-04-19 16:02:14');
+
+-- ----------------------------
+-- Table structure for ect_kongjian
+-- ----------------------------
+DROP TABLE IF EXISTS `ect_kongjian`;
+CREATE TABLE `ect_kongjian` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ekname` varchar(255) DEFAULT NULL COMMENT '空间名称',
+  `ekcode` varchar(255) DEFAULT NULL COMMENT 'k空间code',
+  `paixu` int(255) DEFAULT NULL COMMENT '排序',
+  `time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='效果图+空间表';
+
+-- ----------------------------
+-- Records of ect_kongjian
+-- ----------------------------
+INSERT INTO `ect_kongjian` VALUES ('1', '客厅', '100', '1', null);
+INSERT INTO `ect_kongjian` VALUES ('2', '卧室', '101', '2', '2018-04-19 03:13:29');
+INSERT INTO `ect_kongjian` VALUES ('4', '餐厅', '102', '3', '2018-04-19 03:24:35');
+INSERT INTO `ect_kongjian` VALUES ('5', '厨房', '103', '4', null);
+INSERT INTO `ect_kongjian` VALUES ('6', '卫生间', '104', '5', null);
+INSERT INTO `ect_kongjian` VALUES ('7', '阳台', '105', '6', null);
+INSERT INTO `ect_kongjian` VALUES ('8', '书房', '106', '7', null);
+INSERT INTO `ect_kongjian` VALUES ('9', '玄关', '107', '8', null);
+INSERT INTO `ect_kongjian` VALUES ('10', '儿童房', '108', '9', '2018-04-19 03:26:25');
+
+-- ----------------------------
+-- Table structure for ect_mianji
+-- ----------------------------
+DROP TABLE IF EXISTS `ect_mianji`;
+CREATE TABLE `ect_mianji` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `emname` varchar(255) DEFAULT NULL COMMENT '面积名称',
+  `paixu` int(255) DEFAULT NULL COMMENT '排序',
+  `time` datetime DEFAULT NULL,
+  `emcode` varchar(255) DEFAULT NULL COMMENT '面积code',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='效果图+面积表';
+
+-- ----------------------------
+-- Records of ect_mianji
+-- ----------------------------
+INSERT INTO `ect_mianji` VALUES ('1', '60㎡以下', '1', '2018-04-19 03:02:16', '100');
+INSERT INTO `ect_mianji` VALUES ('2', '60-80㎡', '2', '2018-04-19 16:03:21', '101');
+INSERT INTO `ect_mianji` VALUES ('3', '80-100㎡', '3', '2018-04-19 16:03:40', '102');
+INSERT INTO `ect_mianji` VALUES ('4', '100-120㎡', '4', '2018-04-19 16:04:09', '103');
+INSERT INTO `ect_mianji` VALUES ('5', '120-150㎡', '5', '2018-04-19 16:04:31', '104');
+INSERT INTO `ect_mianji` VALUES ('6', '150㎡以上', '6', '2018-04-19 16:04:55', '105');
+
+-- ----------------------------
+-- Table structure for ect_photo
+-- ----------------------------
+DROP TABLE IF EXISTS `ect_photo`;
+CREATE TABLE `ect_photo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `phname` varchar(255) DEFAULT NULL COMMENT '图片描述',
+  `geshi` varchar(255) DEFAULT NULL COMMENT '格式',
+  `daxiao` varchar(255) DEFAULT NULL COMMENT '大小',
+  `time` datetime DEFAULT NULL,
+  `shangcz` varchar(255) DEFAULT NULL COMMENT '上传者',
+  `extatlas` int(11) DEFAULT NULL COMMENT '所属图册',
+  `pimage` varchar(255) DEFAULT NULL COMMENT '图片路径',
+  `ect_kongjian` varchar(11) DEFAULT NULL COMMENT '空间',
+  `ect_jubu` varchar(11) DEFAULT NULL COMMENT '局部',
+  `ect_zcfg` varchar(11) DEFAULT NULL COMMENT '风格',
+  `ect_remen` varchar(11) DEFAULT NULL COMMENT '热门标签',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ect_photo
+-- ----------------------------
+INSERT INTO `ect_photo` VALUES ('3', '11', null, null, '2018-04-20 10:59:50', '11', '1', '20180420\\34e3bbe25f1ef919a28bc228c693771a.jpg', '105', '100,112,120', '110', '113');
+INSERT INTO `ect_photo` VALUES ('4', '141', null, null, '2018-04-20 11:02:24', '4', '1', '20180420\\bda2fd821e8222884379b9b903a0236e.jpg', '101', '100,110,113', '113', '109');
+INSERT INTO `ect_photo` VALUES ('10', '是', null, null, '2018-04-20 11:39:06', '啊', '5', '20180420\\c75f0e1f5c26270c8cf0746c2de8a701.jpg', '101', '100,', '112', '109');
+INSERT INTO `ect_photo` VALUES ('11', '4', null, null, '2018-04-20 11:40:01', '12', '3', '20180420\\fb4e712987db8a840b43d86cea84e434.jpg', '100', '100,', '113', '111');
+INSERT INTO `ect_photo` VALUES ('12', '是', null, null, '2018-04-20 11:42:21', '是', '2', '20180420\\b34dca00fe32e1af83e0a03b02815127.jpg', '101', '100,', '112', '112');
+INSERT INTO `ect_photo` VALUES ('13', '啊', null, null, '2018-04-20 11:44:25', '千万', '2', '20180420\\316e4c120f0314c2a06f4cdf425eedd0.jpg', '102', '100,110,', '111', '111');
+INSERT INTO `ect_photo` VALUES ('14', '啊', null, null, '2018-04-20 11:45:29', '千万', '2', '20180420\\3e0579923814a1a86f4ef2b714bbeb7b.jpg', '102', '100,110,', '111', '111');
+INSERT INTO `ect_photo` VALUES ('19', '啊啊', null, null, '2018-04-20 11:52:07', '尺寸', '6', '20180420\\2d623146bbbc03a93cd338688d4ede3e.jpg', '100', '100,110,', '110', '109');
+INSERT INTO `ect_photo` VALUES ('20', '水电费', null, null, '2018-04-20 11:55:32', '水电费', '7', '20180420\\3897d939b7fa68cae1f586e5356cff66.jpg', '0', '100,', '0', '0');
+INSERT INTO `ect_photo` VALUES ('21', '', null, null, '2018-04-20 11:56:12', '', '7', null, '0', ',', '0', '0');
+INSERT INTO `ect_photo` VALUES ('22', '是否', null, null, '2018-04-20 11:57:46', '服务', '7', '20180420\\376760a017f1df2e9665a2b08e602497.jpg', '100', '100,110,', '112', '112');
+INSERT INTO `ect_photo` VALUES ('24', '阿萨德', null, null, '2018-04-20 11:58:51', '访问', '7', '20180420\\08011c3a5cba11eb3d955665719bb133.jpg', '101', '101,111,', '0', '0');
+INSERT INTO `ect_photo` VALUES ('25', '', null, null, '2018-04-20 11:58:59', '', '7', null, '100', ',', '112', '112');
+INSERT INTO `ect_photo` VALUES ('26', '是', null, null, '2018-04-20 01:33:56', '是', '8', '20180420\\576df197c69151389acf7c0831f8af14.jpg', '100', '101,', '112', '110');
+
+-- ----------------------------
+-- Table structure for ect_remen
+-- ----------------------------
+DROP TABLE IF EXISTS `ect_remen`;
+CREATE TABLE `ect_remen` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ername` varchar(255) DEFAULT NULL COMMENT '热门名称',
+  `ercode` varchar(255) DEFAULT NULL COMMENT '热门code',
+  `paixu` int(255) DEFAULT NULL COMMENT '排序',
+  `time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='效果图+空间表';
+
+-- ----------------------------
+-- Records of ect_remen
+-- ----------------------------
+INSERT INTO `ect_remen` VALUES ('1', '五斗柜', '100', '1', '2018-04-19 04:36:52');
+INSERT INTO `ect_remen` VALUES ('2', '元宵节花朵', '101', '2', '2018-04-19 16:37:42');
+INSERT INTO `ect_remen` VALUES ('3', '玻璃隔断墙', '102', '3', '2018-04-19 16:38:22');
+INSERT INTO `ect_remen` VALUES ('4', '过石门', '103', '4', '2018-04-19 16:38:46');
+INSERT INTO `ect_remen` VALUES ('5', 'cad平面', '104', '5', '2018-04-19 16:39:08');
+INSERT INTO `ect_remen` VALUES ('6', '玻璃马赛克', '105', '6', '2018-04-19 16:39:34');
+INSERT INTO `ect_remen` VALUES ('7', '洋房', '106', '7', '2018-04-19 16:39:56');
+INSERT INTO `ect_remen` VALUES ('8', '玻璃移门', '107', '8', '2018-04-19 16:40:23');
+INSERT INTO `ect_remen` VALUES ('9', '吸顶灯', '108', '9', '2018-04-19 16:40:48');
+INSERT INTO `ect_remen` VALUES ('10', '影视墙壁纸', '109', '10', '2018-04-19 16:41:18');
+INSERT INTO `ect_remen` VALUES ('11', '铝扣板', '110', '11', '2018-04-19 16:42:15');
+INSERT INTO `ect_remen` VALUES ('12', '凳子', '111', '12', '2018-04-19 16:42:41');
+INSERT INTO `ect_remen` VALUES ('13', '文化砖', '112', '13', '2018-04-19 16:43:04');
+INSERT INTO `ect_remen` VALUES ('14', '精装房', '113', '14', '2018-04-19 16:43:39');
+INSERT INTO `ect_remen` VALUES ('15', '洗脸盆', '114', '15', '2018-04-19 16:43:54');
+
+-- ----------------------------
 -- Table structure for evaluate
 -- ----------------------------
 DROP TABLE IF EXISTS `evaluate`;
@@ -388,27 +577,31 @@ CREATE TABLE `shop` (
   `top` int(2) DEFAULT NULL COMMENT '1是审核通过2未通过',
   `zhi` int(2) DEFAULT '2' COMMENT '置顶',
   `com_fangweicishu` varchar(255) DEFAULT '500' COMMENT '访问次数',
+  `code` varchar(255) DEFAULT NULL COMMENT '账号',
+  `pass` varchar(255) DEFAULT NULL COMMENT '密码',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of shop
 -- ----------------------------
-INSERT INTO `shop` VALUES ('1', '北京克洛尼装饰有限公司', '20180418\\1f2cbcf692af5a70ad6fde0e0f01dc86.jpg', '地址a', '1', '1', '120000', '1', '', '100,101,102,109,', '100,', '100', '100,', '2018-04-18 04:21:40', '1000', '1212', '啊啊士大夫款', '1000', '50.00', '13864358531', '1', '1', '2', '500');
-INSERT INTO `shop` VALUES ('2', '北京泰峰伟业装饰设计有限公司', '20180416\\41d5f168ab77b709d38a060cc0a841c3.jpg', '地址b', '1', '1', '10000', '2', '', '100,101,', '100,101,102,103,', '102', '100,101,102,103,', '2018-04-18 01:34:59', '2000', null, '访问国外', '1000', '50.00', '13864358531', '0', '1', '2', null);
-INSERT INTO `shop` VALUES ('3', '北京佳时特装饰工程有限公司', '20180417\\ad880b551eb75d2a76afec278c37bb6d.jpg', '地址c', '1', '1', '150000', '1', '', '100,102,', '100,101,', '100', '100,', '2018-04-17 03:51:02', '3000', null, '业主真实经历《紫竹花园装修记》已更新至10篇： 今天与克洛尼和金朝签订三方协议。支付50％托管工程款。开始抓紧空调、窗户等', '1000', '50.00', '13864358531', '1', '1', '2', null);
-INSERT INTO `shop` VALUES ('5', '中海建林（北京）装饰工程有限责任公...', '20180416\\c31460b4da2392cebc345fb16d411049.png', '请问', '0', '0', '0', '2', null, '100,101,', '101,102,', '104', '101,102,', '2018-04-16 10:16:50', '4000', null, '业主真实经历《紫竹花园装修记》已更新至10篇： 今天与克洛尼和金朝签订三方协议。支付50％托管工', '1000', '50.00', null, '1', '1', '2', null);
-INSERT INTO `shop` VALUES ('51', '北京味儿', '20180418\\83fbdf980c17e9a048eeb212c94ec680.jpg', '啊啊啊', '1', '1', '1200000', '2', '', '100,', '100,', '100', '100,', '2018-04-18 04:50:32', '100000', '', '', '1000', '50.00', '13864358531', '3', '1', '2', null);
-INSERT INTO `shop` VALUES ('52', '中海建林（北京）装饰工程有限责任公...', '20180418\\7ec2b8c7a42fd43f01dd9dd15d5b41b2.jpg', '学习', '1', '1', '1200000', '2', '', '100,', '100,', '104', '100,', '2018-04-18 04:50:51', '100000', '三傻三', '三傻三', '1000', '50.00', '13864358531', '3', '1', '2', null);
-INSERT INTO `shop` VALUES ('53', '中海建林（北京）装饰工程有限责任公...', '20180418\\22e4ef28c6b5e4192f8bfc3b320f5c33.jpg', '奥数', '1', '1', '0', '2', '', ',', ',', '104', ',', '2018-04-18 04:51:08', '100000', '', '', '1000', '50.00', '13864358531', '2', '1', '2', null);
-INSERT INTO `shop` VALUES ('54', '中海建林（北京）装饰工程有限责任公...', '20180416\\6d0b6532b1e3284bc524c6afe2d9eb23.jpg', null, '1', '1', '0', '2', '100,', '100,', '100,', '104', '100,', '2018-04-16 01:58:42', '100000', null, '', '1000', '50.00', '', '3', '1', '2', null);
-INSERT INTO `shop` VALUES ('55', '', '', '', '1', '1', '0', '2', '', '', '', '0', '', '2018-04-13 10:55:21', '100000', null, '', '1000', '50.00', null, '3', '1', '2', null);
-INSERT INTO `shop` VALUES ('56', '北京生活', '20180416\\fa1646a2d477e0cc068f2e96b45be718.jpg', null, '1', '1', '12000', '2', '', '', '', '100', '', '2018-04-16 01:29:51', '100000', null, '', '1000', '50.00', null, '3', '1', '2', null);
-INSERT INTO `shop` VALUES ('57', '北京生活', '20180416\\9d21417e852a002f20154ca298c35651.jpg', null, '1', '1', '12000', '2', '', '', '', '100', '', '2018-04-16 01:33:09', '100000', null, '', '1000', '50.00', null, '1', '1', '2', null);
-INSERT INTO `shop` VALUES ('59', 'wq ', '20180418\\f33c207de91d81a51203fce7cbca3061.jpg', 'w', '1', '1', '123', '2', '', '100,108,', '100,', '100', '100,', '2018-04-18 04:51:28', '100000', '', '', '1000', '50.00', '13864356891', null, '1', '2', null);
-INSERT INTO `shop` VALUES ('60', '', '', '', '1', '1', '0', '2', ',', ',', ',', '0', ',', '2018-04-13 11:04:47', '100000', null, '', '1000', '50.00', null, null, null, '2', null);
-INSERT INTO `shop` VALUES ('61', '', '20180413\\976e65fe7c4749d69d54447596ef6527.jpg', '', '1', '1', '0', '2', ',', ',', ',', '0', ',', '2018-04-13 11:14:12', '100000', null, '', '1000', '50.00', null, null, null, '2', null);
-INSERT INTO `shop` VALUES ('73', '牵我的手', '20180418\\6852c236dd3f677de7ba5eef35bff92a.jpg', '三大错', '1', '1', '112', '2', '', '100,', '100,', '101', '100,', '2018-04-18 04:52:21', '100000', '', '', '1000', '50.00', '13864358531', null, null, null, null);
+INSERT INTO `shop` VALUES ('1', '北京克洛尼装饰有限公司', '20180418\\1f2cbcf692af5a70ad6fde0e0f01dc86.jpg', '地址a', '1', '1', '120000', '1', '101,103,', '100,101,102,109,', '100,', '100', '100,', '2018-04-20 04:57:02', '1000', '1212', '啊啊士大夫款', '1000', '50.00', '13864358531', '1', '1', '2', '500', '123', 'e10adc3949ba59abbe56e057f20f883e');
+INSERT INTO `shop` VALUES ('2', '北京泰峰伟业装饰设计有限公司', '20180416\\41d5f168ab77b709d38a060cc0a841c3.jpg', '地址b', '1', '1', '10000', '2', '', '100,101,', '100,101,102,103,', '102', '100,101,102,103,', '2018-04-18 01:34:59', '2000', null, '访问国外', '1000', '50.00', '13864358531', '0', '1', '2', null, '456', '456');
+INSERT INTO `shop` VALUES ('3', '北京佳时特装饰工程有限公司', '20180417\\ad880b551eb75d2a76afec278c37bb6d.jpg', '地址c', '1', '1', '150000', '1', '', '100,102,', '100,101,', '100', '100,', '2018-04-17 03:51:02', '3000', null, '业主真实经历《紫竹花园装修记》已更新至10篇： 今天与克洛尼和金朝签订三方协议。支付50％托管工程款。开始抓紧空调、窗户等', '1000', '50.00', '13864358531', '1', '1', '2', null, null, null);
+INSERT INTO `shop` VALUES ('5', '中海建林（北京）装饰工程有限责任公...', '20180416\\c31460b4da2392cebc345fb16d411049.png', '请问', '0', '0', '0', '2', null, '100,101,', '101,102,', '104', '101,102,', '2018-04-16 10:16:50', '4000', null, '业主真实经历《紫竹花园装修记》已更新至10篇： 今天与克洛尼和金朝签订三方协议。支付50％托管工', '1000', '50.00', null, '1', '1', '2', null, null, null);
+INSERT INTO `shop` VALUES ('51', '北京味儿', '20180418\\83fbdf980c17e9a048eeb212c94ec680.jpg', '啊啊啊', '1', '1', '1200000', '2', '', '100,', '100,', '100', '100,', '2018-04-20 01:46:40', '100000', '', '', '1000', '50.00', '13864358531', '2', '1', '2', null, null, null);
+INSERT INTO `shop` VALUES ('52', '中海建林（北京）装饰工程有限责任公...', '20180418\\7ec2b8c7a42fd43f01dd9dd15d5b41b2.jpg', '学习', '1', '1', '1200000', '2', '101,103,', '100,', '100,', '104', '100,', '2018-04-20 02:54:26', '100000', '三傻三', '三傻三', '1000', '50.00', '13864358531', '3', '1', '2', null, null, null);
+INSERT INTO `shop` VALUES ('53', '中海建林（北京）装饰工程有限责任公...', '20180418\\22e4ef28c6b5e4192f8bfc3b320f5c33.jpg', '奥数', '1', '1', '0', '2', '', ',', ',', '104', ',', '2018-04-18 04:51:08', '100000', '', '', '1000', '50.00', '13864358531', '2', '1', '2', null, null, null);
+INSERT INTO `shop` VALUES ('54', '中海建林（北京）装饰工程有限责任公...', '20180416\\6d0b6532b1e3284bc524c6afe2d9eb23.jpg', null, '1', '1', '0', '2', '100,', '100,', '100,', '104', '100,', '2018-04-16 01:58:42', '100000', null, '', '1000', '50.00', '', '2', '1', '2', null, null, null);
+INSERT INTO `shop` VALUES ('55', '', '', '', '1', '1', '0', '2', '', '', '', '0', '', '2018-04-13 10:55:21', '100000', null, '', '1000', '50.00', null, '3', '1', '2', null, null, null);
+INSERT INTO `shop` VALUES ('56', '北京生活', '20180416\\fa1646a2d477e0cc068f2e96b45be718.jpg', '22', '1', '1', '12000', '2', '', '100,', '100,', '100', '100,', '2018-04-20 02:50:59', '100000', '', '', '1000', '50.00', '13864358531', '3', '1', '2', null, null, null);
+INSERT INTO `shop` VALUES ('57', '北京生活', '20180416\\9d21417e852a002f20154ca298c35651.jpg', null, '1', '1', '12000', '2', '', '', '', '100', '', '2018-04-16 01:33:09', '100000', null, '', '1000', '50.00', null, '1', '1', '2', null, null, null);
+INSERT INTO `shop` VALUES ('59', 'wq ', '20180418\\f33c207de91d81a51203fce7cbca3061.jpg', 'w', '1', '1', '123', '2', '', '100,108,', '100,', '100', '100,', '2018-04-18 04:51:28', '100000', '', '', '1000', '50.00', '13864356891', null, '1', '2', null, null, null);
+INSERT INTO `shop` VALUES ('60', '', '', '', '1', '1', '0', '2', ',', ',', ',', '0', ',', '2018-04-13 11:04:47', '100000', null, '', '1000', '50.00', null, null, null, '2', null, null, null);
+INSERT INTO `shop` VALUES ('61', '', '20180413\\976e65fe7c4749d69d54447596ef6527.jpg', '', '1', '1', '0', '2', ',', ',', ',', '0', ',', '2018-04-13 11:14:12', '100000', null, '', '1000', '50.00', null, null, null, '2', null, null, null);
+INSERT INTO `shop` VALUES ('73', '牵我的手', '20180418\\6852c236dd3f677de7ba5eef35bff92a.jpg', '三大错', '1', '1', '112', '2', '', '100,', '100,', '101', '100,', '2018-04-18 04:52:21', '100000', '', '', '1000', '50.00', '13864358531', null, null, null, null, null, null);
+INSERT INTO `shop` VALUES ('74', '222 ', '20180420\\07676ca165a0cc6410a682e71de08bbf.jpg', '11', '1', '2', '1200000', '2', '100,', '100,', '108,', '100', '100,110,', '2018-04-20 04:52:48', '100000', '1111', '1111', '1000', '50.00', '13864358531', '1', '2', '2', '500', '11', '6512bd43d9caa6e02c990b0a82652dca');
+INSERT INTO `shop` VALUES ('76', 'qq', '20180420\\4924b75346ad985592521b86a98f3fdb.jpg', 'qq', '1', '1', '1200000', '2', '100,', '100,', '100,', '100', '100,', '2018-04-20 05:31:54', '100000', '11', '11', '1000', '50.00', '13864358531', '1', '2', '2', '500', 'qqq', '202cb962ac59075b964b07152d234b70');
 
 -- ----------------------------
 -- Table structure for shop_lbt
@@ -422,7 +615,7 @@ CREATE TABLE `shop_lbt` (
   `lbtname` varchar(255) DEFAULT NULL COMMENT '轮播图名称',
   `time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of shop_lbt
@@ -431,6 +624,7 @@ INSERT INTO `shop_lbt` VALUES ('2', '20180418\\ad925701ded8f0e71b1b5023abf65df5.
 INSERT INTO `shop_lbt` VALUES ('3', '20180418\\a6030bb52bd761c5db2a12eb4468c02b.png', null, '1', 'w', '2018-04-18 02:03:22');
 INSERT INTO `shop_lbt` VALUES ('7', '20180418\\0729e441a100bf1199511b9f3df3ca7d.jpg', null, '1', 'ag', '2018-04-18 02:06:54');
 INSERT INTO `shop_lbt` VALUES ('8', '20180418\\ae16c9db43f12cf1391b9ab48ab213fe.jpg', null, '1', '主页', '2018-04-18 02:35:32');
+INSERT INTO `shop_lbt` VALUES ('9', '20180418\\0ab92a95b2d440b8e6ef24a06090e64a.jpg', null, '51', '我', '2018-04-18 05:33:04');
 
 -- ----------------------------
 -- Table structure for struction
