@@ -119,6 +119,18 @@ Route::rule('/admin/tuce/jubuadd','admin/tuce/jubuadd');//添加
 Route::rule('/admin/tuce/jubuedit','admin/tuce/jubuedit');//修改
 Route::rule('/admin/tuce/jubudel','admin/tuce/jubudel');//删除
 
+//图册-热门标签
+Route::rule('/admin/tuce/remen','admin/tuce/remen');//公司 文章列表
+Route::rule('/admin/tuce/remenadd','admin/tuce/remenadd');//添加
+Route::rule('/admin/tuce/remenedit','admin/tuce/remenedit');//修改
+Route::rule('/admin/tuce/remendel','admin/tuce/remendel');//删除
+
+//效果图--图片列表
+Route::rule('/admin/photo/index','admin/photo/index');//户型风格
+Route::rule('/admin/photo/add','admin/photo/add');// 添加
+Route::rule('/admin/photo/edit','admin/photo/edit');// 修改
+Route::rule('/admin/photo/del','admin/photo/del');// 删除
+
 
 
 
