@@ -23,28 +23,28 @@ class Ectatlas extends Controller
     {
        // 链接数据库赋值
         $user = db('ect_atlas');
-        //获取最大lxcode;
-        // $lxcode = $user->code
-      
         $res = $user->select();
         $this->assign("res",$res);
+        $this->assign("layout",uri("com_layout",array()));//户型
+        $this->assign("fengge",uri("com_zhuancfg",array()));//风格
+        $this->assign("mianji",uri("ect_mianji",array()));//面积
         // dump($res);die;
         return $this->fetch();
     }
      public function add()
     {
-         $user = db('ect_kongjian'); 
+         $user = db('ect_atlas'); 
      
         $shuju = input('post.');//获取数据
         $shuju['time'] = date("Y-m-d h:i:s",time());
             
         $user_info = $user->insert($shuju);
         if (!$user_info) {
-           $this->error("admin/ectkj/index");
+           $this->error("admin/ectatlas/index");
         }
         else
         {
-          $this->redirect("admin/ectkj/index");
+          $this->redirect("admin/ectatlas/index");
         }
       
     }

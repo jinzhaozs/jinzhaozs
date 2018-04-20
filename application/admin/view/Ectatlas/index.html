@@ -8,8 +8,8 @@
 </head>
 <body>
 <div style="margin-left: 2%;margin-right: 2%; margin-top: 1%;">
-    <h1 style="text-align: center;">效果图空间</h1>
-    <button class="btn" style="margin-top: -5%;" id="showModel">添加空间</button>
+    <h1 style="text-align: center;">效果图图册</h1>
+    <button class="btn" style="margin-top: -5%;" id="showModel">添加图册</button>
     <div class="hei">
     </div>
     <table class="table table-bordered">
@@ -39,7 +39,7 @@
             <span class="ekname">{$vores.name}</span>
         </td>
         <td>
-            <span class="ekcode">{$vores.scz_name}</span>
+            <span class="scz_name">{$vores.scz_name}</span>
         </td>
         <td>
             <span style=" cursor: pointer;" class="showModel2">修改</span> | 
@@ -57,38 +57,106 @@
     <div id="modal" class="modal">
         <div class="modal-content">
             <header class="modal-header">
-            <h4>添加空间</h4>
+            <h4>添加图册</h4>
             <span class="close">×</span>
             </header>
             <div class="modal-body">
-                <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/ectkj/add')}">
+                <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/ectatlas/add')}">
                     <table style="border-collapse:separate; border-spacing:10px; width: 100%;">
                     <tr>
                         <td class='wid'>
             名称
                         </td>
                         <td>
-                            <input type="text" name="ekname" placeholder="请输入名称">
+                            <input type="text" name="name" placeholder="请输入名称">
                         </td>
                     </tr>
                     <tr>
                         <td class='wid'>
-            code
+             上传者名称
                         </td>
                         <td>
-                            <input type="text" name="ekcode" placeholder="请输入code">
+                            <input type="text" name="scz_name" placeholder="请输入上传者名称">
                         </td>
                     </tr>
                     <tr>
-                        <td class='wid'>
-            排序
+                        <td>
+                            户型
                         </td>
                         <td>
-                            <input type="text" name="paixu" placeholder="请输入排序">
+                        <div>
+                            <input type="text" style="display: none;" name="hxcode" id="huxingfuxuan">
+                            {foreach name="layout" item="volayout"}
+                            <input type="checkbox" class ="hxcodefx" value="{$volayout.lcode}"> <span style="margin-right: 10px;">{$volayout.lname}</span>
+                            {/foreach}
+                        </div>
+                            
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            风格
+                        </td>
+                        <td>
+                        <div>
+                            <input type="text"  style="display: none;" name="fgcode" id="fenggefuxu">
+                            {foreach name="fengge" item="vofengge"}
+                            <input type="checkbox" class ="fenggefuxu" value="{$vofengge.zcfgcode}"><span style="margin-right: 10px;">{$vofengge.zcfgname}</span> 
+                            {/foreach}
+                        </div>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            面积
+                        </td>
+                        <td>
+                        <div>
+                            <input type="text"  style="display: none;" name="mjcode" id="mianjifu">
+                            {foreach name="mianji" item="vomianji"}
+                            <input type="checkbox" class ="mianjifu" value="{$vomianji.emcode}"> <span style="margin-right: 10px;">{$vomianji.emname}</span>
+                            {/foreach}
+                        </div>
+                            
                         </td>
                     </tr>
                     </table>
                 </div>
+                <script type="text/javascript">
+
+                // 户型
+                   $("input[class='hxcodefx']").change(function(){  
+                        var result="";  
+                        $("input[class='hxcodefx']:checked").each(function(){  
+                               result+=$(this).val()+',';  
+                        });  
+                         
+                        $("#huxingfuxuan").val(result);      
+                  
+                    });
+                // 风格
+                   $("input[class='fenggefuxu']").change(function(){  
+                        var result="";  
+                        $("input[class='fenggefuxu']:checked").each(function(){  
+                               result+=$(this).val()+',';  
+                        });  
+                         
+                        $("#fenggefuxu").val(result);      
+                  
+                    });
+                // 面积
+                   $("input[class='mianjifu']").change(function(){  
+                        var result="";  
+                        $("input[class='mianjifu']:checked").each(function(){  
+                               result+=$(this).val()+',';  
+                        });  
+                         
+                        $("#mianjifu").val(result);      
+                  
+                    });
+                </script>
                 <footer class="modal-footer">
                 <button type="button" id="cancel">取消</button>
                 <button type="button" id="sure">确定</button>
@@ -104,31 +172,68 @@
             <span class="close2">×</span>
             </header>
             <div class="modal-body">
-                <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/ectkj/edit')}">
+                <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/ectatlas/add')}">
                     <table style="border-collapse:separate; border-spacing:10px; width: 100%;">
-                    <input type="text" style="display: none;" id="id" name="id" placeholder="请输入名称">
+                    <input type="text" style="display: none;" id="id">
                     <tr>
                         <td class='wid'>
             名称
                         </td>
                         <td>
-                            <input type="text" id="ekname" name="ekname" placeholder="请输入名称">
+                            <input type="text" name="name" id="ekname" placeholder="请输入名称">
                         </td>
                     </tr>
                     <tr>
                         <td class='wid'>
-            code
+             上传者名称
                         </td>
                         <td>
-                            <input type="text" id="ekcode" name="ekcode" placeholder="请输入code">
+                            <input type="text" name="scz_name" id="scz_name" placeholder="请输入上传者名称">
                         </td>
                     </tr>
                     <tr>
-                        <td class='wid'>
-            排序
+                        <td>
+                            户型
                         </td>
                         <td>
-                            <input type="text" id="paixu" name="paixu" placeholder="请输入排序">
+                        <div>
+                            <input type="text"  style="display: none;" name="hxcode" id="huxingfuxuan">
+                            {foreach name="layout" item="volayout"}
+                            <input type="checkbox" class ="hxcodefx" value="{$volayout.lcode}"> <span style="margin-right: 10px;" >{$volayout.lname}</span> 
+                            {/foreach}
+                        </div>
+                            
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            风格
+                        </td>
+                        <td>
+                        <div>
+                            <input type="text"  style="display: none;" name="fgcode" id="fenggefuxu">
+                            {foreach name="fengge" item="vofengge"}
+                            <input type="checkbox" class ="fenggefuxu" value="{$vofengge.zcfgcode}">
+                            <span style="margin-right: 10px;"> {$vofengge.zcfgname}</span>
+                            {/foreach}
+                        </div>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            面积
+                        </td>
+                        <td>
+                        <div>
+                            <input type="text"  style="display: none;" name="mjcode" id="mianjifu">
+                            {foreach name="mianji" item="vomianji"}
+                            <input type="checkbox" class ="mianjifu" value="{$vomianji.emcode}">
+                            <span style="margin-right: 10px;">{$vomianji.emname}</span> 
+                            {/foreach}
+                        </div>
+                            
                         </td>
                     </tr>
                     </table>
@@ -172,17 +277,16 @@
     //模态框展示 
     $(".showModel2").click(function(){
         var id = $(this).parent().parent().find(".id").html();
-      var ekname = $(this).parent().parent().find(".ekname").html();//获取name
-      var ekcode = $(this).parent().parent().find(".ekcode").html();//获取name
-        var paixu = $(this).parent().parent().find(".paixu").html();//获取name
+        var ekname = $(this).parent().parent().find(".ekname").html();//获取name
+        var scz_name = $(this).parent().parent().find(".scz_name").html();//获取name
         //赋值
         $("#id").val(id);
-      $("#ekname").val(ekname);
-      $("#ekcode").val(ekcode);
-        $("#paixu").val(paixu);
+        $("#ekname").val(ekname);
+        $("#scz_name").val(scz_name);
+        
         // alert(comid);comname
          modal2.style.display = "block";  
-        });
+    });
     close2.addEventListener('click', function(){  
         modal2.style.display = "none";  
     }); 
