@@ -1,0 +1,157 @@
+{include file="base/header" /}
+
+<form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('adminshop/index/editjbxx')}">
+    <table style="border-collapse:separate; border-spacing:10px; width: 100%;">
+    <tr>
+        <td class='wid' width="20%">
+            公司名称
+        </td>
+        <td>
+            <input type="text" name="name" class="form-control" value="{$res.0.name}">
+        </td>
+    </tr>
+    <tr>
+        <td class='wid'>
+            logo
+        </td>
+        <td>
+            <img src="__STATIC__/uploads/{$res.0.logo}" alt=""><br>
+            <input type="file" name="logo" class="form-control">
+        </td>
+    </tr>
+    <tr>
+        <td class='wid'>
+            电话
+        </td>
+        <td>
+             <input type="text" name="com_tel" class="form-control" value="{$res.0.com_tel}">
+        </td>
+    </tr>
+    <tr>
+        <td class='wid'>
+            地址
+        </td>
+        <td>
+             <input type="text" name="dizhi" class="form-control" value="{$res.0.dizhi}">
+        </td>
+    </tr>
+    <tr>
+        <td class='wid'>
+            服务区域
+        </td>
+        <td id="fuqyedit">
+            {foreach name="fuwuqy" item="fu"}
+            <input type="checkbox" class="fuqydianji" value="{$fu.qycode}" >{$fu.qyname}
+            {/foreach}
+            <input type="hidden" name="com_fuqy" class="fuqy" value="{$res.0.com_fuqy}"> 
+        </td>
+    </tr>
+    <tr>
+        <td class='wid'>
+            服务价位
+        </td>
+        <td id="priceedit">
+            {foreach name="jiawei" item="jia"}
+            <input type="checkbox" class="pricedianji" value="{$jia.pcode}" >{$jia.pname}
+            {/foreach}
+            <input type="hidden" name="com_price" class="price" value="{$res.0.com_price}"> 
+        </td>
+    </tr>
+    <tr>
+        <td class='wid'>
+            服务风格
+        </td>
+        <td id="fenggeedit">
+            {foreach name="fengge" item="fg"}
+            <input type="checkbox" class="fenggedianji" value="{$fg.zcfgcode}" >{$fg.zcfgname}
+            {/foreach}
+            <input type="hidden" name="com_zcfg" class="fengge" value="{$res.0.com_zcfg}"> 
+        </td>
+    </tr>
+    <tr>
+        <td class='wid'>
+            服务类型
+        </td>
+        <td id="leixingedit">
+            {foreach name="leixing" item="lx"}
+            <input type="checkbox" class="leixingdianji" value="{$lx.lxcode}" >{$lx.lxname}
+            {/foreach}
+            <input type="hidden" name="com_leixing" class="leixing" value="{$res.0.com_leixing}"> 
+        </td>
+    </tr>
+    </table>
+</form>
+<input style="text-align: center;" id="tijiao" type="button" class="btn btn-info" value="修改">
+<script type="text/javascript">
+$("#tijiao").click(function(){
+    $("#formsubadd").submit();
+});
+        //默认加载
+    $(document).ready(function(){
+        //服务区域
+        var fuqy = $(".fuqy").val();
+        var fuqyedit = fuqy.substring(0, fuqy.lastIndexOf(','));
+            $(fuqyedit.split(",")).each(function (i,dom){
+                $("#fuqyedit :checkbox[value='"+dom+"']").prop("checked",true);
+        });
+        // 承接价位
+        var price = $(".price").val();
+        var priceedit = price.substring(0, price.lastIndexOf(','));
+            $(priceedit.split(",")).each(function (i,dom){
+                $("#priceedit :checkbox[value='"+dom+"']").prop("checked",true);
+        });
+        // 风格
+        var fengge = $(".fengge").val();
+        var fenggeedit = fengge.substring(0, fengge.lastIndexOf(','));
+            $(fenggeedit.split(",")).each(function (i,dom){
+                $("#fenggeedit :checkbox[value='"+dom+"']").prop("checked",true);
+        });
+        // 类型
+        var leixing = $(".leixing").val();
+        var leixingedit = leixing.substring(0, leixing.lastIndexOf(','));
+            $(leixingedit.split(",")).each(function (i,dom){
+                $("#leixingedit :checkbox[value='"+dom+"']").prop("checked",true);
+        });
+    });
+    
+    //点击赋值服务区域
+    $(".fuqydianji").click(function(){
+        var fuwuqu = '';
+        $(".fuqydianji").each(function(){
+           if(this.checked == true){
+                fuwuqu += $(this).val()+",";
+            }
+        });
+        $(".fuqy").val(fuwuqu);
+    });
+    //点击赋值承接价位
+    $(".pricedianji").click(function(){
+        var price = '';
+        $(".pricedianji").each(function(){
+           if(this.checked == true){
+                price += $(this).val()+",";
+            }
+        });
+        $(".price").val(price);
+    });
+    //点击赋值风格
+    $(".fenggedianji").click(function(){
+        var fengge = '';
+        $(".fenggedianji").each(function(){
+           if(this.checked == true){
+                fengge += $(this).val()+",";
+            }
+        });
+        $(".fengge").val(fengge);
+    });
+    //点击赋值类型
+    $(".leixingdianji").click(function(){
+        var leixing = '';
+        $(".leixingdianji").each(function(){
+           if(this.checked == true){
+                leixing += $(this).val()+",";
+            }
+        });
+        $(".leixing").val(leixing);
+    });
+</script>

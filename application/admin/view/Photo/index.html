@@ -115,6 +115,8 @@
                         <input type="file" name="pimage" class="pimage"/>
                     </td>
                 </tr>
+                <style type="text/css">
+                input::-ms-clear { display: none; }</style>
                     <tr>
                         <td class='wid'>
                         上传者
@@ -161,7 +163,7 @@
                     </select>
                         </td>
                     </tr>
-                        <tr>
+                       <!--  <tr>
                         <td class='wid'>
                         标签
                         </td>
@@ -173,6 +175,22 @@
                               {/foreach}
                     </select>
                         </td>
+                    </tr> -->
+                        <tr>
+                        <td class='wid'>
+                        标签2
+                        </td>
+                        <td>
+                        <!-- 实际热门标签 -->
+                        <input style="display: none;" type="text" name="ect_remen" id="sjrmbiaoqian">
+                        <div id="rmquyu">
+                            <span>
+                                <input type="text" class="rmhuiche" style="width: 23%;">
+                                <span class="rmxshanchu" style=" cursor:pointer;margin-left: -4%;margin-right: 2%">X</span>
+                            </span>
+                        </div>
+                            
+                        </td>
                     </tr>
                     </table>
                 </div>
@@ -181,6 +199,22 @@
                 <button type="button" id="sure">确定</button>
                 </footer>
             </form>
+            <script type="text/javascript">
+            //回车添加
+                $('#rmquyu').bind('keypress',function(event){ 
+                    if(event.keyCode == "13")      
+                    {  
+                        // 添加input 框
+                        var str = '<span ><input type="text" class="rmhuiche" style="width: 23%;"><span class="rmxshanchu" style="cursor:pointer;margin-left: -4%;margin-right: 3.6%">X</span></span>';
+                        $("#rmquyu").append(str);
+                    }  
+                    $(".rmhuiche").focus();
+                });
+            //x号删除
+            $(document).on("click",".rmxshanchu",function(){
+                $(this).parent().remove();
+            })
+            </script>
         </div>
     </div>
     <!-- 模态框修改 -->
@@ -257,7 +291,23 @@
                     </select>
                         </td>
                     </tr>
-                        <tr>
+                    <tr>
+                        <td class='wid'>
+                        标签2
+                        </td>
+                        <td>
+                        <!-- 实际热门标签 -->
+                        <input style="display: none;" type="text" name="ect_remen" id="sjrmbiaoqian2">
+                        <div id="rmquyu2">
+                            <!-- <span>
+                                <input type="text" class="rmhuiche2" style="width: 23%;">
+                                <span class="rmxshanchu2" style=" cursor:pointer;margin-left: -4%;margin-right: 2%">X</span>
+                            </span> -->
+                        </div>
+                            
+                        </td>
+                    </tr>
+                        <!-- <tr>
                         <td class='wid'>
                         标签
                         </td>
@@ -269,8 +319,24 @@
                               {/foreach}
                     </select>
                         </td>
-                    </tr>
+                    </tr> -->
                     </table>
+                    <script type="text/javascript">
+            //回车添加
+                $('#rmquyu2').bind('keypress',function(event){ 
+                    if(event.keyCode == "13")      
+                    {  
+                        // 添加input 框
+                        var str = '<span ><input type="text" class="rmhuiche2" style="width: 23%;"><span class="rmxshanchu2" style="cursor:pointer;margin-left: -4%;margin-right: 3.6%">X</span></span>';
+                        $("#rmquyu2").append(str);
+                    }  
+  $(".rmhuiche2").focus();
+                });
+            //x号删除
+            $(document).on("click",".rmxshanchu2",function(){
+                $(this).parent().remove();
+            })
+            </script>
                 </div>
                 <footer class="modal-footer">
               <button type="button" id="cancel2">取消</button>
@@ -308,6 +374,12 @@
          var ect_jub=ect_jb.join();
          var ect_jubu= ect_jub.concat(",");
        $('#ect_jubu .jubu').val(ect_jubu);
+       //赋值真是热门标签
+                        var zsrmbq = ',';
+                        $(".rmhuiche").each(function(){
+                            zsrmbq += $(this).val()+",";
+                        });
+                        $("#sjrmbiaoqian").val(zsrmbq);
             $("#formsubadd").submit();
     });
     // 修改   
@@ -317,12 +389,24 @@
     var modal2 = document.getElementById('modal2'); 
     //模态框展示 
     $(".showModel2").click(function(){
+        //清空以前的值
+        $("#rmquyu2").html("");
         var id = $(this).parent().parent().find(".id").html();
         var pname = $(this).parent().parent().find(".phname").html();//获取name
         var shangcz = $(this).parent().parent().find(".shangcz").html();
         var  kongjian= $(this).parent().parent().find(".ect_kongjian").attr('name');
         var  zcfg= $(this).parent().parent().find(".ect_zcfg").attr('name');
         var  remen= $(this).parent().parent().find(".ect_remen").attr('name');
+        // 热门标签赋值
+        var remensz = remen.substring(1, remen.lastIndexOf(','));
+        var str2 = '';
+        $(remensz.split(",")).each(function (i,dom){
+             // 添加input 框
+                        str2 += '<span ><input type="text" class="rmhuiche2" value="'+dom+'" style="width: 23%;"><span class="rmxshanchu2" style="cursor:pointer;margin-left: -4%;margin-right: 3.6%">X</span></span>';
+        });
+        str2 += '<span ><input type="text" class="rmhuiche2"  style="width: 23%;"><span class="rmxshanchu2" style="cursor:pointer;margin-left: -4%;margin-right: 3.6%">X</span></span>';
+                        $("#rmquyu2").append(str2);
+        // console.log(remensz);
         var  jubu = $(this).parent().parent().find(".ect_jubu").html();
         //赋值
         var jub=jubu.substring(0, jubu.lastIndexOf(','));
@@ -355,6 +439,12 @@
          var ect_jub=ect_jb.join();
          var ect_jubu= ect_jub.concat(",");
        $('#ect_jubu2 .jubu2').val(ect_jubu);
+       //赋值真是热门标签
+                        var zsrmbq = ',';
+                        $(".rmhuiche2").each(function(){
+                            zsrmbq += $(this).val()+",";
+                        });
+                        $("#sjrmbiaoqian2").val(zsrmbq);
             $("#formsubedit").submit();
     });
     // 执行删除

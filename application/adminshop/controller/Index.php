@@ -16,11 +16,57 @@ use think\Session;
 
 class Index extends \app\adminshop\controller\Base
 {
+    function _initialize(){
+        $code = Session::get('adminshopcode');
+        if (!$code) {
+           $this->redirect("adminshop");
+        }
+    }
 	//查询
     //
     public function index()
     {
+        $code = Session::get('adminshopcode');
+       
+        $where['code'] = $code;
+        $res = uri('shop',$where);
+        $this->assign("res",$res);
         return $this->fetch();
     }
-    
+    //基本信息
+    public function jibenxinxi(){
+        $code = Session::get('adminshopcode');
+        $where['code'] = $code;
+        $res = uri('shop',$where);
+        $this->assign("fuwuqy",db('com_fuwuqy')->select());//服务区域
+        $this->assign("jiawei",db('com_price')->select());//服务价位
+        $this->assign("fengge",db('com_zhuancfg')->select());//服务风格
+        $this->assign("leixing",db('com_qiyecsleixing')->select());//服务类型
+        $this->assign("res",$res);
+        return $this->fetch();
+    }
+    //修改
+    public function editjbxx(){
+        $user = db('shop');
+        $where['code'] = Session::get('adminshopcode');
+        $shuju = input('post.');//获取数据
+        // dump($shuju);die;
+        $file = request()->file('logo');
+        $shuju['time'] = date("Y-m-d h:i:s",time());
+         if($file)
+       { 
+         $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
+        if($info){
+             $shuju['logo']=$info->getSaveName();
+        } 
+       }
+        $res = $user->where($where)->update($shuju);
+        if (!$res) {
+           $this->error("修改失败");
+        }
+        else
+        {
+           $this->redirect('/adminshop/index/jibenxinxi');
+        }
+    }
 }
