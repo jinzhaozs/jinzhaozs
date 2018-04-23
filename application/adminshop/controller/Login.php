@@ -62,6 +62,7 @@ class Login extends \app\adminshop\controller\Base
         }
         //赋值
         Session::set('adminshopcode',$mobile);
+        Session::set('adminshopid',$user_info[0]['id']);
         $data = array(
                 'data' => true,
                 'code' => 200,

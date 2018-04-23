@@ -145,6 +145,14 @@ Route::rule('/adminshop/index/index','adminshop/index/index');
 Route::rule('/adminshop/index/jibenxinxi','adminshop/index/jibenxinxi');
 // 修改基本信息
 Route::rule('/adminshop/index/editjbxx','adminshop/index/editjbxx');
+//公司案例
+Route::rule('/adminshop/plan/index','adminshop/plan/index');//公司 案例列表
+Route::rule('/adminshop/plan/add','adminshop/plan/add');//添加
+Route::rule('/adminshop/plan/ajaxedit','adminshop/plan/ajaxedit');//修改参数
+Route::rule('/adminshop/plan/ajaxtpguanli','adminshop/plan/ajaxtpguanli');//图片管理
+Route::rule('/adminshop/plan/edit','adminshop/plan/edit');//修改
+Route::rule('/adminshop/Plan/tupianguanli','adminshop/Plan/tupianguanli');//图片管理修改
+Route::rule('/adminshop/plan/delete','adminshop/plan/delete');//删除
 
 
 
