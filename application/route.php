@@ -141,6 +141,10 @@ Route::rule('/adminshop','adminshop/login/index');
 Route::rule('/adminshop/login/dologin','adminshop/login/dologin');
 // 主页
 Route::rule('/adminshop/index/index','adminshop/index/index');
+//基本信息
+Route::rule('/adminshop/index/jibenxinxi','adminshop/index/jibenxinxi');
+// 修改基本信息
+Route::rule('/adminshop/index/editjbxx','adminshop/index/editjbxx');
 
 
 
