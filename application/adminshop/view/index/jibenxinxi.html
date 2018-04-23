@@ -1,7 +1,8 @@
 {include file="base/header" /}
 
 <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('adminshop/index/editjbxx')}">
-    <table style="border-collapse:separate; border-spacing:10px; width: 100%;">
+    <table style="border-collapse:separate; border-spacing:10px; width: 100%;padding-left:5%; ">
+    <div style="border: 0px red solid;background-color:#D7DDE4;width: 90%;height: 40px;margin-left: 2%"><h3>基本信息</h3></div>
     <tr>
         <td class='wid' width="20%">
             公司名称
@@ -11,11 +12,19 @@
         </td>
     </tr>
     <tr>
+        <td class='wid' width="20%">
+            公司简称
+        </td>
+        <td>
+            <input type="text" name="name_jc" class="form-control" value="{$res.0.name_jc}">
+        </td>
+    </tr>
+    <tr>
         <td class='wid'>
             logo
         </td>
         <td>
-            <img src="__STATIC__/uploads/{$res.0.logo}" alt=""><br>
+            <img style="width: 8%;" src="__STATIC__/uploads/{$res.0.logo}" alt=""><br>
             <input type="file" name="logo" class="form-control">
         </td>
     </tr>
@@ -79,6 +88,92 @@
             <input type="hidden" name="com_leixing" class="leixing" value="{$res.0.com_leixing}"> 
         </td>
     </tr>
+    <tr>
+        <td class='wid'>
+            营业执照
+        </td>
+        <td>
+            <img style="width: 8%;" src="__STATIC__/uploads/{$res.0.logo_yingyezz}" alt="营业执照">
+        </td>
+    </tr>
+    <tr>
+        <td class='wid'>
+            法人
+        </td>
+        <td>
+            <input type="text" name="faren" class="form-control" value="{$res.0.faren}">
+        </td>
+    </tr>
+    <tr>
+        <td class='wid'>
+            注册资金
+        </td>
+        <td>
+            <input type="text" name="zhucezijin" class="form-control" value="{$res.0.zhucezijin}">单位（万）
+        </td>
+    </tr>
+    <tr>
+        <td class='wid'>
+            企业格言
+        </td>
+        <td>
+            <input type="text" name="com_slogan" class="form-control" value="{$res.0.com_slogan}">
+        </td>
+    </tr>
+    <tr>
+        <td class='wid'>
+            公司简介
+        </td>
+        <td width="80%">
+            <!-- <input type="text" name="com_jianjie" class="form-control" value="{$res.0.com_jianjie}"> -->
+                <script id="com_jianjie" name="com_jianjie" type="text/plain">{$res.0.com_jianjie}</script>
+                        <script>
+                       var editor;
+                        KindEditor.ready(function(K) {
+                        editor=K.create('#com_jianjie');
+                        });
+                        </script>
+                        <script type="text/javascript">
+                            var ue = UE.getEditor('com_jianjie');
+                        </script>
+        </td>
+    </tr>
+
+    </table>
+         <div style="border: 0px red solid;background-color:#D7DDE4;width: 90%;height: 40px;margin-left: 2%"><h3>公司联系方式</h3></div>
+    <table style="border-collapse:separate; border-spacing:10px; width: 100%;padding-left:5%; ">
+        <tr>
+            <td class='wid' style="width: 20%;">
+                联系人
+            </td>
+            <td>
+                <input type="text" name="lianxiren" class="form-control" value="{$res.0.lianxiren}">
+            </td>
+        </tr>
+         <tr>
+            <td class='wid'>
+                联系人手机
+            </td>
+            <td>
+                <input type="text" name="lianxirenshouji" class="form-control" value="{$res.0.lianxirenshouji}">
+            </td>
+        </tr>
+         <tr>
+            <td class='wid'>
+                邮箱
+            </td>
+            <td>
+                <input type="text" name="youxiang" class="form-control" value="{$res.0.youxiang}">
+            </td>
+        </tr>
+         <tr>
+            <td class='wid'>
+                客服QQ
+            </td>
+            <td>
+                <input type="text" name="qqkf" class="form-control" value="{$res.0.qqkf}">
+            </td>
+        </tr>
     </table>
 </form>
 <input style="text-align: center;" id="tijiao" type="button" class="btn btn-info" value="修改">
