@@ -1,13 +1,7 @@
 {extend name="layoutextend"}
 {block name="nav"}
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8"> 
-	<title></title>
-	
-</head>
-<body>
+
+
 <div style="margin-left: 2%;margin-right: 2%; margin-top: 1%;">
 		<h1 style="text-align: center;">装修案例</h1>
 <button class="btn" style="margin-top: -5%;" id="showModel">添加案例</button> 
@@ -22,7 +16,6 @@
 					</span>
 			</div>
 		</form> 
-		<div class="hei"></div>
 	<table class="table table-bordered" >
 
 		<thead>
@@ -45,27 +38,46 @@
 		<tbody id="yuansuzhijia">
 			<tr><td style="display: none;">{$i=1}</td></tr>
 			{foreach name="res" item="vores"}
-			
-				<tr>
-					<td style="display: block;"><span class="planid">{$vores.id}</span></td>
-					<td><span class="fname">{$vores.fname}</span></td>
-					<td><span class="img"><img src="__STATIC__/uploads/{$vores.flogo}" style="width:50px;height: 50px" ></span></td>
-					<td><span>{$vores.ftype}</span></td>
-					<td><span>{$vores.frenyuan}</span></td>
-					<td><span class="comname">{$vores.comid}</span></td>
-					<td><span>{$vores.fmianji}</span></td>
-					<td><span>{$vores.fyusuan}</span></td>
-					<td><span>{$vores.fhuxing}</span></td>
-					<td><span>{$vores.ffengge}</span></td>
-					<td><span>{$vores.ffangshi}</span></td>
-					<td>
-						<span style=" cursor: pointer;" class="showModel2">修改</span> | 
-						<span style=" cursor: pointer;" class="delcom">删除</span>  |
-						<span  style=" cursor: pointer;"class="showModel3">图片管理</span>
-					</td>
-				</tr>
-			{/foreach}
-			
+            
+                <tr>
+                    <td style="display: block;"><span class="planid">{$vores.id}</span></td>
+                    <td><span class="fname">{$vores.fname}</span></td>
+                    <td><span class="img"><img src="__STATIC__/uploads/{$vores.flogo}" style="width:50px;height: 50px" ></span></td>
+                    <td><span>{$vores.ftype}</span></td>
+                    <td><span>{$vores.frenyuan}</span></td>
+                    <td><span class="comname">{$vores.comid}</span></td>
+                    <td><span>{$vores.fmianji}</span></td>
+                    <td><span>{$vores.fyusuan}</span></td>
+                    <td><span>{$vores.fhuxing}</span></td>
+                    <td><span>{$vores.ffengge}</span></td>
+                    <td><span>{$vores.ffangshi}</span></td>
+                    <td>
+                        <span style=" cursor: pointer;" class="showModel2">修改</span> | 
+                        <span style=" cursor: pointer;" class="delcom">删除</span>  |
+                        <span  style=" cursor: pointer;"class="showModel3">图片管理</span>
+                    </td>
+                </tr>
+            {/foreach}{foreach name="res" item="vores"}
+            
+                <tr>
+                    <td style="display: block;"><span class="planid">{$vores.id}</span></td>
+                    <td><span class="fname">{$vores.fname}</span></td>
+                    <td><span class="img"><img src="__STATIC__/uploads/{$vores.flogo}" style="width:50px;height: 50px" ></span></td>
+                    <td><span>{$vores.ftype}</span></td>
+                    <td><span>{$vores.frenyuan}</span></td>
+                    <td><span class="comname">{$vores.comid}</span></td>
+                    <td><span>{$vores.fmianji}</span></td>
+                    <td><span>{$vores.fyusuan}</span></td>
+                    <td><span>{$vores.fhuxing}</span></td>
+                    <td><span>{$vores.ffengge}</span></td>
+                    <td><span>{$vores.ffangshi}</span></td>
+                    <td>
+                        <span style=" cursor: pointer;" class="showModel2">修改</span> | 
+                        <span style=" cursor: pointer;" class="delcom">删除</span>  |
+                        <span  style=" cursor: pointer;"class="showModel3">图片管理</span>
+                    </td>
+                </tr>
+            {/foreach}
 		</tbody>
 		
 	</table>
@@ -366,7 +378,6 @@
 	</div> 
 </div>
 <img id="img_morenlujing" src="__STATIC__/uploads/" style="width:100px;height: 100px ;display:none;" >
-</body>
 <!-- 模态框js -->
 <script>  
 // 添加
@@ -524,5 +535,4 @@
     	}
     });
 </script> 
-</html>
 {/block}
