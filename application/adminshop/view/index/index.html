@@ -1,5 +1,5 @@
-{include file="base/header" /}
-
+{extend name="layoutextend"}
+{block name="nav"}
 <h1 style="text-align: center;">主页</h1>
 <h1 style="text-align: center;">{$res.0.name}</h1>
 <div>
@@ -26,3 +26,4 @@
 <div>
     <img src="__STATIC__/uploads/{$res.0.logo}" alt="">
 </div>
+{/block}
