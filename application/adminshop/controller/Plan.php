@@ -36,7 +36,7 @@ class Plan extends Controller
     {
 
     	$comid = Session::get('adminshopid');;//公司id
-    	dump($comid);die;
+    	// dump($comid);die;
         $plan = db("plan");//方案
         $userlx = db("com_qiyecsleixing");//类型
         $userhx = db("com_layout");//户型
