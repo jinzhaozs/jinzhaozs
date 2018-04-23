@@ -5,6 +5,10 @@
 <head>
 	<meta charset="utf-8"> 
 	<title></title>
+
+<script src="__STATIC__/adminshop/editor/ueditor.config.js"></script>
+<script src="__STATIC__/adminshop/editor/ueditor.all.js"></script>
+
 </head>
 <body>
 <div style="margin-left: 2%;margin-right: 2%; margin-top: 1%;">
@@ -225,8 +229,18 @@
 					</tr>
 					<tr>
 						<td class='wid'>公司简介</td>
-						<td >
-						<textarea name='com_jianjie' id="com_jianjie" style='width:98%;height:50px;' placeholder='请填写简介'></textarea>
+						<td style="width:80%" >
+					
+						<script id="com_jianjie" name="com_jianjie" type="text/plain"></script>
+						<script>
+                       var editor;
+    					KindEditor.ready(function(K) {
+        				editor=K.create('#com_jianjie');
+    					});
+						</script>
+						<script type="text/javascript">
+							var ue = UE.getEditor('com_jianjie');
+						</script>
 						</td>
 					</tr>
 
@@ -368,10 +382,20 @@
 					</tr
 					<tr>
 						<td class='wid'>公司简介</td>
-						<td >
-						<textarea name='com_jianjie' id="com_jianjie2" style='width:98%;height:50px;' placeholder='请填写简介'></textarea>
+						<td style="width:80%" >
+						
+						<script id="com_jianjie2" name="com_jianjie" type="text/plain"></script>
+						<script>
+                       var editor2;
+    					KindEditor.ready(function(K) {
+        				editor2=K.create('#com_jianjie2');
+    					});
+						</script>
+						<script type="text/javascript">
+							var ue = UE.getEditor('com_jianjie2');
+						</script>
 						</td>
-					</tr>
+					</tr> 
 
 				</table>
 	        </div>  
@@ -394,7 +418,7 @@
 
 	             <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Shop/edit')}">
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
-
+					
 				</table>
 	        </div>  
 	        <footer class="modal-footer">  
@@ -484,43 +508,38 @@
           {
           	alert("密码验证错误");
           }
-          else if (!tel.match(/^(((13[0-9]{1})|159|153)+\d{8})$/)) { 
+          else if (!tel.match(/^[0-9]*[1-9][0-9]*$/)) { 
             alert("手机号码格式不正确！"); 
         }
           	else{
           	$("#formsubadd").submit();
 
           }
-         
-        
-    
-         // alert(com_leixing);
-    	// if (name) {
-    	// 	$.ajax({
-	    //         type:"post",
-	    //         dataType:'json',
-	    //         async:false,
-	    //         url:'{:url("admin/Shop/add")}',
-	    //         data:{"name":name,"dizhi":dizhi,"logo":logo,"com_leixing":com_leixing,"com_fuqy":com_fuqy,"com_zcfg":com_zcfg,"com_szqy":sz,"bl":bl,"rz":rz,"sum":sum,"com_price":com_price},
-	           
-	    //         success:function(dd){
-	            	
-	    //              console.log(dd);
-	    //             if (dd.code == 200) {
-	    //             window.location.reload();
-	    //               	modal.style.display = "none"; //模态框样式消失
-	    //              }else{
-	    //              	alert(msg);
-	    //               }
-	                 
-	    //         }
-	    //     })
-    	// }else{
-    	// 	alert("请填写名称");
-    	// }
-    	
-        
+           
     });
+    //账号唯一验证
+   $("#code").blur(function(){
+   		var code=$(this).val();
+   			$.ajax({
+	             type:"post",
+	            dataType:'json',
+	            async:false,
+	            url:'{:url("admin/Shop/ajaxcode")}',
+	            data:{"code":code},
+	             success:function(dd){ 
+	                 if(dd ==1 )
+	                 {
+	                 	   $("#code").val("");
+	                       alert("此账号已被注册");
+					        
+					        return false;
+	                 }
+	                 
+	                }
+
+	        })
+
+   });
 
     // 修改   
     var close2 = document.getElementsByClassName('close2')[0];  

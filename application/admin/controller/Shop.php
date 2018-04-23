@@ -164,5 +164,11 @@ class Shop extends Controller
         $res = db("shop")->where($where)->update($shuju);
         return $res;
     }
+    public function ajaxcode()
+    {
+      $where['code']=input('put.code');
+      $user=db("shop")->where($where)->count();
+      return $user;
+    }
     
 }
