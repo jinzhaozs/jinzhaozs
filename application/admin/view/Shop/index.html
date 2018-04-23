@@ -33,14 +33,22 @@
 				<!-- <th>id</th> -->
 				<th>编号</th>
 				<th width="100">公司名称</th>
+				<th>简称</th>
+				<th>法人</th>
 				<th>账号</th>
 				<th>公司商标</th>
-				<th>电话</th>
+				<th style="display: none;">运营执照</th>
+				<th>公司电话</th>
 				<th>运营</th>
 				<th>认证</th>
 				<th>保障金</th>
 				<th>公司所在区</th>
-				<th>公司地址</th>
+				<th >公司地址</th>
+				<th style="display: none;">注册资金</th>
+				<th style="display: none;">联系人</th>
+				<th style="display: none;">邮箱</th>
+				<th style="display: none;">客服qq</th>
+				<th style="display: none;">联系人手机</th>
 				<th style="display: none;">密码</th>
 				<th style="display: none;">审核</th>
 				<th style="display: none;">服务区域</th>
@@ -59,14 +67,22 @@
 					<td style="display: none;"><span class="id">{$vores.id}</span></td>
 					<td><span class="">{$i++}</span></td>
 					<td><span class="name">{$vores.name}</span></td>
+					<td><span class="name_jc">{$vores.name_jc}</span></td>
+					<td><span class="faren">{$vores.faren}</span></td>
 					<td><span class="code">{$vores.code}</span></td>
-					<td><span class="logo" name="{$vores.logo}"  ><img src="__STATIC__/uploads/{$vores.logo}" style="width:50px;height: 50px" class="img"></span></td>
+					<td "><span class="logo" name="{$vores.logo}"  ><img src="__STATIC__/uploads/{$vores.logo}" style="width:50px;height: 50px" class="img"></span></td>
+					<td style="display: none;><span class="logo_yingyezz" name="{$vores.logo_yingyezz}"  ><img src="__STATIC__/uploads/{$vores.logo_yingyezz}" style="width:50px;height: 50px" class="yimg"></span></td>
 					<td><span class="tel">{$vores.com_tel}</span></td>
 					<td><span class="bl" name="{$vores.bl}">{if condition="($vores.bl == 1)"}有{else /} 无{/if}</span></td>
 					<td><span class="rz" name="{$vores.rz}">{if condition="($vores.rz == 1)"}已认证{else /} 未认证{/if}</span></td>
 					<td><span class="sum">{$vores.sum}</span></td>
 					<td><span class="comszqy" name="{$vores.com_szqy}">{$vores.qyname}</span></td>
 					<td><span class="dizhi">{$vores.dizhi}</span></td>
+					<td style="display: none;"><span class="zhucezijin">{$vores.zhucezijin}</span></td>
+					<td style="display: none;"><span class="lianxiren">{$vores.lianxiren}</span></td>
+					<td style="display: none;"><span class="youxiang">{$vores.youxiang}</span></td>
+					<td style="display: none;"><span class="qqkf">{$vores.qqkf}</span></td>
+					<td style="display: none;"><span class="lianxirenshouji">{$vores.lianxirenshouji}</span></td>
 					<td style="display: none;"><span class="pass">{$vores.pass}</span></td>
 					<td style="display: none;"><span class="top">{$vores.top}</span></td>
 					<td style="display: none;"><span class="comfuqy" >{$vores.com_fuqy}</span></td>
@@ -113,7 +129,21 @@
 					<tr>
 						<td class='wid'>名称</td>
 						<td>
-							<input type="text" class="form-control" id="names" name="name" placeholder="请输入名字">
+							<input type="text" class="form-control" id="names" name="name" placeholder="请输入公司名称">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>简称</td>
+						<td>
+							<input type="text" class="form-control" id="namejc" name="name_jc" placeholder="请输入公司简称">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>商标</td>
+						<td>
+							
+							<input type="file" name="logo" class="logo" />
+							
 						</td>
 					</tr>
 					<tr>
@@ -126,63 +156,11 @@
                               {/foreach}
                     </select>    
 						</td>
+					</tr>
 					<tr>
 						<td class='wid'>地址</td>
 						<td>
 							<input type="text" class="form-control" name="dizhi" id="dizhi"  placeholder="请输入公司地址">
-						</td>
-					</tr>
-					<tr>
-						<td class='wid'>账号</td>
-						<td>
-							<input type="text" class="form-control" name="code" id="code"  placeholder="请输入账号">
-						</td>
-					</tr>
-					<tr>
-						<td class='wid'>密码</td>
-						<td>
-							<input type="password" class="form-control" name="pass" id="pass"  placeholder="请输入密码">
-						</td>
-					</tr>
-						<tr>
-						<td class='wid'>确认密码</td>
-						<td>
-							<input type="password" class="form-control"  id="pass1"  placeholder="请再次输入密码">
-						</td>
-					</tr>
-					<tr>
-						<td class='wid'>商标</td>
-						<td>
-							
-							<input type="file" name="logo" class="logo" />
-							
-						</td>
-					</tr>
-					<tr>
-						<td class='wid'>电话</td>
-						<td>
-							<input type="text"  name="com_tel" id="com_tel" placeholder="请输入联系电话">
-						</td>
-					</tr>
-					<tr>
-					<tr>
-						<td class='wid'>运营执照</td>
-						<td id="bl">
-						   <input type="radio"  name="bl" value="1"/>是  
-	                       <input type="radio" name="bl" value="2"/>否
-                       </td>
-					</tr>
-					<tr>
-						<td class='wid'>认证</td>
-						<td id="rz">
-						   <input type="radio"  name="rz" value="1"/>是  
-	                       <input type="radio" name="rz" value="2"/>否
-                       </td>
-					</tr>
-					<tr>
-						<td class='wid'>保障金</td>
-						<td>
-							<input type="text" class="form-control" name="sum" id="suma" placeholder="请输入保障金">
 						</td>
 					</tr>
 					<tr>
@@ -221,10 +199,36 @@
 								<input type="hidden" name="com_leixing" class="leixing" value=""> 
 						</td>
 					</tr>
+						<tr>
+						<td class='wid'>运营执照</td>
+						<td id="bl">
+						   <input type="radio"  name="bl" value="1"/>是  
+	                       <input type="radio" name="bl" value="2"/>否
+                       </td>
+					</tr>
 					<tr>
-						<td class='wid'>公司标语</td>
+						<td class='wid'>执照照片</td>
+						<td>
+							<input type="file" name="logo_yingyezz" class="logo_yingyezz" />
+							
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>法人</td>
+						<td>
+							<input type="text" class="form-control" id="faren" name="faren" placeholder="请输入法人姓名">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>注册资金</td>
 						<td >
-						<textarea name='com_slogan' id="com_slogan" style='width:98%;height:50px;' placeholder='请填写简介'></textarea>
+						<input type="text" class="form-control" name="zhucezijin" id="zhucezijin" placeholder="请填写注册资金">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>企业格言</td>
+						<td >
+						<textarea name='com_slogan' id="com_slogan" style='width:98%;height:50px;' placeholder='请填写格言'></textarea>
 						</td>
 					</tr>
 					<tr>
@@ -244,6 +248,72 @@
 						</td>
 					</tr>
 
+					<tr>
+						<td class='wid'>联系人</td>
+						<td >
+						<input type="text" class="form-control" name="lianxiren" id="lianxiren" placeholder="请填写联系人">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>联系人手机</td>
+						<td >
+						<input type="text" class="form-control" name="lianxirenshouji" id="lianxirenshouji" placeholder="请填写联系人手机号">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>邮箱</td>
+						<td >
+						<input type="text" class="form-control" name="youxiang" id="youxiang" placeholder="请填写邮箱">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>客服qq</td>
+						<td >
+						<input type="text" class="form-control" name="qqkf" id="qqkf" placeholder="请填写qq">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>账号</td>
+						<td>
+							<input type="text" class="form-control" name="code" id="code"  placeholder="请输入账号">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>企业电话</td>
+						<td>
+							<input type="text"  name="com_tel" id="com_tel" placeholder="请输入联系电话">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>密码</td>
+						<td>
+							<input type="password" class="form-control" name="pass" id="pass"  placeholder="请输入密码">
+						</td>
+					</tr>
+						<tr>
+						<td class='wid'>确认密码</td>
+						<td>
+							<input type="password" class="form-control"  id="pass1"  placeholder="请再次输入密码">
+						</td>
+					</tr>
+					<tr>
+				
+					<tr>
+						<td class='wid'>认证</td>
+						<td id="rz">
+						   <input type="radio"  name="rz" value="1"/>是  
+	                       <input type="radio" name="rz" value="2"/>否
+                       </td>
+					</tr>
+					<tr>
+						<td class='wid'>保障金</td>
+						<td>
+							<input type="text" class="form-control" name="sum" id="suma" placeholder="请输入保障金">
+						</td>
+					</tr>
+					
+					
+					
 
 				</table>
 	        </div>  
@@ -267,12 +337,26 @@
 	             <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Shop/edit')}">
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
 
-						<tr>
+					<tr>
 						<td class='wid'>名称</td>
 						<input type="hidden" name="id" class="ids" value="">
 						
 						<td>
-							<input type="text" class="form-control" name="name" id="name2" placeholder="请输入名字">
+							<input type="text" class="form-control" name="name" id="name2" placeholder="请输入公司名称">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>简称</td>
+					
+						<td>
+							<input type="text" class="form-control" name="name_jc" id="name_jc2" placeholder="请输入公司简称">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>商标</td>
+						<td>
+							<div id="img"><img src="" style="width:100px;height: 100px" ></div>
+							<input type="file" name="logo" class="form-control" id="logo2"  />
 						</td>
 					</tr>
 					<tr>
@@ -289,53 +373,6 @@
 						<td class='wid'>地址</td>
 						<td>
 							<input type="text" class="form-control" name="dizhi" id="dizhi2" placeholder="请输入公司地址">
-						</td>
-					</tr>
-					<tr>
-						<td class='wid'>账号</td>
-						<td>
-							<input type="text" class="form-control"  id="code2" readonly="readonly">
-						</td>
-					</tr>
-					<tr>
-						<td class='wid'>商标</td>
-						<td>
-							<div id="img"><img src="" style="width:100px;height: 100px" ></div>
-							<input type="file" name="logo" class="form-control" id="logo2"  />
-						</td>
-					</tr>
-						<tr>
-						<td class='wid'>电话</td>
-						<td>
-							<input type="text"  name="com_tel" id="com_tel2" placeholder="请输入联系电话">
-						</td>
-					</tr>
-					<tr>
-						<tr>
-						<td class='wid'>运营执照</td>
-						<td id="bl2">
-						   <input type="radio"  name="bl" value="1"/>是  
-	                       <input type="radio" name="bl" value="2"/>否
-                       </td>
-					</tr>
-					<tr>
-						<td class='wid'>认证</td>
-						<td id="rz2">
-						   <input type="radio"  name="rz" value="1"/>是  
-	                       <input type="radio" name="rz" value="2"/>否
-                       </td>
-					</tr>
-					<tr>
-						<td class='wid'>审核</td>
-						<td id="top2">
-						   <input type="radio"  name="top" value="1"/>通过  
-	                       <input type="radio"   name="top" value="2"/>未通过
-                       </td>
-					</tr>
-					<tr>
-						<td class='wid'>保障金</td>
-						<td>
-							<input type="text" class="form-control" name="sum" id="sum2" placeholder="请输入保障金">
 						</td>
 					</tr>
 					<tr>
@@ -375,11 +412,40 @@
 						</td>
 					</tr>
 					<tr>
-						<td class='wid'>公司标语</td>
+						
+						<td class='wid'>运营执照</td>
+						<td id="bl2">
+						   <input type="radio"  name="bl" value="1"/>是  
+	                       <input type="radio" name="bl" value="2"/>否
+                       </td>
+					</tr>
+					<tr>
+						<td class='wid'>执照照片</td>
+						<td>
+							<div id="zhizhao"><img src="" style="width:100px;height: 100px" ></div>
+							<input type="file" name="logo_yingyezz" class="logo_yingyezz" id="logo2"  />
+						</td>
+					</tr>
+					<tr>
+					<tr>
+						<td class='wid'>法人</td>
+					
+						<td>
+							<input type="text" class="form-control" name="faren" id="faern2" placeholder="请输入法人姓名">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>注册资金</td>
+						<td>
+							<input type="text" class="form-control" name="zhucezijin" id="zhucezijin2" placeholder="请输入注册资金">
+						</td>
+					</tr>
+						<tr>
+						<td class='wid'>企业格言</td>
 						<td >
 						<textarea name='com_slogan' id="com_slogan2" style='width:98%;height:50px;' placeholder='请填写简介'></textarea>
 						</td>
-					</tr
+					</tr>
 					<tr>
 						<td class='wid'>公司简介</td>
 						<td style="width:80%" >
@@ -396,7 +462,66 @@
 						</script>
 						</td>
 					</tr> 
-
+					
+					<tr>
+						<td class='wid'>联系人</td>
+						<td>
+							<input type="text" class="form-control" name="lianxiren" id="lianxiren2" placeholder="请输入联系人">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>联系人手机</td>
+						<td>
+							<input type="text" class="form-control" name="lianxirenshouji" id="lianxirenshouji2" placeholder="请输入联系人手机号">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>邮箱</td>
+						<td>
+							<input type="text" class="form-control" name="youxiang" id="youxiang2" placeholder="请输入邮箱">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>客服qq</td>
+						<td>
+							<input type="text" class="form-control" name="qqkf" id="qqkf2" placeholder="请输入qq">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>账号</td>
+						<td>
+							<input type="text" class="form-control"  id="code2" readonly="readonly">
+						</td>
+					</tr>
+					
+						<tr>
+						<td class='wid'>电话</td>
+						<td>
+							<input type="text"  name="com_tel" id="com_tel2" placeholder="请输入联系电话">
+						</td>
+					</tr>
+					
+						<td class='wid'>认证</td>
+						<td id="rz2">
+						   <input type="radio"  name="rz" value="1"/>是  
+	                       <input type="radio" name="rz" value="2"/>否
+                       </td>
+					</tr>
+					<tr>
+						<td class='wid'>审核</td>
+						<td id="top2">
+						   <input type="radio"  name="top" value="1"/>通过  
+	                       <input type="radio"   name="top" value="2"/>未通过
+                       </td>
+					</tr>
+					<tr>
+						<td class='wid'>保障金</td>
+						<td>
+							<input type="text" class="form-control" name="sum" id="sum2" placeholder="请输入保障金">
+						</td>
+					</tr>
+					
+				
 				</table>
 	        </div>  
 	        <footer class="modal-footer">  
@@ -547,7 +672,8 @@
     var sure2 = document.getElementById('sure2');  
     var modal2 = document.getElementById('modal2'); 
     //模态框展示 
-    $(".showModel2").click(function(){
+    $(document).on("click",".showModel2",function(){
+
     	comid = $(this).parent().parent().find(".id").html();
     	comname = $(this).parent().parent().find(".name").html();//获取name
     	comdizhi = $(this).parent().parent().find(".dizhi").html();//获取compaix
@@ -561,11 +687,20 @@
         comprice=$(this).parent().parent().find(".comprice").html();
         comlogo=$(this).parent().parent().find(".comlogo").attr('name');
         image=$(this).parent().parent().find(".img").attr('src');
+        yimage=$(this).parent().parent().find(".yimg").attr('src');
         comtel=$(this).parent().parent().find(".tel").html();
         comtop=$(this).parent().parent().find(".top").html();
         comjianjie=$(this).parent().parent().find(".comjianjie").html();
         comslogan=$(this).parent().parent().find(".comslogan").html();
         var code=$(this).parent().parent().find(".code").html();
+        var namejc=$(this).parent().parent().find(".name_jc").html();
+        var faren=$(this).parent().parent().find(".faren").html();
+        var zhucezijin=$(this).parent().parent().find(".zhucezijin").html();
+        var lianxiren=$(this).parent().parent().find(".lianxiren").html();
+        var youxiang=$(this).parent().parent().find(".youxiang").html();
+        var qqkf=$(this).parent().parent().find(".qqkf").html();
+        var lianxirenshouji=$(this).parent().parent().find(".lianxirenshouji").html();
+
     	//赋值
     	var compri=comprice.substring(0, comprice.lastIndexOf(','));
         var comfuq = comfuqy.substring(0, comfuqy.lastIndexOf(','));
@@ -593,6 +728,13 @@
     	$("#dizhi2").val(comdizhi);
     	$("#sum2").val(comsum);
     	$("#logo2").val(comlogo);
+    	$("#name_jc2").val(namejc);
+    	$("#faren2").val(faren);
+    	$("#zhucezijin2").val(zhucezijin);
+    	$("#lianxiren2").val(lianxiren);
+    	$("#youxiang2").val(youxiang);
+    	$("#qqkf2").val(qqkf);
+    	$("#lianxirenshouji2").val(lianxirenshouji);
     	$("#sz2").find('option[value="'+comszqy+'"]').attr("selected",true);
         $("#bl2 input[name='bl'][value='"+combl+"']").attr("checked",true);  
      	$("#rz2 input[name='rz'][value='"+comrz+"']").attr("checked",true);
@@ -601,6 +743,7 @@
      	$("#com_jianjie2").val(comjianjie);
      	$("#com_slogan2").val(comslogan);
      	 $("#img img").attr("src",image);
+     	 $("#zhizhao img").attr("src",yimage);
         
     	// alert(comid);comname
     	 modal2.style.display = "block";  
@@ -693,6 +836,7 @@
     	if(confirm("确定删除该类型吗？")){
     		comid = $(this).parent().parent().find(".id").html();
     		var image=$(this).parent().parent().find(".img").attr('src');
+    		var images=$(this).parent().parent().find(".yimg").attr('src');
     		// alert(comid);return false;
     		$(this).parent().parent().remove();
     		// console.log(aa);return false;
@@ -701,7 +845,7 @@
 	            dataType:'json',
 	            async:false,
 	            url:'{:url("admin/Shop/delete")}',
-	            data:{"id":comid,"image":image},
+	            data:{"id":comid,"image":image,"images":images},
 	            success:function(dd){
 	                // console.log(dd);
 	                if (dd.code == 200) {
