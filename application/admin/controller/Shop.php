@@ -35,7 +35,7 @@ class Shop extends Controller
            $where['name']=array('like','%'.$urlcanshu['keyword'].'%');
         }
 
-    	$res=$user->field("shop.id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_koubei,com_haoping,com_tel,qyname,top,com_paixu,zhi,com_slogan,code,pass")->join('com_fuwuqy w','shop.com_szqy = w.qycode','left')->where($where)->order("com_paixu desc")->paginate(10,false,[
+    	$res=$user->field("shop.id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_koubei,com_haoping,com_tel,logo_yingyezz,name_jc,faren,zhucezijin,lianxiren,youxiang,qyname,qqkf,lianxirenshouji,top,com_paixu,zhi,com_slogan,code,pass")->join('com_fuwuqy w','shop.com_szqy = w.qycode','left')->where($where)->order("com_paixu desc")->paginate(10,false,[
 'query'=>$urlcanshu,
 ]); 
         
@@ -57,6 +57,7 @@ class Shop extends Controller
     {
     	$user = db('shop'); 
         $file = request()->file('logo');
+        $yz= request()->file('logo_yingyezz');
         $shuju = input('post.');//获取数据
         $shuju['time'] = date("Y-m-d h:i:s",time());
         $shuju['pass']=md5($shuju['pass']);
@@ -68,6 +69,14 @@ class Shop extends Controller
        
         if($info){
              $shuju['logo']=$info->getSaveName();
+        } 
+      }
+        if($yz)
+       { 
+            $infos = $yz->move(ROOT_PATH . 'public/static/' . DS . 'uploads'); 
+       
+        if($infos){
+             $shuju['logo_yingyezz']=$infos->getSaveName();
         } 
       }       
         $user_info = $user->insert($shuju);
@@ -87,6 +96,7 @@ class Shop extends Controller
         $where['id'] = $whid; 
         $shuju = input('post.');//获取数据
         $file = request()->file('logo');
+        $yz= request()->file('logo_yingyezz');
         $shuju['time'] = date("Y-m-d h:i:s",time());
          if($file)
        { 
@@ -95,6 +105,14 @@ class Shop extends Controller
              $shuju['logo']=$info->getSaveName();
         } 
        }
+        if($yz)
+       { 
+            $infos = $yz->move(ROOT_PATH . 'public/static/' . DS . 'uploads'); 
+       
+        if($infos){
+             $shuju['logo_yingyezz']=$infos->getSaveName();
+        } 
+      }   
         $res = $user->where($where)->update($shuju);
         if (!$res) {
            $this->error("修改失败","admin/Shop/index");
@@ -111,6 +129,10 @@ class Shop extends Controller
         $whid = input('post.id');//获取id
           $file = input('post.image'); 
           if($file){
+             $result = @unlink ($file);
+          }
+          $images= input('post.images');
+          if($images){
              $result = @unlink ($file);
           }
         
