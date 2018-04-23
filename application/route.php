@@ -153,6 +153,12 @@ Route::rule('/adminshop/plan/ajaxtpguanli','adminshop/plan/ajaxtpguanli');//图�
 Route::rule('/adminshop/plan/edit','adminshop/plan/edit');//修改
 Route::rule('/adminshop/Plan/tupianguanli','adminshop/Plan/tupianguanli');//图片管理修改
 Route::rule('/adminshop/plan/delete','adminshop/plan/delete');//删除
+//公司设计师
+Route::rule('/adminshop/designer/index','adminshop/designer/index');//公司 设计师列表
+Route::rule('/adminshop/designer/add','adminshop/designer/add');//添加
+Route::rule('/adminshop/designer/edit','adminshop/designer/edit');//修改
+Route::rule('/adminshop/designer/delete','adminshop/designer/delete');//删除
+
 
 
 
