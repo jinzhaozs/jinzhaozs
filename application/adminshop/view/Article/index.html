@@ -1,0 +1,289 @@
+{extend name="layoutextend"}
+{block name="nav"}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title></title>
+</head>
+<body>
+<div style="margin-left: 2%;margin-right: 2%; margin-top: 1%;">
+		<h1 style="text-align: center;">文章管理</h1>
+<button class="btn" style="margin-top: -5%;" id="showModel">添加文章</button> 
+ 		<form class="well form-search" method="post" action="{:url('/admin/Article/index')}">
+			<div class="search_type cc mb10" style="margin-top: -4%;margin-left: 70%;">
+					<span class="mr20">
+
+
+						<input type="text" name="keyword" style="width: 160px;" value="" placeholder="请输入关键字...">
+
+						<input type="submit" class="btn btn-primary" value="搜索" />
+					</span>
+			</div>
+		</form> 
+		<div class="hei"></div>
+	<table class="table table-bordered" >
+
+		<thead>
+			<tr>
+				<!-- <th>id</th> -->
+				<th>编号</th>
+				<th>文章标题</th>
+				<th>编辑</th>
+				<th>缩略图</th>
+				<th>摘要</th>
+				<th>审核</th>
+				
+				<th>内容</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody id="yuansuzhijia">
+			<tr><td style="display: none;">{$i=1}</td></tr>
+			{foreach name="res" item="vores"}
+			
+				<tr>
+					<td style="display: none;"><span class="id">{$vores.id}</span></td>
+					<td><span class="">{$i++}</span></td>
+					<td><span class="aname">{$vores.aname}</span></td>
+					<td><span class="shop" name="{$vores.ashop}">{$vores.name}</span></td>
+					<td><span  name="{$vores.pic}"  ><img src="__STATIC__/uploads/{$vores.pic}" style="width:100px;height: 100px" class="pic"></span></td>
+					<td><span class="abstract">{$vores.abstract}</span></td>
+					<td><span class="ischeck" name="{$vores.ischeck}">{if condition="($vores.ischeck == 1)"}已审核{else /}未审核{/if}</span></td>
+					
+					<td><span class="content">{$vores.content}</span></td>
+
+					<td>
+						<span style=" cursor: pointer;" class="showModel2">修改</span> | 
+
+						<span style=" cursor: pointer;" class="delcom">删除</span> | 
+						
+					</td>
+				</tr>
+			{/foreach}
+			
+		</tbody>
+		
+	</table>
+	<div>{$page}</div>
+</div>
+
+<!-- 模态框 -->
+<div>
+	 <!-- 模态框添加 -->
+	<div id="modal" class="modal">  
+	    <div class="modal-content">  
+	        <header class="modal-header">  
+	            <h4>添加文章</h4>  
+	            <span class="close">×</span>  
+	        </header>  
+	        <div class="modal-body">  
+	            <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('adminshop/Article/add')}" >
+				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
+          <tr>
+            <input type="hidden" name="ashop" id="shop" value="{$comid}">
+            <td class='wid'>标题</td>
+            <td>
+              <input type="text"  id="aname" name="aname" placeholder="请输入标题">
+            </td>
+          </tr>
+          <tr>
+            <td class='wid'>缩略图</td>
+            <td>
+             <input type="file" name="pic" class="pic" />
+            </td>
+          </tr>
+          <tr>
+            <td class='wid'>摘要</td>
+            <td>
+              <textarea id="abstract" name="abstract" style="height: 50px;" placeholder="请填写摘要"></textarea>
+             
+            </td>
+          </tr>
+          <tr>
+            <td class='wid'>内容</td>
+            <td>
+              <textarea id="content" name="content" style="height: 50px;" placeholder="请填写内容"></textarea>
+            </td>
+          </tr>
+
+				</table>
+	        </div>  
+	        <footer class="modal-footer">  
+	            <button type="button" id="cancel">取消</button>  
+	            <button type="button" id="sure">确定</button>  
+	        </footer> 
+	        
+	        </form> 
+	    </div>  
+	</div> 
+	<!-- 模态框修改 -->
+	<div id="modal2" class="modal">  
+	    <div class="modal-content">  
+	        <header class="modal-header">  
+	            <h4>信息修改</h4>  
+	            <span class="close2">×</span>  
+	        </header>  
+	        <div class="modal-body">  
+
+	             <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('adminshop/Article/edit')}">
+				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
+         
+          <input type="hidden" name="id" class="ids" value="">
+                  <td class='wid'>标题</td>
+            <td>
+              <input type="text"  id="aname2" name="aname" placeholder="请输入标题">
+            </td>
+          </tr>
+          <tr>
+            <td class='wid'>缩略图</td>
+            <td>
+             <input type="file" name="pic" class="pic" />
+            </td>
+          </tr>
+          <tr>
+            <td class='wid'>摘要</td>
+            <td>
+              <textarea id="abstract2" name="abstract" style="height: 50px;" placeholder="请填写摘要"></textarea>
+             
+            </td>
+          </tr>
+          <tr>
+            <td class='wid'>内容</td>
+            <td>
+              <textarea id="content2" name="content" style="height: 50px;" placeholder="请填写内容"></textarea>
+            </td>
+          </tr>
+          <tr>
+          <td class='wid'>
+            审核
+          </td>
+          <td id="ischeck">
+            <input type="radio" name="ischeck" value="1"/>通过 
+            <input type="radio" name="ischeck" value="2"/>未通过
+          </td>
+        </tr>
+						
+
+				</table>
+	        </div>  
+	        <footer class="modal-footer">  
+	            <button type="button" id="cancel2">取消</button>  
+	            <button type="button" id="sure2">确定</button>  
+	        </footer>
+	       </form>  
+	    </div>  
+	</div>  
+</div>
+
+</body>
+<!-- 模态框js -->
+<script>  
+// 添加
+
+    var btn = document.getElementById('showModel');  
+    var close = document.getElementsByClassName('close')[0];  
+    var cancel = document.getElementById('cancel');  
+    var sure = document.getElementById('sure');  
+    var modal = document.getElementById('modal');  
+    btn.addEventListener('click', function(){
+        modal.style.display = "block";  
+      
+    });  
+    close.addEventListener('click', function(){  
+        modal.style.display = "none";  
+    });  
+    cancel.addEventListener('click', function(){  
+        modal.style.display = "none";  
+    });  
+     
+    sure.addEventListener('click', function(){  
+    	// 获取信息
+    	var name = $("#aname").val();
+    
+
+    	
+          	$("#formsubadd").submit();
+
+       
+        
+    
+      
+    	
+        
+    });
+
+    // 修改   
+    var close2 = document.getElementsByClassName('close2')[0];  
+    var cancel2 = document.getElementById('cancel2');  
+    var sure2 = document.getElementById('sure2');  
+    var modal2 = document.getElementById('modal2'); 
+    //模态框展示 
+    $(".showModel2").click(function(){
+    	comid = $(this).parent().parent().find(".id").html();
+    	comname = $(this).parent().parent().find(".aname").html();//获取name
+    	comshop = $(this).parent().parent().find(".shop").attr('name');
+      comischeck=$(this).parent().parent().find(".ischeck").attr('name');
+      comabstract =$(this).parent().parent().find(".abstract").html();
+      comcontent =$(this).parent().parent().find(".content").html()
+    	//赋值
+    	$("#aname2").val(comname);
+    	$("#shop2").val(comshop);
+      $("#abstract2").val(comabstract);
+      $("#content2").val(comcontent);
+      $("#ischeck input[name='ischeck'][value='"+comischeck+"']").attr("checked",true);  
+     	$(".ids").val(comid);
+     	 
+        
+    	// alert(comid);comname
+    	 modal2.style.display = "block";  
+    	});
+    close2.addEventListener('click', function(){  
+        modal2.style.display = "none";  
+    }); 
+    cancel2.addEventListener('click', function(){  
+        modal2.style.display = "none";  
+    });  
+    sure2.addEventListener('click', function(){
+    	// 获取信息
+    
+
+         
+          	$("#formsubedit").submit();
+
+         
+    
+    });
+    // 执行删除
+    $(".delcom").click(function(){
+    	if(confirm("确定删除该类型吗？")){
+    		comid = $(this).parent().parent().find(".id").html();
+    		var image=$(this).parent().parent().find(".pic").attr('src');
+    		// alert(comid);return false;
+    		$(this).parent().parent().remove();
+    		// console.log(aa);return false;
+    		$.ajax({
+	            type:"post",
+	            dataType:'json',
+	            async:false,
+	            url:'{:url("adminshop/Article/delete")}',
+	            data:{"id":comid,"pic":image},
+	            success:function(dd){
+	                // console.log(dd);
+	                if (dd.code == 200) {
+	                	//jq 删除元素
+
+	                }else{
+	                	alert(msg);
+	                }
+	                 
+	            }
+	        })
+    	}
+    });
+    
+
+     
+</script> 
+</html>
+{/block}

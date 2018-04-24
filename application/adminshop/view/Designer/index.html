@@ -150,7 +150,7 @@
 		<span class="close">×</span>
 		</header>
 		<div class="modal-body">
-			<form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Designer/add')}">
+			<form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('adminshop/Designer/add')}">
 				<table style="border-collapse:separate; border-spacing:10px; width: 100%;">
 				<tr>
 					<input type="hidden" name="shop" id="shop" value="{$comid}">
@@ -221,7 +221,7 @@
 					</td>
 					<td id="com_zcfg">
 							{foreach name="zcfg" item="fg"}
-						<input type="checkbox" value="{$fg.zcfgcode}">{$fg.zcfgname}
+						<input type="checkbox" value="{$fg.zcfgcode}"><span >{$fg.zcfgname}</span>
 							{/foreach}
 						<input type="hidden" name="com_dzcfg" class="zcfg" value="">
 					</td>
@@ -284,7 +284,7 @@
 		<span class="close2">×</span>
 		</header>
 		<div class="modal-body">
-			<form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Designer/edit')}">
+			<form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('adminshop/Designer/edit')}">
 				<table style="border-collapse:separate; border-spacing:10px; width: 100%;">
 				<tr>
 					<input type="hidden" name="shop" id="shop2" value="{$comid}">
