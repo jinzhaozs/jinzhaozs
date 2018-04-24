@@ -91,7 +91,7 @@ Route::rule('/admin/designer/add','admin/designer/add');//添加
 Route::rule('/admin/designer/edit','admin/designer/edit');//修改
 Route::rule('/admin/designer/delete','admin/designer/delete');//删除
 
-//
+//文章
 Route::rule('/admin/article/index','admin/article/index');//公司 文章列表
 Route::rule('/admin/article/add','admin/article/add');//添加
 Route::rule('/admin/article/edit','admin/article/edit');//修改
@@ -164,7 +164,11 @@ Route::rule('/adminshop/Shoplbt/index','adminshop/Shoplbt/index');//服务价位
 Route::rule('/adminshop/Shoplbt/add','adminshop/Shoplbt/add');// 添加
 Route::rule('/adminshop/Shoplbt/edit','adminshop/Shoplbt/edit');// 修改
 Route::rule('/adminshop/Shoplbt/del','adminshop/Shoplbt/del');// 删除
-
+//文章
+Route::rule('/adminshop/article/index','adminshop/article/index');//公司 文章列表
+Route::rule('/adminshop/article/add','adminshop/article/add');//添加
+Route::rule('/adminshop/article/edit','adminshop/article/edit');//修改
+Route::rule('/adminshop/article/delete','adminshop/article/delete');//删除
 
 
 
