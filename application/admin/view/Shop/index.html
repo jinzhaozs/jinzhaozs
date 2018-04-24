@@ -275,13 +275,14 @@
 					<tr>
 						<td class='wid'>账号</td>
 						<td>
-							<input type="text" class="form-control" name="code" id="code"  placeholder="请输入账号">
+							<input type="text" class="form-control" name="code" id="code"  placeholder="请输入账号"><span id="tishi"></span>
+
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>企业电话</td>
 						<td>
-							<input type="text"  name="com_tel" id="com_tel" placeholder="请输入联系电话">
+							<input type="text" class="form-control" name="com_tel" id="com_tel" placeholder="请输入联系电话">
 						</td>
 					</tr>
 					<tr>
@@ -643,6 +644,7 @@
            
     });
     //账号唯一验证
+
    $("#code").blur(function(){
    		var code=$(this).val();
    			$.ajax({
@@ -655,16 +657,17 @@
 	                 if(dd ==1 )
 	                 {
 	                 	   $("#code").val("");
-	                       alert("此账号已被注册");
-					        
+					        $("#tishi").html('此账号已被注册'); 
 					        return false;
 	                 }
+
 	                 
 	                }
 
 	        })
 
    });
+
 
     // 修改   
     var close2 = document.getElementsByClassName('close2')[0];  
