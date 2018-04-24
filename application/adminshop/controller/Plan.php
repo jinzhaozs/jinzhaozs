@@ -18,23 +18,12 @@ use think\Session;
 
 class Plan extends Controller
 {
-    /**
-     * 判断是否登录
-     * @return [type] [description]
-     */
-    function _initialize(){
-        $code = Session::get('adminshopcode');
-        if (!$code) {
-           $this->redirect("adminshop");
-        }
-    }
 	/**
      * *类型
      * @return [type] [description]
      */
     public function index()
     {
-
     	$comid = Session::get('adminshopid');;//公司id
     	// dump($comid);die;
         $plan = db("plan");//方案
@@ -63,7 +52,7 @@ class Plan extends Controller
         ->join('designer','plan.frenyuan = designer.id','left')//设计师
         ->order("plan.id")
         ->where($where)
-        ->paginate(10);
+        ->paginate(5);
         // dump($res);die;
         $page=$res->render();
         // 分页
@@ -89,9 +78,9 @@ class Plan extends Controller
         $shuju_do['logo_time'] = date("Y-m-d h:i:s",time());  
         $user_info_do = db('plan_do')->insert($shuju_do);
         if (!$user_info) {
-           $this->error("添加失败","admin/plan/index",['comid'=>$shuju['comid']]);
+           $this->error("添加失败","adminshop/plan/index");
         }else{
-           $this->redirect("admin/plan/index",['comid'=>$shuju['comid']]);
+           $this->redirect("adminshop/plan/index");
         }
         
     }
@@ -161,11 +150,11 @@ class Plan extends Controller
         $res = $user->where($where)->update($shuju);
         // echo $user->getLastsql();die;
         if (!$res) {
-            $this->error("添加失败","admin/plan/index",['comid'=>input('post.comid')]);
+            $this->error("添加失败","adminshop/plan/index");
         }
         else
         {
-         $this->redirect("admin/plan/index",['comid'=>input('post.comid')]);
+         $this->redirect("adminshop/plan/index");
         }
     }
     //执行修改
@@ -194,11 +183,11 @@ class Plan extends Controller
         $res = $user->where($where)->update($shuju);
         // echo $user->getLastsql();die;
         if (!$res) {
-            $this->error("添加失败","admin/plan/index",['comid'=>input('post.comid')]);
+            $this->error("添加失败","adminshop/plan/index");
         }
         else
         {
-         $this->redirect("admin/plan/index",['comid'=>input('post.comid')]);
+         $this->redirect("adminshop/plan/index");
         }
         
     }

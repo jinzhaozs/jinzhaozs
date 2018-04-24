@@ -2,7 +2,7 @@
 {block name="nav"}
 
 
-<div style="margin-left: 2%;margin-right: 2%; margin-top: 1%;">
+<div style="margin-left: 2%;margin-right: 2%; ">
 		<h1 style="text-align: center;">装修案例</h1>
 <button class="btn" style="margin-top: -5%;" id="showModel">添加案例</button> 
  		<form style="display: none;" class="well form-search" method="post" action="{:url('/admin/shop/index')}">
@@ -57,26 +57,6 @@
                         <span  style=" cursor: pointer;"class="showModel3">图片管理</span>
                     </td>
                 </tr>
-            {/foreach}{foreach name="res" item="vores"}
-            
-                <tr>
-                    <td style="display: block;"><span class="planid">{$vores.id}</span></td>
-                    <td><span class="fname">{$vores.fname}</span></td>
-                    <td><span class="img"><img src="__STATIC__/uploads/{$vores.flogo}" style="width:50px;height: 50px" ></span></td>
-                    <td><span>{$vores.ftype}</span></td>
-                    <td><span>{$vores.frenyuan}</span></td>
-                    <td><span class="comname">{$vores.comid}</span></td>
-                    <td><span>{$vores.fmianji}</span></td>
-                    <td><span>{$vores.fyusuan}</span></td>
-                    <td><span>{$vores.fhuxing}</span></td>
-                    <td><span>{$vores.ffengge}</span></td>
-                    <td><span>{$vores.ffangshi}</span></td>
-                    <td>
-                        <span style=" cursor: pointer;" class="showModel2">修改</span> | 
-                        <span style=" cursor: pointer;" class="delcom">删除</span>  |
-                        <span  style=" cursor: pointer;"class="showModel3">图片管理</span>
-                    </td>
-                </tr>
             {/foreach}
 		</tbody>
 		
@@ -94,7 +74,7 @@
 	            <span class="close">×</span>  
 	        </header>  
 	        <div class="modal-body">  
-	            <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Plan/add')}" >
+	            <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('adminshop/Plan/add')}" >
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
 				<input type="text" style="display:none;" name="comid" value="{$comid}">
 					<tr>
@@ -114,7 +94,7 @@
 					<tr>
 						<td class='wid'>方案类型</td>
 						<td>
-							<select name="ftype" style="width: 30%;"> 
+							<select name="ftype" > 
 							<option value ="0">请选择</option>  
                               {foreach name="reslx" item="voreslx"}
                                <span ><option value ="{$voreslx.lxcode}">{$voreslx.lxname}</option></span>  
@@ -125,7 +105,7 @@
 					<tr>
 						<td class='wid'>设计师</td>
 						<td>
-							<select name="frenyuan" style="width: 30%;"> 
+							<select name="frenyuan" > 
 							<option value ="0">请选择</option>  
                               {foreach name="usersjs" item="vousersjs"}
                                <span ><option value ="{$vousersjs.id}">{$vousersjs.dname}</option></span>  
@@ -148,7 +128,7 @@
 					<tr>
 						<td class='wid'>户型</td>
 						<td>
-							<select name="fhuxing" style="width: 30%;"> 
+							<select name="fhuxing" > 
 							<option value ="0">请选择</option>  
                               {foreach name="userhx" item="vouserhx"}
                                <span ><option value ="{$vouserhx.lcode}">{$vouserhx.lname}</option></span>  
@@ -159,7 +139,7 @@
 					<tr>
 						<td class='wid'>风格</td>
 						<td>
-							<select name="ffengge" style="width: 30%;"> 
+							<select name="ffengge" > 
 							<option value ="0">请选择</option>  
                               {foreach name="userfg" item="vouserfg"}
                                <span ><option value ="{$vouserfg.zcfgcode}">{$vouserfg.zcfgname}</option></span>  
@@ -176,7 +156,7 @@
 					<tr>
 						<td class='wid'>案例简介</td>
 						<td>
-							<textarea name="fjianjie" class="form-control" rows="5" cols="80"></textarea>
+							<textarea style="width: 100%;" name="fjianjie" class="form-control" rows="5" cols="80"></textarea>
 						</td>
 					</tr>
 				</table>
@@ -198,7 +178,7 @@
 	            <span class="close2">×</span>  
 	        </header>  
 	        <div class="modal-body">  
-	            <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Plan/edit')}" >
+	            <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('adminshop/Plan/edit')}" >
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
 				<input type="text" style="display:none;" name="planid" id="planid" value="1">
 				<input type="text" style="display:none;" name="comid" value="{$comid}">
@@ -280,7 +260,7 @@
 					<tr>
 						<td class='wid'>案例简介</td>
 						<td>
-							<textarea class="form-control" name="fjianjie" id="fjianjie" rows="5" cols="80"></textarea>
+							<textarea style="width: 100%;" class="form-control" name="fjianjie" id="fjianjie" rows="5" cols="80"></textarea>
 						</td>
 					</tr>
 				</table>
@@ -300,7 +280,7 @@
 	            <span class="close3">×</span>  
 	        </header>  
 	        <div class="modal-body">  
-	            <form id="formtupiansub" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Plan/tupianguanli')}" >
+	            <form id="formtupiansub" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('adminshop/Plan/tupianguanli')}" >
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
 				<input type="text" style="display:none;" name="planid" id="planidtp" value="1">
 				<input type="text" style="display:none;" name="comid" value="{$comid}">
@@ -424,7 +404,7 @@
             type:"post",
             dataType:'json',
             async:false,
-            url:'{:url("admin/plan/ajaxtpguanli")}',
+            url:'{:url("adminshop/plan/ajaxtpguanli")}',
             data:{"planid":planid},
             success:function(dd){
                 // console.log(dd);
@@ -518,7 +498,7 @@
 	            type:"post",
 	            dataType:'json',
 	            async:false,
-	            url:'{:url("/admin/plan/delete")}',
+	            url:'{:url("/adminshop/plan/delete")}',
 	            data:{"planid":planid},
 	            success:function(dd){
 	            	// alert(dd);
