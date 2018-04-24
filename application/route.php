@@ -158,6 +158,12 @@ Route::rule('/adminshop/designer/index','adminshop/designer/index');//公司 设
 Route::rule('/adminshop/designer/add','adminshop/designer/add');//添加
 Route::rule('/adminshop/designer/edit','adminshop/designer/edit');//修改
 Route::rule('/adminshop/designer/delete','adminshop/designer/delete');//删除
+
+// 公司轮播图管理
+Route::rule('/adminshop/Shoplbt/index','adminshop/Shoplbt/index');//服务价位
+Route::rule('/adminshop/Shoplbt/add','adminshop/Shoplbt/add');// 添加
+Route::rule('/adminshop/Shoplbt/edit','adminshop/Shoplbt/edit');// 修改
+Route::rule('/adminshop/Shoplbt/del','adminshop/Shoplbt/del');// 删除
 //文章
 Route::rule('/adminshop/article/index','adminshop/article/index');//公司 文章列表
 Route::rule('/adminshop/article/add','adminshop/article/add');//添加
