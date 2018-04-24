@@ -15,6 +15,7 @@ use think\File;
 
 class Ajaxssq extends Controller
 {
+    //省——》市
 	  public function ajaxcity()
     {
       
@@ -23,6 +24,7 @@ class Ajaxssq extends Controller
 
         return $user;
     }
+    //市区
      public function ajaxarea()
     {
       
