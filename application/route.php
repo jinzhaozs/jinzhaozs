@@ -169,6 +169,13 @@ Route::rule('/adminshop/article/index','adminshop/article/index');//公司 文�
 Route::rule('/adminshop/article/add','adminshop/article/add');//添加
 Route::rule('/adminshop/article/edit','adminshop/article/edit');//修改
 Route::rule('/adminshop/article/delete','adminshop/article/delete');//删除
+//公司修改密码
+Route::rule('/adminshop/xgm/index','adminshop/xgm/index');//公司 文章列表
+Route::rule('/adminshop/xgm/ajaxyuan','adminshop/xgm/ajaxyuan');//添加
+Route::rule('/adminshop/xgm/edit','adminshop/xgm/edit');//修改
+//ajax三级
+Route::rule('/admin/Ajaxssq/ajaxcity','admin/Ajaxssq/ajaxcity');// 省市
+Route::rule('/admin/Ajaxssq/ajaxarea','admin/Ajaxssq/ajaxarea');// 市区
 
 
 
