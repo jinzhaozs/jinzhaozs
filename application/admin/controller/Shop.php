@@ -26,6 +26,7 @@ class Shop extends Controller
     	$lei = db('com_qiyecsleixing');
         $fg= db('com_zhuancfg');
         $jw= db('com_price');
+        $province=db('province');
         $where=array ();
         //获取参数
         $request = Request::instance();
@@ -44,7 +45,8 @@ class Shop extends Controller
         $zcfg=$fg->select();
     	$page=$res->render();
         $jws=$jw->select();
-
+        $pro=$province->select();
+        $this->assign("pr",$pro);
         $this->assign("jw",$jws);
         $this->assign("zcfg",$zcfg);
     	$this->assign("xing",$xing);
@@ -195,5 +197,6 @@ class Shop extends Controller
       $user=db("shop")->where($where)->count();
       return $user;
     }
+  
     
 }

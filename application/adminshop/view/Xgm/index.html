@@ -1,0 +1,131 @@
+{extend name="layoutextend"}
+{block name="nav"}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title></title>
+	<style type="text/css">
+.rcon{
+	margin:0 20px 20px;
+}
+.layui-form-item{
+	margin-bottom:15px;
+	clear:both;
+	*zoom:1
+}
+.layui-form-label{
+	float:left;
+	display:block;
+	padding:9px 15px;
+	width:120px;
+	font-weight:400;
+	text-align:right;
+	height: 40px;
+	line-height: 60x;
+}
+.layui-input{
+	height: 40px
+}
+.layui-btn{
+	width: 6em;
+	background-color: #f00;
+
+}
+
+
+
+
+
+
+</style>
+</head>
+<body>
+ <div class="zinav f18"><i>个人设置</i></div>
+            <div class="rcon">
+                <form class="layui-form"  method="post" action="{:url('adminshop/Xgm/edit')}">
+                    <div class="layui-form-item">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">原密码</label>
+                            <div class="layui-input-inline h_border">
+                                <input name="oldpwd" required lay-verify="required" placeholder="请输入原始密码" autocomplete="off" class="layui-input mima" type="password">
+                                <span id="tishi" style="color: red"></span>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">新密码</label>
+                            <div class="layui-input-inline h_border">
+                                <input name="pass" required lay-verify="required|pwd" placeholder="请输入新设置的密码" autocomplete="off" class="layui-input pass1" type="password">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">确认密码</label>
+                            <div class="layui-input-inline h_border">
+                                <input name="repassword" required lay-verify="required|pwd" placeholder="请输入新设置的密码" autocomplete="off" class="layui-input pass2" type="password">
+                            </div>
+                        </div>
+                        <div class="layui-form-item"><label class="layui-form-label"></label>
+                            <button type="button" class="layui-btn okbtn" lay-submit lay-filter="submitBtn">保存</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+<script>
+	   $(".mima").blur(function(){
+   		var mimas=$(this).val();
+   		if(mimas)
+   		{
+   			$.ajax({
+	             type:"post",
+	            dataType:'json',
+	            async:false,
+	            url:'{:url("adminshop/Xgm/ajaxyuan")}',
+	            data:{"pass":mimas},
+	             success:function(dd){ 
+
+	                 if(dd ==1 )
+	                 {
+	                  $("#tishi").css("color","#0f0");
+	                 	 $("#tishi").html('密码正确'); 
+
+	                 }
+	                 else{
+	                 	 $(this).val("");
+					     $("#tishi").html('原密码输入错误');
+	                 	
+	                 }
+	                 
+	                }
+
+	        })
+   		}
+   		else
+   		{
+   			 $("#tishi").html('请输入原密码');
+   		}
+   });
+	       $(".mima").focus(function(){
+    $("#tishi").html("");
+  });
+	  $(".okbtn").click(function(){
+	  	var pass1=$(".pass1").val();
+	  	var pass2=$(".pass2").val();
+	  	if(!pass1)
+	  	{
+	  		alert('请输入新的密码');
+	  	}
+	  	else if(pass1 != pass2)
+	  	{
+	  		alert('两次输入密码不相同');
+	  	}
+	  		$(".layui-form").submit();
+	  }) 
+</script>
+</html>
+{/block}
