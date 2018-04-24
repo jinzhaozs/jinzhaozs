@@ -119,6 +119,46 @@ class Index extends \app\index\controller\Base
         
         return $this->fetch();
     }
+    // 注册
+    public function regis(){
+          // 渲染类别信息头部
+        $this->assign("com_fuwuqytou",db("com_fuwuqy")->limit(6)->select());//服务区域
+        $this->assign("com_pricetou",db("com_price")->limit(6)->select());//价位
+        $this->assign("com_leixingtou",db("com_qiyecsleixing")->limit(6)->select());//类型
+         $this->assign("com_fenggetou",db("com_zhuancfg")->limit(6)->select());//风格
+         // 城市级联省
+         $pro = db("province")->order('id')->select();
+         // dump($pro);die;
+         $this->assign("pro",$pro);//风格
+        return $this->fetch();
+    }
+    //执行注册
+    public function doregis(){
+        $user = db('shop');
+        $shuju = input('post.');//获取数据
+        $shuju['time'] = date("Y-m-d h:i:s",time());
+        $shuju['pass']=md5($shuju['pass']);
+        $shuju['dis']=2; 
+        $shuju['top']=2;     
+        $user_info = $user->insert($shuju);
+        // 添加副表信息
+        $shuju_do['shopid'] = $user->getLastInsID(); 
+        $user_info_do = db('shop_do')->insert($shuju_do);
+        if (!$user_info) {
+            $data = array(
+                'data' => false,
+                'code' => 500,
+                'msg'  => '注册失败 !',
+            );
+            return $data;
+        }
+        $data = array(
+                'data' => true,
+                'code' => 200,
+                'msg' => '注册成功'
+            );
+        return $data;
+    }
     //测试
     public function aa(){
         Session::set('name','thinkphp');

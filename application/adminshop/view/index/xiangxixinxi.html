@@ -1,0 +1,87 @@
+{extend name="layoutextend"}
+{block name="nav"}
+<form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('adminshop/index/editxiangxixx')}">
+    <table style="border-collapse:separate; border-spacing:10px; width: 100%;padding-left:5%; ">
+    <div style="border: 0px red solid;background-color:#D7DDE4;width: 90%;height: 40px;margin-left: 2%"><h3>详细信息</h3></div>
+    <tr>
+        <td class='wid' width="20%">
+            公司规模
+        </td>
+        <td>
+            <input type="text" name="guimu" class="form-control" value="{$res.0.guimu}">
+        </td>
+    </tr>    
+    <tr>
+        <td class='wid' width="20%">
+            装后服务
+        </td>
+        <td>
+            <input type="text" name="zhuanghoufw" class="form-control" value="{$res.0.zhuanghoufw}">
+        </td>
+    </tr>  
+    <tr>
+        <td class='wid' width="20%">
+            初期设计/量房
+        </td>
+        <td>
+            <input type="text" name="shejilf" class="form-control" value="{$res.0.shejilf}">
+        </td>
+    </tr>  
+    <tr>
+        <td class='wid' width="20%">
+            初期预算/洽谈方式
+        </td>
+        <td>
+            <input type="text" name="yusuanqt" class="form-control" value="{$res.0.yusuanqt}">
+        </td>
+    </tr>  
+    <tr>
+        <td class='wid' width="20%">
+            深化设计
+        </td>
+        <td>
+            <input type="text" name="shenhuasj" class="form-control" value="{$res.0.shenhuasj}">
+        </td>
+    </tr>  
+    <tr>
+        <td class='wid' width="20%">
+            深化预算
+        </td>
+        <td>
+            <input type="text" name="shenhuays" class="form-control" value="{$res.0.shenhuays}">
+        </td>
+    </tr>
+    <tr>
+        <td class='wid' width="20%">
+            材料质量
+        </td>
+        <td>
+            <input type="text" name="cailiaozl" class="form-control" value="{$res.0.cailiaozl}">
+        </td>
+    </tr>
+    <tr>
+        <td class='wid' width="20%">
+            合同规范性
+        </td>
+        <td>
+            <input type="text" name="hetonggf" class="form-control" value="{$res.0.hetonggf}">
+        </td>
+    </tr>
+    <tr>
+        <td class='wid' width="20%">
+            特色服务
+        </td>
+        <td>
+            <input type="text" name="tesefu" class="form-control" value="{$res.0.tesefu}">
+        </td>
+    </tr>
+    
+    </table>
+</form>
+<input style="text-align: center;" id="tijiao" type="button" class="btn btn-info" value="修改">
+<script type="text/javascript">
+$("#tijiao").click(function(){
+    $("#formsubadd").submit();
+});
+</script>
+{/block}

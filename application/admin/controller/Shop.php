@@ -80,6 +80,9 @@ class Shop extends Controller
         } 
       }       
         $user_info = $user->insert($shuju);
+        // 添加副表信息
+        $shuju_do['shopid'] = db('shop')->getLastInsID(); 
+        $user_info_do = db('shop_do')->insert($shuju_do);
         if (!$user_info) {
            $this->error("添加失败","admin/Shop/index");
         }

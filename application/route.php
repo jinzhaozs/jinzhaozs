@@ -17,6 +17,8 @@ use think\Route;
 Route::rule('/','index/Index/index');//查询
 Route::rule('/zxgs','index/Index/index');//查询
 Route::rule('/aa','index/Index/aa');//查询
+Route::rule('/regis','index/Index/regis');//注册页面
+Route::rule('/index/Index/doregis','index/Index/doregis');//执行注册
 /**
  * 前台公司
  */
@@ -145,6 +147,10 @@ Route::rule('/adminshop/index/index','adminshop/index/index');
 Route::rule('/adminshop/index/jibenxinxi','adminshop/index/jibenxinxi');
 // 修改基本信息
 Route::rule('/adminshop/index/editjbxx','adminshop/index/editjbxx');
+//详细信息
+Route::rule('/adminshop/index/xiangxixinxi','adminshop/index/xiangxixinxi');
+// 修改详细信息
+Route::rule('/adminshop/index/editxiangxixx','adminshop/index/editxiangxixx');
 //公司案例
 Route::rule('/adminshop/plan/index','adminshop/plan/index');//公司 案例列表
 Route::rule('/adminshop/plan/add','adminshop/plan/add');//添加
