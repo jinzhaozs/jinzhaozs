@@ -78,6 +78,9 @@
 					<td><span class="sum">{$vores.sum}</span></td>
 					<td><span class="comszqy" name="{$vores.com_szqy}">{$vores.qyname}</span></td>
 					<td><span class="dizhi">{$vores.dizhi}</span></td>
+					<td style="display: none;"><span class="procode">{$vores.procode}</span></td>
+					<td style="display: none;"><span class="citycode">{$vores.citycode}</span></td>
+					<td style="display: none;"><span class="areacode">{$vores.areacode}</span></td>
 					<td style="display: none;"><span class="guimu">{$vores.guimu}</span></td>
 					<td style="display: none;"><span class="zhuanghoufw">{$vores.zhuanghoufw}</span></td>
 					<td style="display: none;"><span class="shejilf">{$vores.shejilf}</span></td>
@@ -503,6 +506,71 @@
                               {/foreach}
                     </select>    
 						</td>
+					</tr>
+					<tr>
+						<td class='wid'>公司地址</td>
+						<td>
+							 <select id="province2" name="procode">
+								<option value='0' >请选则省</option>
+									{foreach name="pr" item="ce"}
+										<option value='{$ce.code}'>{$ce.name}</option>
+									{/foreach}
+										</select>
+											<span id="citySpan">
+												<select id="city2" name="citycode">
+													<option value="0">请选则市</option>
+												</select>
+											</span>
+											<span id="areaSpan">
+												<select id="area2" name="areacode">
+													<option value="0">请选则区</option>
+												</select>
+											</span>
+						</td>
+						<script type="text/javascript">
+							$("#province2").change(function(){
+								var provinceid=$(this).val();
+								
+								$.ajax({
+								            type:"post",
+								            dataType:'json',
+								            async:false,
+								            url:'{:url("admin/Ajaxssq/ajaxcity")}',
+								            data:{"provinceid":provinceid},
+								            success:function(city){
+								                // console.log(city); 
+								                var str = '<option value="0">市/地区</option>';
+								                $(city).each(function(i,dom){
+								                    str += "<option value="+dom['code']+">"+dom['name']+"</option>";
+								                });
+								                $("#city2").html(str);
+								                 $("#area2").html('<option value="0">县/市</option>');
+								            }
+								        })
+							});
+							$("#city2").change(function(){
+								 var city=$(this).val();
+
+							        $.ajax({
+							            type:"post",
+							            dataType:'json',
+							            async:false,
+							            url:'{:url("admin/Ajaxssq/ajaxarea")}',
+							            data:{"city":city},
+							             success:function(area){ 
+							                var str = '<option value="0">县/市</option>';
+							                $(area).each(function (i,dom){
+							                     str += "<option value="+dom['code']+">"+dom['name']+"</option>"; 
+							                 
+							                    
+							                 });
+							                 $("#area2").html(str);
+							            }
+							         })
+							});
+
+						</script>
+					</tr>
 					<tr>
 						<td class='wid'>地址</td>
 						<td>
@@ -891,6 +959,9 @@
         var cailiaozl=$(this).parent().parent().find(".cailiaozl").html();
         var hetonggf=$(this).parent().parent().find(".hetonggf").html();
         var tesefu=$(this).parent().parent().find(".tesefu").html();
+        var procode=$(this).parent().parent().find(".procode").html();
+        var citycode=$(this).parent().parent().find(".citycode").html();
+        var areacode=$(this).parent().parent().find(".areacode").html();
     	//赋值
     	var compri=comprice.substring(0, comprice.lastIndexOf(','));
         var comfuq = comfuqy.substring(0, comfuqy.lastIndexOf(','));
@@ -935,11 +1006,50 @@
     	$("#tesefu2").val(tesefu);
     	$("#lianxirenshouji2").val(lianxirenshouji);
     	$("#sz2").find('option[value="'+comszqy+'"]').attr("selected",true);
+    	$("#province2").find('option[value="'+procode+'"]').attr("selected",true);
+    	 $.ajax({
+            type:"post",
+            dataType:'json',
+            async:false,
+            url:'{:url("admin/Ajaxssq/ajaxcity")}',
+            data:{"provinceid":procode},
+            success:function(city){
+                // console.log(city); 
+                var str = '<option value="0">市/地区</option>';
+                $(city).each(function(i,dom){
+                    str += "<option value="+dom['code']+">"+dom['name']+"</option>";
+                });
+                $("#city2").html(str);
+                 $("#area2").html('<option value="0">县/市</option>');
+            }
+        });
+    	   $.ajax({
+            type:"post",
+            dataType:'json',
+            async:false,
+            url:'{:url("admin/Ajaxssq/ajaxarea")}',
+            data:{"city":citycode},
+             success:function(area){ 
+                var str = '<option value="0">县/市</option>';
+                $(area).each(function (i,dom){
+                     str += "<option value="+dom['code']+">"+dom['name']+"</option>"; 
+                 
+                    
+                 });
+                 $("#area2").html(str);
+            }
+         });
+    
+   		$("#city2").find('option[value="'+citycode+'"]').attr("selected",true);
+   		$("#area2").find('option[value="'+areacode+'"]').attr("selected",true);
         $("#bl2 input[name='bl'][value='"+combl+"']").attr("checked",true);  
      	$("#rz2 input[name='rz'][value='"+comrz+"']").attr("checked",true);
      	$("#top2 input[name='top'][value='"+comtop+"']").attr("checked",true); 
      	$(".ids").val(comid);
-     	$("#com_jianjie2").val(comjianjie);
+ue.ready(function() {
+    ue.setContent(comjianjie);});
+
+			//$("#com_jianjie2").val(comjianjie);
      	// $("#com_jianjie2").execCommand( 'inserthtml', comjianjie);
      	$("#com_slogan2").val(comslogan);
      	 $("#img img").attr("src",image);

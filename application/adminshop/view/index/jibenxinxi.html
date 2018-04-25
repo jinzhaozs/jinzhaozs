@@ -62,9 +62,9 @@
             <td>
                 <select id="province" name="procode" style="width: 20%;">
                     <option value='0'>省/市</option>
-                            {foreach name="pro" item="ce"}
-                    <option value='{$ce.code}'>{$ce.name}</option>
-                            {/foreach}
+                    {foreach name="pro" item="ce"}
+                    <option value='{$ce.code}' {$res.0.procode==$ce.code ? 'selected' : '' }>{$ce.name}</option>
+                    {/foreach}
                 </select>
                 <span id="citySpan">
                 <select id="city" name="citycode" style="width: 20%;">
