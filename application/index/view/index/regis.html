@@ -155,7 +155,7 @@
     <table>
         <tr>
             <td>账号</td>
-            <td><input type="text" class="code"></td>
+            <td><input type="text" class="code" id="code"><span id="tishi" style="color: red"></span></td>
         </tr>
 
         <tr>
@@ -175,7 +175,7 @@
             <td>手机号码</td>
             <td><input type="text" class="lianxirenshouji"></td>
         </tr>
-       
+        
         <tr>
             <td>
                 城市信息
@@ -214,6 +214,10 @@
         var citycode = $("#city").val();
         var areacode = $("#area").val();
         var procode = $("#province").val();
+        if (!code) {
+            alert("请输入账号");
+            return false;
+        }
         // alert(lianxirenshouji);
         $.ajax({
             type:"post",
@@ -225,7 +229,7 @@
                 // alert(dd);
                 console.log(dd);
                 if (dd.code == 200) {
-                    //jq 删除元素
+                    alert(msg);
                 }else{
                     alert(msg);
                 }
@@ -271,6 +275,42 @@
                  $("#area").html(str);
             }
          })
+    });
+    // 账号唯一验证
+    $("#code").blur(function(){
+        var code=$(this).val();
+        if(code)
+        {
+            $.ajax({
+                type:"post",
+                dataType:'json',
+                async:false,
+                url:'{:url("admin/Shop/ajaxcode")}',
+                data:{"code":code},
+                success:function(dd){ 
+                    if(dd ==1 )
+                    {
+                        $("#code").val("");
+                        $("#tishi").html('此账号已被注册'); 
+                        return false;
+                    }
+                    else{
+                       
+                    }
+                     
+                }
+
+            })
+        }
+        else
+        {
+            $("#tishi").css("color","red");
+            $("#tishi").html('账号不能为空'); 
+        }
+
+   });
+    $("#code").focus(function(){
+        $("#tishi").html("");
     });
 </script>
     </div>

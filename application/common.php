@@ -54,3 +54,10 @@
         }
         return $mixid;
     }
+    // 预约类型转换
+    function yuyueleixing($code){
+        $where['code'] = $code;
+        $res = db('res_type')->where($where)->select();
+        $name = $res[0]['name'];
+        return $name;
+    }

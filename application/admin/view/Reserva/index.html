@@ -1,0 +1,254 @@
+{extend name="layoutextend"}
+{block name="nav"}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title></title>
+</head>
+<body>
+<div style="margin-left: 2%;margin-right: 2%; margin-top: 1%;">
+		<h1 style="text-align: center;">预约管理</h1>
+<button style="display: none;" class="btn" style="margin-top: -5%;" id="showModel">添加文章</button> 
+ 		<form class="well form-search" method="post" action="{:url('/admin/Article/index')}">
+			<div class="search_type cc mb10" style="margin-top: -4%;margin-left: 70%;">
+					<span class="mr20">
+						<input type="text" name="keyword" style="width: 160px;" value="" placeholder="请输入关键字...">
+						<input type="submit" class="btn btn-primary" value="搜索" />
+					</span>
+			</div>
+		</form> 
+		<div class="hei"></div>
+	<table class="table table-bordered" >
+
+		<thead>
+			<tr>
+				<!-- <th>id</th> -->
+				<th>编号</th>
+				<th>姓名</th>
+				<th>小区</th>
+				<th>电话</th>
+				<th>状态</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody id="yuansuzhijia">
+			<tr><td style="display: none;">{$i=1}</td></tr>
+			{foreach name="res" item="vores"}
+			
+				<tr>
+                    <td class="resid">{$vores.id}</td>
+					<td class="name">{$vores.name}</td>
+                    <td class="xiaoqu">{$vores.xiaoqu}</td>
+                    <td class="tel">{$vores.tel}</td>
+                    <td>{$vores.type|yuyueleixing=###}</td>
+					<td>
+						<span style=" cursor: pointer;" class="showModel2">修改</span> | 
+
+						<span style=" cursor: pointer;" class="delcom">删除</span> 
+						
+					</td>
+				</tr>
+			{/foreach}
+			
+		</tbody>
+		
+	</table>
+</div>
+
+<!-- 模态框 -->
+<div>
+	 <!-- 模态框添加 -->
+	<div id="modal" class="modal">  
+	    <div class="modal-content">  
+	        <header class="modal-header">  
+	            <h4>添加文章</h4>  
+	            <span class="close">×</span>  
+	        </header>  
+	        <div class="modal-body">  
+	            <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Article/add')}" >
+				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
+          <tr>
+            <td class='wid'>标题</td>
+            <td>
+              <input type="text"  id="aname" name="aname" placeholder="请输入标题">
+            </td>
+          </tr>
+          <tr>
+            <td class='wid'>缩略图</td>
+            <td>
+             <input type="file" name="pic" class="pic" />
+            </td>
+          </tr>
+          <tr>
+            <td class='wid'>摘要</td>
+            <td>
+              <textarea id="abstract" name="abstract" style="height: 50px;" placeholder="请填写摘要"></textarea>
+             
+            </td>
+          </tr>
+          <tr>
+            <td class='wid'>内容</td>
+            <td>
+              <textarea id="content" name="content" style="height: 50px;" placeholder="请填写内容"></textarea>
+            </td>
+          </tr>
+
+				</table>
+	        </div>  
+	        <footer class="modal-footer">  
+	            <button type="button" id="cancel">取消</button>  
+	            <button type="button" id="sure">确定</button>  
+	        </footer> 
+	        
+	        </form> 
+	    </div>  
+	</div> 
+	<!-- 模态框修改 -->
+	<div id="modal2" class="modal">  
+	    <div class="modal-content">  
+	        <header class="modal-header">  
+	            <h4>信息修改</h4>  
+	            <span class="close2">×</span>  
+	        </header>  
+	        <div class="modal-body">  
+
+	             <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Article/edit')}">
+				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
+                <input type="hidden" id="resid" name="id">
+            <tr>
+                <td class='wid'>姓名</td>
+                <td>
+                  <input type="text" name="name" id="name" placeholder="请输入姓名">
+                </td>
+            </tr>
+            <tr>
+                <td class='wid'>小区</td>
+                <td>
+                  <input type="text" name="xiaoqu" id="xiaoqu" placeholder="请输入姓名">
+                </td>
+            </tr>
+            <tr>
+                <td class='wid'>电话</td>
+                <td>
+                  <input type="text" name="tel" id="tel" placeholder="请输入姓名">
+                </td>
+            </tr>
+            <tr>
+                <td class='wid'>状态</td>
+                <td>
+                  <input type="text" name="type" placeholder="请输入姓名">
+                </td>
+            </tr>
+            <tr>
+                <td class='wid'>备注</td>
+                <td>
+                  <textarea id="abstract2" name="abstract" style="height: 50px;" placeholder="请填写摘要"></textarea>
+                 
+                </td>
+            </tr>
+						
+
+				</table>
+	        </div>  
+	        <footer class="modal-footer">  
+	            <button type="button" id="cancel2">取消</button>  
+	            <button type="button" id="sure2">确定</button>  
+	        </footer>
+	       </form>  
+	    </div>  
+	</div>  
+</div>
+
+</body>
+<!-- 模态框js -->
+<script>  
+// 添加
+
+    var btn = document.getElementById('showModel');  
+    var close = document.getElementsByClassName('close')[0];  
+    var cancel = document.getElementById('cancel');  
+    var sure = document.getElementById('sure');  
+    var modal = document.getElementById('modal');  
+    btn.addEventListener('click', function(){
+        modal.style.display = "block";  
+      
+    });  
+    close.addEventListener('click', function(){  
+        modal.style.display = "none";  
+    });  
+    cancel.addEventListener('click', function(){  
+        modal.style.display = "none";  
+    });  
+     
+    sure.addEventListener('click', function(){  
+    	// 获取信息
+    	var name = $("#aname").val();
+          	$("#formsubadd").submit();
+    });
+
+    // 修改   
+    var close2 = document.getElementsByClassName('close2')[0];  
+    var cancel2 = document.getElementById('cancel2');  
+    var sure2 = document.getElementById('sure2');  
+    var modal2 = document.getElementById('modal2'); 
+    //模态框展示 
+    $(".showModel2").click(function(){
+        var resid = $(this).parent().parent().find(".resid").html();//获取id
+        var name = $(this).parent().parent().find(".name").html();//获取name
+        var xiaoqu = $(this).parent().parent().find(".xiaoqu").html();//获取xiaoqu
+    	var tel = $(this).parent().parent().find(".tel").html();//获取xiaoqu
+        // alert(resid);
+    	//赋值
+        $("#resid").val(resid);
+        $("#name").val(name);
+        $("#xiaoqu").val(xiaoqu);
+     	$("#tel").val(tel);
+        // $("#ischeck input[name='ischeck'][value='"+comischeck+"']").attr("checked",true);  
+     	 
+        
+    	// alert(comid);comname
+    	 modal2.style.display = "block";  
+    });
+    close2.addEventListener('click', function(){  
+        modal2.style.display = "none";  
+    }); 
+    cancel2.addEventListener('click', function(){  
+        modal2.style.display = "none";  
+    });  
+    sure2.addEventListener('click', function(){
+          	$("#formsubedit").submit();
+    });
+    // 执行删除
+    $(".delcom").click(function(){
+    	if(confirm("确定删除该类型吗？")){
+    		comid = $(this).parent().parent().find(".id").html();
+    		var image=$(this).parent().parent().find(".pic").attr('src');
+    		// alert(comid);return false;
+    		$(this).parent().parent().remove();
+    		// console.log(aa);return false;
+    		$.ajax({
+	            type:"post",
+	            dataType:'json',
+	            async:false,
+	            url:'{:url("admin/Article/delete")}',
+	            data:{"id":comid,"pic":image},
+	            success:function(dd){
+	                // console.log(dd);
+	                if (dd.code == 200) {
+	                	//jq 删除元素
+
+	                }else{
+	                	alert(msg);
+	                }
+	                 
+	            }
+	        })
+    	}
+    });
+    
+
+     
+</script> 
+</html>
+{/block}
