@@ -28,7 +28,8 @@ Route::rule('/shopcom','shopcom/Index/index');
  * 后台
  */
 Route::rule('/admin/index/index','admin/index/index');//主页
-
+//预约列表
+Route::rule('/admin/reserva/index','admin/reserva/index');
 // 服务类型
 Route::rule('/admin/gongsi/fwleixing','admin/gongsi/fwleixing');//类型
 Route::rule('/admin/gongsi/doadd','admin/gongsi/doadd');//类型 添加

@@ -44,8 +44,16 @@ class Index extends \app\adminshop\controller\Base
 		$this->assign("leixing",db('com_qiyecsleixing')->select());//服务类型
 		// 城市级联省
          $pro = db("province")->order('id')->select();
-         // dump($pro);die;
-         $this->assign("pro",$pro);
+         //城市级联市
+        $whereshi['code'] = $res[0]['citycode'];
+        $resshi = uri('city',$whereshi);
+         //城市级联区
+        $wherequ['code'] = $res[0]['areacode']; 
+        $resqu = uri('area',$wherequ);
+         // dump($resqu);die;
+         $this->assign("pro",$pro);//省
+         $this->assign("resshi",$resshi);//市
+         $this->assign("resqu",$resqu);//区
 		$this->assign("res",$res);
 		return $this->fetch();
 	}

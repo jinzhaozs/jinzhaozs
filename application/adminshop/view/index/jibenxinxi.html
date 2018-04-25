@@ -55,11 +55,13 @@
             <input type="hidden" name="com_fuqy" class="fuqy" value="{$res.0.com_fuqy}"> 
         </td>
     </tr>
+
      <tr>
             <td>
                 城市信息
             </td>
             <td>
+            <input type="hidden" value="{$res.0.procode}" id="fuzhiprocode">
                 <select id="province" name="procode" style="width: 20%;">
                     <option value='0'>省/市</option>
                     {foreach name="pro" item="ce"}
@@ -68,17 +70,23 @@
                 </select>
                 <span id="citySpan">
                 <select id="city" name="citycode" style="width: 20%;">
-                    <option value="0">市/地区</option>
+                    <option value="{$resshi[0]['code']}">{$resshi[0]['name']}</option>
                 </select>
                 </span>
                 <span id="areaSpan">
                 <select id="area" name="areacode" style="width: 20%;">
-                    <option value="0">县/市</option>
+                     <option value="{$resqu[0]['code']}">{$resqu[0]['name']}</option>
                 </select>
                 </span>
             </td>
         </tr>
         <script type="text/javascript">
+        $(document).ready(function(){
+            //城市级联省 赋值
+            var procode = $("#fuzhiprocode").val();
+            $("#province").find("option[value = '"+procode+"']").attr("selected","selected");
+            // alert(procode);
+        });
     //城市级联省-》市
    $("#province").change(function(){
         var provinceid=$(this).val();
