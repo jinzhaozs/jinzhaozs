@@ -78,7 +78,16 @@
 					<td><span class="sum">{$vores.sum}</span></td>
 					<td><span class="comszqy" name="{$vores.com_szqy}">{$vores.qyname}</span></td>
 					<td><span class="dizhi">{$vores.dizhi}</span></td>
-					<td style="display: none;"><span class="zhucezijin">{$vores.zhucezijin}</span></td>
+					<td style="display: none;"><span class="guimu">{$vores.guimu}</span></td>
+					<td style="display: none;"><span class="zhuanghoufw">{$vores.zhuanghoufw}</span></td>
+					<td style="display: none;"><span class="shejilf">{$vores.shejilf}</span></td>
+					<td style="display: none;"><span class="yusuanqt">{$vores.yusuanqt}</span></td>
+					<td style="display: none;"><span class="shenhuasj">{$vores.shenhuasj}</span></td>
+					<td style="display: none;"><span class="shenhuays">{$vores.shenhuays}</span></td>
+					<td style="display: none;"><span class="cailiaozl">{$vores.cailiaozl}</span></td>
+					<td style="display: none;"><span class="hetonggf">{$vores.hetonggf}</span></td>
+					<td style="display: none;"><span class="shenhuasj">{$vores.shenhuasj}</span></td>
+					<td style="display: none;"><span class="tesefu">{$vores.tesefu}</span></td>
 					<td style="display: none;"><span class="lianxiren">{$vores.lianxiren}</span></td>
 					<td style="display: none;"><span class="youxiang">{$vores.youxiang}</span></td>
 					<td style="display: none;"><span class="qqkf">{$vores.qqkf}</span></td>
@@ -180,6 +189,11 @@
 						<script type="text/javascript">
 							$("#province").change(function(){
 								var provinceid=$(this).val();
+								$("#city").empty();
+								$("#area").empty();
+								$("#city").append("<option value="+0+">请选则市</option>");
+								$("#area").append("<option value="+0+">请选则区</option>"); 
+	            					 	  
 								$.ajax({
 	             					type:"post",
 	            					dataType:'json',
@@ -189,7 +203,7 @@
 	            					 success:function(city){ 
 	            					 	
 	            					 	 $(city).each(function (i,dom){
-	            					 	 	
+	            					 	 		 
 	            					 	 		$("#city").append("<option value="+dom['code']+">"+dom['name']+"</option>"); 
 	            					 	 
 	            					 	 	
@@ -201,7 +215,8 @@
 							});
 							$("#city").change(function(){
 								var city=$(this).val();
-
+								$("#area").empty();
+								$("#area").append("<option value="+0+">请选则区</option>"); 
 								$.ajax({
 	             					type:"post",
 	            					dataType:'json',
@@ -377,7 +392,60 @@
 							<input type="text" class="form-control" name="sum" id="suma" placeholder="请输入保障金">
 						</td>
 					</tr>
-					
+					<tr>
+						<td class='wid'>公司规模</td>
+						<td >
+						<textarea name='guimu' id="guimu" style='width:98%;height:50px;' placeholder='请填写公司规模'></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>装后服务</td>
+						<td >
+						<textarea name='zhuanghoufw' id="zhuanghoufw" style='width:98%;height:50px;' placeholder='请填写装后服务'></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>初期设计/量房</td>
+						<td >
+						<textarea name='shejilf' id="shejilf" style='width:98%;height:50px;' placeholder='请填写初期设计/量房'></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>初期预算/洽谈方式</td>
+						<td >
+						<textarea name='yusuanqt' id="yusuanqt" style='width:98%;height:50px;' placeholder='初期预算/洽谈方式'></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>深化设计</td>
+						<td >
+						<textarea name='shenhuasj' id="shenhuasj" style='width:98%;height:50px;' placeholder='深化设计'></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>深化预算</td>
+						<td >
+						<textarea name='shenhuays' id="shenhuays" style='width:98%;height:50px;' placeholder='深化预算'></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>材料质量</td>
+						<td >
+						<textarea name='cailiaozl' id="cailiaozl" style='width:98%;height:50px;' placeholder='材料质量'></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>合同规范性</td>
+						<td >
+						<textarea name='hetonggf' id="hetonggf" style='width:98%;height:50px;' placeholder='合同规范性'></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>特色服务</td>
+						<td >
+						<textarea name='tesefu' id="tesefu" style='width:98%;height:50px;' placeholder='特色服务'></textarea>
+						</td>
+					</tr>
 					
 					
 
@@ -586,7 +654,60 @@
 							<input type="text" class="form-control" name="sum" id="sum2" placeholder="请输入保障金">
 						</td>
 					</tr>
-					
+						<tr>
+						<td class='wid'>公司规模</td>
+						<td >
+						<textarea name='guimu' id="guimu2" style='width:98%;height:50px;' placeholder='请填写公司规模'></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>装后服务</td>
+						<td >
+						<textarea name='zhuanghoufw' id="zhuanghoufw2" style='width:98%;height:50px;' placeholder='请填写装后服务'></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>初期设计/量房</td>
+						<td >
+						<textarea name='shejilf' id="shejilf2" style='width:98%;height:50px;' placeholder='请填写初期设计/量房'></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>初期预算/洽谈方式</td>
+						<td >
+						<textarea name='yusuanqt' id="yusuanqt2" style='width:98%;height:50px;' placeholder='初期预算/洽谈方式'></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>深化设计</td>
+						<td >
+						<textarea name='shenhuasj' id="shenhuasj2" style='width:98%;height:50px;' placeholder='深化设计'></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>深化预算</td>
+						<td >
+						<textarea name='shenhuays' id="shenhuays2" style='width:98%;height:50px;' placeholder='深化预算'></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>材料质量</td>
+						<td >
+						<textarea name='cailiaozl' id="cailiaozl2" style='width:98%;height:50px;' placeholder='材料质量'></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>合同规范性</td>
+						<td >
+						<textarea name='hetonggf' id="hetonggf2" style='width:98%;height:50px;' placeholder='合同规范性'></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>特色服务</td>
+						<td >
+						<textarea name='tesefu' id="tesefu2" style='width:98%;height:50px;' placeholder='特色服务'></textarea>
+						</td>
+					</tr>
 				
 				</table>
 	        </div>  
@@ -598,28 +719,7 @@
 	    </div>  
 	</div>  
 </div>
-<!-- 修改密码 -->
-	<div id="modal3" class="modal">  
-	    <div class="modal-content">  
-	        <header class="modal-header">  
-	            <h4>密码修改</h4>  
-	            <span class="close3">×</span>  
-	        </header>  
-	        <div class="modal-body">  
 
-	             <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Shop/edit')}">
-				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
-					
-				</table>
-	        </div>  
-	        <footer class="modal-footer">  
-	            <button type="button" id="cancel3">取消</button>  
-	            <button type="button" id="sure3">确定</button>  
-	        </footer>
-	       </form>  
-	    </div>  
-	</div>  
-</div>
 
 </body>
 <!-- 模态框js -->
@@ -782,7 +882,15 @@
         var youxiang=$(this).parent().parent().find(".youxiang").html();
         var qqkf=$(this).parent().parent().find(".qqkf").html();
         var lianxirenshouji=$(this).parent().parent().find(".lianxirenshouji").html();
-
+        var guimu=$(this).parent().parent().find(".guimu").html();
+        var zhuanghoufw=$(this).parent().parent().find(".zhuanghoufw").html();
+        var shejilf=$(this).parent().parent().find(".shejilf").html();
+        var yusuanqt=$(this).parent().parent().find(".yusuanqt").html();
+        var shenhuasj=$(this).parent().parent().find(".shenhuasj").html();
+        var shenhuays=$(this).parent().parent().find(".shenhuays").html();
+        var cailiaozl=$(this).parent().parent().find(".cailiaozl").html();
+        var hetonggf=$(this).parent().parent().find(".hetonggf").html();
+        var tesefu=$(this).parent().parent().find(".tesefu").html();
     	//赋值
     	var compri=comprice.substring(0, comprice.lastIndexOf(','));
         var comfuq = comfuqy.substring(0, comfuqy.lastIndexOf(','));
@@ -816,6 +924,15 @@
     	$("#lianxiren2").val(lianxiren);
     	$("#youxiang2").val(youxiang);
     	$("#qqkf2").val(qqkf);
+    	$("#guimu2").val(guimu);
+    	$("#zhuanghoufw2").val(zhuanghoufw);
+    	$("#shejilf2").val(shejilf);
+    	$("#yusuanqt2").val(yusuanqt);
+    	$("#shenhuasj2").val(shenhuasj);
+    	$("#shenhuays2").val(shenhuays);
+    	$("#cailiaozl2").val(cailiaozl);
+    	$("#hetonggf2").val(hetonggf);
+    	$("#tesefu2").val(tesefu);
     	$("#lianxirenshouji2").val(lianxirenshouji);
     	$("#sz2").find('option[value="'+comszqy+'"]').attr("selected",true);
         $("#bl2 input[name='bl'][value='"+combl+"']").attr("checked",true);  
