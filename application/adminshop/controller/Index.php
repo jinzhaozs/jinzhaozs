@@ -42,6 +42,10 @@ class Index extends \app\adminshop\controller\Base
 		$this->assign("jiawei",db('com_price')->select());//服务价位
 		$this->assign("fengge",db('com_zhuancfg')->select());//服务风格
 		$this->assign("leixing",db('com_qiyecsleixing')->select());//服务类型
+		// 城市级联省
+         $pro = db("province")->order('id')->select();
+         // dump($pro);die;
+         $this->assign("pro",$pro);
 		$this->assign("res",$res);
 		return $this->fetch();
 	}
@@ -84,14 +88,7 @@ class Index extends \app\adminshop\controller\Base
 		$where['shopid'] = Session::get('adminshopid');
 		$shuju = input('post.');//获取数据
 		// dump($shuju);die;
-		$res = db('shop_do')->where($where)->update($shuju);
-		echo $user->getLastsql();die;
-		if (!$res) {
-		   $this->error("修改失败");
-		}
-		else
-		{
-		   $this->redirect('/adminshop/index/editxiangxixx');
-		}
+		$res = $user->where($where)->update($shuju);
+		$this->redirect('/adminshop/index/xiangxixinxi');
 	}
 }

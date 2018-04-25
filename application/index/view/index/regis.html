@@ -177,20 +177,26 @@
         </tr>
        
         <tr>
-            <td>城市信息</td>
             <td>
-                <select name="" id="csjlsheng">
-                    <option value="1">省/市</option>
-                    {foreach name="pro" item="vopro"}
-                        <option value="{$vopro.code}">{$vopro.name}</option>
-                    {/foreach}
+                城市信息
+            </td>
+            <td>
+                <select id="province" name="procode">
+                    <option value='0'>省/市</option>
+                            {foreach name="pro" item="ce"}
+                    <option value='{$ce.code}'>{$ce.name}</option>
+                            {/foreach}
                 </select>
-                <select>
-                    <option value="1">市/地区</option>
+                <span id="citySpan">
+                <select id="city" name="citycode">
+                    <option value="0">市/地区</option>
                 </select>
-                <select>
-                    <option value="1">县/市</option>
+                </span>
+                <span id="areaSpan">
+                <select id="area" name="areacode">
+                    <option value="0">县/市</option>
                 </select>
+                </span>
             </td>
         </tr>
     </table>
@@ -205,13 +211,16 @@
         var name = $(".name").val();
         var lianxiren = $(".lianxiren").val();
         var lianxirenshouji = $(".lianxirenshouji").val();
+        var citycode = $("#city").val();
+        var areacode = $("#area").val();
+        var procode = $("#province").val();
         // alert(lianxirenshouji);
         $.ajax({
             type:"post",
             dataType:'json',
             async:false,
             url:'{:url("index/Index/doregis")}',
-            data:{"code":code,"pass":pass,"name":name,"lianxiren":lianxiren,"lianxirenshouji":lianxirenshouji},
+            data:{"code":code,"pass":pass,"name":name,"lianxiren":lianxiren,"lianxirenshouji":lianxirenshouji,"procode":procode,"citycode":citycode,"areacode":areacode},
             success:function(dd){
                 // alert(dd);
                 console.log(dd);
@@ -224,24 +233,44 @@
         })
     });
     //城市级联省-》市
-    $(document).on("change","#csjlsheng",function(){
-        var procode = $(this).val();
-        // $.ajax({
-        //     type:"post",
-        //     dataType:'json',
-        //     async:false,
-        //     url:'{:url("index/Index/doregis")}',
-        //     data:{"procode":procode},
-        //     success:function(dd){
-        //         // alert(dd);
-        //         console.log(dd);
-        //         if (dd.code == 200) {
-        //             //jq 删除元素
-        //         }else{
-        //             alert(msg);
-        //         }
-        //     }
-        // })
+   $("#province").change(function(){
+        var provinceid=$(this).val();
+        $.ajax({
+            type:"post",
+            dataType:'json',
+            async:false,
+            url:'{:url("admin/Ajaxssq/ajaxcity")}',
+            data:{"provinceid":provinceid},
+            success:function(city){
+                // console.log(city); 
+                var str = '<option value="0">市/地区</option>';
+                $(city).each(function(i,dom){
+                    str += "<option value="+dom['code']+">"+dom['name']+"</option>";
+                });
+                $("#city").html(str);
+                 $("#area").html('<option value="0">县/市</option>');
+            }
+        })
+    });
+    $("#city").change(function(){
+        var city=$(this).val();
+
+        $.ajax({
+            type:"post",
+            dataType:'json',
+            async:false,
+            url:'{:url("admin/Ajaxssq/ajaxarea")}',
+            data:{"city":city},
+             success:function(area){ 
+                var str = '<option value="0">县/市</option>';
+                $(area).each(function (i,dom){
+                     str += "<option value="+dom['code']+">"+dom['name']+"</option>"; 
+                 
+                    
+                 });
+                 $("#area").html(str);
+            }
+         })
     });
 </script>
     </div>

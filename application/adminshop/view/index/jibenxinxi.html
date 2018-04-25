@@ -55,6 +55,71 @@
             <input type="hidden" name="com_fuqy" class="fuqy" value="{$res.0.com_fuqy}"> 
         </td>
     </tr>
+     <tr>
+            <td>
+                城市信息
+            </td>
+            <td>
+                <select id="province" name="procode" style="width: 20%;">
+                    <option value='0'>省/市</option>
+                            {foreach name="pro" item="ce"}
+                    <option value='{$ce.code}'>{$ce.name}</option>
+                            {/foreach}
+                </select>
+                <span id="citySpan">
+                <select id="city" name="citycode" style="width: 20%;">
+                    <option value="0">市/地区</option>
+                </select>
+                </span>
+                <span id="areaSpan">
+                <select id="area" name="areacode" style="width: 20%;">
+                    <option value="0">县/市</option>
+                </select>
+                </span>
+            </td>
+        </tr>
+        <script type="text/javascript">
+    //城市级联省-》市
+   $("#province").change(function(){
+        var provinceid=$(this).val();
+        $.ajax({
+            type:"post",
+            dataType:'json',
+            async:false,
+            url:'{:url("admin/Ajaxssq/ajaxcity")}',
+            data:{"provinceid":provinceid},
+            success:function(city){
+                // console.log(city); 
+                var str = '<option value="0">市/地区</option>';
+                $(city).each(function(i,dom){
+                    str += "<option value="+dom['code']+">"+dom['name']+"</option>";
+                });
+                $("#city").html(str);
+                 $("#area").html('<option value="0">县/市</option>');
+            }
+        })
+    });
+    $("#city").change(function(){
+        var city=$(this).val();
+
+        $.ajax({
+            type:"post",
+            dataType:'json',
+            async:false,
+            url:'{:url("admin/Ajaxssq/ajaxarea")}',
+            data:{"city":city},
+             success:function(area){ 
+                var str = '<option value="0">县/市</option>';
+                $(area).each(function (i,dom){
+                     str += "<option value="+dom['code']+">"+dom['name']+"</option>"; 
+                 
+                    
+                 });
+                 $("#area").html(str);
+            }
+         })
+    });
+</script>
     <tr>
         <td class='wid'>
             服务价位

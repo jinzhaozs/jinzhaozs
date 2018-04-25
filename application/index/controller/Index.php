@@ -129,7 +129,7 @@ class Index extends \app\index\controller\Base
          // 城市级联省
          $pro = db("province")->order('id')->select();
          // dump($pro);die;
-         $this->assign("pro",$pro);//风格
+         $this->assign("pro",$pro);
         return $this->fetch();
     }
     //执行注册
