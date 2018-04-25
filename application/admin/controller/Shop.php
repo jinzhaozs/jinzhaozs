@@ -36,7 +36,7 @@ class Shop extends Controller
            $where['name']=array('like','%'.$urlcanshu['keyword'].'%');
         }
 
-    	$res=$user->field("shop.id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_koubei,com_haoping,com_tel,logo_yingyezz,name_jc,faren,zhucezijin,lianxiren,youxiang,qyname,qqkf,lianxirenshouji,top,com_paixu,zhi,com_slogan,code,pass")->join('com_fuwuqy w','shop.com_szqy = w.qycode','left')->where($where)->order("com_paixu desc")->paginate(10,false,[
+    	$res=$user->field("shop.id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_koubei,com_haoping,com_tel,logo_yingyezz,name_jc,faren,zhucezijin,lianxiren,youxiang,qyname,qqkf,guimu,lianxirenshouji,top,com_paixu,zhi,com_slogan,code,pass,zhuanghoufw,shejilf,yusuanqt,shenhuasj,shenhuays,cailiaozl,hetonggf,tesefu")->join('com_fuwuqy w','shop.com_szqy = w.qycode','left')->join('shop_do d','shop.id = d.shopid','left')->where($where)->order("com_paixu desc")->paginate(10,false,[
 'query'=>$urlcanshu,
 ]); 
         
@@ -60,7 +60,31 @@ class Shop extends Controller
     	$user = db('shop'); 
         $file = request()->file('logo');
         $yz= request()->file('logo_yingyezz');
-        $shuju = input('post.');//获取数据
+        $shuju['name'] = input('post.name');//获取数据
+        $shuju['dizhi'] = input('post.dizhi');
+        $shuju['bl'] = input('post.bl');
+        $shuju['rz'] = input('post.rz');
+        $shuju['sum'] = input('post.sum');
+        $shuju['com_price'] = input('post.com_price');
+        $shuju['com_fuqy'] = input('post.com_fuqy');
+        $shuju['com_leixing'] = input('post.com_leixing');
+        $shuju['com_szqy'] = input('post.com_szqy');
+        $shuju['com_zcfg'] = input('post.com_zcfg');
+        $shuju['com_slogan'] = input('post.com_slogan');
+        $shuju['com_jianjie'] = input('post.com_jianjie');
+        $shuju['com_tel'] = input('post.com_tel');
+        $shuju['code'] = input('post.code');
+        $shuju['name_jc'] = input('post.name_jc');
+        $shuju['faren'] = input('post.faren');
+        $shuju['zhucezijin'] = input('post.zhucezijin');
+        $shuju['lianxiren'] = input('post.lianxiren');
+        $shuju['youxiang'] = input('post.youxiang');
+        $shuju['qqkf'] = input('post.qqkf');
+        $shuju['lianxirenshouji'] = input('post.lianxirenshouji');
+        $shuju['procode'] = input('post.procode');
+        $shuju['citycode'] = input('post.citycode');
+        $shuju['areacode'] = input('post.areacode');
+        $shuju['pass'] = input('post.pass');
         $shuju['time'] = date("Y-m-d h:i:s",time());
         $shuju['pass']=md5($shuju['pass']);
         $shuju['dis']=2; 
@@ -84,6 +108,15 @@ class Shop extends Controller
         $user_info = $user->insert($shuju);
         // 添加副表信息
         $shuju_do['shopid'] = db('shop')->getLastInsID(); 
+        $shuju_do['guimu'] = input('post.guimu');
+        $shuju_do['zhuanghoufw'] = input('post.zhuanghoufw');
+        $shuju_do['shejilf'] = input('post.shejilf');
+        $shuju_do['yusuanqt'] = input('post.yusuanqt');
+        $shuju_do['shenhuasj'] = input('post.shenhuasj');
+        $shuju_do['shenhuays'] = input('post.shenhuays');
+        $shuju_do['cailiaozl'] = input('post.cailiaozl');
+        $shuju_do['hetonggf'] = input('post.hetonggf');
+        $shuju_do['tesefu'] = input('post.tesefu');
         $user_info_do = db('shop_do')->insert($shuju_do);
         if (!$user_info) {
            $this->error("添加失败","admin/Shop/index");
@@ -99,7 +132,30 @@ class Shop extends Controller
         $user = db('shop');
         $whid = input('post.id');//获取id
         $where['id'] = $whid; 
-        $shuju = input('post.');//获取数据
+       $shuju['name'] = input('post.name');//获取数据
+        $shuju['dizhi'] = input('post.dizhi');
+        $shuju['bl'] = input('post.bl');
+        $shuju['rz'] = input('post.rz');
+        $shuju['sum'] = input('post.sum');
+        $shuju['com_price'] = input('post.com_price');
+        $shuju['com_fuqy'] = input('post.com_fuqy');
+        $shuju['com_leixing'] = input('post.com_leixing');
+        $shuju['com_szqy'] = input('post.com_szqy');
+        $shuju['com_zcfg'] = input('post.com_zcfg');
+        $shuju['com_slogan'] = input('post.com_slogan');
+        $shuju['com_jianjie'] = input('post.com_jianjie');
+        $shuju['com_tel'] = input('post.com_tel');
+        $shuju['name_jc'] = input('post.name_jc');
+        $shuju['faren'] = input('post.faren');
+        $shuju['zhucezijin'] = input('post.zhucezijin');
+        $shuju['lianxiren'] = input('post.lianxiren');
+        $shuju['youxiang'] = input('post.youxiang');
+        $shuju['qqkf'] = input('post.qqkf');
+        $shuju['top'] = input('post.top');
+        $shuju['lianxirenshouji'] = input('post.lianxirenshouji');
+        $shuju['procode'] = input('post.procode');
+        $shuju['citycode'] = input('post.citycode');
+        $shuju['areacode'] = input('post.areacode');
         $file = request()->file('logo');
         $yz= request()->file('logo_yingyezz');
         $shuju['time'] = date("Y-m-d h:i:s",time());
@@ -119,6 +175,18 @@ class Shop extends Controller
         } 
       }   
         $res = $user->where($where)->update($shuju);
+        
+        $shuju_do['guimu'] = input('post.guimu');
+        $shuju_do['zhuanghoufw'] = input('post.zhuanghoufw');
+        $shuju_do['shejilf'] = input('post.shejilf');
+        $shuju_do['yusuanqt'] = input('post.yusuanqt');
+        $shuju_do['shenhuasj'] = input('post.shenhuasj');
+        $shuju_do['shenhuays'] = input('post.shenhuays');
+        $shuju_do['cailiaozl'] = input('post.cailiaozl');
+        $shuju_do['hetonggf'] = input('post.hetonggf');
+        $shuju_do['tesefu'] = input('post.tesefu');
+        $wheres['shopid']=$whid;
+        $user_info_do = db('shop_do')->where($wheres)->update($shuju_do);
         if (!$res) {
            $this->error("修改失败","admin/Shop/index");
         }
