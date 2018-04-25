@@ -36,7 +36,7 @@ class Shop extends Controller
            $where['name']=array('like','%'.$urlcanshu['keyword'].'%');
         }
 
-    	$res=$user->field("shop.id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_koubei,com_haoping,com_tel,logo_yingyezz,name_jc,faren,zhucezijin,lianxiren,youxiang,qyname,qqkf,guimu,lianxirenshouji,top,com_paixu,zhi,com_slogan,code,pass,zhuanghoufw,shejilf,yusuanqt,shenhuasj,shenhuays,cailiaozl,hetonggf,tesefu")->join('com_fuwuqy w','shop.com_szqy = w.qycode','left')->join('shop_do d','shop.id = d.shopid','left')->where($where)->order("com_paixu desc")->paginate(10,false,[
+    	$res=$user->field("shop.id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_koubei,com_haoping,com_tel,logo_yingyezz,name_jc,faren,zhucezijin,lianxiren,youxiang,qyname,qqkf,guimu,lianxirenshouji,top,com_paixu,zhi,com_slogan,code,pass,zhuanghoufw,shejilf,yusuanqt,shenhuasj,shenhuays,cailiaozl,hetonggf,tesefu,procode,citycode,areacode")->join('com_fuwuqy w','shop.com_szqy = w.qycode','left')->join('shop_do d','shop.id = d.shopid','left')->where($where)->order("com_paixu desc")->paginate(10,false,[
 'query'=>$urlcanshu,
 ]); 
         
@@ -187,6 +187,12 @@ class Shop extends Controller
         $shuju_do['tesefu'] = input('post.tesefu');
         $wheres['shopid']=$whid;
         $user_info_do = db('shop_do')->where($wheres)->update($shuju_do);
+
+        $designer['procode'] = input('post.procode');
+        $designer['citycode'] = input('post.citycode');
+        $designer['areacode'] = input('post.areacode');
+        $shop['shop']=$whid;
+        $designer_ssq=db('designer')->where($shop)->update($designer);
         if (!$res) {
            $this->error("修改失败","admin/Shop/index");
         }

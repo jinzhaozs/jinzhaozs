@@ -78,7 +78,7 @@ class Index extends \app\adminshop\controller\Base
 		}
 		else
 		{
-		   $this->redirect('/adminshop/index/jibenxinxi');
+		   $this->redirect('adminshop/index/jibenxinxi');
 		}
 	}
 	//详细信息
@@ -97,6 +97,6 @@ class Index extends \app\adminshop\controller\Base
 		$shuju = input('post.');//获取数据
 		// dump($shuju);die;
 		$res = $user->where($where)->update($shuju);
-		$this->redirect('/adminshop/index/xiangxixinxi');
+		$this->redirect('adminshop/index/xiangxixinxi');
 	}
 }

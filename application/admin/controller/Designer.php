@@ -46,6 +46,11 @@ class Designer extends Controller
          $user = db('designer'); 
         $file = request()->file('davatar');
         $shuju = input('post.');//获取数据
+         $where['id']=input('post.shop');
+        $ssq=db('shop')->where($where)->find();
+        $shuju['procode']=$ssq['procode'];
+        $shuju['citycode']=$ssq['citycode'];
+        $shuju['areacode']=$ssq['areacode'];
         $shuju['dtime'] = date("Y-m-d h:i:s",time());
         $shuju['grade']='A级信用设计师';  
          if($file)
