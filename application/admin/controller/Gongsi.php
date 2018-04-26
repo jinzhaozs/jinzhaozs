@@ -31,9 +31,6 @@ class Gongsi extends Controller
         // dump($res);die;
         return $this->view->fetch();
     }
-    public function ceishi(){
-        
-    }
     //执行添加
     public function doadd(){
         $user = db('com_qiyecsleixing');
@@ -86,6 +83,76 @@ class Gongsi extends Controller
     //删除
     public function del($id){
         $user = db('com_qiyecsleixing');
+        $whid = input('post.id');//获取id
+        $res = $user->where('id',$whid)->delete();
+        if (!$res) {
+            $data = array(
+                    'data' => false,
+                    'code' => 500,
+                    'msg'  => '删除失败',
+            );
+
+            return $data;
+        }
+        $data = array(
+                'data' => true,
+                'code' => 200,
+                'msg'  => '删除成功 !',
+        );
+        return $data;
+    }
+    /**
+     * *预约状态
+     * @return [type] [description]
+     */
+    public function resevatype(){
+           // 链接数据库赋值
+        $user = db('res_type');
+        //获取最大lxcode;
+        // $lxcode = $user->code
+      
+        $res = $user->order('paixu')->paginate(10);
+        $this->assign("res",$res);
+        // dump($res);die;
+        return $this->view->fetch();
+    }
+    //添加
+    public function resevatypeadd(){
+        $user = db('res_type');
+        $shuju = input('post.');//获取数据
+        $shuju['time'] = date("Y-m-d h:i:s",time());
+        $lx=$user->max('code');
+        $zcfgcode=$lx+1;
+        $shuju['code']=$zcfgcode;
+        $user_info = $user->insert($shuju);
+        if (!$user_info) {
+           $this->error("admin/gongsi/resevatype");
+        }
+        else
+        {
+          $this->redirect("admin/gongsi/resevatype");
+        }
+    }
+    //修改
+    public function resevatypeedit(){
+        $user = db('res_type');
+        $whid = input('post.id');//获取id
+        $where['id'] = $whid;
+        $shuju = input('post.');//获取数据
+        // dump($shuju);die;
+      
+        $user_info = $user->where($where)->update($shuju);
+        if (!$user_info) {
+           $this->error("admin/gongsi/resevatype");
+        }
+        else
+        {
+          $this->redirect("admin/gongsi/resevatype");
+        }
+    }
+    //删除
+    public function resevatypedel(){
+         $user = db('res_type');
         $whid = input('post.id');//获取id
         $res = $user->where('id',$whid)->delete();
         if (!$res) {

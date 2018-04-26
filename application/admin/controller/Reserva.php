@@ -21,9 +21,11 @@ class Reserva extends Controller
      */
     public function index()
     {
+        $restype = uri("res_type",array());
         $res = uri('reserva',array());
         // dump($res);die;
-    	$this->assign("res",$res);
+        $this->assign("res",$res);//预约信息
+    	$this->assign("restype",$restype);//预约状态
 		return $this->view->fetch();
     }
      public function add()
@@ -53,25 +55,17 @@ class Reserva extends Controller
     }
      //执行修改
     public function edit(){
-        $user = db('article');
+        $user = db('reserva');
         $whid = input('post.id');//获取id
         $where['id'] = $whid; 
         $shuju = input('post.');//获取数据
-        $file = request()->file('pic');
-      if($file)
-       { 
-         $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
-        if($info){
-             $shuju['pic']=$info->getSaveName();
-        }
-        } 
         $res = $user->where($where)->update($shuju);
         if (!$res) {
-           $this->error("修改失败","admin/Article/index",['id'=>$shuju['ashop']]);
+           $this->error("修改失败","admin/reserva/index");
         }
         else
         {
-          $this->redirect("admin/Article/index",['id'=>$shuju['ashop']]);
+          $this->redirect("admin/reserva/index");
         }
         
     }

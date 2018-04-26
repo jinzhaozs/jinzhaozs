@@ -11,6 +11,7 @@ namespace app\admin\controller;
 
 use think\Controller;
 
+use think\Session;
 class Index extends Controller
 {
 	/**
@@ -19,8 +20,11 @@ class Index extends Controller
      */
     public function index()
     {
-    	
-        // dump($res);die;
+       // Session::set('456',123);
+    	$aa = Session::get();
+        // Session::clear();
+        // echo 123;
+        dump($aa);die;
         return $this->view->fetch();
     }
 }
