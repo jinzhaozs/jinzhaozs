@@ -13,7 +13,7 @@ use think\Controller;
 use think\Request;
 use think\File;
 
-class Shop extends Controller
+class Shop extends  \app\admin\controller\Base
 {
     /**
      * *类型

@@ -13,7 +13,7 @@ use think\Controller;
 use think\Request;
 use think\File;
 
-class Ajaxssq extends Controller
+class Ajaxssq extends  \app\admin\controller\Base
 {
     //省——》市
 	  public function ajaxcity()

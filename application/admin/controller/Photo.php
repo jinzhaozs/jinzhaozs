@@ -14,7 +14,7 @@ use think\Request;
 use think\File;
 
 
-class Photo extends Controller
+class Photo extends  \app\admin\controller\Base
 {
 	public function index()
 	{

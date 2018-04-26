@@ -14,7 +14,7 @@ use think\Controller;
 use think\Request;
 
 use think\File;
-class Shoplbt extends Controller
+class Shoplbt extends  \app\admin\controller\Base
 {
 	/**
      * *类型

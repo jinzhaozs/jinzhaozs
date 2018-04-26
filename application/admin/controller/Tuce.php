@@ -11,7 +11,7 @@ namespace app\admin\controller;
 
 use think\Controller;
 
-class Tuce extends Controller
+class Tuce extends  \app\admin\controller\Base
 {
     /**
      * *类型

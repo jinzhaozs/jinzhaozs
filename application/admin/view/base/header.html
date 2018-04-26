@@ -238,6 +238,8 @@
         <li>微信</li>
         <li>客服</li>
       </ul>
+        <!-- 判断权限 -->
+        {in name="$sesionadusertype" value="1,2"}
       <h3 class="am-icon-gears"><em></em> <a href="#">预约信息</a></h3>
       <ul>
         <li><a href="{:url('admin/reserva/index')}">预约列表</a></li>
@@ -246,12 +248,16 @@
         <li></li>
         <li></li>
       </ul>
+      {/in}
+    
       <h3 class="am-icon-users"><em></em> <a href="#">人员管理</a></h3>
       <ul>
         <li><a href="{:url('admin/user/index')}">人员列表</a></li>
         <li><a href="{:url('admin/ruser/index')}">员工列表</a></li>
         <li><a href="{:url('admin/bm/index')}">部门管理</a></li>
       </ul>
+        <!-- 判断权限 -->
+        {in name="$sesionadusertype" value="1"}
       <h3 class="am-icon-gears"><em></em> <a href="#">系统设置</a></h3>
       <ul>
         <li><a href="{:url('admin/gongsi/fwleixing')}">公司——服务类型</a></li>
@@ -267,6 +273,7 @@
         <li></li>
         <li></li>
       </ul>
+      {/in}
     </div>
     <!-- sideMenu End --> 
     

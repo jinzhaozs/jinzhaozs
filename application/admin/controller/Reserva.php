@@ -13,7 +13,7 @@ use think\Controller;
 use think\Request;
 use think\File;
 
-class Reserva extends Controller
+class Reserva extends  \app\admin\controller\Base
 {
     /**
      * *类型
