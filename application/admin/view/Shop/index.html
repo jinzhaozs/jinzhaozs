@@ -1046,8 +1046,9 @@
      	$("#rz2 input[name='rz'][value='"+comrz+"']").attr("checked",true);
      	$("#top2 input[name='top'][value='"+comtop+"']").attr("checked",true); 
      	$(".ids").val(comid);
-ue.ready(function() {
-    ue.setContent(comjianjie);});
+     	var ue = UE.getEditor('com_jianjie2');
+		ue.ready(function() {
+    	ue.setContent(comjianjie);});
 
 			//$("#com_jianjie2").val(comjianjie);
      	// $("#com_jianjie2").execCommand( 'inserthtml', comjianjie);
