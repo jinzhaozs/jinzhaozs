@@ -1,0 +1,452 @@
+{extend name="layoutextend"}
+{block name="nav"}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<div style="margin-left: 2%;margin-right: 2%;">
+	<h1 style="text-align: center;">员工</h1>
+	<button class="btn" style="margin-top: -5%;" id="showModel">添加员工</button>
+	<table class="table table-bordered">
+	<thead>
+	<tr>
+		<!-- <th>id
+	</th>
+	 -->
+	<th>
+		编号
+	</th>
+	<th>
+		账号
+	</th>
+	<th>
+		级别
+	</th>
+	<th>
+		所属部门
+	</th>
+	<th>
+		操作
+	</th>
+</tr>
+</thead>
+<tbody id="yuansuzhijia">
+<tr>
+	<td style="display: none;">
+		{$i=1}
+	</td>
+</tr>
+			{foreach name="res" item="vores"}
+<tr>
+	<td style="display: none;">
+		<span class="comid">{$vores.id}</span>
+	</td>
+	<td>
+		<span class="">{$i++}</span>
+	</td>
+	<td>
+		<span class="usercode">{$vores.usercode}</span>
+	</td>
+	<td>
+		<span class="type">{$vores.type}</span>
+	</td>
+	<td>
+		<span class="brancode" name="{$vores.brancode}">{$vores.name}</span>
+	</td>
+	
+	<td>
+		<span style=" cursor: pointer;" class="showModel2">修改</span> | 
+		<span style=" cursor: pointer;" class="delcom">删除</span> |
+		<span  style=" cursor: pointer;" class="showModel3">修改密码</span>
+	</td>
+</tr>
+			{/foreach}
+</tbody>
+</table>
+<div>
+	{$page}
+</div>
+</div>
+<!-- 模态框 -->
+<div>
+<!-- 模态框添加 -->
+<div id="modal" class="modal">
+	<div class="modal-content">
+		<header class="modal-header">
+		<h4>请添加设计师</h4>
+		<span class="close">×</span>
+		</header>
+		<div class="modal-body">
+			<form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/User/add')}">
+				<table style="border-collapse:separate; border-spacing:10px; width: 100%;">
+					<tr>
+						<td class='wid'>账号</td>
+						<td>
+							<input type="text" class="form-control" name="usercode" id="usercode"  placeholder="请输入账号"><span id="tishi" style="color: red"></span>
+
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>密码</td>
+						<td>
+							<input type="password" class="form-control" name="usersub" id="usersub"  placeholder="请输入密码">
+						</td>
+					</tr>
+						<tr>
+						<td class='wid'>确认密码</td>
+						<td>
+							<input type="password" class="form-control"  id="usersub1"  placeholder="请再次输入密码">
+						</td>
+					</tr>
+				<tr>
+					<td>
+						等级
+					</td>
+					<td>
+							<select name="type" id="type"> 
+							<option value ="0">请选择</option>
+                               <span ><option value ="1">超级管理员</option></span>  
+           						<span ><option value ="2">主管</option></span> 
+           						<span ><option value ="3">员工</option></span> 
+                            </select>
+					</td>
+				</tr>
+				<tr>
+					<td class='wid'>
+						所属部门
+					</td>
+					<td id="com_zcfg">
+							<select name="brancode" id="brancode"> 
+									<option value ="0">请选择</option>  
+                              {foreach name="branch" item="br"}
+                               <span ><option value ="{$br.code}">{$br.name}</option></span>  
+                              {/foreach}
+                           </select>
+					</td>
+				</tr>
+				</table>
+			</div>
+			<footer class="modal-footer">
+			<button type="button" id="cancel">取消</button>
+			<button type="button" id="sure">确定</button>
+			</footer>
+		</form>
+	</div>
+</div>
+<!-- 模态框修改 -->
+<div id="modal2" class="modal">
+	<div class="modal-content">
+		<header class="modal-header">
+		<h4>修改信息</h4>
+		<span class="close2">×</span>
+		</header>
+		<div class="modal-body">
+			<form id="formsuedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/User/edit')}">
+				<table style="border-collapse:separate; border-spacing:10px; width: 100%;">
+				<tr>
+					<input type="hidden" name="id" class="ids" value="">
+
+						<td class='wid'>账号</td>
+						<td>
+							<input type="text" class="form-control" name="usercode" id="usercode2"  placeholder="请输入账号">
+
+						</td>
+					</tr>
+					<td>
+						等级
+					</td>
+					<td>
+							<select name="type" id="type2"> 
+							<option value ="0">请选择</option>
+                               <span ><option value ="1">超级管理员</option></span>  
+           						<span ><option value ="2">主管</option></span> 
+           						<span ><option value ="3">员工</option></span> 
+                            </select>
+					</td>
+				</tr>
+				<tr>
+					<td class='wid'>
+						所属部门
+					</td>
+					<td >
+							<select name="brancode" id="brancode2"> 
+									<option value ="0">请选择</option>  
+                              {foreach name="branch" item="br"}
+                               <span ><option value ="{$br.code}">{$br.name}</option></span>  
+                              {/foreach}
+                           </select>
+					</td>
+				</tr>
+				</table>
+			</div>
+			<footer class="modal-footer">
+			<button type="button" id="cancel2">取消</button>
+			<button type="button" id="sure2">确定</button>
+			</footer>
+		</form>
+	</div>
+</div>
+<div id="modal3" class="modal">  
+	    <div class="modal-content">  
+	        <header class="modal-header">  
+	            <h4>修改密码</h4>  
+	            <span class="close3">×</span>  
+	        </header>  
+	        <div class="modal-body">  
+	            <form id="formsubxg" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/user/xg')}" >
+				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
+				<input type="hidden" name="id" class="idss" value="">
+				<tr>
+						<td class='wid'>原密码</td>
+						<td>
+							<input type="password" class="form-control" id="yusersub"  placeholder="请输入原密码"><span id="tishi1" style="color: red"></span>
+
+						</td>
+					</tr>
+				<tr>
+						<td class='wid'>新密码</td>
+						<td>
+							<input type="password" class="form-control" name="usersub" id="xusersub"  placeholder="请输入新密码">
+						</td>
+					</tr>
+						<tr>
+						<td class='wid'>确认新密码</td>
+						<td>
+							<input type="password" class="form-control"  id="xusersub1"  placeholder="请再次输入新密码">
+						</td>
+					</tr>
+				</table>
+	        </form> 
+	        </div>  
+	        <footer class="modal-footer">  
+	            <button type="button" id="cancel3">取消</button>  
+	            <button type="button" id="sure3">确定</button>  
+	        </footer> 
+	        
+	    </div>  
+	</div> 
+</div>
+</body>
+<!-- 模态框js -->
+<script>  
+// 添加
+    var btn = document.getElementById('showModel');  
+    var close = document.getElementsByClassName('close')[0];  
+    var cancel = document.getElementById('cancel');  
+    var sure = document.getElementById('sure');  
+    var modal = document.getElementById('modal');  
+    btn.addEventListener('click', function(){
+        modal.style.display = "block"; 
+        
+    });  
+    close.addEventListener('click', function(){  
+        modal.style.display = "none";  
+    });  
+    cancel.addEventListener('click', function(){  
+        modal.style.display = "none";  
+    });  
+    sure.addEventListener('click', function(){  
+    	// 获取信息
+    	// $(this).parent().parent().find(".comszqy").attr('name');
+    	// var com_fu = [];
+       var pass =$("#usersub").val();
+       var pass1 =$("#usersub1").val();
+       if(pass=='')
+       {
+       		alert('请输入密码');
+       }
+       else if(pass != pass1)
+       {
+    		alert("密码验证错误");
+       }
+       else{
+       		$("#formsubadd").submit();
+       }
+	
+    	
+    });
+ $("#usercode").blur(function(){
+   		var usercode=$(this).val();
+
+   		if(usercode)
+   		{
+   			$.ajax({
+	             type:"post",
+	            dataType:'json',
+	            async:false,
+	            url:'{:url("admin/user/ajaxcode")}',
+	            data:{"code":usercode},
+	            success:function(dd){ 
+	                if(dd ==1 )
+	                 {
+	                 	   $("#usercode").val("");
+					        $("#tishi").html('此账号已被注册'); 
+					        
+					        return false;
+	                 }
+	                 else{
+	                 	 $("#tishi").css("color","#0f0");
+	                 	$("#tishi").html('账号成功'); 
+	                 }
+	                 
+	                }
+
+	        })
+   		}
+   		else
+   		{
+   			$("#tishi").html('账号不能为空'); 
+   		}
+
+   });
+     $("#usercode").focus(function(){
+    $("#tishi").html("");
+  });
+
+    // 修改   
+    var close2 = document.getElementsByClassName('close2')[0];  
+    var cancel2 = document.getElementById('cancel2');  
+    var sure2 = document.getElementById('sure2');  
+    var modal2 = document.getElementById('modal2'); 
+    //模态框展示 
+    $(".showModel2").click(function(){
+    	comid = $(this).parent().parent().find(".comid").html();
+    	var usercode=$(this).parent().parent().find(".usercode").html();
+    	var type=$(this).parent().parent().find(".type").html();
+    	var brancode=$(this).parent().parent().find(".brancode").attr('name');
+    	//赋值
+        $("#usercode2").val(usercode);
+        $("#type2").find('option[value="'+type+'"]').attr("selected",true);
+        $("#brancode2").find('option[value="'+brancode+'"]').attr("selected",true);
+     	$(".ids").val(comid);
+    	// alert(comid);comname
+    	 modal2.style.display = "block";  
+    	});
+    close2.addEventListener('click', function(){  
+        modal2.style.display = "none";  
+    }); 
+    cancel2.addEventListener('click', function(){  
+        modal2.style.display = "none";  
+    });  
+    sure2.addEventListener('click', function(){
+    	// 获取信息
+    	 		
+         	 $("#formsubedit").submit();
+       
+   
+    	// alert(comid);
+    	
+    	// return false;
+    	
+        
+    });
+     var close3 = document.getElementsByClassName('close3')[0];  
+    var cancel3 = document.getElementById('cancel3');  
+    var sure3= document.getElementById('sure3');  
+    var modal3 = document.getElementById('modal3'); 
+    //模态框展示 
+    $(".showModel3").click(function(){
+    	comid = $(this).parent().parent().find(".comid").html();
+     	$(".idss").val(comid);
+    	// alert(comid);comname
+    	 modal3.style.display = "block";  
+    	});
+    close2.addEventListener('click', function(){  
+        modal3.style.display = "none";  
+    }); 
+    cancel3.addEventListener('click', function(){  
+        modal3.style.display = "none";  
+    });  
+    sure3.addEventListener('click', function(){
+    	// 获取信息
+    	
+    	var pass =$("#xusersub").val();
+       var pass1 =$("#xusersub1").val();
+       if(pass=='')
+       {
+       		alert('请输入密码');
+       }
+       else if(pass != pass1)
+       {
+    		alert("密码验证错误");
+       }
+       else{
+       		$("#formsubxg").submit();
+       }
+       
+   
+    	// alert(comid);
+    	
+    	// return false;
+    	
+        
+    });
+    	 $("#yusersub").blur(function(){
+    	 	var comid=$(".idss").val();
+   		var mimas=$(this).val();
+   		if(mimas)
+   		{
+   			$.ajax({
+	             type:"post",
+	            dataType:'json',
+	            async:false,
+	            url:'{:url("admin/user/ajaxyuan")}',
+	            data:{"pass":mimas,"id":comid},
+	             success:function(dd){ 
+
+	                 if(dd ==1 )
+	                 {
+	                  $("#tishi1").css("color","#0f0");
+	                 	 $("#tishi1").html('密码正确'); 
+
+	                 }
+	                 else{
+	                 	 $(this).val("");
+					     $("#tishi1").html('原密码输入错误');
+	                 	
+	                 }
+	                 
+	                }
+
+	        })
+   		}
+   		else
+   		{
+   			 $("#tishi1").html('请输入原密码');
+   		}
+   });
+	       $("#yusersub").focus(function(){
+    $("#tishi1").html("");
+  });
+    // 执行删除
+    $(".delcom").click(function(){
+    	if(confirm("确定删除该类型吗？")){
+    		var comid = $(this).parent().parent().find(".comid").html();
+    		// alert(comid);return false;
+    		$(this).parent().parent().remove();
+    		// console.log(aa);return false;
+    		$.ajax({
+	            type:"post",
+	            dataType:'json',
+	            async:false,
+	            url:'{:url("admin/User/delete")}',
+	            data:{"id":comid},
+	            success:function(dd){
+	                // console.log(dd);
+	                if (dd.code == 200) {
+	                	//jq 删除元素
+
+	                }else{
+	                	alert(msg);
+	                }
+	                 
+	            }
+	        })
+    	}
+    });
+</script> 
+</html>
+{/block}

@@ -141,7 +141,19 @@ Route::rule('/admin/photo/index','admin/photo/index');//户型风格
 Route::rule('/admin/photo/add','admin/photo/add');// 添加
 Route::rule('/admin/photo/edit','admin/photo/edit');// 修改
 Route::rule('/admin/photo/del','admin/photo/del');// 删除
-
+//员工
+Route::rule('/admin/user/index','admin/user/index');//员工详情
+Route::rule('/admin/user/add','admin/user/add');//添加
+Route::rule('/admin/user/edit','admin/user/edit');//修改
+Route::rule('/admin/user/delete','admin/user/delete');//删除
+Route::rule('/admin/user/ajaxcode','admin/user/ajaxcode');//账号验证
+Route::rule('/admin/user/xg','admin/user/xg');//修改密码
+Route::rule('/admin/user/ajaxyuan','admin/user/ajaxyuan');//判断原密码
+//部门
+Route::rule('/admin/bm/index','admin/bm/index');//部门
+Route::rule('/admin/bm/add','admin/bm/add');// 添加
+Route::rule('/admin/bm/edit','admin/bm/edit');// 修改
+Route::rule('/admin/bm/del','admin/bm/del');// 删除
 /**
  * 公司后台
  */
