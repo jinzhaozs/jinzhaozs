@@ -186,11 +186,11 @@ class Plangong extends Controller
         $res = $user->where($where)->update($shuju);
         // echo $user->getLastsql();die;
         if (!$res) {
-            $this->error("添加失败","admin/plangong/index",['comid'=>$shuju['comid']]);
+            $this->error("添加失败","admin/plangong/index",['comid'=> $where['comid']]);
         }
         else
         {
-         $this->redirect("admin/plangong/index",['comid'=>$shuju['comid']]);
+         $this->redirect("admin/plangong/index",['comid'=> $where['comid']]);
         }
         
     }
