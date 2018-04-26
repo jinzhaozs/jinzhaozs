@@ -27,9 +27,12 @@ Route::rule('/shopcom','shopcom/Index/index');
 /**
  * 后台
  */
+Route::rule('/admin/login/index','admin/login/index');//后台登陆页面
+Route::rule('/admin/login/dologin','admin/login/dologin');//后台执行登陆
 Route::rule('/admin/index/index','admin/index/index');//主页
 //预约列表
 Route::rule('/admin/reserva/index','admin/reserva/index');
+Route::rule('/admin/reserva/edit','admin/reserva/edit');//修改
 // 服务类型
 Route::rule('/admin/gongsi/fwleixing','admin/gongsi/fwleixing');//类型
 Route::rule('/admin/gongsi/doadd','admin/gongsi/doadd');//类型 添加
@@ -65,6 +68,12 @@ Route::rule('/admin/gongsi/layout','admin/gongsi/layout');//户型风格
 Route::rule('/admin/gongsi/layoutadd','admin/gongsi/layoutadd');// 添加
 Route::rule('/admin/gongsi/layoutedit','admin/gongsi/layoutedit');// 修改
 Route::rule('/admin/gongsi/layoutdel','admin/gongsi/layoutdel');// 删除
+
+//预约状态
+Route::rule('/admin/gongsi/resevatype','admin/gongsi/resevatype');//预约状态
+Route::rule('/admin/gongsi/resevatypeadd','admin/gongsi/resevatypeadd');// 添加
+Route::rule('/admin/gongsi/resevatypeedit','admin/gongsi/resevatypeedit');// 修改
+Route::rule('/admin/gongsi/resevatypedel','admin/gongsi/resevatypedel');// 删除
 //公司
 Route::rule('/admin/shop/index','admin/shop/index');//公司详情
 Route::rule('/admin/shop/add','admin/shop/add');//添加

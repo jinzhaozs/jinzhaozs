@@ -1,0 +1,187 @@
+{extend name="layoutextend"}
+{block name="nav"}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"> 
+    <title></title>
+    
+    
+</head>
+<body>
+<div style="margin-left: 2%;margin-right: 2%;">
+        <h1 style="text-align: center;">预约状态</h1>
+<button class="btn" style="margin-top: -5%;" id="showModel">添加状态</button> 
+    <table class="table table-bordered" >
+
+        <thead>
+            <tr>
+                <!-- <th>id</th> -->
+                <th>名称</th>
+                <th>排序</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="yuansuzhijia">
+            
+            {foreach name="res" item="vores"}
+                <tr>
+                    <td style="display: none;"><span class="selid">{$vores.id}</span></td>
+                    <td><span class="selname">{$vores.name}</span></td>
+                    <td><span class="selpaixu">{$vores.paixu}</span></td>
+                    <td>
+                        <span style=" cursor: pointer;" class="showModel2">修改</span> | 
+                        <span style=" cursor: pointer;" class="delcom">删除</span>
+                    </td>
+                </tr>
+            {/foreach}
+        </tbody>
+    </table>
+</div>
+<!-- 模态框 -->
+<div>
+     <!-- 模态框添加 -->
+    <div id="modal" class="modal">  
+        <div class="modal-content">  
+            <header class="modal-header">  
+                <h4>添加状态</h4>  
+                <span class="close">×</span>  
+            </header>  
+            <div class="modal-body">  
+                <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/gongsi/resevatypeadd')}">
+                <table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
+                    <tr>
+                        <td>名称</td>
+                        <td>
+                            <input type="text" class="form-control" name="name" placeholder="请输入名字">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>排序</td>
+                        <td>
+                            <input type="text" class="form-control" name="paixu" placeholder="">
+                        </td>
+                    </tr>
+
+                </table>
+                </form>
+            </div>  
+            <footer class="modal-footer">  
+                <button id="cancel">取消</button>  
+                <button id="sure">确定</button>  
+            </footer>  
+        </div>  
+    </div> 
+    <!-- 模态框修改 -->
+    <div id="modal2" class="modal">  
+        <div class="modal-content">  
+            <header class="modal-header">  
+                <h4>状态修改</h4>  
+                <span class="close2">×</span>  
+            </header>  
+            <div class="modal-body">  
+                <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/gongsi/resevatypeedit')}">
+                <table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
+                    <input style="display: none;" type="text" id="edid" name="id">
+                    <tr>
+                        <td>名称</td>
+                        <td>
+                            <input type="text" class="form-control" name="name" id="edname" placeholder="请输入名字">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>排序</td>
+                        <td>
+                            <input type="text" class="form-control" name="paixu" id="edpaixu" placeholder="">
+                        </td>
+                    </tr>
+
+                </table>
+                </form>
+            </div>  
+            <footer class="modal-footer">  
+                <button id="cancel2">取消</button>  
+                <button id="sure2">确定</button>  
+            </footer>  
+        </div>  
+    </div>  
+</div>
+
+</body>
+<!-- 模态框js -->
+<script>  
+// 添加
+    var btn = document.getElementById('showModel');  
+    var close = document.getElementsByClassName('close')[0];  
+    var cancel = document.getElementById('cancel');  
+    var sure = document.getElementById('sure');  
+    var modal = document.getElementById('modal');  
+    btn.addEventListener('click', function(){
+        modal.style.display = "block";  
+    });  
+    close.addEventListener('click', function(){  
+        modal.style.display = "none";  
+    });  
+    cancel.addEventListener('click', function(){  
+        modal.style.display = "none";  
+    });  
+    sure.addEventListener('click', function(){ 
+        $("#formsubadd").submit();
+        
+    });
+
+    // 修改   
+    var close2 = document.getElementsByClassName('close2')[0];  
+    var cancel2 = document.getElementById('cancel2');  
+    var sure2 = document.getElementById('sure2');  
+    var modal2 = document.getElementById('modal2'); 
+    //模态框展示 
+    $(".showModel2").click(function(){
+        var selid = $(this).parent().parent().find(".selid").html();
+        var selname = $(this).parent().parent().find(".selname").html();//获取name
+        var selpaixu = $(this).parent().parent().find(".selpaixu").html();//获取compaix
+        //赋值
+        $("#edid").val(selid);
+        $("#edname").val(selname);
+        $("#edpaixu").val(selpaixu);
+        // alert(comid);comname
+         modal2.style.display = "block";  
+        });
+    close2.addEventListener('click', function(){  
+        modal2.style.display = "none";  
+    }); 
+    cancel2.addEventListener('click', function(){  
+        modal2.style.display = "none";  
+    });  
+    sure2.addEventListener('click', function(){
+       $("#formsubedit").submit();
+        
+    });
+    // 执行修改
+    $(".delcom").click(function(){
+        if(confirm("确定删除该类型吗？")){
+            var comid = $(this).parent().parent().find(".selid").html();
+            $(this).parent().parent().remove();
+            // console.log(aa);return false;
+            $.ajax({
+                type:"post",
+                dataType:'json',
+                async:false,
+                url:'{:url("admin/gongsi/resevatypedel")}',
+                data:{"id":comid},
+                success:function(dd){
+                    // console.log(dd);
+                    if (dd.code == 200) {
+                        //jq 删除元素
+
+                    }else{
+                        alert(msg);
+                    }
+                     
+                }
+            })
+        }
+    });
+</script> 
+</html>
+{/block}
