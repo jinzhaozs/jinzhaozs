@@ -81,7 +81,14 @@ Route::rule('/admin/plan/ajaxtpguanli','admin/plan/ajaxtpguanli');//图片管理
 Route::rule('/admin/plan/edit','admin/plan/edit');//修改
 Route::rule('/admin/Plan/tupianguanli','admin/Plan/tupianguanli');//图片管理修改
 Route::rule('/admin/plan/delete','admin/plan/delete');//删除
-
+//公司工地
+Route::rule('/admin/plangong/index','admin/plangong/index');//公司 案例列表
+Route::rule('/admin/plangong/add','admin/plangong/add');//添加
+Route::rule('/admin/plangong/ajaxedit','admin/plangong/ajaxedit');//修改参数
+Route::rule('/admin/plangong/ajaxtpguanli','admin/plangong/ajaxtpguanli');//图片管理
+Route::rule('/admin/plangong/edit','admin/plangong/edit');//修改
+Route::rule('/admin/plangong/tupianguanli','admin/plangong/tupianguanli');//图片管理修改
+Route::rule('/admin/plangong/delete','admin/plangong/delete');//删除
 // 公司轮播图管理
 Route::rule('/admin/Shoplbt/index','admin/Shoplbt/index');//服务价位
 Route::rule('/admin/Shoplbt/add','admin/Shoplbt/add');// 添加
@@ -160,6 +167,15 @@ Route::rule('/adminshop/plan/ajaxtpguanli','adminshop/plan/ajaxtpguanli');//图�
 Route::rule('/adminshop/plan/edit','adminshop/plan/edit');//修改
 Route::rule('/adminshop/Plan/tupianguanli','adminshop/Plan/tupianguanli');//图片管理修改
 Route::rule('/adminshop/plan/delete','adminshop/plan/delete');//删除
+
+//公司工地
+Route::rule('/adminshop/plangong/index','adminshop/plangong/index');//公司 案例列表
+Route::rule('/adminshop/plangong/add','adminshop/plangong/add');//添加
+Route::rule('/adminshop/plangong/ajaxedit','adminshop/plangong/ajaxedit');//修改参数
+Route::rule('/adminshop/plangong/ajaxtpguanli','adminshop/plangong/ajaxtpguanli');//图片管理
+Route::rule('/adminshop/plangong/edit','adminshop/plangong/edit');//修改
+Route::rule('/adminshop/plangong/tupianguanli','adminshop/plangong/tupianguanli');//图片管理修改
+Route::rule('/adminshop/plangong/delete','adminshop/plangong/delete');//删除
 //公司设计师
 Route::rule('/adminshop/designer/index','adminshop/designer/index');//公司 设计师列表
 Route::rule('/adminshop/designer/add','adminshop/designer/add');//添加
