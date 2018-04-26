@@ -14,7 +14,7 @@ use think\Controller;
 use think\Request;
 
 use think\File;
-class Plan extends Controller
+class Plan extends \app\admin\controller\Base
 {
 	/**
      * *类型

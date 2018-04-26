@@ -13,7 +13,7 @@ use think\Controller;
 use think\Request;
 use think\File;
 
-class Ectkj extends Controller
+class Ectkj extends  \app\admin\controller\Base
 {
     /**
      * *类型

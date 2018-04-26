@@ -13,7 +13,7 @@ use think\Controller;
 use think\Request;
 use think\File;
 
-class Ectatlas extends Controller
+class Ectatlas extends  \app\admin\controller\Base
 {
     /**
      * *类型

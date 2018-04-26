@@ -14,7 +14,7 @@ use think\Request;
 use think\File;
 
 
-class Designer extends Controller
+class Designer extends  \app\admin\controller\Base
 {
 	public function index()
 	{
