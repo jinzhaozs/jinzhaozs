@@ -14,11 +14,13 @@ use think\Request;
 use think\File;
 
 
-class User extends Controller
+class Ruser extends Controller
 {
 	public function index()
 	{
 		$where=array ();
+    $where['type']=3;
+    $where['brancode']=Session::get('adminuserbran');
 		$user=db('useradmin');
 		$br= db('branch');
         //获取参数
@@ -27,7 +29,7 @@ class User extends Controller
         if (!empty($urlcanshu['keyword'])) {
            $where['dname']=array('like','%'.$urlcanshu['keyword'].'%');
         }
-    	$res=$user->field("useradmin.id,usercode,usersub,type,brancode,uname,time,name,code")->join('branch br','useradmin.brancode = br.code','left')->where($where)->order("useradmin.id")->paginate(10,false,['query'=>$urlcanshu,]);
+    	$res=$user->field("useradmin.id,usercode,usersub,type,uname,brancode,time,name,code")->join('branch br','useradmin.brancode = br.code','left')->where($where)->order("useradmin.id")->paginate(10,false,['query'=>$urlcanshu,]);
     	$page=$res->render();
     	$branch = $br->select();//类型
     	 $this->assign("branch",$branch);//类型
@@ -40,14 +42,16 @@ class User extends Controller
          $user = db('useradmin'); 
         $shuju = input('post.');//获取数据
         $shuju['usersub']=md5(input('post.usersub'));
+        $shuju['type']=3;
+        $shuju['brancode']=Session::get('adminuserbran');
         $shuju['time'] = date("Y-m-d h:i:s",time());  
         $user_info = $user->insert($shuju);
         if (!$user_info) {
-           $this->error("添加失败","admin/User/index");
+           $this->error("添加失败","admin/ruser/index");
         }
         else
         {
-          $this->redirect("admin/User/index");
+          $this->redirect("admin/Ruser/index");
          
         }
       
@@ -60,11 +64,11 @@ class User extends Controller
         $shuju = input('post.');//获取数据
         $res = $user->where($where)->update($shuju);
         if (!$res) {
-           $this->error("修改失败","admin/User/index");
+           $this->error("修改失败","admin/Ruser/index");
         }
         else
         {
-          $this->redirect("admin/User/index");
+          $this->redirect("admin/Ruser/index");
         }
         
     }
@@ -106,11 +110,11 @@ class User extends Controller
         $shuju['usersub']=md5(input('post.usersub'));
         $res = $user->where($where)->update($shuju);
         if (!$res) {
-           $this->error("修改失败","admin/User/index");
+           $this->error("修改失败","admin/Ruser/index");
         }
         else
         {
-          $this->redirect("admin/User/index");
+          $this->redirect("admin/Ruser/index");
         }
         
     }

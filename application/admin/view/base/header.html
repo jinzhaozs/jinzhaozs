@@ -253,10 +253,11 @@
         <ul>
             {switch name="$sesionadusertype"}
                 {case value="1"}
-                    <li><a href="{:url('admin/user/index')}">员工列表</a></li>
+                    <li><a href="{:url('admin/user/index')}">人员列表</a></li>
+                    <li><a href="{:url('admin/bm/index')}">部门管理</a></li>
                 {/case}
                 {case value="2"}
-                    <li><a href="{:url('admin/bm/index')}">部门管理</a></li>
+                 <li><a href="{:url('admin/ruser/index')}">员工列表</a></li>
                 {/case}
             {/switch}
         </ul>
