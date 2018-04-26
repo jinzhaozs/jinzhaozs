@@ -43,6 +43,7 @@ class Plan extends Controller
         $this->assign("usersjs",$usersjs);//设计师
         $this->assign("comid",$comid);//公司id
         $where['plan.comid'] = $comid;
+        $where['schedule'] =5;
          //分页
         $res = $plan->field("plan.id,plan.fname,plan.flogo,plan.frenyuan,plan.fmianji,plan.fyusuan,plan.ffangshi,lx.lxname as ftype,shop.name as comid,com_layout.lname as fhuxing,com_zhuancfg.zcfgname as ffengge,designer.dname as frenyuan")
         ->join('com_qiyecsleixing lx','plan.ftype = lx.lxcode','left')//类型

@@ -1,11 +1,11 @@
 <?php
 /**
- * 后台公司类型控制器 LoginController.class.php
+ * 后台公司工地控制器 LoginController.class.php
  * ============================================================================
  * 许可声明：这是一个开源程序，未经许可不得将本软件的整体或任何部分用于商业用途及再发布。
  * ============================================================================
  * Author: yangxuya
- * Date: 2018年4月13日
+ * Date: 2018年4月23日
 */
 namespace app\admin\controller;
 
@@ -14,7 +14,9 @@ use think\Controller;
 use think\Request;
 
 use think\File;
-class Plan extends \app\admin\controller\Base
+use think\Session;
+
+class Plangong extends Controller
 {
 	/**
      * *类型
@@ -41,9 +43,9 @@ class Plan extends \app\admin\controller\Base
         $this->assign("usersjs",$usersjs);//设计师
         $this->assign("comid",$comid);//公司id
         $where['plan.comid'] = $comid;
-         $where['schedule'] =5;
+        $where['schedule'] =array('neq',5);
          //分页
-        $res = $plan->field("plan.id,plan.fname,plan.flogo,plan.frenyuan,plan.fmianji,plan.fyusuan,plan.ffangshi,lx.lxname as ftype,shop.name as comid,com_layout.lname as fhuxing,com_zhuancfg.zcfgname as ffengge,designer.dname as frenyuan")
+        $res = $plan->field("plan.id,plan.fname,plan.flogo,plan.frenyuan,plan.fmianji,plan.fyusuan,plan.ffangshi,plan.schedule,lx.lxname as ftype,shop.name as comid,com_layout.lname as fhuxing,com_zhuancfg.zcfgname as ffengge,designer.dname as frenyuan")
         ->join('com_qiyecsleixing lx','plan.ftype = lx.lxcode','left')//类型
         ->join('shop','plan.comid = shop.id','left')//公司
         ->join('com_layout','plan.fhuxing = com_layout.lcode','left')//户型
@@ -51,7 +53,7 @@ class Plan extends \app\admin\controller\Base
         ->join('designer','plan.frenyuan = designer.id','left')//设计师
         ->order("plan.id")
         ->where($where)
-        ->paginate(10);
+        ->paginate(5);
         // dump($res);die;
         $page=$res->render();
         // 分页
@@ -65,7 +67,8 @@ class Plan extends \app\admin\controller\Base
     	$user = db('plan'); 
     	$file = request()->file('flogo');
         $shuju = input('post.');//获取数据
-        $shuju['time'] = date("Y-m-d h:i:s",time());    
+        $shuju['time'] = date("Y-m-d h:i:s",time()); 
+         $shuju['schedule'] = 1;   
         if($file){
         $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
              $shuju['flogo']=$info->getSaveName();
@@ -77,9 +80,9 @@ class Plan extends \app\admin\controller\Base
         $shuju_do['logo_time'] = date("Y-m-d h:i:s",time());  
         $user_info_do = db('plan_do')->insert($shuju_do);
         if (!$user_info) {
-           $this->error("添加失败","admin/plan/index",['comid'=>$shuju['comid']]);
+           $this->error("添加失败","admin/plangong/index",['comid'=>$shuju['comid']]);
         }else{
-           $this->redirect("admin/plan/index",['comid'=>$shuju['comid']]);
+           $this->redirect("admin/plangong/index",['comid'=>$shuju['comid']]);
         }
         
     }
@@ -149,11 +152,11 @@ class Plan extends \app\admin\controller\Base
         $res = $user->where($where)->update($shuju);
         // echo $user->getLastsql();die;
         if (!$res) {
-            $this->error("添加失败","admin/plan/index",['comid'=>input('post.comid')]);
+            $this->error("添加失败","admin/plangong/index",['comid'=>$shuju['comid']]);
         }
         else
         {
-         $this->redirect("admin/plan/index",['comid'=>input('post.comid')]);
+         $this->redirect("admin/plangong/index",['comid'=>$shuju['comid']]);
         }
     }
     //执行修改
@@ -172,6 +175,7 @@ class Plan extends \app\admin\controller\Base
         $shuju['ffengge'] = input('post.ffengge');
         $shuju['ffangshi'] = input('post.ffangshi');
         $shuju['fjianjie'] = input('post.fjianjie');
+        $shuju['schedule'] = input('post.schedule');
         $shuju['time'] = date("Y-m-d h:i:s",time());
         // dump($shuju);
         $file = request()->file('flogo');
@@ -182,11 +186,11 @@ class Plan extends \app\admin\controller\Base
         $res = $user->where($where)->update($shuju);
         // echo $user->getLastsql();die;
         if (!$res) {
-            $this->error("添加失败","admin/plan/index",['comid'=>input('post.comid')]);
+            $this->error("添加失败","admin/plangong/index",['comid'=> $where['comid']]);
         }
         else
         {
-         $this->redirect("admin/plan/index",['comid'=>input('post.comid')]);
+         $this->redirect("admin/plangong/index",['comid'=> $where['comid']]);
         }
         
     }

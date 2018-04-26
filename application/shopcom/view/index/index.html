@@ -269,7 +269,7 @@
                  {foreach name="shig" item="sg"}
                     <li>
                         <a href=" " title="蔚来城 " target="_blank ">
-                            <img class="lazy " src="__STATIC__/uploads/{$voplan.flogo}  " alt="{$sg.fname} " style="display: block; ">
+                            <img class="lazy " src="__STATIC__/uploads/{$sg.flogo}  " alt="{$sg.fname} " style="display: block; ">
                             <h6>{$sg.fname}</h6><span>别墅</span>
                         </a>
                     </li>
@@ -279,8 +279,8 @@
 </div><div class="company_profile ">
     {foreach name="shopcom" item="sh"}
         <div class="nav_menu_title ">
-            <a href="http://bj.bzw315.com/shop/78219/aboutus/ " title="  {$sh.name}简介 " class="navbar-menu-more " target="_blank ">详细</a>
-            <h3><a title=" {$sh.name}简介 " target="_blank " href="http://bj.bzw315.com/shop/78219/aboutus/ ">公司简介</a><span> {$sh.name}简介</span></h3>
+            <a href="http://bj.bzw315.com/shop/78219/aboutus/ " title="  {$sh.name_jc}简介 " class="navbar-menu-more " target="_blank ">详细</a>
+            <h3><a title=" {$sh.name}简介 " target="_blank " href="http://bj.bzw315.com/shop/78219/aboutus/ ">公司简介</a><span> {$sh.name_jc}简介</span></h3>
         </div>
         <div class="company_profile_bd ">
             <div class="video ">
@@ -295,7 +295,13 @@
                     <i class="i01 "></i>{$sh.com_slogan}<i class="i02 "></i>
                 </span>
                 <div class="art ">
-                    <p> {$sh.com_jianjie}......</p>
+                    {php}
+                        $sa= preg_replace("/<[^>]+>/is", "", $sh['com_jianjie']);
+                        $s=mb_substr( $sa, 0,100,"utf-8");
+
+                    {/php}
+                    <p> {$s}......</p>
+                    
                 </div>
                 <div class="look ">
                     <a href="javascript:void(0)" title="预约装修设计 " class="active bzw_popup_05">预约装修设计</a>
