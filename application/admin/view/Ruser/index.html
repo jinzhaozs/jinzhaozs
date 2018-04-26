@@ -23,9 +23,6 @@
 		账号
 	</th>
 	<th>
-		姓名
-	</th>
-	<th>
 		级别
 	</th>
 	<th>
@@ -37,11 +34,11 @@
 </tr>
 </thead>
 <tbody id="yuansuzhijia">
-<tr>{php}
+	{php}
 				$status=array("1"=>"超级管理员","2"=>"部门主管","3"=>"员工");
 		  {/php}
+<tr>
 	<td style="display: none;">
-
 		{$i=1}
 	</td>
 </tr>
@@ -55,9 +52,6 @@
 	</td>
 	<td>
 		<span class="usercode">{$vores.usercode}</span>
-	</td>
-	<td>
-		<span class="uname">{$vores.uname}</span>
 	</td>
 	<td>
 		<span class="type" name="{$vores.type}">{$status[$vores['type']]}</span>
@@ -85,11 +79,11 @@
 <div id="modal" class="modal">
 	<div class="modal-content">
 		<header class="modal-header">
-		<h4>请添加</h4>
+		<h4>请添加员工</h4>
 		<span class="close">×</span>
 		</header>
 		<div class="modal-body">
-			<form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/User/add')}">
+			<form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Ruser/add')}">
 				<table style="border-collapse:separate; border-spacing:10px; width: 100%;">
 					<tr>
 						<td class='wid'>账号</td>
@@ -98,6 +92,7 @@
 
 						</td>
 					</tr>
+
 					<tr>
 						<td class='wid'>密码</td>
 						<td>
@@ -116,33 +111,6 @@
 							<input type="text" class="form-control" name="uname" id="uname"  placeholder="请输入姓名">
 						</td>
 					</tr>
-				<tr>
-
-					<td>
-						等级
-					</td>
-					<td>
-							<select name="type" id="type"> 
-							<option value ="0">请选择</option>
-                               <span ><option value ="1">超级管理员</option></span>  
-           						<span ><option value ="2">主管</option></span> 
-           						<span ><option value ="3">员工</option></span> 
-                            </select>
-					</td>
-				</tr>
-				<tr>
-					<td class='wid'>
-						所属部门
-					</td>
-					<td id="com_zcfg">
-							<select name="brancode" id="brancode"> 
-									<option value ="0">请选择</option>  
-                              {foreach name="branch" item="br"}
-                               <span ><option value ="{$br.code}">{$br.name}</option></span>  
-                              {/foreach}
-                           </select>
-					</td>
-				</tr>
 				</table>
 			</div>
 			<footer class="modal-footer">
@@ -160,7 +128,7 @@
 		<span class="close2">×</span>
 		</header>
 		<div class="modal-body">
-			<form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/User/edit')}">
+			<form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Ruser/edit')}">
 				<table style="border-collapse:separate; border-spacing:10px; width: 100%;">
 				<tr>
 					<input type="hidden" name="id" class="ids" value="">
@@ -177,32 +145,6 @@
 							<input type="text" class="form-control" name="uname" id="uname2"  placeholder="请输入姓名">
 						</td>
 					</tr>
-					<tr>
-					<td>
-						等级
-					</td>
-					<td>
-							<select name="type" id="type2"> 
-							<option value ="0">请选择</option>
-                               <span ><option value ="1">超级管理员</option></span>  
-           						<span ><option value ="2">主管</option></span> 
-           						<span ><option value ="3">员工</option></span> 
-                            </select>
-					</td>
-				</tr>
-				<tr>
-					<td class='wid'>
-						所属部门
-					</td>
-					<td >
-							<select name="brancode" id="brancode2"> 
-									<option value ="0">请选择</option>  
-                              {foreach name="branch" item="br"}
-                               <span ><option value ="{$br.code}">{$br.name}</option></span>  
-                              {/foreach}
-                           </select>
-					</td>
-				</tr>
 				</table>
 			</div>
 			<footer class="modal-footer">
@@ -219,7 +161,7 @@
 	            <span class="close3">×</span>  
 	        </header>  
 	        <div class="modal-body">  
-	            <form id="formsubxg" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/user/xg')}" >
+	            <form id="formsubxg" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/ruser/xg')}" >
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
 				<input type="hidden" name="id" class="idss" value="">
 				<tr>
@@ -300,7 +242,7 @@
 	             type:"post",
 	            dataType:'json',
 	            async:false,
-	            url:'{:url("admin/user/ajaxcode")}',
+	            url:'{:url("admin/ruser/ajaxcode")}',
 	            data:{"code":usercode},
 	            success:function(dd){ 
 	                if(dd ==1 )
@@ -343,7 +285,7 @@
     	var uname=$(this).parent().parent().find(".uname").html();
     	//赋值
         $("#usercode2").val(usercode);
-        $("#uname2").val(uname);
+         $("#uname2").val(uname);
         $("#type2").find('option[value="'+type+'"]').attr("selected",true);
         $("#brancode2").find('option[value="'+brancode+'"]').attr("selected",true);
      	$(".ids").val(comid);
@@ -418,7 +360,7 @@
 	             type:"post",
 	            dataType:'json',
 	            async:false,
-	            url:'{:url("admin/user/ajaxyuan")}',
+	            url:'{:url("admin/ruser/ajaxyuan")}',
 	            data:{"pass":mimas,"id":comid},
 	             success:function(dd){ 
 
@@ -457,7 +399,7 @@
 	            type:"post",
 	            dataType:'json',
 	            async:false,
-	            url:'{:url("admin/User/delete")}',
+	            url:'{:url("admin/Ruser/delete")}',
 	            data:{"id":comid},
 	            success:function(dd){
 	                // console.log(dd);
