@@ -10,8 +10,19 @@
 <div style="margin-left: 2%;margin-right: 2%; margin-top: 1%;">
     <h1 style="text-align: center;">效果图图册</h1>
     <button class="btn" style="margin-top: -5%;" id="showModel">添加图册</button>
-    <div class="hei">
-    </div>
+    <form class="well form-search" method="post" action="{:url('/admin/ectatlas/index')}">
+            <div class="search_type cc mb10" style="margin-top: -4%;margin-left: 70%;">
+                    <span class="mr20">
+
+
+                        <input type="text" name="keyword" style="width: 160px;" value="" placeholder="请输入关键字...">
+
+                        <input type="submit" class="btn btn-primary" value="搜索" />
+                    </span>
+            </div>
+        </form> 
+        <div class="hei"></div>
+    
     <table class="table table-bordered">
     <thead>
     <tr>

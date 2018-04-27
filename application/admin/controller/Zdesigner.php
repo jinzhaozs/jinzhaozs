@@ -22,18 +22,52 @@ class Zdesigner extends  \app\admin\controller\Base
 		$user=db('designer');
 		$fg= db('com_zhuancfg');
 		$userlx = db("com_qiyecsleixing");//类型
+         $province=db('province');//市
         //获取参数
+        $dname='';
+        $proc='';
+        $city='';
+        $area='';
         $request = Request::instance();
         $urlcanshu = $request->param();
         if (!empty($urlcanshu['keyword'])) {
-           $where['dname']=array('like','%'.$urlcanshu['keyword'].'%');
+            $where['dname']=array('like','%'.$urlcanshu['keyword'].'%');
+            $dname=$urlcanshu['keyword'];
+           //$where['designer.procode']=$urlcanshu['procode1'];
         }
-    	$res=$user->field("designer.id,dname,davatar,sex,jobage,designer.com_dzcfg,shop,price_range,idea,field,school,experience,intro,prize,achievement,grade,name,lxname")->join('shop s','designer.shop = s.id','left')->join('com_qiyecsleixing lx','designer.field = lx.lxcode','left')->where($where)->order("designer.id")->paginate(10,false,['query'=>$urlcanshu,]);
+        if(!empty($urlcanshu['procode1']))
+        {
+           $where['designer.procode']=$urlcanshu['procode1'];
+          
+           $proc=$urlcanshu['procode1'];
+          
+        }
+        if(!empty($urlcanshu['citycode']))
+        {
+
+            $where['designer.citycode']=$urlcanshu['citycode'];
+            $city=$urlcanshu['citycode'];
+        }
+        if(!empty($urlcanshu['areacode']))
+        {
+            $where['designer.areacode']=$urlcanshu['areacode'];
+            $area=$urlcanshu['areacode'];
+
+        }
+
+
+    	$res=$user->field("designer.id,dname,davatar,sex,jobage,designer.com_dzcfg,shop,price_range,idea,field,school,experience,intro,prize,achievement,grade,name,lxname,designer.procode,designer.citycode,designer.areacode")->join('shop s','designer.shop = s.id','left')->join('com_qiyecsleixing lx','designer.field = lx.lxcode','left')->where($where)->order("designer.id")->paginate(10,false,['query'=>$urlcanshu,]);
     	 $zcfg=$fg->select(); 
     	$page=$res->render();
+
     	$reslx = $userlx->select();//类型
-    	 $this->assign("reslx",$reslx);//类型
-     
+        $pro=$province->select();
+        $this->assign("pr",$pro);
+        $this->assign("proc",$proc);
+        $this->assign("city",$city);
+        $this->assign("area",$area);
+    	$this->assign("reslx",$reslx);//类型
+        $this->assign('dname',$dname);
     	$this->assign("zcfg",$zcfg);
     	$this->assign("page",$page);
     	$this->assign("res",$res);
