@@ -19,24 +19,33 @@ class Ruser extends \app\admin\controller\Base
 {
 	public function index()
 	{
-		$where=array ();
-    $where['type']=3;
-    $where['brancode']=Session::get('adminuserbran');
-		$user=db('useradmin');
-		$br= db('branch');
-        //获取参数
-        $request = Request::instance();
-        $urlcanshu = $request->param();
-        if (!empty($urlcanshu['keyword'])) {
-           $where['dname']=array('like','%'.$urlcanshu['keyword'].'%');
-        }
-    	$res=$user->field("useradmin.id,usercode,usersub,type,uname,brancode,time,name,code")->join('branch br','useradmin.brancode = br.code','left')->where($where)->order("useradmin.id")->paginate(10,false,['query'=>$urlcanshu,]);
-    	$page=$res->render();
-    	$branch = $br->select();//类型
-    	 $this->assign("branch",$branch);//类型
-    	$this->assign("page",$page);
-    	$this->assign("res",$res);
-		return $this->view->fetch();
+  		$where=array ();
+      $where['type']=3;
+      $where['brancode']=Session::get('adminuserbran');
+  		$user=db('useradmin');
+  		$br= db('branch');
+          //获取参数
+      $uname='';
+      $bran='';
+      $request = Request::instance();
+      $urlcanshu = $request->param();
+      if (!empty($urlcanshu['keyword'])) {
+             $where['uname']=array('like','%'.$urlcanshu['keyword'].'%');
+             $uname=$urlcanshu['keyword'];
+          }
+      if (!empty($urlcanshu['brancode'])) {
+             $where['brancode']=$urlcanshu['brancode'];
+             $bran=$urlcanshu['brancode'];
+         }
+      	$res=$user->field("useradmin.id,usercode,usersub,type,uname,brancode,time,name,code")->join('branch br','useradmin.brancode = br.code','left')->where($where)->order("useradmin.id")->paginate(10,false,['query'=>$urlcanshu,]);
+      	$page=$res->render();
+      	$branch = $br->select();//类型
+      	 $this->assign("branch",$branch);//类型
+         $this->assign("uname",$uname);
+        $this->assign("bran",$bran);
+      	$this->assign("page",$page);
+      	$this->assign("res",$res);
+  		return $this->view->fetch();
 	}
 	 public function add()
     {

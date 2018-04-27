@@ -22,21 +22,23 @@ class Article extends Controller
      */
     public function index()
     {
-    	$user=db('article');
-    	$where=array ();
-		$comid= Session::get('adminshopid');
-		$where['ashop']=$comid;
-		 $request = Request::instance();
+      	$user=db('article');
+      	$where=array ();
+    		$comid= Session::get('adminshopid');
+    		$where['ashop']=$comid;
+  		  $request = Request::instance();
         $urlcanshu = $request->param();
+        $aname='';
         if (!empty($urlcanshu['keyword'])) {
-           $where['aname']=array('like','%'.$urlcanshu['keyword'].'%');
+             $where['aname']=array('like','%'.$urlcanshu['keyword'].'%');
+             $aname=$urlcanshu['keyword'];
         }
-    	$res=$user->field("article.id,aname,ashop,abstract,pic,content,ischeck,istop,name,atime")->join('shop s','article.ashop = s.id')->where($where)->order("article.id")->paginate(10,false,['query'=>$urlcanshu,]);
-    	$page=$res->render();
-    	$this->assign("comid",$comid);
-    	$this->assign("page",$page);
-    	$this->assign("res",$res);
-		return $this->view->fetch();
+      	$res=$user->field("article.id,aname,ashop,abstract,pic,content,ischeck,istop,name,atime")->join('shop s','article.ashop = s.id')->where($where)->order("article.id")->paginate(10,false,['query'=>$urlcanshu,]);
+      	$page=$res->render();
+      	$this->assign("comid",$comid);
+      	$this->assign("page",$page);
+      	$this->assign("res",$res);
+  		return $this->view->fetch();
     }
      public function add()
     {
