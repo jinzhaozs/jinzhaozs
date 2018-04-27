@@ -12,9 +12,9 @@ namespace app\admin\controller;
 use think\Controller;
 use think\Request;
 use think\File;
+use think\Session;
 
-
-class Ruser extends Controller
+class Ruser extends \app\admin\controller\Base
 {
 	public function index()
 	{

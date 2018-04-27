@@ -171,6 +171,8 @@ Route::rule('/admin/bm/index','admin/bm/index');//部门
 Route::rule('/admin/bm/add','admin/bm/add');// 添加
 Route::rule('/admin/bm/edit','admin/bm/edit');// 修改
 Route::rule('/admin/bm/del','admin/bm/del');// 删除
+//总设计师
+Route::rule('/admin/zdesigner/index','admin/zdesigner/index');
 /**
  * 公司后台
  */
