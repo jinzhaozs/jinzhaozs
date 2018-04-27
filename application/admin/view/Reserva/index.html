@@ -28,7 +28,8 @@
 				<th>姓名</th>
 				<th>小区</th>
 				<th>电话</th>
-				<th>状态</th>
+                <th>状态</th>
+				<th style="width: 10%;">分配管理</th>
 				<th>操作</th>
 			</tr>
 		</thead>
@@ -44,6 +45,9 @@
                     <td style="display: none;" class="type">{$vores.type}</td>
                     <td style="display: none;" class="textbeizhu">{$vores.text}</td>
                     <td>{$vores.type|yuyueleixing=###}</td>
+                    <td>
+                        <span class="showModel3"><span class="btn btn-success" >分配</span></span> 
+                    </td>
 					<td>
 						<span style=" cursor: pointer;" class="showModel2">修改</span> | 
 
@@ -165,6 +169,46 @@
 	       </form>  
 	    </div>  
 	</div>  
+    <!-- 模态框分配 -->
+    <div id="modal3" class="modal">  
+        <div class="modal-content">  
+            <header class="modal-header">  
+                <h4>信息修改</h4>  
+                <span class="close3">×</span>  
+            </header>  
+            <div class="modal-body">  
+
+                 <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/reserva/edit')}">
+                <table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
+            
+            <tr>
+                <td class='wid'>电话</td>
+                <td>
+                  <input type="text" name="tel" id="telfp" placeholder="">
+                </td>
+            </tr>
+            <tr>
+                <td class='wid'>分配</td>
+                <td >
+                    <select name="type" id="type">
+                        
+                    {foreach name="restype" item="vorestype"}
+                        <option value="{$vorestype.code}">{$vorestype.name}</option>
+                    {/foreach}
+                    </select>
+                </td>
+            </tr>
+                        
+
+                </table>
+            </div>  
+            <footer class="modal-footer">  
+                <button type="button" id="cancel3">取消</button>  
+                <button type="button" id="sure3">确定</button>  
+            </footer>
+           </form>  
+        </div>  
+    </div>  
 </div>
 
 </body>
@@ -227,6 +271,27 @@
     });  
     sure2.addEventListener('click', function(){
           	$("#formsubedit").submit();
+    });
+    // 分配  
+    var close3 = document.getElementsByClassName('close3')[0];  
+    var cancel3 = document.getElementById('cancel3');  
+    var sure3 = document.getElementById('sure3');  
+    var modal3 = document.getElementById('modal3'); 
+    //模态框展示 
+    $(".showModel3").click(function(){
+         var tel = $(this).parent().parent().parent().find('.tel').html();//获取xiaoqu
+         // alert(tel);
+         $("#telfp").val(tel);
+        modal3.style.display = "block";  
+    });
+    close3.addEventListener('click', function(){  
+        modal3.style.display = "none";  
+    }); 
+    cancel3.addEventListener('click', function(){  
+        modal3.style.display = "none";  
+    });  
+    sure3.addEventListener('click', function(){
+            $("#formsubedit").submit();
     });
     // 执行删除
     $(".delcom").click(function(){

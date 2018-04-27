@@ -27,9 +27,14 @@ class Base extends \think\Controller
     {
         //   // Session::set('456',123);
         $sesionadusertype = Session::get('adminusertype');
-     //    // Session::clear();
+        // 判断是否登陆
+        if (!$sesionadusertype) {
+            $this->redirect('admin/login/index');
+            die;
+        }
+        // Session::clear();
      //    // echo 123;
-        // dump($aa);die;
+        // dump($sesionadusertype);die;
         $this->assign("sesionadusertype",$sesionadusertype);
     }
 }

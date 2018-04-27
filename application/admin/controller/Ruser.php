@@ -13,8 +13,8 @@ use think\Controller;
 use think\Request;
 use think\File;
 
-
-class Ruser extends Controller
+use think\Session;
+class Ruser extends \app\admin\controller\Base
 {
 	public function index()
 	{
