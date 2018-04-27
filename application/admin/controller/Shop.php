@@ -29,16 +29,37 @@ class Shop extends  \app\admin\controller\Base
         $province=db('province');
         $where=array ();
         //获取参数
+        $name='';
+        $proc='';
+        $city='';
+        $area='';
         $request = Request::instance();
         $urlcanshu = $request->param();
         if (!empty($urlcanshu['keyword'])) {
 
            $where['name']=array('like','%'.$urlcanshu['keyword'].'%');
+           $name=$urlcanshu['keyword'];
         }
+        if(!empty($urlcanshu['procode1']))
+        {
+           $where['procode']=$urlcanshu['procode1'];
+          
+           $proc=$urlcanshu['procode1'];
+          
+        }
+        if(!empty($urlcanshu['citycode']))
+        {
 
-    	$res=$user->field("shop.id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_koubei,com_haoping,com_tel,logo_yingyezz,name_jc,faren,zhucezijin,lianxiren,youxiang,qyname,qqkf,guimu,lianxirenshouji,top,com_paixu,zhi,com_slogan,code,pass,zhuanghoufw,shejilf,yusuanqt,shenhuasj,shenhuays,cailiaozl,hetonggf,tesefu,procode,citycode,areacode")->join('com_fuwuqy w','shop.com_szqy = w.qycode','left')->join('shop_do d','shop.id = d.shopid','left')->where($where)->order("com_paixu desc")->paginate(10,false,[
-'query'=>$urlcanshu,
-]); 
+            $where['citycode']=$urlcanshu['citycode'];
+            $city=$urlcanshu['citycode'];
+        }
+        if(!empty($urlcanshu['areacode']))
+        {
+            $where['areacode']=$urlcanshu['areacode'];
+            $area=$urlcanshu['areacode'];
+
+        }
+    	$res=$user->field("shop.id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_koubei,com_haoping,com_tel,logo_yingyezz,name_jc,faren,zhucezijin,lianxiren,youxiang,qyname,qqkf,guimu,lianxirenshouji,top,com_paixu,zhi,com_slogan,code,pass,zhuanghoufw,shejilf,yusuanqt,shenhuasj,shenhuays,cailiaozl,hetonggf,tesefu,procode,citycode,areacode")->join('com_fuwuqy w','shop.com_szqy = w.qycode','left')->join('shop_do d','shop.id = d.shopid','left')->where($where)->order("com_paixu desc")->paginate(10,false,['query'=>$urlcanshu,]); 
         
     	$qy=$fu->select();
     	$xing=$lei->select();
@@ -47,6 +68,10 @@ class Shop extends  \app\admin\controller\Base
         $jws=$jw->select();
         $pro=$province->select();
         $this->assign("pr",$pro);
+        $this->assign("proc",$proc);
+        $this->assign("city",$city);
+        $this->assign("area",$area);
+        $this->assign("name",$name);
         $this->assign("jw",$jws);
         $this->assign("zcfg",$zcfg);
     	$this->assign("xing",$xing);

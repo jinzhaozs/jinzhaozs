@@ -64,6 +64,7 @@ class Plangong extends Controller
         // dump($res);die;
         $page=$res->render();
         // 分页
+        
         $this->assign("fname",$fname);
         $this->assign("res",$res);
         $this->assign("page",$page);
