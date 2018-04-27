@@ -12,7 +12,7 @@ namespace app\admin\controller;
 use think\Controller;
 use think\Request;
 use think\File;
-
+use think\Session;
 class Reserva extends  \app\admin\controller\Base
 {
     /**
@@ -21,37 +21,65 @@ class Reserva extends  \app\admin\controller\Base
      */
     public function index()
     {
-        $restype = uri("res_type",array());
-        $res = uri('reserva',array());
-        // dump($res);die;
-        $this->assign("res",$res);//预约信息
-    	$this->assign("restype",$restype);//预约状态
-		return $this->view->fetch();
+        $type = session::get('adminusertype');
+        // dump($type);die;
+        $restype = uri("res_type",array());//预约状态
+        $this->assign("restype",$restype);//预约状态
+        // 判断级别
+        switch ($type) {
+            case '1':
+                
+                $branch = uri('branch',array());//部门信息
+                $res = uri('reserva',array());//预约信息
+
+                $this->assign("branch",$branch);//部门信息
+                // dump($res);die;
+                $this->assign("res",$res);//预约信息
+                return $this->view->fetch();
+                break;
+            case '2':
+                // 部门code
+                $bumencode = session::get('adminuserbran');
+                // 只能看到该部门的信息
+                $where['zhidingbumen'] = $bumencode;//对应部门code
+                $res = uri('reserva',$where);//预约信息
+                // 获取该部门人员
+                $wherery['brancode'] = $bumencode;
+                $resrenyuan = uri("useradmin",$wherery);
+                // dump($resrenyuan);die;
+                $this->assign("res",$res);//预约信息
+                $this->assign("resrenyuan",$resrenyuan);//人员信息
+                return $this->fetch('zhuguanindex');die;
+
+            break;
+            case '3':
+                // 部门code
+                $bumencode = session::get('adminuserbran');
+                // 人员id
+                $renyuanid = session::get('adminuserid');
+                // dump($renyuanid);die;
+                // 只能看到该部门的信息
+                $where['zhidingbumen'] = $bumencode;//对应部门code
+                $where['zhidingrenyuan'] = $renyuanid;//对应人员id
+                $res = uri('reserva',$where);//预约信息
+                // dump($resrenyuan);die;
+                $this->assign("res",$res);//预约信息
+                return $this->fetch('renyuanindex');die;
+            break;
+            default:
+                echo "请重新登陆";
+                break;
+        }
+       
     }
-     public function add()
-    {
-         $user = db('article'); 
-        $file = request()->file('pic');
-        $shuju = input('post.');//获取数据
-        $shuju['atime'] = date("Y-m-d h:i:s",time());
-        $shuju['ischeck']=2; 
-        $shuju['istop']=2;
-         if($file)
-       { 
-        $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
-        if($info){
-             $shuju['pic']=$info->getSaveName();
-        }  
-        }      
-        $user_info = $user->insert($shuju);
-        if (!$user_info) {
-           $this->error("admin/Article/index",['id'=>$shuju['ashop']]);
-        }
-        else
-        {
-          $this->redirect("admin/Article/index",['id'=>$shuju['ashop']]);
-        }
-      
+    //部门——》人员
+    public function ajaxbumendory(){
+
+        $bumencode = input("post.fenpeibm");
+        $where['brancode'] = $bumencode;
+        $res = uri("useradmin",$where);
+        return $res;
+   
     }
      //执行修改
     public function edit(){
@@ -68,6 +96,15 @@ class Reserva extends  \app\admin\controller\Base
           $this->redirect("admin/reserva/index");
         }
         
+    }
+    //执行分配
+    public function editfenpei(){
+         $user = db('reserva');
+        $whid = input('post.id');//获取id
+        $where['id'] = $whid; 
+        $shuju = input('post.');//获取数据
+        $res = $user->where($where)->update($shuju);
+        $this->redirect("admin/reserva/index");
     }
     //
     public function delete($id){

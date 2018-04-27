@@ -3,43 +3,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8"> 
-	<title></title>
+    <meta charset="utf-8"> 
+    <title></title>
 </head>
 <body>
 <div style="margin-left: 2%;margin-right: 2%; margin-top: 1%;">
-		<h1 style="text-align: center;">预约管理</h1>
+        <h1 style="text-align: center;">预约管理</h1>
 <button style="display: none;" class="btn btn-primary" style="margin-top: -5%;" id="showModel">添加文章</button> 
- 		<form class="well form-search" method="post" action="{:url('/admin/Article/index')}">
-			<div class="search_type cc mb10" style="margin-top: -4%;margin-left: 70%;">
-					<span class="mr20">
-						<input type="text" name="keyword" style="width: 160px;" value="" placeholder="请输入关键字...">
-						<input type="submit" class="btn btn-primary" value="搜索" />
-					</span>
-			</div>
-		</form> 
-		<div class="hei"></div>
-	<table class="table table-bordered" >
+        <form class="well form-search" method="post" action="{:url('/admin/Article/index')}">
+            <div class="search_type cc mb10" style="margin-top: -4%;margin-left: 70%;">
+                    <span class="mr20">
+                        <input type="text" name="keyword" style="width: 160px;" value="" placeholder="请输入关键字...">
+                        <input type="submit" class="btn btn-primary" value="搜索" />
+                    </span>
+            </div>
+        </form> 
+        <div class="hei"></div>
+    <table class="table table-bordered" >
 
-		<thead>
-			<tr>
-				<!-- <th>id</th> -->
-				<th>编号</th>
-				<th>姓名</th>
-				<th>小区</th>
-				<th>电话</th>
+        <thead>
+            <tr>
+                <!-- <th>id</th> -->
+                <th>编号</th>
+                <th>姓名</th>
+                <th>小区</th>
+                <th>电话</th>
                 <th>状态</th>
-				<th style="width: 10%;">分配管理</th>
-				<th>操作</th>
-			</tr>
-		</thead>
-		<tbody id="yuansuzhijia">
-			<tr><td style="display: none;">{$i=1}</td></tr>
-			{foreach name="res" item="vores"}
-			
-				<tr>
+                <th style="width: 10%;">分配管理</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="yuansuzhijia">
+            <tr><td style="display: none;">{$i=1}</td></tr>
+            {foreach name="res" item="vores"}
+            
+                <tr>
                     <td class="resid">{$vores.id}</td>
-					<td class="name">{$vores.name}</td>
+                    <td class="name">{$vores.name}</td>
                     <td class="xiaoqu">{$vores.xiaoqu}</td>
                     <td class="tel">{$vores.tel}</td>
                     <td style="display: none;" class="type">{$vores.type}</td>
@@ -48,32 +48,32 @@
                     <td>
                         <span class="showModel3"><span class="btn btn-success" >分配</span></span> 
                     </td>
-					<td>
-						<span style=" cursor: pointer;" class="showModel2">修改</span> | 
+                    <td>
+                        <span style=" cursor: pointer;" class="showModel2">修改</span> | 
 
-						<span style=" cursor: pointer;" class="delcom">删除</span> 
-						
-					</td>
-				</tr>
-			{/foreach}
-			
-		</tbody>
-		
-	</table>
+                        <span style=" cursor: pointer;" class="delcom">删除</span> 
+                        
+                    </td>
+                </tr>
+            {/foreach}
+            
+        </tbody>
+        
+    </table>
 </div>
 
 <!-- 模态框 -->
 <div>
-	 <!-- 模态框添加 -->
-	<div id="modal" class="modal">  
-	    <div class="modal-content">  
-	        <header class="modal-header">  
-	            <h4>添加文章</h4>  
-	            <span class="close">×</span>  
-	        </header>  
-	        <div class="modal-body">  
-	            <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Article/add')}" >
-				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
+     <!-- 模态框添加 -->
+    <div id="modal" class="modal">  
+        <div class="modal-content">  
+            <header class="modal-header">  
+                <h4>添加文章</h4>  
+                <span class="close">×</span>  
+            </header>  
+            <div class="modal-body">  
+                <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Article/add')}" >
+                <table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
           <tr>
             <td class='wid'>标题</td>
             <td>
@@ -100,27 +100,27 @@
             </td>
           </tr>
 
-				</table>
-	        </div>  
-	        <footer class="modal-footer">  
-	            <button type="button" id="cancel">取消</button>  
-	            <button type="button" id="sure">确定</button>  
-	        </footer> 
-	        
-	        </form> 
-	    </div>  
-	</div> 
-	<!-- 模态框修改 -->
-	<div id="modal2" class="modal">  
-	    <div class="modal-content">  
-	        <header class="modal-header">  
-	            <h4>信息修改</h4>  
-	            <span class="close2">×</span>  
-	        </header>  
-	        <div class="modal-body">  
+                </table>
+            </div>  
+            <footer class="modal-footer">  
+                <button type="button" id="cancel">取消</button>  
+                <button type="button" id="sure">确定</button>  
+            </footer> 
+            
+            </form> 
+        </div>  
+    </div> 
+    <!-- 模态框修改 -->
+    <div id="modal2" class="modal">  
+        <div class="modal-content">  
+            <header class="modal-header">  
+                <h4>信息修改</h4>  
+                <span class="close2">×</span>  
+            </header>  
+            <div class="modal-body">  
 
-	             <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/reserva/edit')}">
-				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
+                 <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/reserva/edit')}">
+                <table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
                 <input type="hidden" id="resid" name="id">
             <tr>
                 <td class='wid'>姓名</td>
@@ -158,17 +158,17 @@
                  
                 </td>
             </tr>
-						
+                        
 
-				</table>
-	        </div>  
-	        <footer class="modal-footer">  
-	            <button type="button" id="cancel2">取消</button>  
-	            <button type="button" id="sure2">确定</button>  
-	        </footer>
-	       </form>  
-	    </div>  
-	</div>  
+                </table>
+            </div>  
+            <footer class="modal-footer">  
+                <button type="button" id="cancel2">取消</button>  
+                <button type="button" id="sure2">确定</button>  
+            </footer>
+           </form>  
+        </div>  
+    </div>  
     <!-- 模态框分配 -->
     <div id="modal3" class="modal">  
         <div class="modal-content">  
@@ -190,16 +190,12 @@
             <tr>
                 <td class='wid'>分配</td>
                 <td >
-                    <!-- 部门 -->
-                    <select name="zhidingbumen" id="fenpeibm">
-                        <option value="0">请选择部门</option>
-                    {foreach name="branch" item="vobranch"}
-                        <option value="{$vobranch.code}">{$vobranch.name}</option>
-                    {/foreach}
-                    </select>
                     <!-- 人员 -->
                     <select name="zhidingrenyuan" id="fenpeiry">
                         <option value="0">人员</option>
+                        {foreach name="resrenyuan" item="voresry"}
+                            <option value="{$voresry.id}">{$voresry.uname}</option>
+                        {/foreach}
                     </select>
                 </td>
             </tr>
@@ -215,27 +211,6 @@
         </div>  
     </div>  
 </div>
-<!-- 部门——>人员 -->
-<script type="text/javascript">
-    $(document).on("change","#fenpeibm",function(){
-        var fenpeibm = $("#fenpeibm").val();
-            $.ajax({
-                type:"post",
-                dataType:'json',
-                async:false,//
-                url:'{:url("admin/Reserva/ajaxbumendory")}',
-                data:{"fenpeibm":fenpeibm},
-                success:function(dd){
-                    // console.log(dd);
-                    var str = '<option value="0">人员</option>';
-                    $(dd).each(function(id,item){
-                        str += '<option value="'+item.id+'">'+item.uname+'</option>';
-                    });
-                    $("#fenpeiry").html(str);
-                }
-            })
-    });
-</script>
 </body>
 <!-- 模态框js -->
 <script>  
@@ -258,9 +233,9 @@
     });  
      
     sure.addEventListener('click', function(){  
-    	// 获取信息
-    	var name = $("#aname").val();
-          	$("#formsubadd").submit();
+        // 获取信息
+        var name = $("#aname").val();
+            $("#formsubadd").submit();
     });
 
     // 修改   
@@ -275,18 +250,18 @@
         var xiaoqu = $(this).parent().parent().find(".xiaoqu").html();//获取xiaoqu
         var tel = $(this).parent().parent().find(".tel").html();//获取xiaoqu
         var type = $(this).parent().parent().find(".type").html();//获取xiaoqu
-    	var textbeizhu = $(this).parent().parent().find(".textbeizhu").html();//获取备注
+        var textbeizhu = $(this).parent().parent().find(".textbeizhu").html();//获取备注
         // alert(type);
-    	//赋值
+        //赋值
         $("#resid").val(resid);
         $("#name").val(name);
         $("#xiaoqu").val(xiaoqu);
-     	$("#tel").val(tel);
+        $("#tel").val(tel);
         $("#type").find("option[value = '"+type+"']").attr("selected","selected");  
-     	$("#textbeizhu").html(textbeizhu);
+        $("#textbeizhu").html(textbeizhu);
         
-    	// alert(comid);comname
-    	 modal2.style.display = "block";  
+        // alert(comid);comname
+         modal2.style.display = "block";  
     });
     close2.addEventListener('click', function(){  
         modal2.style.display = "none";  
@@ -295,7 +270,7 @@
         modal2.style.display = "none";  
     });  
     sure2.addEventListener('click', function(){
-          	$("#formsubedit").submit();
+            $("#formsubedit").submit();
     });
     // 分配  
     var close3 = document.getElementsByClassName('close3')[0];  
@@ -318,36 +293,36 @@
     });  
     sure3.addEventListener('click', function(){
         // 判断部门不为空
-        if($("#fenpeibm").val() != 0){
+        if($("#fenpeiry").val() != 0){
             $("#formsubfenpei").submit();
         }
     });
     // 执行删除
     $(".delcom").click(function(){
-    	if(confirm("确定删除该类型吗？")){
-    		comid = $(this).parent().parent().find(".id").html();
-    		var image=$(this).parent().parent().find(".pic").attr('src');
-    		// alert(comid);return false;
-    		$(this).parent().parent().remove();
-    		// console.log(aa);return false;
-    		$.ajax({
-	            type:"post",
-	            dataType:'json',
-	            async:false,
-	            url:'{:url("admin/Article/delete")}',
-	            data:{"id":comid,"pic":image},
-	            success:function(dd){
-	                // console.log(dd);
-	                if (dd.code == 200) {
-	                	//jq 删除元素
+        if(confirm("确定删除该类型吗？")){
+            comid = $(this).parent().parent().find(".id").html();
+            var image=$(this).parent().parent().find(".pic").attr('src');
+            // alert(comid);return false;
+            $(this).parent().parent().remove();
+            // console.log(aa);return false;
+            $.ajax({
+                type:"post",
+                dataType:'json',
+                async:false,
+                url:'{:url("admin/Article/delete")}',
+                data:{"id":comid,"pic":image},
+                success:function(dd){
+                    // console.log(dd);
+                    if (dd.code == 200) {
+                        //jq 删除元素
 
-	                }else{
-	                	alert(msg);
-	                }
-	                 
-	            }
-	        })
-    	}
+                    }else{
+                        alert(msg);
+                    }
+                     
+                }
+            })
+        }
     });
     
 
