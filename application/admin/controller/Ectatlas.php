@@ -23,8 +23,20 @@ class Ectatlas extends  \app\admin\controller\Base
     {
        // 链接数据库赋值
         $user = db('ect_atlas');
-        $res = $user->select();
+        $request = Request::instance();
+        $urlcanshu = $request->param();
+        $where =array();
+        $name='';
+        if (!empty($urlcanshu['keyword'])) {
+            $where['name']=array('like','%'.$urlcanshu['keyword'].'%');
+            $name=$urlcanshu['keyword'];
+           //$where['designer.procode']=$urlcanshu['procode1'];
+        }
+        $res = $user->where($where)->paginate(10,false,['query'=>$urlcanshu,]);
+        $page=$res->render();
         $this->assign("res",$res);
+        $this->assign("name",$name);
+        $this->assign("page",$page);
         $this->assign("layout",uri("com_layout",array()));//户型
         $this->assign("fengge",uri("com_zhuancfg",array()));//风格
         $this->assign("mianji",uri("ect_mianji",array()));//面积

@@ -42,6 +42,13 @@ class Plan extends \app\admin\controller\Base
         $this->assign("comid",$comid);//公司id
         $where['plan.comid'] = $comid;
          $where['schedule'] =5;
+         $fname='';
+            $request = Request::instance();
+            $urlcanshu = $request->param();
+            if (!empty($urlcanshu['keyword'])) {
+               $where['fname']=array('like','%'.$urlcanshu['keyword'].'%');
+               $fname=$urlcanshu['keyword'];
+            }
          //分页
         $res = $plan->field("plan.id,plan.fname,plan.flogo,plan.frenyuan,plan.fmianji,plan.fyusuan,plan.ffangshi,lx.lxname as ftype,shop.name as comid,com_layout.lname as fhuxing,com_zhuancfg.zcfgname as ffengge,designer.dname as frenyuan")
         ->join('com_qiyecsleixing lx','plan.ftype = lx.lxcode','left')//类型
@@ -51,10 +58,11 @@ class Plan extends \app\admin\controller\Base
         ->join('designer','plan.frenyuan = designer.id','left')//设计师
         ->order("plan.id")
         ->where($where)
-        ->paginate(10);
+         ->paginate(10,false,['query'=>$urlcanshu,]); 
         // dump($res);die;
         $page=$res->render();
         // 分页
+        $this->assign("fname",$fname);
         $this->assign("res",$res);
         $this->assign("page",$page);
         return $this->view->fetch();
