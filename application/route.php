@@ -33,6 +33,8 @@ Route::rule('/admin/index/index','admin/index/index');//主页
 //预约列表
 Route::rule('/admin/reserva/index','admin/reserva/index');
 Route::rule('/admin/reserva/edit','admin/reserva/edit');//修改
+Route::rule('/admin/Reserva/ajaxbumendory','admin/Reserva/ajaxbumendory');//部门——》人员
+Route::rule('/admin/reserva/editfenpei','admin/reserva/editfenpei');//执行分配
 // 服务类型
 Route::rule('/admin/gongsi/fwleixing','admin/gongsi/fwleixing');//类型
 Route::rule('/admin/gongsi/doadd','admin/gongsi/doadd');//类型 添加

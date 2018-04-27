@@ -65,6 +65,7 @@ class Login extends Controller
         //赋值
         Session::set('adminusercode',$mobile);
         Session::set('adminusertype',$user_info[0]['type']);
+        Session::set('adminuserid',$user_info[0]['id']);
         Session::set('adminuserbran',$user_info[0]['brancode']);
         $data = array(
                 'data' => true,
