@@ -14,6 +14,7 @@ use think\Request;
 use think\File;
 use think\Session;
 
+use think\Session;
 class Ruser extends \app\admin\controller\Base
 {
 	public function index()
