@@ -1,0 +1,158 @@
+{extend name="layoutextend"}
+{block name="nav"}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<div style="margin-left: 2%;margin-right: 2%;">
+	<h1 style="text-align: center;">设计师</h1><!-- 
+	<button class="btn" style="margin-top: -5%;" id="showModel">添加设计师</button> -->
+	<form class="well form-search" method="post" action="{:url('/admin/Zdesigner/index')}">
+			<div class="search_type cc mb10" style="margin-top: -3%;margin-left: 70%;">
+					<span class="mr20">
+
+
+						<input type="text" name="keyword" style="width: 160px;" value="" placeholder="请输入关键字...">
+
+						<input type="submit" class="btn btn-primary" value="搜索" />
+					</span>
+			</div>
+		</form> 
+		<div class="hei"></div>
+	<table class="table table-bordered">
+	<thead>
+	<tr>
+		<!-- <th>id
+	</th>
+	 -->
+	<th>
+		编号
+	</th>
+	<th>
+		姓名
+	</th>
+	<th>
+		头像
+	</th>
+	<th>
+		性别
+	</th>
+	<th>
+		从业年限
+	</th>
+	<th style="display: none;">
+		风格
+	</th>
+	<th width="80px">
+		所属公司
+	</th>
+	<th>
+		设计费用区间
+	</th>
+	<th>
+		设计理念
+	</th>
+	<th>
+		擅长领域
+	</th>
+	<th>
+		毕业院校
+	</th>
+	<th>
+		工作经历
+	</th>
+	<th>
+		个人简介
+	</th>
+	<th>
+		所获奖项
+	</th>
+	<th>
+		业绩
+	</th>
+	<th>
+		设计等级
+	</th>
+	<th>
+		操作
+	</th>
+</tr>
+</thead>
+<tbody id="yuansuzhijia">
+<tr>
+	<td style="display: none;">
+		{$i=1}
+	</td>
+</tr>
+			{foreach name="res" item="vores"}
+<tr>
+	<td style="display: none;">
+		<span class="comid">{$vores.id}</span>
+	</td>
+	<td>
+		<span class="">{$i++}</span>
+	</td>
+	<td>
+		<span class="dname">{$vores.dname}</span>
+	</td>
+	<td>
+		<span class="davatar" name="{$vores.davatar}"><img src="__STATIC__/uploads/{$vores.davatar}" style="width:50px;height: 50px" class="img"></span>
+	</td>
+	<td>
+		<span class="sex" name="{$vores.sex}">{if condition="($vores.sex == 1)"}男{else /} 女{/if}</span>
+	</td>
+	<td>
+		<span class="jobage">{$vores.jobage}</span>
+	</td>
+	<td style="display: none;">
+		<span class="com_dzcfg">{$vores.com_dzcfg}</span>
+	</td>
+	<td>
+		<span class="shop" name="{$vores.shop}">{$vores.name}</span>
+	</td>
+	<td>
+		<span class="price_range">{$vores.price_range}</span>
+	</td>
+	<td>
+		<span class="idea">{$vores.idea}</span>
+	</td>
+	<td>
+		<span class="field"  name="{$vores.field}">{$vores.lxname}</span>
+	</td>
+	<td>
+		<span class="school">{$vores.school}</span>
+	</td>
+	<td>
+		<span class="experience">{$vores.experience}</span>
+	</td>
+	<td>
+		<span class="intro">{$vores.intro}</span>
+	</td>
+	<td>
+		<span class="prize">{$vores.prize}</span>
+	</td>
+	<td>
+		<span class="achievement">{$vores.achievement}</span>
+	</td>
+	<td>
+		<span class="grade">{$vores.grade}</span>
+	</td>
+	<td>
+		<span style=" cursor: pointer;" class="showModel2">修改</span> | 
+		<span style=" cursor: pointer;" class="delcom">删除</span>
+	</td>
+</tr>
+			{/foreach}
+</tbody>
+</table>
+<div>
+	{$page}
+</div>
+</div>
+<!-- 模态框 -->
+
+</html>
+{/block}
