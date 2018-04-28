@@ -21,6 +21,10 @@ class Reserva extends  \app\admin\controller\Base
      */
     public function index()
     {
+        // $str = "啦啦啦德玛西亚啦啦lol啊啦啦啦德玛西亚啦啦lol啊啦啦啦德玛西亚啦啦lol啊啦啦啦德玛西亚啦啦lol啊";
+        // $new_str = substr($str, 0, 72).'<br/>'.substr($str, 72,strlen($str));
+        // dump($new_str);
+        // die;
         $type = session::get('adminusertype');
         // dump($type);die;
         $restype = uri("res_type",array());//预约状态
@@ -30,7 +34,8 @@ class Reserva extends  \app\admin\controller\Base
             case '1':
                 
                 $branch = uri('branch',array());//部门信息
-                $res = uri('reserva',array());//预约信息
+                $res = db('reserva')->order("zhidingbumen")->select();//预约信息
+                // $res = uri('reserva',array());//预约信息
 
                 $this->assign("branch",$branch);//部门信息
                 // dump($res);die;
@@ -38,16 +43,25 @@ class Reserva extends  \app\admin\controller\Base
                 return $this->view->fetch();
                 break;
             case '2':
+            
                 // 部门code
                 $bumencode = session::get('adminuserbran');
                 // 只能看到该部门的信息
                 $where['zhidingbumen'] = $bumencode;//对应部门code
-                $res = uri('reserva',$where);//预约信息
+                $res = db('reserva')->where($where)->order('zhidingrenyuan')->select();//预约信息
+                // $res = uri('reserva',$where);//预约信息
                 // 获取该部门人员
                 $wherery['brancode'] = $bumencode;
                 $resrenyuan = uri("useradmin",$wherery);
-                // dump($resrenyuan);die;
+                // 用 **** 代替手机号
+                foreach ($res as $k => $v) {
+                    // dump($v);
+                    $res[$k]['new_tel'] = substr($v['tel'], 0, 3).'****'.substr($v['tel'], 7);
+                    // dump($new_tel1);
+                }
+                // dump($res);die;
                 $this->assign("res",$res);//预约信息
+                $this->assign("bumencode",$bumencode);//部门code
                 $this->assign("resrenyuan",$resrenyuan);//人员信息
                 return $this->fetch('zhuguanindex');die;
 
@@ -62,7 +76,13 @@ class Reserva extends  \app\admin\controller\Base
                 $where['zhidingbumen'] = $bumencode;//对应部门code
                 $where['zhidingrenyuan'] = $renyuanid;//对应人员id
                 $res = uri('reserva',$where);//预约信息
-                // dump($resrenyuan);die;
+                 // 用 **** 代替手机号
+                foreach ($res as $k => $v) {
+                    // dump($v);
+                    $res[$k]['new_tel'] = substr($v['tel'], 0, 3).'****'.substr($v['tel'], 7);
+                    // dump($new_tel1);
+                }
+                // dump($res);die;
                 $this->assign("res",$res);//预约信息
                 return $this->fetch('renyuanindex');die;
             break;
@@ -97,7 +117,7 @@ class Reserva extends  \app\admin\controller\Base
         }
         
     }
-    //执行分配
+    //执行分配单一
     public function editfenpei(){
          $user = db('reserva');
         $whid = input('post.id');//获取id
@@ -105,6 +125,27 @@ class Reserva extends  \app\admin\controller\Base
         $shuju = input('post.');//获取数据
         $res = $user->where($where)->update($shuju);
         $this->redirect("admin/reserva/index");
+    }
+    //执行分配批量
+    public function addplfp(){
+        $user = db('reserva');
+        //获取部门
+        $zhidingbumen = input('post.zhidingbumen');
+        //获取人员
+        $zhidingrenyuan = input('post.zhidingrenyuan');
+        //获取id
+        $plfpid = input('post.plfpid'); 
+        $szplid = explode(",",rtrim($plfpid,','));
+        foreach ($szplid as $k => $v) {
+            $where['id'] = $v; 
+            $shuju['zhidingbumen'] = $zhidingbumen;//部门
+            $shuju['zhidingrenyuan'] = $zhidingrenyuan;//人员
+            $res = $user->where($where)->update($shuju);
+        }
+         $this->redirect("admin/reserva/index");
+        // dump($plfpid);
+        // dump($plfpbumen);
+        // dump($plfprenyuan);
     }
     //
     public function delete($id){

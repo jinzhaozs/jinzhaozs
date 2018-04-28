@@ -34,7 +34,8 @@ Route::rule('/admin/index/index','admin/index/index');//主页
 Route::rule('/admin/reserva/index','admin/reserva/index');
 Route::rule('/admin/reserva/edit','admin/reserva/edit');//修改
 Route::rule('/admin/Reserva/ajaxbumendory','admin/Reserva/ajaxbumendory');//部门——》人员
-Route::rule('/admin/reserva/editfenpei','admin/reserva/editfenpei');//执行分配
+Route::rule('/admin/reserva/editfenpei','admin/reserva/editfenpei');//执行分配单一
+Route::rule('/admin/Reserva/addplfp','admin/Reserva/addplfp');//执行分配批量
 // 服务类型
 Route::rule('/admin/gongsi/fwleixing','admin/gongsi/fwleixing');//类型
 Route::rule('/admin/gongsi/doadd','admin/gongsi/doadd');//类型 添加

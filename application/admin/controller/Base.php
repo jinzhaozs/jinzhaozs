@@ -35,7 +35,10 @@ class Base extends \think\Controller
         // Session::clear();
      //    // echo 123;
         // dump($sesionadusertype);die;
-        $this->assign("sesionadusertype",$sesionadusertype);
+        $where['usercode'] = Session::get('adminusercode');
+        $resdl = db('useradmin')->where($where)->select();
+        $this->assign("sesionadusertype",$sesionadusertype);//级别
+        $this->assign("sesionadusername",$resdl[0]['uname']);//名称
     }
 }
 ?>

@@ -200,16 +200,16 @@
 <div class="nav-navicon admin-main admin-sidebar">
     
     
-    <div class="sideMenu am-icon-dashboard" style="color:#aeb2b7; margin: 10px 0 0 0;"> 欢迎系统管理员：xxx</div>
+    <div class="sideMenu am-icon-dashboard" style="color:#aeb2b7; margin: 10px 0 0 0;"> 欢迎系统管理员：{$sesionadusername}</div>
     <div class="sideMenu">
       <h3 class="am-icon-flag"><em></em> <a href="#">装修公司</a></h3>
       <ul>
         <li><a href="{:url('admin/shop/index')}">公司列表</a></li>
         <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li> </li>
+         <li><br></li>
+        <li><br></li>
+        <li><br></li>
+        <li><br></li>
       </ul>
        <h3 class="am-icon-volume-up"><em></em> <a href="#">设计师</a></h3>
       <ul>
@@ -227,22 +227,14 @@
         <li><a href="{:url('admin/tuce/jubu')}">图片——局部</a></li>
 
       </ul>
-      <h3 class="am-icon-volume-up"><em></em> <a href="#">信息通知</a></h3>
-      <ul>
-        <li>站内消息 /留言 </li>
-        <li>短信</li>
-        <li>邮件</li>
-        <li>微信</li>
-        <li>客服</li>
-      </ul>
         <!-- 判断权限 -->
       <h3 class="am-icon-gears"><em></em> <a href="#">预约信息</a></h3>
       <ul>
         <li><a href="{:url('admin/reserva/index')}">预约列表</a></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li><br></li>
+        <li><br></li>
+        <li><br></li>
+        <li><br></li>
       </ul>
           <!-- 判断权限 -->
         {in name="$sesionadusertype" value="1,2"}
@@ -270,11 +262,10 @@
         <li><a href="{:url('admin/gongsi/price')}">公司——服务价位</a></li>
         <li><a href="{:url('admin/gongsi/layout')}">案例——户型</a></li>
         <li><a href="{:url('admin/gongsi/resevatype')}">预约——状态</a></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li><br></li>
+        <li><br></li>
+        <li><br></li>
+        <li><br></li>
       </ul>
       {/in}
     </div>

@@ -9,7 +9,7 @@
 <body>
 <div style="margin-left: 2%;margin-right: 2%; margin-top: 1%;">
 		<h1 style="text-align: center;">预约管理</h1>
-<button style="display: none;" class="btn btn-primary" style="margin-top: -5%;" id="showModel">添加文章</button> 
+<button  class="btn btn-primary" style="margin-top: -5%;" id="showModel">批量分配</button> 
  		<form class="well form-search" method="post" action="{:url('/admin/Article/index')}">
 			<div class="search_type cc mb10" style="margin-top: -4%;margin-left: 70%;">
 					<span class="mr20">
@@ -24,6 +24,7 @@
 		<thead>
 			<tr>
 				<!-- <th>id</th> -->
+                <th width="15"><input type="checkbox" id="selectAll"></th>
 				<th>编号</th>
 				<th>姓名</th>
 				<th>小区</th>
@@ -34,19 +35,31 @@
 			</tr>
 		</thead>
 		<tbody id="yuansuzhijia">
-			<tr><td style="display: none;">{$i=1}</td></tr>
-			{foreach name="res" item="vores"}
-			
+            {foreach name="res" item="vores"}
 				<tr>
+                    <td class=""><input type="checkbox" name="vehicle" class="selfudan" value="{$vores.id}"></td>
                     <td class="resid">{$vores.id}</td>
 					<td class="name">{$vores.name}</td>
                     <td class="xiaoqu">{$vores.xiaoqu}</td>
                     <td class="tel">{$vores.tel}</td>
                     <td style="display: none;" class="type">{$vores.type}</td>
                     <td style="display: none;" class="textbeizhu">{$vores.text}</td>
+                    <!-- 状态 -->
                     <td>{$vores.type|yuyueleixing=###}</td>
+                    <!-- 所属部门 -->
+                    <td style="display: none;" class="zhidingbumen">{$vores.zhidingbumen}</td>
+                    <!-- 对应人员 -->
+                    <td style="display: none;" class="zhidingrenyuan">{$vores.zhidingrenyuan}</td>
                     <td>
-                        <span class="showModel3"><span class="btn btn-success" >分配</span></span> 
+                    <!-- 判断是否已分配 -->
+                        <span class="showModel3">
+                        {eq name="$vores.zhidingbumen" value=""}
+                            <span class="btn btn-success" >分配资源</span>
+                        {else/}
+                            <span class="btn btn-info" >修改分配</span>
+                        {/eq}
+
+                        </span> 
                     </td>
 					<td>
 						<span style=" cursor: pointer;" class="showModel2">修改</span> | 
@@ -55,50 +68,52 @@
 						
 					</td>
 				</tr>
-			{/foreach}
+            {/foreach}
+            
 			
 		</tbody>
 		
 	</table>
 </div>
-
+<script type="text/javascript">
+// 全选 全不选
+       $("#selectAll").click(function(){   
+            if(this.checked){   
+                $(".selfudan").prop("checked", true);  
+            }else{   
+                $(".selfudan").prop("checked", false);
+            }   
+        });
+</script>
 <!-- 模态框 -->
 <div>
-	 <!-- 模态框添加 -->
+	 <!-- 模态框批量分配 -->
 	<div id="modal" class="modal">  
 	    <div class="modal-content">  
 	        <header class="modal-header">  
-	            <h4>添加文章</h4>  
+	            <h4>批量分配</h4>  
 	            <span class="close">×</span>  
 	        </header>  
 	        <div class="modal-body">  
-	            <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Article/add')}" >
+	            <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Reserva/addplfp')}" >
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
-          <tr>
-            <td class='wid'>标题</td>
-            <td>
-              <input type="text"  id="aname" name="aname" placeholder="请输入标题">
-            </td>
-          </tr>
-          <tr>
-            <td class='wid'>缩略图</td>
-            <td>
-             <input type="file" name="pic" class="pic" />
-            </td>
-          </tr>
-          <tr>
-            <td class='wid'>摘要</td>
-            <td>
-              <textarea id="abstract" name="abstract" style="height: 50px;" placeholder="请填写摘要"></textarea>
-             
-            </td>
-          </tr>
-          <tr>
-            <td class='wid'>内容</td>
-            <td>
-              <textarea id="content" name="content" style="height: 50px;" placeholder="请填写内容"></textarea>
-            </td>
-          </tr>
+                <input type="text" style="display: none;" name="plfpid" id="plfpid">
+                <tr>
+                    <td class='wid'>请选择</td>
+                    <td >
+                        <!-- 部门 -->
+                        <select name="zhidingbumen" id="fenpeibmpl">
+                            <option value="0">请选择部门</option>
+                        {foreach name="branch" item="vobranch"}
+                            <option value="{$vobranch.code}">{$vobranch.name}</option>
+                        {/foreach}
+                        </select>
+                        <!-- 人员 -->
+                        <select name="zhidingrenyuan" id="fenpeirypl">
+                            <option value="0">选择人员</option>
+                        </select>
+                    </td>
+                </tr>
 
 				</table>
 	        </div>  
@@ -182,9 +197,9 @@
                 <table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
                 <input type="hidden" name="id" id="fenpeiid" >
             <tr>
-                <td class='wid'>电话</td>
+                <td class='wid'>名称</td>
                 <td>
-                  <input type="text" name="tel" id="telfp" placeholder="">
+                  <input type="text"  id="namefp" placeholder="">
                 </td>
             </tr>
             <tr>
@@ -199,7 +214,7 @@
                     </select>
                     <!-- 人员 -->
                     <select name="zhidingrenyuan" id="fenpeiry">
-                        <option value="0">人员</option>
+                        <option value="0">选择人员</option>
                     </select>
                 </td>
             </tr>
@@ -217,6 +232,26 @@
 </div>
 <!-- 部门——>人员 -->
 <script type="text/javascript">
+    // 批量分配部门——>人员
+    $(document).on("change","#fenpeibmpl",function(){
+        var fenpeibm = $("#fenpeibmpl").val();
+            $.ajax({
+                type:"post",
+                dataType:'json',
+                async:false,//
+                url:'{:url("admin/Reserva/ajaxbumendory")}',
+                data:{"fenpeibm":fenpeibm},
+                success:function(dd){
+                    // console.log(dd);
+                    var str = '<option value="0">选择人员</option>';
+                    $(dd).each(function(id,item){
+                        str += '<option value="'+item.id+'">'+item.uname+'</option>';
+                    });
+                    $("#fenpeirypl").html(str);
+                }
+            })
+    });
+    // 单一分配部门——>人员
     $(document).on("change","#fenpeibm",function(){
         var fenpeibm = $("#fenpeibm").val();
             $.ajax({
@@ -227,7 +262,7 @@
                 data:{"fenpeibm":fenpeibm},
                 success:function(dd){
                     // console.log(dd);
-                    var str = '<option value="0">人员</option>';
+                    var str = '<option value="0">选择人员</option>';
                     $(dd).each(function(id,item){
                         str += '<option value="'+item.id+'">'+item.uname+'</option>';
                     });
@@ -247,6 +282,15 @@
     var sure = document.getElementById('sure');  
     var modal = document.getElementById('modal');  
     btn.addEventListener('click', function(){
+        var str = '';
+        $(".selfudan").each(function(){
+            // 判断是否选中
+            // alert($(this).html());
+            if ($(this).is(':checked')) {
+                str += $(this).val()+",";
+            }
+        });
+        $("#plfpid").val(str);
         modal.style.display = "block";  
       
     });  
@@ -305,9 +349,41 @@
     //模态框展示 
     $(".showModel3").click(function(){
          var id = $(this).parent().parent().find('.resid').html();//获取xiaoqu
-         var tel = $(this).parent().parent().find('.tel').html();//获取xiaoqu
+         var name = $(this).parent().parent().find('.name').html();//获取name
+         var zhidingbumen = $(this).parent().parent().find('.zhidingbumen').html();//获取所属部门
+         var zhidingrenyuan = $(this).parent().parent().find('.zhidingrenyuan').html();//获取所属人员
+         // alert(zhidingbumen);
          $("#fenpeiid").val(id);
-         $("#telfp").val(tel);
+         $("#namefp").val(name);
+         // 部门赋值
+         // 判断是否为空
+         if (zhidingbumen) {
+            // 赋值部门
+             $("#fenpeibm").find('option[value="'+zhidingbumen+'"]').attr("selected","selected");
+             //赋值人员
+              $.ajax({
+                type:"post",
+                dataType:'json',
+                async:false,//
+                url:'{:url("admin/Reserva/ajaxbumendory")}',
+                data:{"fenpeibm":zhidingbumen},
+                success:function(dd){
+                    // console.log(dd);
+                    var str = '<option value="0">选择人员</option>';
+                    $(dd).each(function(id,item){
+                        str += '<option value="'+item.id+'">'+item.uname+'</option>';
+                    });
+                    $("#fenpeiry").html(str);
+                }
+            })
+         }else{
+            //部门第一个为 选中状态
+             $("#fenpeibm").find("option").eq(0).prop("selected",true);
+         }
+         // 人员赋值
+         if (zhidingrenyuan) {
+            $("#fenpeiry").find('option[value="'+zhidingrenyuan+'"]').attr("selected","selected");
+         }
         modal3.style.display = "block";  
     });
     close3.addEventListener('click', function(){  
