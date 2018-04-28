@@ -5,6 +5,60 @@
 <head>
 <meta charset="utf-8">
 <title></title>
+<script type="text/javascript">
+	//头像添加
+    function imgPreviews(fileDom){
+        //判断是否支持FileReader
+        if (window.FileReader) {
+            var reader = new FileReader();
+        } else {
+            alert("您的设备不支持图片预览功能，如需该功能请升级您的设备！");
+        }
+
+        //获取文件
+        var file = fileDom.files[0];
+        var imageType = /^image\//;
+        //是否是图片
+        if (!imageType.test(file.type)) {
+            alert("请选择图片！");
+            return;
+        }
+        //读取完成
+        reader.onload = function(e) {
+            //获取图片dom
+            var img = document.getElementById("previews");
+            //图片路径设置为读取的图片
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+    //头像修改
+     function imgPreview(fileDom){
+        //判断是否支持FileReader
+        if (window.FileReader) {
+            var reader = new FileReader();
+        } else {
+            alert("您的设备不支持图片预览功能，如需该功能请升级您的设备！");
+        }
+
+        //获取文件
+        var file = fileDom.files[0];
+        var imageType = /^image\//;
+        //是否是图片
+        if (!imageType.test(file.type)) {
+            alert("请选择图片！");
+            return;
+        }
+        //读取完成
+        reader.onload = function(e) {
+            //获取图片dom
+            var img = document.getElementById("preview");
+            //图片路径设置为读取的图片
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+    </script>
 </head>
 <body>
 <div style="margin-left: 2%;margin-right: 2%;">
@@ -178,7 +232,9 @@
 						头像
 					</td>
 					<td>
-						<input type="file" name="davatar" class="davatar"/>
+						<img id="previews" width="100px" />
+                              <br />
+						<input type="file" name="davatar" class="davatar" onchange="imgPreviews(this)"/>
 					</td>
 				</tr>
 				<tr>
@@ -313,7 +369,9 @@
 						头像
 					</td>
 					<td>
-						<input type="file" name="davatar" class="davatar"/>
+						<div id="img"><img   id="preview" style="width:100px;height: 100px" ></div>
+						<input type="file" name="davatar" class="davatar" onchange="imgPreview(this)"/>
+					
 					</td>
 				</tr>
 				<tr>
@@ -477,7 +535,7 @@
     $(".showModel2").click(function(){
     	comid = $(this).parent().parent().find(".comid").html();
     	comname = $(this).parent().parent().find(".dname").html();//获取name
-    	comdavatar = $(this).parent().parent().find(".davatar").html();
+    	comdavatar = $(this).parent().parent().find(".img").attr('src');
     	comjobage = $(this).parent().parent().find(".jobage").html();
     	comprice_range = $(this).parent().parent().find(".price_range").html();
     	comsex=$(this).parent().parent().find(".sex").attr('name');
@@ -499,7 +557,7 @@
     });
    		$("#field2").find('option[value="'+comfield+'"]').attr("selected",true);
     	$("#dname2").val(comname);
-    	$("#davatar2").val(comdavatar);
+    	$("#img img").attr("src",comdavatar);
         $("#sex2 input[name='sex'][value='"+comsex+"']").attr("checked",true);  
      	$(".ids").val(comid);
      	$("#jobage2").val(comjobage);

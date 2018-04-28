@@ -24,7 +24,7 @@ class Plan extends Controller
      */
     public function index()
     {
-    	$comid = Session::get('adminshopid');;//公司id
+    	$comid = Session::get('adminshopid');//公司id
     	// dump($comid);die;
         $plan = db("plan");//方案
         $userlx = db("com_qiyecsleixing");//类型
@@ -103,7 +103,9 @@ class Plan extends Controller
     //图片管理
     public function ajaxtpguanli(){
     	//获取 案例id
-    	$where['planid'] = input('put.planid');
+        $comid = Session::get('adminshopid');
+        $where['comid']=$comid;
+        $where['planid'] = input('put.planid');
     	$res = db("plan_do")->where($where)->select();
     	return $res;
     }
@@ -163,7 +165,7 @@ class Plan extends Controller
         }
         else
         {
-         $this->redirect("adminshop/plan/index");
+            $this->redirect("adminshop/plan/index");
         }
     }
     //执行修改
