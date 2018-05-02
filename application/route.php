@@ -22,7 +22,11 @@ Route::rule('/index/Index/doregis','index/Index/doregis');//执行注册
 /**
  * 前台公司
  */
-Route::rule('/shopcom','shopcom/Index/index');
+Route::rule('/shopcom','shopcom/Index/index');//首页
+Route::rule('/scjianjie','shopcom/Jianjie/index');//简介
+Route::rule('/scanli','shopcom/Anli/index');//案例
+Route::rule('/scgongdi','shopcom/Gongdi/index');//工地
+Route::rule('/scshejishi','shopcom/Shejishi/index');//设计师
 
 /**
  * 后台

@@ -1,0 +1,113 @@
+{extend name="layoutextend"}
+
+{block name="info"}
+<div class="company_header ">
+    <div class="wrapper ">
+        <div class="header-logo ">
+            <a href=" " title="北京今朝装饰设计有限公司 " class="logo ">
+                <img src="__STATIC__/uploads/{$shopcom[0]['logo']}" alt="北京今朝装饰设计有限公司 ">
+            </a>
+            <div class="company_explain ">
+                <h1>
+                    {$shopcom[0]['name']}
+                </h1>
+                <p class="addr ">地址：{$shopcom[0]['dizhi']} <a href=" " class="map "></a></p>
+                <p class="tel ">
+                    <span title="还在抄写地址电话吗？点一下，免费短信发给您 " class="GetMobile ">免费发送至手机</span>
+
+                    <a class="qq " target="_blank " href=" " title="点击这里给北京今朝装饰设计有限公司发消息 ">QQ在线咨询</a>
+                </p>
+            </div>
+        </div>
+        <div class="share ">
+<div class="article-share bdsharebuttonbox bdshare-button-style0-32 " data-bd-bind="1523428678629 ">
+    <span>分享到：</span><a class="bds_qzone " data-cmd="qzone " title="分享到QQ空间 "></a><a class="bds_tsina " data-cmd="tsina " title="分享到新浪微博 "></a><a class="bds_weixin " data-cmd="weixin " title="分享到微信 "></a><a class="bds_tqq " data-cmd="tqq " title="分享到腾讯微博 "></a><a class="bds_sqq " data-cmd="sqq " title="分享到QQ好友 "></a><a class="bds_more " data-cmd="more ">更多</a> <span></span>
+</div>
+        </div>
+    </div>
+</div>
+
+<div class="company_naver ">
+    <div class="wrapper ">
+        <a target="_blank " href="http://www.bzw315.com/zhaobiao/ " title="免费设计与报价 " class="free "><i></i>免费设计与报价</a>
+    </div>
+    <div class="company_naver_nav">
+        <div class="wrapper">
+            <a href="{:url('/shopcom',['comid'=>$shopcom[0]['id']])}" title="首页 "  >首页</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}" class="active " title="装修公司简介 " ><span style="color:#fff;">公司简介</span></a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}" title="装修优惠活动 " class=" ">优惠活动</a>
+            <a href="{:url('/scanli',['comid'=>$shopcom[0]['id']])}" title="装修案例 " class=" ">装修案例</a>
+            <a href="{:url('/scgongdi',['comid'=>$shopcom[0]['id']])}" title="施工工地 " class=" ">施工工地</a>
+            <a href="{:url('/scshejishi',['comid'=>$shopcom[0]['id']])} " title="装修设计团队 " class=" ">设计团队</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])} " title="装修服务点评 " class=" ">服务点评</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])} " title="装修公司资讯 " class=" ">公司资讯</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}" title="联系我们 " class=" ">联系我们</a>
+        </div>
+    </div>
+</div>
+
+<div class="main ">
+    <div class="wrapper ">
+        <!-- 内容区域 -->
+        <div class="banner_text " style="border: 1px red solid;height: 1000px;">
+            <!-- 开始 -->
+            <link rel="stylesheet" type="text/css" href="__STATIC__/shopcom/jianjie/company.css">
+            <div  id="all">
+        <div class="left">
+            <ul>
+                <li>公司简介</li>
+                <li>企业证书</li>
+                <li>工商注册信息</li>
+                <li>文章资讯</li>
+                <li>装修优惠</li>
+                <li>联系我们</li>
+                <li>星级服务</li>
+            </ul>
+        </div>
+        <div class="right">
+            <div class="top-do">
+                   <h3>公司简介</h3>
+                   <img src="__STATIC__/shopcom/jianjie/image/picone.jpg">
+                   <p>北京泰峰伟业装饰设计有限公司是一家集装饰设计、施工、技术指导和业务咨询与一体的专业化装饰工程企业, 是经过北京市工商行政管理局正式批准注册，经北京市装饰行业协会审核、认定，已取得国家正规资质的的装饰企业。自公司成立以来，我们就以诚信、求实、创新的企业精神，热忱服务于广大新老客户。在服务过程中，我们和广大客户建立起了良好的合作关系，并积累了丰富的专业知识和完善的管理经验。</p>
+            </div>
+            <div class="middle">
+                   <h3>详细信息</h3>
+                   <div> 
+                       <ul>
+                            <li>公司规模<p>50-100人设计团队/50支以上施工队</p></li>
+                             <li>公司规模<p>50-100人设计团队/50支以上施工队</p></li>
+                            <li>公司规模<p>50-100人设计团队/50支以上施工队</p></li>
+                            <li>公司规er模<p>50-100人设计团队/50支以上施工队</p></li>
+                             <li>公司规模<p>50-100人设计团队/50支以上施工队</p></li>
+                            <li>公司规模<p>50-100人设计团队/50支以上施工队</p></li>
+                        </ul>
+                    </div>     
+            </div>
+            <div class="bottom">
+                   <h3>公司服务</h3>
+                   <div > 
+                       <ul>
+                            <li>公司规模<p>50-100人设计团队/50支以上施工队</p></li>
+                             <li>公司规模<p>50-100人设计团队/50支以上施工队</p></li>
+                            <li>公司规模<p>50-100人设计团队/50支以上施工队</p></li>
+                            <li>公司规er模<p>50-100人设计团队/50支以上施工队</p></li>
+                             <li>公司规模<p>50-100人设计团队/50支以上施工队</p></li>
+                            <li>公司规模<p>50-100人设计团队/50支以上施工队</p></li>
+                        </ul>
+                    </div>      
+            </div>
+        </div>
+    </div>  
+             <!-- 结束 -->
+
+        </div>
+    </div>
+</div>
+
+
+
+<!--右侧弹出层结束-->
+
+  				
+
+{/block}

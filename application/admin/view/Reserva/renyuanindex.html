@@ -10,14 +10,25 @@
 <div style="margin-left: 2%;margin-right: 2%; margin-top: 1%;">
         <h1 style="text-align: center;">预约管理</h1>
 <button style="display: none;" class="btn btn-primary" style="margin-top: -5%;" id="showModel">添加文章</button> 
-        <form class="well form-search" method="post" action="{:url('/admin/Article/index')}">
+        <form class="well form-search" method="post" action="{:url('/admin/reserva/index')}">
             <div class="search_type cc mb10" style="margin-top: -4%;margin-left: 70%;">
                     <span class="mr20">
-                        <input type="text" name="keyword" style="width: 160px;" value="" placeholder="请输入关键字...">
+                        <select name="type">
+                            <option value="">所有</option>
+                        
+                        {foreach name="restype" item="vorestype"}
+                            {eq name="$vorestype.code" value="$cstype"}
+                                <option value="{$vorestype.code}" selected="selected">{$vorestype.name}</option>
+                            {else/}
+                                <option value="{$vorestype.code}">{$vorestype.name}</option>
+                            {/eq}
+                        {/foreach}
+                        </select>
+                        <input type="text" name="name" style="width: 160px;" value="{$csname}" placeholder="请输入关键字...">
                         <input type="submit" class="btn btn-primary" value="搜索" />
                     </span>
             </div>
-        </form> 
+        </form>  
         <div class="hei"></div>
     <table class="table table-bordered" >
 
@@ -54,6 +65,8 @@
         </tbody>
         
     </table>
+    <div style="margin-bottom: 6em">{$page}</div>
+    
 </div>
 
 <!-- 模态框 -->

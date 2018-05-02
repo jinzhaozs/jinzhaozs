@@ -33,15 +33,15 @@
     </div>
     <div class="company_naver_nav">
         <div class="wrapper">
-            <a href="http://bj.bzw315.com/shop/78219/ " title="首页 " class="active ">首页</a>
-            <a href="header_bottom.html#Mobile" title="装修公司简介 " class=" ">公司简介</a>
-            <a href="http://bj.bzw315.com/shop/78219/youhui/ " title="装修优惠活动 " class=" ">优惠活动</a>
-            <a href="http://bj.bzw315.com/shop/78219/case/ " title="装修案例 " class=" ">装修案例</a>
-            <a href="http://bj.bzw315.com/shop/78219/build/ " title="施工工地 " class=" ">施工工地<i></i></a>
-            <a href="http://bj.bzw315.com/shop/78219/team/ " title="装修设计团队 " class=" ">设计团队</a>
-            <a href="http://bj.bzw315.com/shop/78219/server//?v=69211 " title="装修服务点评 " class=" ">服务点评</a>
-            <a href="http://bj.bzw315.com/shop/78219/news/ " title="装修公司资讯 " class=" ">公司资讯</a>
-            <a href="http://bj.bzw315.com/shop/78219/contactus/ " title="联系我们 " class=" ">联系我们</a>
+            <a href="{:url('/shopcom',['comid'=>$shopcom[0]['id']])}" title="首页 " class="active " >首页</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}"  title="装修公司简介 " class=" "><span style="color:#fff;">公司简介</span></a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}" title="装修优惠活动 " class=" ">优惠活动</a>
+            <a href="{:url('/scanli',['comid'=>$shopcom[0]['id']])}" title="装修案例 " class=" ">装修案例</a>
+            <a href="{:url('/scgongdi',['comid'=>$shopcom[0]['id']])}" title="施工工地 " class=" ">施工工地</a>
+            <a href="{:url('/scshejishi',['comid'=>$shopcom[0]['id']])} " title="装修设计团队 " class=" ">设计团队</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])} " title="装修服务点评 " class=" ">服务点评</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])} " title="装修公司资讯 " class=" ">公司资讯</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}" title="联系我们 " class=" ">联系我们</a>
         </div>
     </div>
 </div>
@@ -74,9 +74,11 @@
                     <div class="company ">
                         <h6>
                             {$shopcom[0]['name_jc']}
+
                                 <i class="i-A " title="{$shopcom[0]['name_jc']}A级信用 "></i>
                                                             <i class="i-V " title="{$shopcom[0]['name_jc']}Vip会员 "></i>
                                                             <i class="i-S " title="{$shopcom[0]['name_jc']}诚信认证 "></i>
+
                         </h6>
                         <p class="autn ">
                             <!-- 营业执照 -->

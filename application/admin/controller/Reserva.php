@@ -21,25 +21,44 @@ class Reserva extends  \app\admin\controller\Base
      */
     public function index()
     {
-        // $str = "啦啦啦德玛西亚啦啦lol啊啦啦啦德玛西亚啦啦lol啊啦啦啦德玛西亚啦啦lol啊啦啦啦德玛西亚啦啦lol啊";
-        // $new_str = substr($str, 0, 72).'<br/>'.substr($str, 72,strlen($str));
-        // dump($new_str);
-        // die;
         $type = session::get('adminusertype');
-        // dump($type);die;
         $restype = uri("res_type",array());//预约状态
+        // dump($restype);die;
         $this->assign("restype",$restype);//预约状态
+        // 分页
+        $where=array ();
+        //获取参数
+        $cstype='';
+        $csname='';
+        $request = Request::instance();
+        $urlcanshu = $request->param();
+        // 拼接where条件
+        if (!empty($urlcanshu['type'])) {
+
+           $where['type']=$urlcanshu['type'];
+           $cstype=$urlcanshu['type'];
+        }
+        if (!empty($urlcanshu['name'])) {
+
+           $where['name']=array('like','%'.$urlcanshu['name'].'%');
+           $csname=$urlcanshu['name'];
+        }
         // 判断级别
         switch ($type) {
             case '1':
                 
                 $branch = uri('branch',array());//部门信息
-                $res = db('reserva')->order("zhidingbumen")->select();//预约信息
+                $res = db('reserva')->order("zhidingbumen")->where($where)->paginate(10,false,['query'=>$urlcanshu]);//预约信息
                 // $res = uri('reserva',array());//预约信息
 
                 $this->assign("branch",$branch);//部门信息
                 // dump($res);die;
                 $this->assign("res",$res);//预约信息
+                $this->assign("cstype",$cstype);//参数type信息
+                $this->assign("csname",$csname);//参数name信息
+                 //分页
+                $page=$res->render();
+                $this->assign("page",$page);
                 return $this->view->fetch();
                 break;
             case '2':
@@ -48,19 +67,24 @@ class Reserva extends  \app\admin\controller\Base
                 $bumencode = session::get('adminuserbran');
                 // 只能看到该部门的信息
                 $where['zhidingbumen'] = $bumencode;//对应部门code
-                $res = db('reserva')->where($where)->order('zhidingrenyuan')->select();//预约信息
-                // $res = uri('reserva',$where);//预约信息
+                $res = db('reserva')->where($where)->order('zhidingrenyuan')->paginate(3,false,['query'=>$urlcanshu]);//预约信息
+                // // 用 **** 代替手机号
+                // foreach ($res as $k => $v) {
+                //     // dump($v);
+                //     $res[$k]['new_tel'] = substr($v['tel'], 0, 3).'****'.substr($v['tel'], 7);
+                //     // dump($new_tel1);
+                // }
+                // dump($res);die;
                 // 获取该部门人员
                 $wherery['brancode'] = $bumencode;
                 $resrenyuan = uri("useradmin",$wherery);
-                // 用 **** 代替手机号
-                foreach ($res as $k => $v) {
-                    // dump($v);
-                    $res[$k]['new_tel'] = substr($v['tel'], 0, 3).'****'.substr($v['tel'], 7);
-                    // dump($new_tel1);
-                }
                 // dump($res);die;
                 $this->assign("res",$res);//预约信息
+                $this->assign("cstype",$cstype);//参数type信息
+                $this->assign("csname",$csname);//参数name信息
+                 //分页
+                $page=$res->render();
+                $this->assign("page",$page);
                 $this->assign("bumencode",$bumencode);//部门code
                 $this->assign("resrenyuan",$resrenyuan);//人员信息
                 return $this->fetch('zhuguanindex');die;
@@ -75,22 +99,27 @@ class Reserva extends  \app\admin\controller\Base
                 // 只能看到该部门的信息
                 $where['zhidingbumen'] = $bumencode;//对应部门code
                 $where['zhidingrenyuan'] = $renyuanid;//对应人员id
-                $res = uri('reserva',$where);//预约信息
-                 // 用 **** 代替手机号
-                foreach ($res as $k => $v) {
-                    // dump($v);
-                    $res[$k]['new_tel'] = substr($v['tel'], 0, 3).'****'.substr($v['tel'], 7);
-                    // dump($new_tel1);
-                }
+                $res = db('reserva')->where($where)->order('zhidingrenyuan')->paginate(3,false,['query'=>$urlcanshu]);//预约信息
+                //  // 用 **** 代替手机号
+                // foreach ($res as $k => $v) {
+                //     // dump($v);
+                //     $res[$k]['new_tel'] = substr($v['tel'], 0, 3).'****'.substr($v['tel'], 7);
+                //     // dump($new_tel1);
+                // }
                 // dump($res);die;
                 $this->assign("res",$res);//预约信息
+                 $this->assign("cstype",$cstype);//参数type信息
+                $this->assign("csname",$csname);//参数name信息
+                 //分页
+                $page=$res->render();
+                $this->assign("page",$page);
                 return $this->fetch('renyuanindex');die;
             break;
             default:
                 echo "请重新登陆";
                 break;
         }
-       
+
     }
     //部门——》人员
     public function ajaxbumendory(){
