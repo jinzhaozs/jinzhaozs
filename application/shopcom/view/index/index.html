@@ -73,10 +73,10 @@
                 <div class="text-l ">
                     <div class="company ">
                         <h6>
-                            {$shopcom[0]['name']}
-                                <i class="i-A " title="金朝装饰A级信用 "></i>
-                                                            <i class="i-V " title="金朝装饰Vip会员 "></i>
-                                                            <i class="i-S " title="金朝装饰诚信认证 "></i>
+                            {$shopcom[0]['name_jc']}
+                                <i class="i-A " title="{$shopcom[0]['name_jc']}A级信用 "></i>
+                                                            <i class="i-V " title="{$shopcom[0]['name_jc']}Vip会员 "></i>
+                                                            <i class="i-S " title="{$shopcom[0]['name_jc']}诚信认证 "></i>
                         </h6>
                         <p class="autn ">
                             <!-- 营业执照 -->
@@ -143,7 +143,7 @@
     <div class="nav_menu_title ">
         <a href="http://bj.bzw315.com/shop/78219/case/ " title=" " class="navbar-menu-more " target="_blank ">更多</a>
         <h3>
-            装修案例<span> 今朝装饰装修案例 (<i>{$plancount}</i>)</span>
+            装修案例<span> {$shopcom[0]['name_jc']}装修案例 (<i>{$plancount}</i>)</span>
         </h3>
     </div>
     <div class="case_box_bd ">
@@ -171,12 +171,12 @@
 </div><div class="information_tender ">
     <div class="information ">
         <div class="nav_menu_title ">
-            <a target="_blank " href="http://bj.bzw315.com/shop/78219/news/ " title=" 今朝装饰更多 " class="navbar-menu-more ">更多</a>
-            <h3>资讯<span> 今朝装饰资讯(<i>13</i>)</span></h3>
+            <a target="_blank " href="http://bj.bzw315.com/shop/78219/news/ " title=" {$shopcom[0]['name_jc']}更多 " class="navbar-menu-more ">更多</a>
+            <h3>资讯<span> {$shopcom[0]['name_jc']}资讯(<i>{$articlecount}</i>)</span></h3>
         </div>
         <div class="img_txt ">
                 <a href="http://bj.bzw315.com/shop/78219/newsdetail/454858.html " title="在选择装修公司之前要了解哪些内容?如何选择适合自己的装修公司 " class="img " target="_blank ">
-                    <img class="lazy " src="__STATIC__/shopcom/img/201801311114164728.jpg " alt="在选择装修公司之前要了解哪些内容?如何选择适合自己的装修公司) " style="display: block; ">
+                    <img class="lazy " src="__STATIC__/uploads/{$articletop.pic}" alt="{$articletop.aname}" style="display: block; ">
                 </a>
                 <div class="txt ">
                     {foreach name="article" item="vo"}
@@ -228,7 +228,7 @@
 </div><div class="design_team ">
     <div class="nav_menu_title ">
         <a href="http://bj.bzw315.com/shop/78219/team/ " title=" " class="navbar-menu-more " target="_blank ">更多</a>
-        <h3>设计团队<span> 今朝装饰设计师(<i>9</i>)</span></h3>
+        <h3>设计团队<span> {$shopcom[0]['name_jc']}设计师(<i>{$shejishicount}</i>)</span></h3>
     </div>
     <div class="team ">
             <ul>
@@ -262,7 +262,7 @@
             <a href="http://bj.bzw315.com/shop/78219/ " title=" ">竣工阶段</a>
             <a href="http://bj.bzw315.com/shop/78219/build/ " title=" " class="navbar-menu-more " target="_blank ">更多</a>
         </div>
-        <h3>施工工地<span> 今朝装饰施工工地(<i>{$shigcount}</i>)</span></h3>
+        <h3>施工工地<span> {$shopcom[0]['name_jc']}工地(<i>{$shigcount}</i>)</span></h3>
     </div>
     <div class="construction_site_bd ">
             <ul>

@@ -5,6 +5,60 @@
 <head>
 <meta charset="utf-8">
 <title></title>
+<script type="text/javascript">
+    //商标修改
+    function imgPreview(fileDom){
+        //判断是否支持FileReader
+        if (window.FileReader) {
+            var reader = new FileReader();
+        } else {
+            alert("您的设备不支持图片预览功能，如需该功能请升级您的设备！");
+        }
+
+        //获取文件
+        var file = fileDom.files[0];
+        var imageType = /^image\//;
+        //是否是图片
+        if (!imageType.test(file.type)) {
+            alert("请选择图片！");
+            return;
+        }
+        //读取完成
+        reader.onload = function(e) {
+            //获取图片dom
+            var img = document.getElementById("preview");
+            //图片路径设置为读取的图片
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+    //商标添加
+     function imgPreviews(fileDom){
+        //判断是否支持FileReader
+        if (window.FileReader) {
+            var reader = new FileReader();
+        } else {
+            alert("您的设备不支持图片预览功能，如需该功能请升级您的设备！");
+        }
+
+        //获取文件
+        var file = fileDom.files[0];
+        var imageType = /^image\//;
+        //是否是图片
+        if (!imageType.test(file.type)) {
+            alert("请选择图片！");
+            return;
+        }
+        //读取完成
+        reader.onload = function(e) {
+            //获取图片dom
+            var img = document.getElementById("previews");
+            //图片路径设置为读取的图片
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+    </script>
 </head>
 <body>
 <div style="margin-left: 2%;margin-right: 2%; margin-top: 1%;">
@@ -73,7 +127,7 @@
             <span class="ect_zcfg" name="{$vores.ect_zcfg}">{$vores.zcfgname}</span>
         </td>
         <td>
-            <span class="ect_remen" name="{$vores.ect_remen}"> {$vores.ername}</span>
+            <span class="ect_remen" name="{$vores.ect_remen}"> {$vores.ect_remen}</span>
         </td>
 
         <td>
@@ -112,7 +166,10 @@
                        图片
                     </td>
                     <td>
-                        <input type="file" name="pimage" class="pimage"/>
+                        <img id="previews" width="100px" />
+                              <br />
+                           
+                        <input type="file" name="pimage" class="pimage" onchange="imgPreviews(this)"/>
                     </td>
                 </tr>
                 <style type="text/css">
@@ -242,7 +299,9 @@
                        图片
                     </td>
                     <td>
-                        <input type="file" name="pimage" class="pimage"/>
+                        <div id="img"><img   id="preview" style="width:100px;height: 100px" ></div>
+                           
+                        <input type="file" name="pimage" class="pimage" onchange="imgPreview(this)"/>
                     </td>
                 </tr>
                     <tr>
@@ -375,11 +434,11 @@
          var ect_jubu= ect_jub.concat(",");
        $('#ect_jubu .jubu').val(ect_jubu);
        //赋值真是热门标签
-                        var zsrmbq = ',';
-                        $(".rmhuiche").each(function(){
-                            zsrmbq += $(this).val()+",";
-                        });
-                        $("#sjrmbiaoqian").val(zsrmbq);
+        var zsrmbq = ',';
+        $(".rmhuiche").each(function(){
+        zsrmbq += $(this).val()+",";
+             });
+         $("#sjrmbiaoqian").val(zsrmbq);
             $("#formsubadd").submit();
     });
     // 修改   
@@ -397,6 +456,7 @@
         var  kongjian= $(this).parent().parent().find(".ect_kongjian").attr('name');
         var  zcfg= $(this).parent().parent().find(".ect_zcfg").attr('name');
         var  remen= $(this).parent().parent().find(".ect_remen").attr('name');
+        var  image=$(this).parent().parent().find(".img").attr('src');
         // 热门标签赋值
         var remensz = remen.substring(1, remen.lastIndexOf(','));
         var str2 = '';
@@ -421,6 +481,7 @@
         $("#kj2").find('option[value="'+kongjian+'"]').attr("selected",true);
         $("#zc2").find('option[value="'+zcfg+'"]').attr("selected",true);
         $("#rm2").find('option[value="'+remen+'"]').attr("selected",true);
+        $("#img img").attr("src",image);
         // alert(comid);comname
          modal2.style.display = "block";  
         });
