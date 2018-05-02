@@ -1,0 +1,280 @@
+{extend name="layoutextend"}
+
+{block name="info"}
+<div class="company_header ">
+    <div class="wrapper ">
+        <div class="header-logo ">
+            <a href=" " title="北京今朝装饰设计有限公司 " class="logo ">
+                <img src="__STATIC__/uploads/{$shopcom[0]['logo']}" alt="北京今朝装饰设计有限公司 ">
+            </a>
+            <div class="company_explain ">
+                <h1>
+                    {$shopcom[0]['name']}
+                </h1>
+                <p class="addr ">地址：{$shopcom[0]['dizhi']} <a href=" " class="map "></a></p>
+                <p class="tel ">
+                    <span title="还在抄写地址电话吗？点一下，免费短信发给您 " class="GetMobile ">免费发送至手机</span>
+
+                    <a class="qq " target="_blank " href=" " title="点击这里给北京今朝装饰设计有限公司发消息 ">QQ在线咨询</a>
+                </p>
+            </div>
+        </div>
+        <div class="share ">
+<div class="article-share bdsharebuttonbox bdshare-button-style0-32 " data-bd-bind="1523428678629 ">
+    <span>分享到：</span><a class="bds_qzone " data-cmd="qzone " title="分享到QQ空间 "></a><a class="bds_tsina " data-cmd="tsina " title="分享到新浪微博 "></a><a class="bds_weixin " data-cmd="weixin " title="分享到微信 "></a><a class="bds_tqq " data-cmd="tqq " title="分享到腾讯微博 "></a><a class="bds_sqq " data-cmd="sqq " title="分享到QQ好友 "></a><a class="bds_more " data-cmd="more ">更多</a> <span></span>
+</div>
+        </div>
+    </div>
+</div>
+
+<div class="company_naver ">
+    <div class="wrapper ">
+        <a target="_blank " href="http://www.bzw315.com/zhaobiao/ " title="免费设计与报价 " class="free "><i></i>免费设计与报价</a>
+    </div>
+    <div class="company_naver_nav">
+        <div class="wrapper">
+            <a href="http://bj.bzw315.com/shop/78219/ " title="首页 " class="active ">首页</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}" title="装修公司简介 " class=" ">公司简介</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}" title="装修优惠活动 " class=" ">优惠活动</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}" title="装修案例 " class=" ">装修案例</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}" title="施工工地 " class=" ">施工工地<i></i></a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])} " title="装修设计团队 " class=" ">设计团队</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])} " title="装修服务点评 " class=" ">服务点评</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])} " title="装修公司资讯 " class=" ">公司资讯</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}" title="联系我们 " class=" ">联系我们</a>
+        </div>
+    </div>
+</div>
+
+<div class="main ">
+    <div class="wrapper ">
+        <!-- 内容区域 -->
+        <div class="banner_text " style="border: 1px red solid;height: 1000px;">
+        <!-- 开始 -->
+        <link rel="stylesheet" type="text/css" href="__STATIC__/shopcom/fangan/scheme.css">
+      <!--   <link rel="stylesheet" type="text/css" href="__STATIC__/shopcom/fangan/style.css"> -->
+            <div  id="all">
+        <div class="left">
+            <div class="img"><img src="__STATIC__/shopcom/fangan/image/line.jpg"></div>
+            <div id = "nav_left">
+                    <div class = "list-do">
+                        家庭分类
+                         <img src="__STATIC__/shopcom/fangan/image/down.jpg">
+                    </div>
+                    <div class = "detail">
+                                <p>小户型9</p >
+                                <p>别墅9</p >
+                                <p>普通住宅4</p >
+                                <p>平层1</p >
+                    </div>
+                    <div class="im"></div>
+                    <div class = "list-do">
+                    <img src="__STATIC__/shopcom/fangan/image/down.jpg">
+                        公装分类
+                    </div>
+                    <div class = "detail">
+                                <p>KTV 125</p >
+                                <p>餐厅/酒楼1</p >
+                                <p><美容/美发 1 </p >
+                                <p>娱乐场所 1</p >
+                                 <p>办公室 3 </p >
+                                <p>专卖店 2 </p >
+                                <p>酒吧 2</p >
+                                <p>其他 1</p >
+                    </div>
+
+                                     </div> 
+        </div>
+        <div class="right">
+                  <div class="picture">
+                        <ul>
+                            <li><a href="">
+                                <img src="__STATIC__/shopcom/fangan/image/picone.jpg">
+                                <p>报告厅<span>2014-10-21</span></p>   
+                                <div class="see">
+                                    <span>试试简约</span><span>
+                                    <img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
+                                    <span>发半包</span>
+                            <span><img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
+                                    <span>15万</span>
+                                    <span><img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
+                                    <span>简单万</span>
+                                </div>  
+                            </a></li>
+                            <li><a href="">
+                                <img src="__STATIC__/shopcom/fangan/image/pictwo.jpg">
+                                <p>报告厅<span>2014-10-21</span></p>   
+                                <div class="see">
+                                    <span>简约</span><span>
+                                    <img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
+                                    <span>半包</span>
+                            <span><img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
+                                    <span>5万</span>
+                                </div>  
+                            </a></li>
+                            <li><a href="">
+                                <img src="__STATIC__/shopcom/fangan/image/picone.jpg">
+                                <p>报告厅<span>2014-10-21</span></p>   
+                                <div class="see">
+                                    <span>简约</span><span>
+                                    <img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
+                                    <span>半包</span>
+                            <span><img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
+                                    <span>5万</span>
+                                </div>  
+                            </a></li>
+                            <li><a href="">
+                                <img src="__STATIC__/shopcom/fangan/image/picthere.jpg">
+                                <p>报告厅<span>2014-10-21</span></p>   
+                                <div class="see">
+                                    <span>简约</span><span>
+                                    <img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
+                                    <span>半包</span>
+                            <span><img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
+                                    <span>5万</span>
+                                </div>  
+                            </a></li>
+                            <li><a href="">
+                                <img src="__STATIC__/shopcom/fangan/image/picone.jpg">
+                                <p>报告厅<span>2014-10-21</span></p>   
+                                <div class="see">
+                                    <span>简约</span><span>
+                                    <img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
+                                    <span>半包</span>
+                            <span><img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
+                                    <span>5万</span>
+                                </div>  
+                            </a></li>
+                            <li><a href="">
+                                <img src="__STATIC__/shopcom/fangan/image/picone.jpg">
+                                <p>报告厅<span>2014-10-21</span></p>   
+                                <div class="see">
+                                    <span>简约</span><span>
+                                    <img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
+                                    <span>半包</span>
+                            <span><img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
+                                    <span>5万</span>
+                                </div>  
+                            </a></li>
+                            <li><a href="">
+                                <img src="__STATIC__/shopcom/fangan/image/picone.jpg">
+                                <p>报告厅<span>2014-10-21</span></p>   
+                                <div class="see">
+                                    <span>简约</span><span>
+                                    <img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
+                                    <span>半包</span>
+                            <span><img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
+                                    <span>5万</span>
+                                </div>  
+                            </a></li>
+                            <li><a href="">
+                                <img src="__STATIC__/shopcom/fangan/image/picone.jpg">
+                                <p>报告厅<span>2014-10-21</span></p>   
+                                <div class="see">
+                                    <span>简约</span><span>
+                                    <img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
+                                    <span>半包</span>
+                            <span><img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
+                                    <span>5万</span>
+                                </div>  
+                            </a></li>
+                            <li><a href="">
+                                <img src="__STATIC__/shopcom/fangan/image/picone.jpg">
+                                <p>报告厅<span>2014-10-21</span></p>   
+                                <div class="see">
+                                    <span>简约</span><span>
+                                    <img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
+                                    <span>半包</span>
+                            <span><img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
+                                    <span>5万</span>
+                                </div>  
+                            </a></li>
+                        </ul>                           
+                     </div>   
+                </div>
+<script>
+var nav_left = document.getElementById("nav_left");
+var list = getByClassName(nav_left,'list-do');
+var img = nav_left.getElementsByTagName('img');
+var detail = getByClassName(nav_left,'detail');
+function dianji(){
+for (var i = 0; i < detail.length; i++) {
+    (function(index){
+        detail[index].style.display = "block";
+    })(i);
+    }
+for(var i = 0; i< list.length; i++){
+    (function(value){
+        list[value].onclick = function(){
+
+             toggle(detail[value],img[value]);
+        }
+        })(i);
+    }
+}
+dianji();
+function toggle(element,img){
+    if(element.style.display == "block"){
+        element.style.display = "none";
+            img.src = "__STATIC__/shopcom/fangan/image/down.jpg";
+    }
+    else if(element.style.display == "none"){
+            element.style.display = "block";
+            img.src = "__STATIC__/shopcom/fangan/image/up.jpg";
+        }
+    else{
+        alert('chucuo');
+    }
+}
+
+
+function getByClassName(obj,cls){
+// obj目标元素，cls要获得的class名
+
+var element = obj.getElementsByTagName('*');//将目标下的所有子元素获取到
+
+var result = []; //定义一个数组，存放获得的classname = "cls" 的所有值
+
+for(var i = 0; i< element.length; i++){
+
+if(element[i].className == cls){
+
+result.push(element[i]);
+
+}
+
+}
+
+return result;
+
+}
+
+        var lis = document.querySelectorAll('.detail p ');
+                for(var i=0;i<lis.length;i++){
+                lis[i].setAttribute("index",i);
+                lis[i].onclick=function(){
+                for(var i=0;i<lis.length;i++){
+                    if(this.getAttribute("index")==i){
+                        lis[i].style.color="#01af63";
+                         lis[i].style.fontWeight='bold';
+                    }else{
+                        lis[i].style.color="";
+                        lis[i].style.fontWeight="";
+                    }
+                }
+            }
+        }
+</script>
+             <!-- 结束 -->
+
+        </div>
+    </div>
+</div>
+
+
+
+<!--右侧弹出层结束-->
+
+  				
+
+{/block}
