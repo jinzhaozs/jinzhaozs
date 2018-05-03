@@ -31,7 +31,7 @@ class Plangong extends Controller
         $userhx = db("com_layout");//户型
         $userfg = db("com_zhuancfg");//风格
         $usersjs = db("designer");//设计师
-       
+         $province=db('province');
         $reslx = $userlx->select();//类型
         $userhx = $userhx->select();//户型
         $userfg = $userfg->select();//风格
@@ -64,7 +64,8 @@ class Plangong extends Controller
         // dump($res);die;
         $page=$res->render();
         // 分页
-        
+         $pro=$province->select();
+        $this->assign("pr",$pro);
         $this->assign("fname",$fname);
         $this->assign("res",$res);
         $this->assign("page",$page);
@@ -185,6 +186,9 @@ class Plangong extends Controller
         $shuju['ffangshi'] = input('post.ffangshi');
         $shuju['fjianjie'] = input('post.fjianjie');
         $shuju['schedule'] = input('post.schedule');
+         $shuju['procode']= input('post.procode');
+        $shuju['citycode']= input('post.citycode');
+        $shuju['areacode']= input('post.areacode');
         $shuju['time'] = date("Y-m-d h:i:s",time());
         // dump($shuju);
         $file = request()->file('flogo');

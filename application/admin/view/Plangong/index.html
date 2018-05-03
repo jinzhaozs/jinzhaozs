@@ -282,7 +282,7 @@
 		</thead>
 		<tbody id="yuansuzhijia">
 			{php}
-				$status=array("1"=>"准备开工","2"=>"水电阶段","3"=>"泥水阶段","4"=>"油漆阶段","4"=>"竣工阶段");
+				$status=array("1"=>"准备开工","2"=>"水电阶段","3"=>"泥水阶段","4"=>"油漆阶段","5"=>"竣工阶段");
 		  {/php}
 			<tr><td style="display: none;">{$i=1}</td></tr>
 			{foreach name="res" item="vores"}
@@ -364,6 +364,77 @@
                             </select>
 						</td>
 					</tr>
+                      <tr>
+                        <td class='wid'>地址</td>
+                        <td>
+                             <select id="province" name="procode">
+                                <option value='0' >请选则省</option>
+                                    {foreach name="pr" item="ce"}
+                                        <option value='{$ce.code}'>{$ce.name}</option>
+                                    {/foreach}
+                                        </select>
+                                            <span id="citySpan">
+                                                <select id="city" name="citycode">
+                                                    <option value="0">请选则市</option>
+                                                </select>
+                                            </span>
+                                            <span id="areaSpan">
+                                                <select id="area" name="areacode">
+                                                    <option value="0">请选则区</option>
+                                                </select>
+                                            </span>
+                        </td>
+                        <script type="text/javascript">
+                            $("#province").change(function(){
+                                var provinceid=$(this).val();
+                                $("#city").empty();
+                                $("#area").empty();
+                                $("#city").append("<option value="+0+">请选则市</option>");
+                                $("#area").append("<option value="+0+">请选则区</option>"); 
+                                          
+                                $.ajax({
+                                    type:"post",
+                                    dataType:'json',
+                                    async:false,
+                                    url:'{:url("admin/Ajaxssq/ajaxcity")}',
+                                    data:{"provinceid":provinceid},
+                                     success:function(city){ 
+                                        
+                                         $(city).each(function (i,dom){
+                                                 
+                                                $("#city").append("<option value="+dom['code']+">"+dom['name']+"</option>"); 
+                                         
+                                            
+                                         });
+                                         //console.log(city);
+                                         
+                                        }
+                                 })
+                            });
+                            $("#city").change(function(){
+                                var city=$(this).val();
+                                $("#area").empty();
+                                $("#area").append("<option value="+0+">请选则区</option>"); 
+                                $.ajax({
+                                    type:"post",
+                                    dataType:'json',
+                                    async:false,
+                                    url:'{:url("admin/Ajaxssq/ajaxarea")}',
+                                    data:{"city":city},
+                                     success:function(area){ 
+                                        
+                                        $(area).each(function (i,dom){
+                                            
+                                                $("#area").append("<option value="+dom['code']+">"+dom['name']+"</option>"); 
+                                         
+                                            
+                                         });
+                                        }
+                                 })
+                            });
+
+                        </script>
+                    </tr>
 					<tr>
 						<td class='wid'>房屋面积</td>
 						<td>
@@ -468,6 +539,70 @@
                             </select>
 						</td>
 					</tr>
+                     <tr>
+                        <td class='wid'>地址</td>
+                        <td>
+                             <select id="province2" name="procode">
+                                <option value='0' >请选则省</option>
+                                    {foreach name="pr" item="ce"}
+                                        <option value='{$ce.code}'>{$ce.name}</option>
+                                    {/foreach}
+                                        </select>
+                                            <span id="citySpan">
+                                                <select id="city2" name="citycode">
+                                                    <option value="0">请选则市</option>
+                                                </select>
+                                            </span>
+                                            <span id="areaSpan">
+                                                <select id="area2" name="areacode">
+                                                    <option value="0">请选则区</option>
+                                                </select>
+                                            </span>
+                        </td>
+                        <script type="text/javascript">
+                            $("#province2").change(function(){
+                                var provinceid=$(this).val();
+                                
+                                $.ajax({
+                                            type:"post",
+                                            dataType:'json',
+                                            async:false,
+                                            url:'{:url("admin/Ajaxssq/ajaxcity")}',
+                                            data:{"provinceid":provinceid},
+                                            success:function(city){
+                                                // console.log(city); 
+                                                var str = '<option value="0">市/地区</option>';
+                                                $(city).each(function(i,dom){
+                                                    str += "<option value="+dom['code']+">"+dom['name']+"</option>";
+                                                });
+                                                $("#city2").html(str);
+                                                 $("#area2").html('<option value="0">县/市</option>');
+                                            }
+                                        })
+                            });
+                            $("#city2").change(function(){
+                                 var city=$(this).val();
+
+                                    $.ajax({
+                                        type:"post",
+                                        dataType:'json',
+                                        async:false,
+                                        url:'{:url("admin/Ajaxssq/ajaxarea")}',
+                                        data:{"city":city},
+                                         success:function(area){ 
+                                            var str = '<option value="0">县/市</option>';
+                                            $(area).each(function (i,dom){
+                                                 str += "<option value="+dom['code']+">"+dom['name']+"</option>"; 
+                                             
+                                                
+                                             });
+                                             $("#area2").html(str);
+                                        }
+                                     })
+                            });
+
+                        </script>
+                    </tr>
 					<tr>
 						<td class='wid'>房屋面积</td>
 						<td>
@@ -733,6 +868,43 @@
                 $("#fhuxing").find("option[value = '"+dd[0]['fhuxing']+"']").attr("selected","selected");
                 $("#ffengge").find("option[value = '"+dd[0]['ffengge']+"']").attr("selected","selected");
                 $("#schedule").find("option[value = '"+dd[0]['schedule']+"']").attr("selected","selected");
+                $("#province2").find('option[value="'+dd[0]['procode']+'"]').attr("selected","selected");
+                var procode=dd[0]['procode'];
+                var citycode=dd[0]['citycode'];
+                $.ajax({
+                    type:"post",
+                    dataType:'json',
+                    async:false,
+                    url:'{:url("admin/Ajaxssq/ajaxcity")}',
+                    data:{"provinceid":procode},
+                    success:function(city){
+                        // console.log(city); 
+                        var str = '<option value="0">市/地区</option>';
+                        $(city).each(function(i,dom){
+                            str += "<option value="+dom['code']+">"+dom['name']+"</option>";
+                        });
+                        $("#city2").html(str);
+                         $("#area2").html('<option value="0">县/市</option>');
+                    }
+                });
+                     $.ajax({
+                        type:"post",
+                        dataType:'json',
+                        async:false,
+                        url:'{:url("admin/Ajaxssq/ajaxarea")}',
+                        data:{"city":citycode},
+                         success:function(area){ 
+                            var str = '<option value="0">县/市</option>';
+                            $(area).each(function (i,dom){
+                                 str += "<option value="+dom['code']+">"+dom['name']+"</option>"; 
+                             
+                                
+                             });
+                             $("#area2").html(str);
+                        }
+                     });
+                     $("#city2").find('option[value="'+dd[0]['citycode']+'"]').attr("selected",true);
+                            $("#area2").find('option[value="'+dd[0]['areacode']+'"]').attr("selected",true);
                 $("#ffangshi").val(dd[0]['ffangshi']);
                 $("#fjianjie").html(dd[0]['fjianjie']);
                 $("#img").attr("src",src);
