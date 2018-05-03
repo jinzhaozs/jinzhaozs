@@ -106,7 +106,7 @@
 					<td><span  name="{$vores.pic}"  ><img src="__STATIC__/uploads/{$vores.pic}" style="width:100px;height: 100px" class="pic"></span></td>
 					<td><span class="abstract">{$vores.abstract}</span></td>
 					<td><span class="ischeck" name="{$vores.ischeck}">{if condition="($vores.ischeck == 1)"}已审核{else /}未审核{/if}</span></td>
-					
+					<td style="display: none;"><span class="istop">{$vores.istop}</span></td>
 					<td><span class="content">{$vores.content}</span></td>
 
 					<td>
@@ -246,7 +246,15 @@
           </td>
         </tr>
 						
-
+        <tr>
+          <td class='wid'>
+            置顶
+          </td>
+          <td id="istop">
+            <input type="radio" name="istop" value="1"/>置顶 
+            <input type="radio" name="istop" value="2"/>取消置顶
+          </td>
+        </tr>   
 				</table>
 	        </div>  
 	        <footer class="modal-footer">  
@@ -302,6 +310,7 @@
       comabstract =$(this).parent().parent().find(".abstract").html();
       comcontent =$(this).parent().parent().find(".content").html();
       image=$(this).parent().parent().find(".pic").attr('src');
+       var istop=$(this).parent().parent().find(".istop").html();
     	//赋值
     	$("#aname2").val(comname);
     	$("#shop2").val(comshop);
@@ -309,6 +318,7 @@
        var ue = UE.getEditor('content2');
       ue.ready(function() {
       ue.setContent(comcontent);});
+       $("#istop input[name='istop'][value='"+istop+"']").attr("checked",true);
       $("#ischeck input[name='ischeck'][value='"+comischeck+"']").attr("checked",true);  
      	$(".ids").val(comid);
       $("#img img").attr("src",image);

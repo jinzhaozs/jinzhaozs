@@ -50,7 +50,12 @@ class Index extends \app\shopcom\controller\Base
         //获取文章
         $wheres['ischeck']=1;
         $wheres['ashop']=$comid;
+        $istop['istop']=1;
+        $istop['ischeck']=1;
+        $istop['ashop']=$comid;
         $article = $this->wen("article",$wheres);
+        $articlecount=db("article")->where($wheres)->count();
+        $articletop=db("article")->where($istop)->find();
         //设计师
         $whid['shop']=$comid;
         $designer=$this->des("designer",$whid);
@@ -74,6 +79,8 @@ class Index extends \app\shopcom\controller\Base
         $this->assign("designer",$designer);
         $this->assign("shopcom",$shopcom);
         $this->assign("article",$article);//文章
+        $this->assign("articlecount",$articlecount);//文章总数
+        $this->assign("articletop",$articletop);
          $this->assign("shig",$shig);//施工工地
          $this->assign("shigcount",$shigcount);//工地总数
         return $this->fetch();

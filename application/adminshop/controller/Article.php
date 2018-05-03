@@ -73,6 +73,17 @@ class Article extends Controller
         $where['id'] = $whid; 
         $shuju = input('post.');//获取数据
         $file = request()->file('pic');
+         $zhid['ashop']=input('post.ashop');
+        $zhid['istop']=input('post.istop');
+        if($zhid['istop']==1)
+        {
+          $zhi=$user->where($zhid)->count();
+          if($zhi==1)
+          {
+            $istop['istop']=2;
+            $user->where($zhid)->update($istop);
+          }
+        }
       if($file)
        { 
          $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    

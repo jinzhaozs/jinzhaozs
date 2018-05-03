@@ -457,8 +457,8 @@
 					<tr>
 						<td class='wid'>服务区域</td>
 						<td id="com_fuqy">
-							{foreach name="qy" item="fu"}
-							<input type="checkbox" value="{$fu.qycode}"  >{$fu.qyname}
+							{foreach name="qy" item="fu" }
+							<span style="margin-right: 10px;"><input type="checkbox" value="{$fu.qycode}">{$fu.qyname}</span>
 							{/foreach}
 							<input type="hidden" name="com_fuqy" class="fuqy" value=""> 
 						</td>
@@ -467,16 +467,17 @@
 						<td class='wid'>服务价位</td>
 						<td id="com_price">
 							{foreach name="jw" item="price"}
-							<input type="checkbox" value="{$price.pcode}"   >{$price.pname}
-							{/foreach}
+							<input type="checkbox" value="{$price.pcode}"><span style="margin-right: 10px;">{$price.pname}</span>
+						{/foreach}
 							<input type="hidden" name="com_price" class="price" value=""> 
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>服务风格</td>
 						<td id="com_zcfg">
+
 							{foreach name="zcfg" item="fg"}
-							<input type="checkbox" value="{$fg.zcfgcode}"   >{$fg.zcfgname}
+							<span style="margin-right: 10px;"><input type="checkbox" value="{$fg.zcfgcode}"   >{$fg.zcfgname}</span>
 							{/foreach}
 							<input type="hidden" name="com_zcfg" class="zcfg" value=""> 
 						</td>
@@ -484,8 +485,9 @@
 					<tr>
 						<td class='wid'>服务类型</td>
 						<td id="com_leixing">
+
 							{foreach name="xing" item="lei"}
-							<input type="checkbox" value="{$lei.lxcode}"  >{$lei.lxname}
+							<span style="margin-right: 10px;"><input type="checkbox" value="{$lei.lxcode}"  >{$lei.lxname}</span>
 							{/foreach}
 								<input type="hidden" name="com_leixing" class="leixing" value=""> 
 						</td>
@@ -792,7 +794,7 @@
 						<td class='wid'>服务区域</td>
 						<td id="com_fuqy2">
 							{foreach name="qy" item="fu"}
-							<input type="checkbox" value="{$fu.qycode}">{$fu.qyname}
+							<span style="margin-right: 10px;"><input type="checkbox" value="{$fu.qycode}">{$fu.qyname}</span>
 							{/foreach}
 							<input type="hidden" name="com_fuqy" class="fuqy" value=""> 
 						</td>
@@ -801,7 +803,7 @@
 						<td class='wid'>服务价位</td>
 						<td id="com_price2">
 							{foreach name="jw" item="price"}
-							<input type="checkbox" value="{$price.pcode}">{$price.pname}
+							<span style="margin-right: 10px;"><input type="checkbox" value="{$price.pcode}">{$price.pname}</span>
 							{/foreach}
 							<input type="hidden" name="com_price" class="price" value=""> 
 						</td>
@@ -810,7 +812,7 @@
 						<td class='wid'>服务风格</td>
 						<td id="com_zcfg2">
 							{foreach name="zcfg" item="fg"}
-							<input type="checkbox" value="{$fg.zcfgcode}" >{$fg.zcfgname}
+							<span style="margin-right: 10px;"><input type="checkbox" value="{$fg.zcfgcode}" >{$fg.zcfgname}</span>
 							{/foreach}
 							<input type="hidden" name="com_zcfg" class="zcfg" value=""> 
 						</td>
@@ -819,7 +821,7 @@
 						<td class='wid'>服务类型</td>
 						<td id="com_leixing2">
 							{foreach name="xing" item="lei"}
-							<input type="checkbox" value="{$lei.lxcode}"  >{$lei.lxname}
+							<span style="margin-right: 10px;"><input type="checkbox" value="{$lei.lxcode}"  >{$lei.lxname}</span>
 							{/foreach}
 							<input type="hidden" name="com_leixing" class="leixing" value=""> 
 						</td>
