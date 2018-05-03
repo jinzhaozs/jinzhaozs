@@ -42,4 +42,65 @@ class Plantu extends \app\admin\controller\Base
         // dump($res);die;
         return $this->view->fetch();
     }
+    //书房add
+    public function shufangadd(){
+        $user = db('plan_shufang'); 
+        $file = request()->file('logo');
+        $shuju = input('post.');//获取数据
+        $shuju['time'] = date("Y-m-d h:i:s",time());    
+        if($file){
+        $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
+             $shuju['logo']=$info->getSaveName();
+        }           
+        $user_info = $user->insert($shuju);//主表添加 
+        if (!$user_info) {
+           $this->error("添加失败","admin/plantu/shufangindex",['comid'=>$shuju['comid'],'planid'=>$shuju['planid']]);
+        }else{
+           $this->redirect("admin/plantu/shufangindex",['comid'=>$shuju['comid'],'planid'=>$shuju['planid']]);
+        }
+    }
+    //书房edit
+    public function shufangedit(){
+        $user = db('plan_shufang');
+        $where['id'] = input('post.id');//获取id
+        $where['comid'] = input('post.comid');//获取id
+        $where['planid'] = input('post.planid');//获取id
+          
+        $shuju = input('post.');//获取数据
+        $shuju['time'] = date("Y-m-d h:i:s",time());
+        // dump($shuju);
+        $file = request()->file('logo');
+        if($file){
+         $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
+             $shuju['logo']=$info->getSaveName();
+        } 
+        $res = $user->where($where)->update($shuju);
+        // echo $user->getLastsql();die;
+      if (!$res) {
+           $this->error("添加失败","admin/plantu/shufangindex",['comid'=>$shuju['comid'],'planid'=>$shuju['planid']]);
+        }else{
+           $this->redirect("admin/plantu/shufangindex",['comid'=>$shuju['comid'],'planid'=>$shuju['planid']]);
+        }
+    }
+    // 书房del
+    public function shufangdel(){
+         $user = db('plan_shufang');
+        $where['id'] = input('post.sfid');//获取id
+        $res = $user->where($where)->delete();
+        if (!$res) {
+            $data = array(
+                    'data' => false,
+                    'code' => 500,
+                    'msg'  => '删除失败',
+            );
+
+            return $data;
+        }
+        $data = array(
+                'data' => true,
+                'code' => 200,
+                'msg'  => '删除成功 !',
+        );
+        return $data;
+    }
 }

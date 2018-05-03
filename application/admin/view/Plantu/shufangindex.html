@@ -5,6 +5,34 @@
 <head>
 	<meta charset="utf-8"> 
 	<title></title>
+    <script type="text/javascript">
+    //工地logo添加
+    function imgPreviews(fileDom){
+        //判断是否支持FileReader
+        if (window.FileReader) {
+            var reader = new FileReader();
+        } else {
+            alert("您的设备不支持图片预览功能，如需该功能请升级您的设备！");
+        }
+
+        //获取文件
+        var file = fileDom.files[0];
+        var imageType = /^image\//;
+        //是否是图片
+        if (!imageType.test(file.type)) {
+            alert("请选择图片！");
+            return;
+        }
+        //读取完成
+        reader.onload = function(e) {
+            //获取图片dom
+            var img = document.getElementById("previews");
+            //图片路径设置为读取的图片
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+    </script>
 </head>
 <body>
 <div style="margin-left: 2%;margin-right: 2%; margin-top: 1%;">
@@ -28,12 +56,14 @@
 		<tbody id="yuansuzhijia">
             {foreach name="res" item="vores"}
 			<tr>
-            <td >{$vores.id}</td>
+            <td class="sfid">{$vores.id}</td>
             <td >{$com['name']}</td>
             <td >{$plan['name']}</td>
-            <td >{$vores.name}</td>
-            <td >{$vores.logo}</td>
-            <td >{$vores.text}</td>
+            <td class="name">{$vores.name}</td>
+            <td >
+                <span class="img"><img src="__STATIC__/uploads/{$vores.logo}" style="width:50px;height: 50px" ></span>
+            </td>
+            <td class="text">{$vores.text}</td>
             <td><span style=" cursor: pointer;" class="showModel2">修改</span> |
             <span style=" cursor: pointer;" class="delcom">删除</span> </td>
             </tr>
@@ -55,38 +85,42 @@
 	        <div class="modal-body">  
 	            <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Plantu/shufangadd')}" >
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
-				<input type="text" style="display:none;" name="comid" value="">
+                <!-- 公司id -->
+                <input type="hidden" name="comid" value="{$com['id']}">
+                <!-- 方案id -->
+				<input type="hidden" name="planid" value="{$plan['id']}">
                     <tr>
                         <td >公司名称</td>
                         <td>
-                            <input type="text" class="form-control" name="fname" placeholder="请输入名称">
+                            <input type="text" class="form-control" value="{$com['name']}" disabled="disabled">
                         </td>
                     </tr>
                     <tr>
                         <td >方案名称</td>
                         <td>
-                            <input type="text" class="form-control" name="fname" placeholder="请输入名称">
+                            <input type="text" class="form-control" value="{$plan['name']}" disabled="disabled">
                         </td>
                     </tr>
                     <tr>
                         <td >图片名称</td>
                         <td>
-                            <input type="text" class="form-control" name="fname" placeholder="请输入名称">
+                            <input type="text" class="form-control" name="name" placeholder="请输入名称">
                         </td>
                     </tr>
 					<tr>
 						<td class='wid'>logo</td>
 						<td>
-							<img id="previews" width="100px" />
+
+							<img id="previewsedit" width="100px" />
                               <br />
-							<input type="file" name="flogo" onchange="imgPreviews(this)"/>
+							<input type="file" name="logo" onchange="imgPreviews(this)"/>
 							
 						</td>
 					</tr>
                     <tr>
                         <td >简介</td>
                         <td>
-                            <input type="text" class="form-control" name="fname" placeholder="请输入名称">
+                            <textarea name="text" class="form-control" rows="5" cols="80"></textarea>
                         </td>
                     </tr>
 				</table>
@@ -107,27 +141,52 @@
 	            <h4>信息修改</h4>  
 	            <span class="close2">×</span>  
 	        </header>  
-	        <div class="modal-body">  
-	            <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Plan/edit')}" >
-				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
-				<input type="text" style="display:none;" name="planid" id="planid" value="1">
-				<input type="text" style="display:none;" name="comid" value="">
-					<tr>
-						<td class='wid'>方案名称</td>
-						<td>
-							<input type="text" class="form-control" name="fname" readonly="true" id ="fname" placeholder="请输入名称">
-						</td>
-					</tr>
-					<tr>
-						<td class='wid'>方案logo</td>
-						<td>
-							<div ><img id="img" src="__STATIC__/uploads/" style="width:100px;height: 100px" ></div>
-							<input type="file" name="flogo" class="form-control" id="logo2"  onchange="imgPreview(this)" />
-						</td>
-					</tr>
-				</table>
-	       </form>  
-	        </div>   
+	         <div class="modal-body">  
+                <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Plantu/shufangedit')}" >
+                <table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
+                <!-- 公司id -->
+                <input type="hidden" name="comid" value="{$com['id']}">
+                <!-- 方案id -->
+                <input type="hidden" name="planid" value="{$plan['id']}">
+                <!-- 书房id -->
+                <input type="hidden" name="id" id="sfid" value="">
+                    <tr>
+                        <td >公司名称</td>
+                        <td>
+                            <input type="text" class="form-control" value="{$com['name']}"disabled="disabled">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >方案名称</td>
+                        <td>
+                            <input type="text" class="form-control" value="{$plan['name']}" disabled="disabled">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >图片名称</td>
+                        <td>
+                            <input type="text" class="form-control" name="name" id="sfname" placeholder="请输入名称">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class='wid'>logo</td>
+                        <td>
+                        
+                            <img id="previews" width="100px" />
+                              <br />
+                            <input type="file" name="logo" onchange="imgPreviews(this)"/>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >简介</td>
+                        <td>
+                            <textarea name="text" id="sftext" class="form-control" rows="5" cols="80"></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </form> 
+            </div>    
 	        <footer class="modal-footer">  
 	            <button type="button" id="cancel2">取消</button>  
 	            <button type="button" id="sure2">确定</button>  
@@ -168,7 +227,16 @@
     var modal2 = document.getElementById('modal2'); 
     //模态框展示 
     $(".showModel2").click(function(){
-    	// 获取案例id
+    	// 获取书房id
+        var sfid = $(this).parent().parent().find(".sfid").html();
+        var name = $(this).parent().parent().find(".name").html();
+        var text = $(this).parent().parent().find(".text").html();
+        var img = $(this).parent().parent().find(".img img").attr("src");
+        // alert(img);
+        $("#sfid").val(sfid);
+        $("#sfname").val(name);
+        $("#sftext").val(text);
+        $("#previews").attr("src",img);
     	modal2.style.display = "block"; 
     });
     close2.addEventListener('click', function(){  
@@ -187,7 +255,7 @@
     // 执行删除
     $(".delcom").click(function(){
     	if(confirm("确定删除该类型吗？")){
-    		var planid = $(this).parent().parent().find(".planid").html();
+    		var sfid = $(this).parent().parent().find(".sfid").html();
     		// alert(planid);return false;
     		$(this).parent().parent().remove();
     		// console.log(aa);return false;
@@ -195,8 +263,8 @@
 	            type:"post",
 	            dataType:'json',
 	            async:false,
-	            url:'{:url("/admin/plan/delete")}',
-	            data:{"planid":planid},
+	            url:'{:url("admin/Plantu/shufangdel")}',
+	            data:{"sfid":sfid},
 	            success:function(dd){
 	            	// alert(dd);
 	             //    console.log(dd);

@@ -99,6 +99,9 @@ Route::rule('/admin/Plan/tupianguanli','admin/Plan/tupianguanli');//图片管理
 Route::rule('/admin/plan/delete','admin/plan/delete');//删除
 //案例图片管理
 Route::rule('/admin/plantu/shufangindex','admin/plantu/shufangindex');//图片管理书房
+Route::rule('/admin/Plantu/shufangadd','admin/Plantu/shufangadd');//图片管理书房添加
+Route::rule('/admin/Plantu/shufangedit','admin/Plantu/shufangedit');//图片管理书房修改
+Route::rule('/admin/Plantu/shufangdel','admin/Plantu/shufangdel');//图片管理书房del
 
 //公司工地
 Route::rule('/admin/plangong/index','admin/plangong/index');//公司 案例列表
