@@ -49,9 +49,212 @@
 <div class="main ">
     <div class="wrapper ">
         <!-- 内容区域 -->
-        <div class="banner_text " style="border: 1px red solid;height: 1000px;">
+        <div class="banner_text ">
             <!-- 开始 -->
-            工地
+            <!-- form 隐藏条件 -->
+    <form id="jiaojianquyu" action="{:url('/scgongdi')}" style="display: none;" method="get">
+        类型：<input type="text" name="comid" value="{$comid}">
+        工地状态<input type="text" name="tjdozaijia" id="tjdozaijia" value="">
+        <input type="submit" value="提交" >
+    </form>
+            <link rel="stylesheet" type="text/css" href="__STATIC__/shopcom/gongdi/zhuangxiu.css">
+            <div id="all">
+                <div class="left">
+                    <ul>
+                        <li class="tjquanbu">全部工地</li>
+                        {eq name="$tjdozaijia" value="1"}
+                            <li style="color:#01af63;font-weight: bold;cursor:pointer;" class="tjzaijian">在建工地</li>
+                        {else/}
+                            <li style="cursor:pointer;" class="tjzaijian">在建工地</li>
+                        {/eq}
+                        {eq name="$tjdozaijia" value="2"}
+                            <li style="color:#01af63;font-weight: bold;cursor:pointer;" class="tjjuegong">竣工工地</li>
+                        {else/}
+                            <li style="cursor:pointer;" class="tjjuegong">竣工工地</li>
+                        {/eq}
+                        
+                    </ul>
+                </div>
+        <div class="right">  
+            {foreach name="res" item = "vores"}
+            <div class="newhome">
+                <div class="img">
+                <a href=""><img src="__STATIC__/uploads/{$vores.flogo}"></a>
+                </div> 
+               <div class="jieduan">
+                    <h3>{$vores.fname}</h3>
+                    <span><img src="__STATIC__/shopcom/gongdi/image/xinjia.jpg"></span>
+                    <div class="xinxi">
+                        <!-- 省转换 -->
+                        <span>{$vores.procode|prodoname=###}</span>
+                        <span>{$vores.citycode|citydoname=###}</span>
+                        <span>{$vores.fyusuan}万</span>
+                        <span>{$vores.ffengge}</span>
+                        <span>{$vores.fmianji}m²</span>
+                        <span>工期：</span>
+                        <span>{$vores.time|timezhuanghuaduan=###}</span>
+                    </div>
+                    <div class="jindu">
+                        <!-- 判断属于哪个阶段 -->
+                        {switch name="$vores.schedule"}
+                            {case value="1"}
+                                <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                <ul>
+                                    <li style="color:#01af63;font-weight: bold;">准备开工</li>
+                                    <li >水电阶段</li>
+                                    <li>泥木阶段</li>
+                                    <li>油漆阶段</li>
+                                    <li>竣工阶段</li>
+                                </ul>
+                            {/case}
+                            {case value="2"}
+                                <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                <ul>
+                                    <li style="color:#01af63;font-weight: bold;">准备开工</li>
+                                    <li style="color:#01af63;font-weight: bold;">水电阶段</li>
+                                    <li>泥木阶段</li>
+                                    <li>油漆阶段</li>
+                                    <li>竣工阶段</li>
+                                </ul>
+                            {/case}
+                            {case value="3"}
+                                <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                <ul>
+                                    <li style="color:#01af63;font-weight: bold;">准备开工</li>
+                                    <li style="color:#01af63;font-weight: bold;">水电阶段</li>
+                                    <li style="color:#01af63;font-weight: bold;">泥木阶段</li>
+                                    <li>油漆阶段</li>
+                                    <li>竣工阶段</li>
+                                </ul>
+                            {/case}
+                            {case value="4"}
+                                <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                <ul>
+                                    <li style="color:#01af63;font-weight: bold;">准备开工</li>
+                                    <li style="color:#01af63;font-weight: bold;">水电阶段</li>
+                                    <li style="color:#01af63;font-weight: bold;">泥木阶段</li>
+                                    <li style="color:#01af63;font-weight: bold;">油漆阶段</li>
+                                    <li>竣工阶段</li>
+                                </ul>
+                            {/case}
+                            {case value="5"}
+                                <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                <ul>
+                                    <li style="color:#01af63;font-weight: bold;">准备开工</li>
+                                    <li style="color:#01af63;font-weight: bold;">水电阶段</li>
+                                    <li style="color:#01af63;font-weight: bold;">泥木阶段</li>
+                                    <li style="color:#01af63;font-weight: bold;">油漆阶段</li>
+                                    <li style="color:#01af63;font-weight: bold;">竣工阶段</li>
+                                </ul>
+                            {/case}
+                            {default /}
+                                <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                <ul>
+                                    <li>准备开工</li>
+                                    <li style="color:#01af63;font-weight: bold;">水电阶段</li>
+                                    <li>泥木阶段</li>
+                                    <li>油漆阶段</li>
+                                    <li>竣工阶段</li>
+                                </ul>
+                        {/switch}
+                        
+                    </div>
+                        <div class="shuju">
+                            <ul>
+                                <li>
+                                <p>
+                                    设计图
+                                </p>
+                                <span>3</span>
+                                </li>
+                                <li>
+                                <p>
+                                    施工图
+                                </p>
+                                <span>0</span>
+                                </li>
+                                <li>
+                                <p>
+                                    装修日记
+                                </p>
+                                <span>0</span>
+                                </li>
+                                <li>
+                                <p>
+                                    业主评价
+                                </p>
+                                <span>2</span>
+                                </li>
+                            </ul>
+                            <div class="yuyue">
+                             免费预约参观
+                            </div>
+                        </div>
+                </div>
+                </div>      
+                {/foreach}
+                </div>
+    </div>  
+     <script type="text/javascript">
+            //工地状态
+            //全部
+                $(document).on("click",".tjquanbu",function(){
+                    $("#tjdozaijia").val('3');//赋值
+                    $("#jiaojianquyu").submit();//提交form
+                });
+            // 在建
+                $(document).on("click",".tjzaijian",function(){
+                    $("#tjdozaijia").val('1');//赋值
+                    $("#jiaojianquyu").submit();//提交form
+                });
+            // 完工
+                $(document).on("click",".tjjuegong",function(){
+                    $("#tjdozaijia").val('2');//赋值
+                    $("#jiaojianquyu").submit();//提交form
+                });
+                  
+        </script>
+    <script type="text/javascript">
+        var lis = document.querySelectorAll('.left  li');
+                for(var i=0;i<lis.length;i++){
+                lis[i].setAttribute("index",i);
+                lis[i].onclick=function(){
+                for(var i=0;i<lis.length;i++){
+                    if(this.getAttribute("index")==i){
+                        lis[i].style.color="#01af63";
+                         lis[i].style.fontWeight='bold';
+                    }else{
+                        lis[i].style.color="";
+                        lis[i].style.fontWeight="";
+                    }
+                }
+            }
+        }
+</script>
              <!-- 结束 -->
 
         </div>

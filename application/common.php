@@ -61,3 +61,20 @@
         $name = $res[0]['name'];
         return $name;
     }
+    // 日期转换 为年月日
+    function timezhuanghuaduan($time){
+        return date("Y-m-d",strtotime($time));
+    }
+    // 城市省转换
+    function prodoname($code){
+        $where['code'] = $code;
+        $res = db('province')->where($where)->find();
+        // dump($res);die;
+        return $res['name'];
+    }
+    // 城市市转换
+    function citydoname($code){
+        $where['code'] = $code;
+        $res = db('city')->where($where)->find();
+        return $res['name'];
+    }

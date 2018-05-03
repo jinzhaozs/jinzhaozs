@@ -51,7 +51,73 @@
         <!-- 内容区域 -->
         <div class="banner_text " style="border: 1px red solid;height: 1000px;">
             <!-- 开始 -->
-            设计师
+            <link rel="stylesheet" type="text/css" href="__STATIC__/shopcom/shejishi/team.css">
+            <div  id="all">
+        <div class="left">
+            <ul>
+                <li>全部团队成员</li>
+                <li>精英团队</li>
+                <li>设计二部</li>
+                <li>设计一部</li>
+                <li>设计三部</li>
+                <li>工作室</li>
+                <li>主材部</li>
+                <li>工程部</li>
+                <li>客服部</li>
+                <li>设计四部</li>
+                <li>设计六部</li>
+                <li>设计五部</li>
+            </ul>
+            
+        </div>
+        <div class="right">  
+            <h3>设计团队</h3>
+                <div class="zhuti">
+                    <ul>
+                        <li>
+                            <div class="list">
+                                <div class="news">
+                                    <img src="__STATIC__/shopcom/shejishi/image/cc.jpg">
+                                </div>
+                                <div class="name">
+                                    <p>秦始皇</p>
+                                    <span>首席设计师</span>
+                                </div>
+                                
+                            </div>
+                            <div class="xiangqing">
+                                <dl>
+                                    <dt>设计方案</dt>
+                                    <dd>3</dd>
+                                </dl>
+                            </div>
+                        </li>
+                    </ul>
+                </div>  
+                <div class="zhuti">
+                    <ul>
+                        <li>
+                            <div class="list">
+                                <div class="news">
+                                    <img src="__STATIC__/shopcom/shejishi/image/cc.jpg">
+                                </div>
+                                <div class="name">
+                                    <p>秦始皇</p>
+                                    <span>首席设计师</span>
+                                </div>
+                                
+                            </div>
+                            <div class="xiangqing">
+                                <dl>
+                                    <dt>设计方案</dt>
+                                    <dd>3</dd>
+                                </dl>
+                            </div>
+                        </li>
+                    </ul>
+                </div>      
+        </div>                                          
+      </div>
              <!-- 结束 -->
 
         </div>
@@ -59,7 +125,23 @@
 </div>
 
 
-
+<script type="text/javascript">
+        var lis = document.querySelectorAll('.left  li ');
+                for(var i=0;i<lis.length;i++){
+                lis[i].setAttribute("index",i);
+                lis[i].onclick=function(){
+                for(var i=0;i<lis.length;i++){
+                    if(this.getAttribute("index")==i){
+                        lis[i].style.color="#01af63";
+                         lis[i].style.fontWeight='bold';
+                    }else{
+                        lis[i].style.color="";
+                        lis[i].style.fontWeight="";
+                    }
+                }
+            }
+        }
+</script>
 <!--右侧弹出层结束-->
 
   				

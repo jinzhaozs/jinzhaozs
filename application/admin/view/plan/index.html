@@ -282,12 +282,12 @@
 			{foreach name="res" item="vores"}
 			
 				<tr>
-					<td style="display: block;"><span class="planid">{$vores.id}</span></td>
+					<td><span class="planid">{$vores.id}</span></td>
 					<td><span class="fname">{$vores.fname}</span></td>
 					<td><span class="img"><img src="__STATIC__/uploads/{$vores.flogo}" style="width:50px;height: 50px" ></span></td>
 					<td><span>{$vores.ftype}</span></td>
 					<td><span>{$vores.frenyuan}</span></td>
-					<td><span class="comname">{$vores.comid}</span></td>
+					<td><span class="comname">{$vores.comname}</span></td>
 					<td><span>{$vores.fmianji}</span></td>
 					<td><span>{$vores.fyusuan}</span></td>
 					<td><span>{$vores.fhuxing}</span></td>
@@ -296,7 +296,19 @@
 					<td>
 						<span style=" cursor: pointer;" class="showModel2">修改</span> | 
 						<span style=" cursor: pointer;" class="delcom">删除</span>  |
-						<span  style=" cursor: pointer;" class="showModel3">图片管理</span>
+						<span  style=" cursor: pointer;" > 
+                            <select name="" id="" onchange="window.location=this.value">
+                                <option value="">图片管理</option>
+                                <option value="{:url('admin/plantu/shufangindex',['comid'=>$comid,'planid'=>$vores.id])}">书房图片</option>
+                                <option value="{:url('admin/plantu/shufangindex')}">卧室图片</option>
+                                <option value="{:url('admin/plantu/shufangindex')}">儿童间图片</option>
+                                <option value="{:url('admin/plantu/shufangindex')}">卫生间图片</option>
+                                <option value="{:url('admin/plantu/shufangindex')}">客厅图片</option>
+                                <option value="{:url('admin/plantu/shufangindex')}">厨房图片</option>
+                                <option value="{:url('admin/plantu/shufangindex')}">餐厅图片</option>
+                                <option value="{:url('admin/plantu/shufangindex')}">施工图图片</option>
+                            </select>
+                        </span>
 					</td>
 				</tr>
 			{/foreach}

@@ -50,7 +50,7 @@ class Plan extends \app\admin\controller\Base
                $fname=$urlcanshu['keyword'];
             }
          //分页
-        $res = $plan->field("plan.id,plan.fname,plan.flogo,plan.frenyuan,plan.fmianji,plan.fyusuan,plan.ffangshi,lx.lxname as ftype,shop.name as comid,com_layout.lname as fhuxing,com_zhuancfg.zcfgname as ffengge,designer.dname as frenyuan")
+        $res = $plan->field("plan.id,plan.fname,plan.flogo,plan.frenyuan,plan.fmianji,plan.fyusuan,plan.ffangshi,lx.lxname as ftype,shop.name as comname,com_layout.lname as fhuxing,com_zhuancfg.zcfgname as ffengge,designer.dname as frenyuan")
         ->join('com_qiyecsleixing lx','plan.ftype = lx.lxcode','left')//类型
         ->join('shop','plan.comid = shop.id','left')//公司
         ->join('com_layout','plan.fhuxing = com_layout.lcode','left')//户型
