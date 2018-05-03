@@ -52,70 +52,48 @@
         <div class="banner_text " style="border: 1px red solid;height: 1000px;">
             <!-- 开始 -->
             <link rel="stylesheet" type="text/css" href="__STATIC__/shopcom/jianjie/company.css">
-            <div  id="all">
-        <div class="left">
-            <ul>
-                <li><a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}" title="装修公司简介">公司简介</a></li>
+	<div  id="all">
+		<div class="left">
+			<ul>
+				<li><a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}" title="装修公司简介">公司简介</a></li>
                 <li><a href="{:url('/scjian/zheng',['comid'=>$shopcom[0]['id']])}" title="装修公司简介" >企业证书</a></li>
                 <li><a href="{:url('/scjian/xin',['comid'=>$shopcom[0]['id']])}" title="装修公司简介" >工商注册信息</a></li>
-                <!-- <li>文章资讯</li> -->
-                <!-- <li>装修优惠</li> -->
-                <li><a href="{:url('/scjian/lian',['comid'=>$shopcom[0]['id']])}" title="装修公司简介" >联系我们</a></li>
-                <li><a href="{:url('/scjian/xing',['comid'=>$shopcom[0]['id']])}" title="装修公司简介" >星级服务</a></li>
-            </ul>
-        </div>
-        <div class="right">
-            {foreach name="$shopcom" item="jj"} 
-            <div class="top-do">
-                   <h3>公司简介</h3>
-                   <img src="__STATIC__/uploads/{$jj['logo']}" width="150px" height="150px">
-                   <p>{$jj.com_jianjie}</p>
-            </div>
-            {/foreach}
-            <div class="middle">
-                   <h3>详细信息</h3>
-                   <div> 
-                       <ul>
-                         {foreach name="$shopdo" item="res"}
-                            <li>公司规模<p>{$res.guimu}</p></li>
-                             <li>装后服务<p>{$res.zhuanghoufw}</p></li>
-                            <li>初期设计/量房<p>{$res.shejilf}</p></li>
-                            <li>初期预算<p>{$res.yusuanqt}</p></li>
-                             <li>深化设计<p>{$res.shenhuasj}</p></li>
-                            <li>深化预算<p>{$res.shenhuays}</p></li>
-                            <li>材料质量<p>{$res.cailiaozl}</p></li>
-                             <li>合同规范性<p>{$res.hetonggf}</p></li>
-                            <li>特色服务<p>{$res.tesefu}</p></li>
-                            {/foreach}
-                        </ul>
-                    </div>     
-            </div>
-            <div class="bottom">
-                   <h3>公司服务</h3>
-                   <div > 
-                       <ul>
-                         {foreach name="$shopcom" item="fw"} 
-                            <li>服务区域<p>{$fw.com_fuqy}</p></li>
-                             <li>服务类型<p>{$fw.com_leixing}</p></li>
-                            <li>承接价位<p>{$fw.com_price}</p></li>
-                            <li>专长风格<p>{$fw.com_zcfg}</p></li>
-                         {/foreach}
-                        </ul>
-                    </div>      
-            </div>
-            
-        </div>
-    </div>  
-             <!-- 结束 -->
-
-        </div>
-    </div>
-</div>
-
-
-
-<!--右侧弹出层结束-->
-
-  				
-
+				<li><a href="{:url('/scjian/article',['comid'=>$shopcom[0]['id']])}" title="装修公司简介" >文章资讯</a></li>
+				<!-- <li><a href="Decoration.html">装修优惠</a></li> -->
+				<li><a href="{:url('/scjian/lian',['comid'=>$shopcom[0]['id']])}" title="装修公司简介" >联系我们</a></li>
+				<li><a href="{:url('/scjian/xing',['comid'=>$shopcom[0]['id']])}" title="装修公司简介" >星级服务</a></li>
+			</ul>
+		</div>
+		<div class="right">
+			<div class="right-1"><h3>工商注册信息</h3></div>
+			<table>
+				   <tr>
+				         <td>公司名称</td>
+				         <td>{$shopcom[0]['name']}</td>
+				    </tr>
+				     <tr>
+				         <td>企业类型</td>
+				         <td>个体经营</td>
+				    </tr>
+				     <tr>
+				         <td>注册地址</td>
+				         <td>{$shopcom[0]['dizhi']} </td>
+				    </tr>
+				     <tr>
+				         <td>注册资金</td>
+				         <td>{$shopcom[0]['zhucezijin']} </td>
+				    </tr>
+				    <tr>
+				         <td>法定代表人</td>
+				         <td>{$shopcom[0]['faren']}</td>
+				    </tr>
+				     <tr>
+				         <td>企业电话</td>
+				         <td>{$shopcom[0]['com_tel']}</td>
+				    </tr>
+				    
+				    	  
+			</table>
+		</div>	
+	</div>
 {/block}
