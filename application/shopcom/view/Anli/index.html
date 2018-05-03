@@ -49,147 +49,100 @@
 <div class="main ">
     <div class="wrapper ">
         <!-- 内容区域 -->
-        <div class="banner_text " style="border: 1px red solid;height: 1000px;">
+        <div class="banner_text ">
         <!-- 开始 -->
+        <!-- form 隐藏条件 -->
+    <form id="jiaojianquyu" action="{:url('/scanli')}" style="display: none;" method="get">
+        类型：<input type="text" name="comid" value="{$comid}">
+        风格：<input type="text" name="ffengge" id="ffengge" value="{$tjffengge}">
+        户型：<input type="text" name="fhuxing" id="fhuxing" value="{$tjfhuxing}">
+        <input type="submit" value="提交" >
+    </form>
         <link rel="stylesheet" type="text/css" href="__STATIC__/shopcom/fangan/scheme.css">
-      <!--   <link rel="stylesheet" type="text/css" href="__STATIC__/shopcom/fangan/style.css"> -->
             <div  id="all">
         <div class="left">
+
+                    <p class="tjquanbu" style="cursor:pointer;">全部</p>
             <div class="img"><img src="__STATIC__/shopcom/fangan/image/line.jpg"></div>
             <div id = "nav_left">
                     <div class = "list-do">
-                        家庭分类
+                        风格
                          <img src="__STATIC__/shopcom/fangan/image/down.jpg">
                     </div>
                     <div class = "detail">
-                                <p>小户型9</p >
-                                <p>别墅9</p >
-                                <p>普通住宅4</p >
-                                <p>平层1</p >
+                        {foreach name="shopcomfengge" item="voscfengge"}
+                            <span class="ffengge"><input type="hidden" class="doffengge" value="{$voscfengge.zcfgcode}">
+                            <!-- 判断是否为条件 -->
+                            {eq name="$voscfengge.zcfgcode" value="$tjffengge"}
+                            <p style="color:#01af63;font-weight: bold;cursor:pointer;">{$voscfengge.zcfgname}</p>
+                            {else/}
+                            <p style="cursor:pointer;">{$voscfengge.zcfgname}</p>
+                            {/eq}
+                            </span>
+                       {/foreach}
                     </div>
                     <div class="im"></div>
                     <div class = "list-do">
                     <img src="__STATIC__/shopcom/fangan/image/down.jpg">
-                        公装分类
+                        户型
                     </div>
                     <div class = "detail">
-                                <p>KTV 125</p >
-                                <p>餐厅/酒楼1</p >
-                                <p><美容/美发 1 </p >
-                                <p>娱乐场所 1</p >
-                                 <p>办公室 3 </p >
-                                <p>专卖店 2 </p >
-                                <p>酒吧 2</p >
-                                <p>其他 1</p >
+                               
+                        {foreach name="shopcomhuxing" item = "voschuxing"}
+                            <span class="fhuxing"><input type="hidden" class="dofhuxing" value="{$voschuxing.lcode}">
+                            <!-- 判断是否为条件 -->
+                            {eq name="$voschuxing.lcode" value="$tjfhuxing"}
+                            <p style="color:#01af63;font-weight: bold;cursor:pointer;">{$voschuxing.lname}</p>
+                            {else/}
+                            <p style="cursor:pointer;">{$voschuxing.lname}</p>
+                            {/eq}
+                            
+                            </span>
+                        {/foreach}
                     </div>
 
-                                     </div> 
+            </div> 
         </div>
+        <script type="text/javascript">
+            //风格点击
+                $(document).on("click",".ffengge",function(){
+                    var ffengge = $(this).find(".doffengge").val();//获取类型id
+                    $("#ffengge").val(ffengge);//赋值
+                    $("#jiaojianquyu").submit();//提交form
+                });
+                // 户型点击
+                  $(document).on("click",".fhuxing",function(){
+                    var fhuxing = $(this).find(".dofhuxing").val();//获取类型id
+                    $("#fhuxing").val(fhuxing);//赋值
+                    $("#jiaojianquyu").submit();//提交form
+                });
+                  // 全部
+                  $(document).on("click",".tjquanbu",function(){
+                    $("#ffengge").val("");//赋值
+                    $("#fhuxing").val("");//赋值
+                    $("#jiaojianquyu").submit();//提交form
+                });
+                  
+        </script>
         <div class="right">
                   <div class="picture">
+                        {foreach name="res" item="vores"}
                         <ul>
                             <li><a href="">
-                                <img src="__STATIC__/shopcom/fangan/image/picone.jpg">
-                                <p>报告厅<span>2014-10-21</span></p>   
+                                <div class="img-img"><img style="width: 100%;height: 100%;" src="__STATIC__/uploads/{$vores.flogo}"></div>
+                                <p>{$vores.fname}<span>{$vores.time|timezhuanghuaduan=###}</span></p>   
                                 <div class="see">
-                                    <span>试试简约</span><span>
+                                    <span>{$vores.ffengge}</span><span>
                                     <img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
-                                    <span>发半包</span>
+                                    <span>{$vores.fhuxing}</span>
                             <span><img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
-                                    <span>15万</span>
+                                    <span>{$vores.fyusuan}万</span>
                                     <span><img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
-                                    <span>简单万</span>
+                                    <span>{$vores.fmianji}㎡</span>
                                 </div>  
                             </a></li>
-                            <li><a href="">
-                                <img src="__STATIC__/shopcom/fangan/image/pictwo.jpg">
-                                <p>报告厅<span>2014-10-21</span></p>   
-                                <div class="see">
-                                    <span>简约</span><span>
-                                    <img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
-                                    <span>半包</span>
-                            <span><img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
-                                    <span>5万</span>
-                                </div>  
-                            </a></li>
-                            <li><a href="">
-                                <img src="__STATIC__/shopcom/fangan/image/picone.jpg">
-                                <p>报告厅<span>2014-10-21</span></p>   
-                                <div class="see">
-                                    <span>简约</span><span>
-                                    <img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
-                                    <span>半包</span>
-                            <span><img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
-                                    <span>5万</span>
-                                </div>  
-                            </a></li>
-                            <li><a href="">
-                                <img src="__STATIC__/shopcom/fangan/image/picthere.jpg">
-                                <p>报告厅<span>2014-10-21</span></p>   
-                                <div class="see">
-                                    <span>简约</span><span>
-                                    <img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
-                                    <span>半包</span>
-                            <span><img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
-                                    <span>5万</span>
-                                </div>  
-                            </a></li>
-                            <li><a href="">
-                                <img src="__STATIC__/shopcom/fangan/image/picone.jpg">
-                                <p>报告厅<span>2014-10-21</span></p>   
-                                <div class="see">
-                                    <span>简约</span><span>
-                                    <img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
-                                    <span>半包</span>
-                            <span><img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
-                                    <span>5万</span>
-                                </div>  
-                            </a></li>
-                            <li><a href="">
-                                <img src="__STATIC__/shopcom/fangan/image/picone.jpg">
-                                <p>报告厅<span>2014-10-21</span></p>   
-                                <div class="see">
-                                    <span>简约</span><span>
-                                    <img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
-                                    <span>半包</span>
-                            <span><img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
-                                    <span>5万</span>
-                                </div>  
-                            </a></li>
-                            <li><a href="">
-                                <img src="__STATIC__/shopcom/fangan/image/picone.jpg">
-                                <p>报告厅<span>2014-10-21</span></p>   
-                                <div class="see">
-                                    <span>简约</span><span>
-                                    <img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
-                                    <span>半包</span>
-                            <span><img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
-                                    <span>5万</span>
-                                </div>  
-                            </a></li>
-                            <li><a href="">
-                                <img src="__STATIC__/shopcom/fangan/image/picone.jpg">
-                                <p>报告厅<span>2014-10-21</span></p>   
-                                <div class="see">
-                                    <span>简约</span><span>
-                                    <img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
-                                    <span>半包</span>
-                            <span><img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
-                                    <span>5万</span>
-                                </div>  
-                            </a></li>
-                            <li><a href="">
-                                <img src="__STATIC__/shopcom/fangan/image/picone.jpg">
-                                <p>报告厅<span>2014-10-21</span></p>   
-                                <div class="see">
-                                    <span>简约</span><span>
-                                    <img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
-                                    <span>半包</span>
-                            <span><img src="__STATIC__/shopcom/fangan/image/shu.jpg"></span>
-                                    <span>5万</span>
-                                </div>  
-                            </a></li>
-                        </ul>                           
+                        </ul>
+                        {/foreach}                           
                      </div>   
                 </div>
 <script>

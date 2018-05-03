@@ -161,14 +161,17 @@ class Index extends \app\index\controller\Base
     }
     //测试
     public function aa(){
-        Session::set('name','thinkphp');
-        echo Session::get('name');die;
+        // Session::set('name','thinkphp');
+        // echo Session::get('name');die;
         // session
-        $_SESSION['user']="张三";
-        echo $_SESSION['user'];
-       echo 123;die;
-        $aa = tucemixadd();
-        dump($aa);die;
+       //  $_SESSION['user']="张三";
+       //  echo $_SESSION['user'];
+       // // echo 123;die;
+       //  $aa = tucemixadd();
+        // dump($aa);die;
+        $pro = '370000';
+        // dump($pro);die;
+        $this->assign("pro",$pro);
         return $this->fetch();
     }
 }
