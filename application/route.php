@@ -103,10 +103,31 @@ Route::rule('/admin/plan/edit','admin/plan/edit');//修改
 Route::rule('/admin/Plan/tupianguanli','admin/Plan/tupianguanli');//图片管理修改
 Route::rule('/admin/plan/delete','admin/plan/delete');//删除
 //案例图片管理
+//书房
 Route::rule('/admin/plantu/shufangindex','admin/plantu/shufangindex');//图片管理书房
 Route::rule('/admin/Plantu/shufangadd','admin/Plantu/shufangadd');//图片管理书房添加
 Route::rule('/admin/Plantu/shufangedit','admin/Plantu/shufangedit');//图片管理书房修改
 Route::rule('/admin/Plantu/shufangdel','admin/Plantu/shufangdel');//图片管理书房del
+//卧室
+Route::rule('/admin/plantu/woshiindex','admin/plantu/woshiindex');
+Route::rule('/admin/Plantu/woshiadd','admin/Plantu/woshiadd');
+Route::rule('/admin/Plantu/woshiedit','admin/Plantu/woshiedit');
+Route::rule('/admin/Plantu/woshidel','admin/Plantu/woshidel');
+//儿童间
+Route::rule('/admin/plantu/ertongjianindex','admin/plantu/ertongjianindex');
+Route::rule('/admin/Plantu/ertongjianadd','admin/Plantu/ertongjianadd');
+Route::rule('/admin/Plantu/ertongjianedit','admin/Plantu/ertongjianedit');
+Route::rule('/admin/Plantu/ertongjiandel','admin/Plantu/ertongjiandel');
+//卫生间
+Route::rule('/admin/plantu/weishengjianindex','admin/plantu/weishengjianindex');
+Route::rule('/admin/Plantu/weishengjianadd','admin/Plantu/weishengjianadd');
+Route::rule('/admin/Plantu/weishengjianedit','admin/Plantu/weishengjianedit');
+Route::rule('/admin/Plantu/weishengjiandel','admin/Plantu/weishengjiandel');
+//客厅
+Route::rule('/admin/plantu/ketingindex','admin/plantu/ketingindex');
+Route::rule('/admin/Plantu/ketingadd','admin/Plantu/ketingadd');
+Route::rule('/admin/Plantu/ketingedit','admin/Plantu/ketingedit');
+Route::rule('/admin/Plantu/ketingdel','admin/Plantu/ketingdel');
 
 //公司工地
 Route::rule('/admin/plangong/index','admin/plangong/index');//公司 案例列表
