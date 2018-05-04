@@ -107,7 +107,18 @@ Route::rule('/admin/plantu/shufangindex','admin/plantu/shufangindex');//图片�
 Route::rule('/admin/Plantu/shufangadd','admin/Plantu/shufangadd');//图片管理书房添加
 Route::rule('/admin/Plantu/shufangedit','admin/Plantu/shufangedit');//图片管理书房修改
 Route::rule('/admin/Plantu/shufangdel','admin/Plantu/shufangdel');//图片管理书房del
-
+Route::rule('/admin/plantu/shigongindex','admin/plantu/shigongindex');//图片管理施工图
+Route::rule('/admin/Plantu/shigongadd','admin/Plantu/shigongadd');//图片管理施工图添加
+Route::rule('/admin/Plantu/shigongedit','admin/Plantu/shigongedit');//图片管理施工图修改
+Route::rule('/admin/Plantu/shigongdel','admin/Plantu/shigongdel');//图片管理施工图del
+Route::rule('/admin/plantu/cantingindex','admin/plantu/cantingindex');//图片管理餐厅
+Route::rule('/admin/Plantu/cantingadd','admin/Plantu/cantingadd');//图片管理餐厅添加
+Route::rule('/admin/Plantu/cantingedit','admin/Plantu/cantingedit');//图片管理餐厅修改
+Route::rule('/admin/Plantu/cantingdel','admin/Plantu/cantingdel');//图片管理餐厅del
+Route::rule('/admin/plantu/chufangindex','admin/plantu/chufangindex');//图片管理厨房
+Route::rule('/admin/Plantu/chufangadd','admin/Plantu/chufangadd');//图片管理厨房添加
+Route::rule('/admin/Plantu/chufangedit','admin/Plantu/chufangedit');//图片管理厨房修改
+Route::rule('/admin/Plantu/chufangdel','admin/Plantu/chufangdel');//图片管理厨房del
 //公司工地
 Route::rule('/admin/plangong/index','admin/plangong/index');//公司 案例列表
 Route::rule('/admin/plangong/add','admin/plangong/add');//添加
