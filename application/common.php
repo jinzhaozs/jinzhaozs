@@ -78,3 +78,18 @@
         $res = db('city')->where($where)->find();
         return $res['name'];
     }
+    // 设计图总数
+    function countshejitu($planid,$comid){
+        $where['comid'] = $comid;
+        $where['planid'] = $planid;
+        $ct = db('plan_canting')->where($where)->count();//餐厅
+        $cf = db('plan_chufang')->where($where)->count();//厨房
+        $etj = db('plan_ertongjian')->where($where)->count();//儿童间
+        $kt = db('plan_keting')->where($where)->count();//客厅
+        $sf = db('plan_shufang')->where($where)->count();//书房
+        $wsj = db('plan_weishengjian')->where($where)->count();//卫生间
+        $ws = db('plan_wushi')->where($where)->count();//卧室
+        $count = $ct + $cf +$etj + $kt + $sf +$wsj +$ws;
+        // dump($count);
+        return $count;
+    }

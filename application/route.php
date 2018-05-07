@@ -30,6 +30,7 @@ Route::rule('/scjian/lian','shopcom/Jianjie/lian');//简介联系我们
 Route::rule('/scjian/xing','shopcom/Jianjie/xing');//简介服务
 Route::rule('/scjian/article','shopcom/Jianjie/article');//简介文章
 Route::rule('/scanli','shopcom/Anli/index');//案例
+Route::rule('/scanlide/detail','shopcom/Anli/detail');//案例详情
 Route::rule('/scgongdi','shopcom/Gongdi/index');//工地
 Route::rule('/scshejishi','shopcom/Shejishi/index');//设计师
 Route::rule('/shejianjie','shopcom/Shejishi/xiangqing');//设计师

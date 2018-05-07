@@ -49,7 +49,7 @@ class Gongdi extends \app\shopcom\controller\Base
         $plan = db("plan");//方案
         $where['plan.comid'] = $comid;
         
-        $res = $plan->field("plan.id,plan.fname,plan.time,plan.schedule,plan.flogo,plan.procode,plan.citycode,plan.frenyuan,plan.fmianji,plan.fyusuan,plan.ffangshi,lx.lxname as ftype,shop.id as comid,com_layout.lname as fhuxing,com_zhuancfg.zcfgname as ffengge,designer.dname as frenyuan")
+        $res = $plan->field("plan.id,plan.fname,plan.time,plan.schedule,plan.flogo,plan.procode,plan.citycode,plan.frenyuan,plan.fmianji,plan.fyusuan,plan.ffangshi,lx.lxname as ftype,shop.id as comid,com_layout.lname as fhuxing,com_zhuancfg.zcfgname as ffengge,designer.dname as frenyuan,(select count(*) from plan_shigongtu where plan_shigongtu.planid=plan.id and plan_shigongtu.comid =".$comid.") as shigongcount")
         ->join('com_qiyecsleixing lx','plan.ftype = lx.lxcode','left')//类型
         ->join('shop','plan.comid = shop.id','left')//公司
         ->join('com_layout','plan.fhuxing = com_layout.lcode','left')//户型
