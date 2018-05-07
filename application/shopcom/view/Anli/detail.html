@@ -1,0 +1,541 @@
+{extend name="layoutextend"}
+
+{block name="info"}
+<div class="company_header ">
+    <div class="wrapper ">
+        <div class="header-logo ">
+            <a href=" " title="北京今朝装饰设计有限公司 " class="logo ">
+                <img src="__STATIC__/uploads/{$shopcom[0]['logo']}" alt="北京今朝装饰设计有限公司 ">
+            </a>
+            <div class="company_explain ">
+                <h1>
+                    {$shopcom[0]['name']}
+                </h1>
+                <p class="addr ">地址：{$shopcom[0]['dizhi']} <a href=" " class="map "></a></p>
+                <p class="tel ">
+                    <span title="还在抄写地址电话吗？点一下，免费短信发给您 " class="GetMobile ">免费发送至手机</span>
+
+                    <a class="qq " target="_blank " href=" " title="点击这里给北京今朝装饰设计有限公司发消息 ">QQ在线咨询</a>
+                </p>
+            </div>
+        </div>
+        <div class="share ">
+<div class="article-share bdsharebuttonbox bdshare-button-style0-32 " data-bd-bind="1523428678629 ">
+    <span>分享到：</span><a class="bds_qzone " data-cmd="qzone " title="分享到QQ空间 "></a><a class="bds_tsina " data-cmd="tsina " title="分享到新浪微博 "></a><a class="bds_weixin " data-cmd="weixin " title="分享到微信 "></a><a class="bds_tqq " data-cmd="tqq " title="分享到腾讯微博 "></a><a class="bds_sqq " data-cmd="sqq " title="分享到QQ好友 "></a><a class="bds_more " data-cmd="more ">更多</a> <span></span>
+</div>
+        </div>
+    </div>
+</div>
+
+<div class="company_naver ">
+    <div class="wrapper ">
+        <a target="_blank " href="http://www.bzw315.com/zhaobiao/ " title="免费设计与报价 " class="free "><i></i>免费设计与报价</a>
+    </div>
+    <div class="company_naver_nav">
+        <div class="wrapper">
+            <a href="{:url('/shopcom',['comid'=>$shopcom[0]['id']])}" title="首页 "  >首页</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}" class=" " title="装修公司简介 " ><span style="color:#fff;">公司简介</span></a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}" title="装修优惠活动 " class=" ">优惠活动</a>
+            <a href="{:url('/scanli',['comid'=>$shopcom[0]['id']])}" title="装修案例 " class=" ">装修案例</a>
+            <a href="{:url('/scgongdi',['comid'=>$shopcom[0]['id']])}" title="施工工地 " class="active ">施工工地</a>
+            <a href="{:url('/scshejishi',['comid'=>$shopcom[0]['id']])} " title="装修设计团队 " class=" ">设计团队</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])} " title="装修服务点评 " class=" ">服务点评</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])} " title="装修公司资讯 " class=" ">公司资讯</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}" title="联系我们 " class=" ">联系我们</a>
+        </div>
+    </div>
+</div>
+
+<div class="main ">
+    <div class="wrapper ">
+        <!-- 内容区域 -->
+        <div class="banner_text ">
+            <!-- 开始 -->
+            <link rel="stylesheet" type="text/css" href="__STATIC__/shopcom/fangan/shejixiangqing.css">
+                <div  id="all">
+        <div class="weizhi">
+                <span>{$res.comname}</span><span>></span><span>装修工地</span><span>></span>
+                <span>{$res.fname}</span>
+        </div>
+        <div class="newhome">
+                <div class="img">
+                <a href=""><img src="__STATIC__/shopcom/fangan/image/zhuangxiu.jpg"></a>
+                         </div> 
+                         <div class="jieduan">
+                            <h3>{$res.fname}</h3>
+                            <span><img src="__STATIC__/shopcom/fangan/image/xinjia.jpg"></span>
+                            <div class="xinxi">
+                                <span>{$res.procode|prodoname=###}</span>
+                                <span>{$res.citycode|citydoname=###}</span>
+                                <span>{$res.fyusuan}万</span>
+                                <span>{$res.ffengge}</span>
+                                <span>{$res.fmianji}m²</span>
+                                <span>工期：</span>
+                                <span>{$res.time|timezhuanghuaduan=###}</span>
+                            </div>
+                             <div class="jindu">
+                                <!-- 判断属于哪个阶段 -->
+                                {switch name="$res.schedule"}
+                                    {case value="1"}
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                        <ul>
+                                            <li style="color:#01af63;font-weight: bold;">准备开工</li>
+                                            <li >水电阶段</li>
+                                            <li>泥木阶段</li>
+                                            <li>油漆阶段</li>
+                                            <li>竣工阶段</li>
+                                        </ul>
+                                    {/case}
+                                    {case value="2"}
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                        <ul>
+                                            <li style="color:#01af63;font-weight: bold;">准备开工</li>
+                                            <li style="color:#01af63;font-weight: bold;">水电阶段</li>
+                                            <li>泥木阶段</li>
+                                            <li>油漆阶段</li>
+                                            <li>竣工阶段</li>
+                                        </ul>
+                                    {/case}
+                                    {case value="3"}
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                        <ul>
+                                            <li style="color:#01af63;font-weight: bold;">准备开工</li>
+                                            <li style="color:#01af63;font-weight: bold;">水电阶段</li>
+                                            <li style="color:#01af63;font-weight: bold;">泥木阶段</li>
+                                            <li>油漆阶段</li>
+                                            <li>竣工阶段</li>
+                                        </ul>
+                                    {/case}
+                                    {case value="4"}
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                        <ul>
+                                            <li style="color:#01af63;font-weight: bold;">准备开工</li>
+                                            <li style="color:#01af63;font-weight: bold;">水电阶段</li>
+                                            <li style="color:#01af63;font-weight: bold;">泥木阶段</li>
+                                            <li style="color:#01af63;font-weight: bold;">油漆阶段</li>
+                                            <li>竣工阶段</li>
+                                        </ul>
+                                    {/case}
+                                    {case value="5"}
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                        <ul>
+                                            <li style="color:#01af63;font-weight: bold;">准备开工</li>
+                                            <li style="color:#01af63;font-weight: bold;">水电阶段</li>
+                                            <li style="color:#01af63;font-weight: bold;">泥木阶段</li>
+                                            <li style="color:#01af63;font-weight: bold;">油漆阶段</li>
+                                            <li style="color:#01af63;font-weight: bold;">竣工阶段</li>
+                                        </ul>
+                                    {/case}
+                                    {default /}
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/quan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                        <span><img src="__STATIC__/shopcom/gongdi/image/baiquan.jpg"></span>
+                                        <ul>
+                                            <li>准备开工</li>
+                                            <li style="color:#01af63;font-weight: bold;">水电阶段</li>
+                                            <li>泥木阶段</li>
+                                            <li>油漆阶段</li>
+                                            <li>竣工阶段</li>
+                                        </ul>
+                                {/switch}
+                        <div class="yuyue">
+                                            免费预约参观
+                                        </div>
+                                      </div>    
+                         </div>
+            </div> 
+            <div class="nav-list" id="navList">
+                <span class="active-do ">设计方案</span>
+                <span>施工案例</span>
+                <span>业主点评</span>
+            </div>
+            <div class="navContent">
+                <div class="det">
+                    <div class="teacher">
+                        <div class="tu">
+                            <img src="__STATIC__/uploads/{$res.sjslogo}"> 
+                            <p><span>{$res.frenyuan}&nbsp</span><span>设计灵感</span></p>
+                            <p class="ganyan" style="color: #666;font-family: 微软雅黑;">{$res.idea}</p>
+                            <h3>效果图</h3>
+                            <div class="xu">
+                                     <img src="__STATIC__/shopcom/fangan/image/xu.jpg"> 
+                            </div>
+                        </div>
+                    </div>
+                    
+                        {if condition="$ct neq '1'"}
+                     <div class="feng-ge"><h1>餐厅</h1></div>
+                            {foreach name="$ct" item="voct"}
+                            <div class="style-show">
+                                <div class="kuang">
+                                   <img src="__STATIC__/uploads/{$voct.logo}">
+                                            <p><span>【餐厅】&nbsp</span><span>{$voct.text}</span></p>
+                                </div>
+                            </div>
+                                {/foreach}
+                        {else /}
+                        {/if}
+
+                    
+                   
+                    <div class="about">
+                        <p class="gongdi">相关工地</p>
+                            <div class="newhomemin">
+                                <div class="img">
+                                    <a href=""><img src="__STATIC__/shopcom/fangan/image/zhuangxiu.jpg"></a>
+                                </div> 
+                                               <div class="jieduanmin">
+                                                   <p class="xinmin">张先生新家</p>
+                                                    <span><img src="__STATIC__/shopcom/fangan/image/xinjia.jpg"></span>
+                                            <div class="xinximin">
+                                                <span>北京</span>
+                                                <span>石佛营西里</span>
+                                                <span>2万</span>
+                                        <span>半包</span>
+                                                <span>38m²</span>
+                                                <span>美式</span>
+                                                
+                                            </div>
+                                                  <div class="shujumin">
+                                                    <ul>
+                                                        <li>
+                                                            <p>设计图</p>
+                                                            <span>3</span>
+                                                        </li>
+                                                        <li>
+                                                            <p>施工图</p>
+                                                            <span>0</span>
+                                                        </li>
+                                                        <li>
+                                                            <p>装修日记</p>
+                                                            <span>0</span>
+                                                        </li>
+                                                        <li>
+                                                            <p>业主评价</p>
+                                                            <span>2</span>
+                                                        </li>
+                                                    </ul>
+                                                    
+                                                  </div>
+                                     </div>
+                                  </div> 
+                                  <div class="newhomemin">
+                                <div class="img">
+                                <a href=""><img src="__STATIC__/shopcom/fangan/image/zhuangxiu.jpg"></a>
+                                        </div> 
+                                     <div class="jieduanmin">
+                                        <p class="xinmin">张先生新家</p>
+                                        <span><img src="__STATIC__/shopcom/fangan/image/xinjia.jpg"></span>
+                                        <div class="xinximin">
+                                            <span>北京</span>
+                                            <span>石佛营西里</span>
+                                            <span>2万</span>
+                                    <span>半包</span>
+                                            <span>38m²</span>
+                                            <span>美式</span>
+                                            
+                                        </div>
+                                                  <div class="shujumin">
+                                                    <ul>
+                                                        <li>
+                                                            <p>设计图</p>
+                                                            <span>3</span>
+                                                        </li>
+                                                        <li>
+                                                            <p>施工图</p>
+                                                            <span>0</span>
+                                                        </li>
+                                                        <li>
+                                                            <p>装修日记</p>
+                                                            <span>0</span>
+                                                        </li>
+                                                        <li>
+                                                            <p>业主评价</p>
+                                                            <span>2</span>
+                                                        </li>
+                                                    </ul>
+                                                    
+                                                  </div>
+                                     </div>
+                        </div> 
+
+
+                    </div>
+                
+                </div>
+                <div class="det">
+                    <div class="anli">
+                        <img src="__STATIC__/shopcom/fangan/image/kaigong.jpg">
+                        <p><span>签约合同</span></p>
+                        <div class="zhunbei">
+                        <img src="__STATIC__/shopcom/fangan/image/quan.jpg">
+                        准备阶段
+                                 </div>
+                    </div>
+                    
+                    <div class="newhomemin">
+                                <div class="img">
+                                <a href=""><img src="__STATIC__/shopcom/fangan/image/zhuangxiu.jpg"></a>
+                                        </div> 
+                                     <div class="jieduanmin">
+                                        <p class="xinmin">张先生新家</p>
+                                        <span><img src="__STATIC__/shopcom/fangan/image/xinjia.jpg"></span>
+                                        <div class="xinximin">
+                                            <span>北京</span>
+                                            <span>石佛营西里</span>
+                                            <span>2万</span>
+                                    <span>半包</span>
+                                            <span>38m²</span>
+                                            <span>美式</span>
+                                            
+                                        </div>
+                                                  <div class="shujumin">
+                                                    <ul>
+                                                        <li>
+                                                            <p>设计图</p>
+                                                            <span>3</span>
+                                                        </li>
+                                                        <li>
+                                                            <p>施工图</p>
+                                                            <span>0</span>
+                                                        </li>
+                                                        <li>
+                                                            <p>装修日记</p>
+                                                            <span>0</span>
+                                                        </li>
+                                                        <li>
+                                                            <p>业主评价</p>
+                                                            <span>2</span>
+                                                        </li>
+                                                    </ul>
+                                                    
+                                                  </div>
+                                     </div>
+                        </div> 
+                                      <div class="newhomemin">
+                                <div class="img">
+                                <a href=""><img src="__STATIC__/shopcom/fangan/image/zhuangxiu.jpg"></a>
+                                        </div> 
+                                     <div class="jieduanmin">
+                                        <p class="xinmin">张先生新家</p>
+                                        <span><img src="__STATIC__/shopcom/fangan/image/xinjia.jpg"></span>
+                                        <div class="xinximin">
+                                            <span>北京</span>
+                                            <span>石佛营西里</span>
+                                            <span>2万</span>
+                                    <span>半包</span>
+                                            <span>38m²</span>
+                                            <span>美式</span>
+                                            
+                                        </div>
+                                                  <div class="shujumin">
+                                                    <ul>
+                                                        <li>
+                                                            <p>设计图</p>
+                                                            <span>3</span>
+                                                        </li>
+                                                        <li>
+                                                            <p>施工图</p>
+                                                            <span>0</span>
+                                                        </li>
+                                                        <li>
+                                                            <p>装修日记</p>
+                                                            <span>0</span>
+                                                        </li>
+                                                        <li>
+                                                            <p>业主评价</p>
+                                                            <span>2</span>
+                                                        </li>
+                                                    </ul>
+                                                    
+                                                  </div>
+                                     </div>
+                        </div> 
+                </div>
+                <div class="det">
+                    <div class="dianping">
+                        <div class="left-kai">
+                            <img src="__STATIC__/shopcom/fangan/image/kaigong.jpg">
+                        </div>
+                        <div class="right-ping">
+                            <div class="stars">
+                                    <span>设计：</span><span>5  &nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span>
+                                    <span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span>&nbsp&nbsp&nbsp
+                                    <span>服务：</span><span>5  &nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span>
+                                    <span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span>
+                            </div>
+                            
+                            <div class="time">
+                                <p>总体来说还不错，看看下一阶段水电改造的效果</p>
+                                <span>2017-04-25 </span><span>11:07:46</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dianping">
+                        <div class="left-kai">
+                            <img src="__STATIC__/shopcom/fangan/image/kaigong.jpg">
+                        </div>
+                        <div class="right-ping">
+                            <div class="stars">
+                                    <span>设计：</span><span>5  &nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span>
+                                    <span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span>&nbsp&nbsp&nbsp
+                                    <span>服务：</span><span>5  &nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span>
+                                    <span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span>
+                            </div>
+                            
+                            <div class="time">
+                                <p>总体来说还不错，看看下一阶段水电改造的效果</p>
+                                <span>2017-04-25 </span><span>11:07:46</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dianping">
+                        <div class="left-kai">
+                            <img src="__STATIC__/shopcom/fangan/image/kaigong.jpg">
+                        </div>
+                        <div class="right-ping">
+                            <div class="stars">
+                                    <span>设计：</span><span>5  &nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span>
+                                    <span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span>&nbsp&nbsp&nbsp
+                                    <span>服务：</span><span>5  &nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span>
+                                    <span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span><span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp</span>
+                            </div>
+                            
+                            <div class="time">
+                                <p>总体来说还不错，看看下一阶段水电改造的效果</p>
+                                <span>2017-04-25 </span><span>11:07:46</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chack">
+                        <p>查看全部业主对北京泰峰伟业装饰设计有限公司的评价</p>
+                    </div>
+                     <div class="newhomemin">
+                                <div class="img">
+                                <a href=""><img src="__STATIC__/shopcom/fangan/image/zhuangxiu.jpg"></a>
+                                        </div> 
+                                     <div class="jieduanmin">
+                                        <p class="xinmin">张先生新家</p>
+                                        <span><img src="__STATIC__/shopcom/fangan/image/xinjia.jpg"></span>
+                                        <div class="xinximin">
+                                            <span>北京</span>
+                                            <span>石佛营西里</span>
+                                            <span>2万</span>
+                                    <span>半包</span>
+                                            <span>38m²</span>
+                                            <span>美式</span>
+                                            <span></span>
+                                            
+                                        </div>
+                                                  <div class="shujumin">
+                                                    <ul>
+                                                        <li>
+                                                            <p>设计图</p>
+                                                            <span>3</span>
+                                                        </li>
+                                                        <li>
+                                                            <p>施工图</p>
+                                                            <span>0</span>
+                                                        </li>
+                                                        <li>
+                                                            <p>装修日记</p>
+                                                            <span>0</span>
+                                                        </li>
+                                                        <li>
+                                                            <p>业主评价</p>
+                                                            <span>2</span>
+                                                        </li>
+                                                    </ul>
+                                                    
+                                                  </div>
+                                     </div>
+                        </div> 
+                         <div class="newhomemin">
+                            <div class="img">
+                                <a href=""><img src="__STATIC__/shopcom/fangan/image/zhuangxiu.jpg"></a>
+                            </div> 
+                                     <div class="jieduanmin">
+                                        <p class="xinmin">张先生新家</p>
+                                        <span><img src="__STATIC__/shopcom/fangan/image/xinjia.jpg"></span>
+                                        <div class="xinximin">
+                                            <span>北京</span>
+                                            <span>石佛营西里</span>
+                                            <span>2万</span>
+                                    <span>半包</span>
+                                            <span>38m²</span>
+                                            <span>美式</span>
+                                            
+                                        </div>
+                                                  <div class="shujumin">
+                                                    <ul>
+                                                        <li>
+                                                            <p>设计图</p>
+                                                            <span>3</span>
+                                                        </li>
+                                                        <li>
+                                                            <p>施工图</p>
+                                                            <span>0</span>
+                                                        </li>
+                                                        <li>
+                                                            <p>装修日记</p>
+                                                            <span>0</span>
+                                                        </li>
+                                                        <li>
+                                                            <p>业主评价</p>
+                                                            <span>2</span>
+                                                        </li>
+                                                    </ul>
+                                                    
+                                                  </div>
+                                     </div>
+                        </div> 
+                </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    $(function () {
+                 $(".navContent .det").eq(0).show();// 默认第一个显示
+            $("#navList>span").click(function () {
+            $(this).addClass("active-do").siblings().removeClass("active-do");
+            var index = $(this).index();  // 获取对应下标
+            $(".navContent .det").eq(index).show().siblings().hide();
+         })
+    })
+
+    </script>
+             <!-- 结束 -->
+
+        </div>
+    </div>
+</div>
+
+
+
+<!--右侧弹出层结束-->
+
+                
+
+{/block}

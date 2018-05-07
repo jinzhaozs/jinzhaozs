@@ -69,6 +69,94 @@ class Anli extends \app\shopcom\controller\Base
         $this->assign("comid",$comid);//商家信息id
         return $this->fetch();
     }
+    //详情
+    public function detail(){
+        /**
+         * 获取商家信息
+         */
+       //获取商家id
+        $comid = input('comid');
+        $whereshangjia['id'] = $comid;
+        $shopcom = $this->uri("shop",$whereshangjia);
+        // dump($shopcom);
+        $this->assign("shopcom",$shopcom);//商家信息
+        /**
+         * 案例信息
+         */
+        $planid = input('planid');
+        $plan = db("plan");//方案
+        $where['plan.comid'] = $comid;
+        $where['plan.id'] = $planid;
+        $res = $plan->field("plan.id,plan.fname,plan.time,plan.schedule,plan.flogo,plan.procode,plan.citycode,plan.frenyuan,plan.fmianji,plan.fyusuan,plan.ffangshi,lx.lxname as ftype,shop.id as comid,shop.name as comname,com_layout.lname as fhuxing,com_zhuancfg.zcfgname as ffengge,designer.dname as frenyuan,designer.davatar as sjslogo,designer.idea as idea")
+        ->join('com_qiyecsleixing lx','plan.ftype = lx.lxcode','left')//类型
+        ->join('shop','plan.comid = shop.id','left')//公司
+        ->join('com_layout','plan.fhuxing = com_layout.lcode','left')//户型
+        ->join('com_zhuancfg','plan.ffengge = com_zhuancfg.zcfgcode','left')//风格
+        ->join('designer','plan.frenyuan = designer.id','left')//设计师
+        ->order("plan.id")
+        ->where($where)
+        ->find();  
+        /**
+         * 图片信息
+         * {if condition="$ct neq '1'"}
+                            {foreach name="$ct" item="voct"}
+                        <div class="style-show">
+                            <h1>餐厅</h1>
+                            <div class="kuang">
+                                <img src="__STATIC__/uploads/{$voct.logo}">
+                                <p><span>【餐厅】&nbsp</span><span>{$voct.text}</span></p>
+                            </div>
+                            <br>
+                        </div>
+                            {/foreach}
+                    {else /}
+                    {/if}
+         */
+        $wheretp['comid'] = $comid;
+        $wheretp['planid'] = $planid;
+        $ct = db('plan_canting')->where($wheretp)->select();//餐厅
+        $cf = db('plan_chufang')->where($wheretp)->select();//厨房
+        $etj = db('plan_ertongjian')->where($wheretp)->select();//儿童间
+        $kt = db('plan_keting')->where($wheretp)->select();//客厅
+        $sf = db('plan_shufang')->where($wheretp)->select();//书房
+        $wsj = db('plan_weishengjian')->where($wheretp)->select();//卫生间
+        $ws = db('plan_wushi')->where($wheretp)->select();//卧室
+        if (empty($ct)) {
+            $ct = 1;
+        }
+        if (empty($cf)) {
+            $cf = 1;
+        }
+        if (empty($etj)) {
+            $etj = 1;
+        }
+        if (empty($etj)) {
+            $etj = 1;
+        }
+        if (empty($kt)) {
+            $kt = 1;
+        }
+        if (empty($sf)) {
+            $sf = 1;
+        }
+        if (empty($wsj)) {
+            $wsj = 1;
+        }
+        if (empty($ws)) {
+            $ws = 1;
+        }
+        // dump($ct);
+
+        $this->assign("res",$res);
+        $this->assign("ct",$ct);
+        $this->assign("cf",$cf);
+        $this->assign("etj",$etj);
+        $this->assign("kt",$kt);
+        $this->assign("sf",$sf);
+        $this->assign("wsj",$wsj);
+        $this->assign("ws",$ws);
+        return $this->fetch();
+    }
     //测试
     public function aa(){
         return $this->fetch();
