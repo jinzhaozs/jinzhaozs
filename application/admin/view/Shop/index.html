@@ -120,33 +120,33 @@
 		<h1 style="text-align: center;">公司管理</h1>
 <button class="btn" style="margin-top: -5%;" id="showModel">添加公司</button> 
  		<form class="well form-search" method="post" action="{:url('/admin/shop/index')}">
-			<div class="search_type cc mb10" style="margin-top: -4%;margin-left: 60%;">
+			<div class="search_type cc mb10" style="margin-top: -4%;margin-left: 58%;">
 					<span class="mr20">
 
-						 <input type="hidden" id="province" value="{$proc}">
-						<input type="hidden" id="city" value="{$city}">
-						<input type="hidden" id="area" value="{$area}">
+						 <input type="hidden" id="provinces" value="{$proc}">
+						<input type="hidden" id="citys" value="{$city}">
+						<input type="hidden" id="areas" value="{$area}">
 						<input type="text" name="keyword" style="width: 160px;" value="{$name}" placeholder="请输入关键字...">
 						
-							<select id="province2" name="procode1">
+							<select id="provinces2" name="procode1" style="width: 15%">
 								<option value='0' >请选则省</option>
 									{foreach name="pr" item="ce"}
 										<option value='{$ce.code}'>{$ce.name}</option>
 									{/foreach}
 										</select>
 											<span id="citySpan">
-												<select id="city2" name="citycode">
+												<select id="citys2" name="citycode" style="width: 20%">
 													<option value="0">请选则市</option>
 												</select>
 											</span>
 											<span id="areaSpan">
-												<select id="area2" name="areacode">
-													<option value="0">请选则区</option>
+												<select id="areas2" name="areacode" style="width: 15%">
+													<option value="0">县/区</option>
 												</select>
 											</span>
 					
 						<script type="text/javascript">
-							$("#province2").change(function(){
+							$("#provinces2").change(function(){
 								var provinceid=$(this).val();
 								
 								$.ajax({
@@ -161,12 +161,12 @@
 								                $(city).each(function(i,dom){
 								                    str += "<option value="+dom['code']+">"+dom['name']+"</option>";
 								                });
-								                $("#city2").html(str);
-								                 $("#area2").html('<option value="0">县/市</option>');
+								                $("#citys2").html(str);
+								                 $("#areas2").html('<option value="0">县/市</option>');
 								            }
 								        })
 							});
-							$("#city2").change(function(){
+							$("#citys2").change(function(){
 								 var city=$(this).val();
 
 							        $.ajax({
@@ -182,16 +182,16 @@
 							                 
 							                    
 							                 });
-							                 $("#area2").html(str);
+							                 $("#areas2").html(str);
 							            }
 							         })
 							});
 
 						</script>
 						 <script>
-                          	var province=$("#province").val();
-                          	var city=$("#city").val();
-                          	var area=$("#area").val();
+                          	var province=$("#provinces").val();
+                          	var city=$("#citys").val();
+                          	var area=$("#areas").val();
                           	 $("#province2").find('option[value="'+ province+'"]').attr("selected",true);
                           	  $.ajax({
 							            type:"post",
@@ -409,31 +409,24 @@
 						</td>
 						<script type="text/javascript">
 							$("#province").change(function(){
-								var provinceid=$(this).val();
-								$("#city").empty();
-								$("#area").empty();
-								$("#city").append("<option value="+0+">请选则市</option>");
-								$("#area").append("<option value="+0+">请选则区</option>"); 
-	            					 	  
-								$.ajax({
-	             					type:"post",
-	            					dataType:'json',
-	            					async:false,
-	            					url:'{:url("admin/Ajaxssq/ajaxcity")}',
-	            					data:{"provinceid":provinceid},
-	            					 success:function(city){ 
-	            					 	
-	            					 	 $(city).each(function (i,dom){
-	            					 	 		 
-	            					 	 		$("#city").append("<option value="+dom['code']+">"+dom['name']+"</option>"); 
-	            					 	 
-	            					 	 	
-	            					 	 });
-	            					 	 //console.log(city);
-	            					 	 
- 										}
- 								 })
-							});
+								        var provinceid=$(this).val();
+								        $.ajax({
+								            type:"post",
+								            dataType:'json',
+								            async:false,
+								            url:'{:url("admin/Ajaxssq/ajaxcity")}',
+								            data:{"provinceid":provinceid},
+								            success:function(city){
+								                // console.log(city); 
+								                var str = '<option value="0">市/地区</option>';
+								                $(city).each(function(i,dom){
+								                    str += "<option value="+dom['code']+">"+dom['name']+"</option>";
+								                });
+								                $("#city").html(str);
+								                 $("#area").html('<option value="0">县/市</option>');
+								            }
+								        })
+								    });
 							$("#city").change(function(){
 								var city=$(this).val();
 								$("#area").empty();
