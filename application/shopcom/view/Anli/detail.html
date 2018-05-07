@@ -184,116 +184,211 @@
                             </div>
                         </div>
                     </div>
-                    
-                        {if condition="$ct neq '1'"}
-                     <div class="feng-ge"><h1>餐厅</h1></div>
-                            {foreach name="$ct" item="voct"}
-                            <div class="style-show">
-                                <div class="kuang">
-                                   <img src="__STATIC__/uploads/{$voct.logo}">
-                                            <p><span>【餐厅】&nbsp</span><span>{$voct.text}</span></p>
-                                </div>
+                    <!-- 餐厅 -->
+                    {if condition="$ct neq '1'"}
+                        <div class="feng-ge"><h1>餐厅</h1></div>
+                        {foreach name="$ct" item="voct"}
+                        <div class="style-show">
+                            <div class="kuang">
+                               <img src="__STATIC__/uploads/{$voct.logo}">
+                                    <p><span>【餐厅】&nbsp</span><span>{$voct.text}</span></p>
                             </div>
-                                {/foreach}
-                        {else /}
-                        {/if}
+                        </div>
+                        {/foreach}
+                    {else /}
+                    {/if}
+                    <!-- 厨房 -->
+                    {if condition="$cf neq '1'"}
+                        <div class="feng-ge"><h1>厨房</h1></div>
+                        {foreach name="$cf" item="vocf"}
+                        <div class="style-show">
+                            <div class="kuang">
+                               <img src="__STATIC__/uploads/{$vocf.logo}">
+                                    <p><span>【厨房】&nbsp</span><span>{$vocf.text}</span></p>
+                            </div>
+                        </div>
+                        {/foreach}
+                    {else /}
+                    {/if}
+                    <!-- 儿童间 -->
+                    {if condition="$etj neq '1'"}
+                        <div class="feng-ge"><h1>儿童间</h1></div>
+                        {foreach name="$etj" item="voetj"}
+                        <div class="style-show">
+                            <div class="kuang">
+                               <img src="__STATIC__/uploads/{$voetj.logo}">
+                                    <p><span>【儿童间】&nbsp</span><span>{$voetj.text}</span></p>
+                            </div>
+                        </div>
+                        {/foreach}
+                    {else /}
+                    {/if}
+                    <!-- 客厅 -->
+                    {if condition="$kt neq '1'"}
+                        <div class="feng-ge"><h1>客厅</h1></div>
+                        {foreach name="$kt" item="vokt"}
+                        <div class="style-show">
+                            <div class="kuang">
+                               <img src="__STATIC__/uploads/{$vokt.logo}">
+                                    <p><span>【客厅】&nbsp</span><span>{$vokt.text}</span></p>
+                            </div>
+                        </div>
+                        {/foreach}
+                    {else /}
+                    {/if}
+                    <!-- 书房 -->
+                    {if condition="$sf neq '1'"}
+                        <div class="feng-ge"><h1>书房</h1></div>
+                        {foreach name="$sf" item="vosf"}
+                        <div class="style-show">
+                            <div class="kuang">
+                               <img src="__STATIC__/uploads/{$vosf.logo}">
+                                    <p><span>【书房】&nbsp</span><span>{$vosf.text}</span></p>
+                            </div>
+                        </div>
+                        {/foreach}
+                    {else /}
+                    {/if}
+                    <!-- 卫生间 -->
+                    {if condition="$wsj neq '1'"}
+                        <div class="feng-ge"><h1>卫生间</h1></div>
+                        {foreach name="$wsj" item="vowsj"}
+                        <div class="style-show">
+                            <div class="kuang">
+                               <img src="__STATIC__/uploads/{$vowsj.logo}">
+                                    <p><span>【卫生间】&nbsp</span><span>{$vowsj.text}</span></p>
+                            </div>
+                        </div>
+                        {/foreach}
+                    {else /}
+                    {/if}
+                    <!-- 卧室 -->
+                    {if condition="$ws neq '1'"}
+                        <div class="feng-ge"><h1>卧室</h1></div>
+                        {foreach name="$ws" item="vows"}
+                        <div class="style-show">
+                            <div class="kuang">
+                               <img src="__STATIC__/uploads/{$vows.logo}">
+                                    <p><span>【卧室】&nbsp</span><span>{$vows.text}</span></p>
+                            </div>
+                        </div>
+                        {/foreach}
+                    {else /}
+                    {/if}
 
-                    
-                   
+
                     <div class="about">
                         <p class="gongdi">相关工地</p>
+                        {foreach name="resxggd" item="voresxggd"}
                             <div class="newhomemin">
                                 <div class="img">
-                                    <a href=""><img src="__STATIC__/shopcom/fangan/image/zhuangxiu.jpg"></a>
-                                </div> 
-                                               <div class="jieduanmin">
-                                                   <p class="xinmin">张先生新家</p>
-                                                    <span><img src="__STATIC__/shopcom/fangan/image/xinjia.jpg"></span>
-                                            <div class="xinximin">
-                                                <span>北京</span>
-                                                <span>石佛营西里</span>
-                                                <span>2万</span>
-                                        <span>半包</span>
-                                                <span>38m²</span>
-                                                <span>美式</span>
-                                                
-                                            </div>
-                                                  <div class="shujumin">
-                                                    <ul>
-                                                        <li>
-                                                            <p>设计图</p>
-                                                            <span>3</span>
-                                                        </li>
-                                                        <li>
-                                                            <p>施工图</p>
-                                                            <span>0</span>
-                                                        </li>
-                                                        <li>
-                                                            <p>装修日记</p>
-                                                            <span>0</span>
-                                                        </li>
-                                                        <li>
-                                                            <p>业主评价</p>
-                                                            <span>2</span>
-                                                        </li>
-                                                    </ul>
-                                                    
-                                                  </div>
-                                     </div>
-                                  </div> 
-                                  <div class="newhomemin">
-                                <div class="img">
-                                <a href=""><img src="__STATIC__/shopcom/fangan/image/zhuangxiu.jpg"></a>
-                                        </div> 
-                                     <div class="jieduanmin">
-                                        <p class="xinmin">张先生新家</p>
-                                        <span><img src="__STATIC__/shopcom/fangan/image/xinjia.jpg"></span>
-                                        <div class="xinximin">
-                                            <span>北京</span>
-                                            <span>石佛营西里</span>
-                                            <span>2万</span>
-                                    <span>半包</span>
-                                            <span>38m²</span>
-                                            <span>美式</span>
-                                            
-                                        </div>
-                                                  <div class="shujumin">
-                                                    <ul>
-                                                        <li>
-                                                            <p>设计图</p>
-                                                            <span>3</span>
-                                                        </li>
-                                                        <li>
-                                                            <p>施工图</p>
-                                                            <span>0</span>
-                                                        </li>
-                                                        <li>
-                                                            <p>装修日记</p>
-                                                            <span>0</span>
-                                                        </li>
-                                                        <li>
-                                                            <p>业主评价</p>
-                                                            <span>2</span>
-                                                        </li>
-                                                    </ul>
-                                                    
-                                                  </div>
-                                     </div>
-                        </div> 
-
+                                    <a href=""><img src="__STATIC__/uploads/{$voresxggd.flogo}"></a>
+                                </div>
+                                <div class="jieduanmin">
+                                    <p class="xinmin">
+                                        {$voresxggd.fname}
+                                    </p>
+                                    <span><img src="__STATIC__/shopcom/fangan/image/xinjia.jpg"></span>
+                                    <div class="xinximin">
+                                        <!-- 省转换 -->
+                                        <span>{$voresxggd.procode|prodoname=###}</span>
+                                        <span>{$voresxggd.citycode|citydoname=###}</span>
+                                        <span>{$voresxggd.fyusuan}万</span>
+                                        <span>{$voresxggd.ffengge}</span>
+                                        <span>{$voresxggd.fmianji}m²</span>
+                                        <span>工期：</span>
+                                        <span>{$voresxggd.time|timezhuanghuaduan=###}</span>
+                                    </div>
+                                    <div class="shujumin">
+                                        <ul>
+                                            <li>
+                                            <p>
+                                                设计图
+                                            </p>
+                                            <span> 
+                                            <!-- 设计图调用方法 -->
+                                    {$voresxggd.id|countshejitu=###,$comid}</span>
+                                            </li>
+                                            <li>
+                                            <p>
+                                                施工图
+                                            </p>
+                                            <span>{$voresxggd.shigongcount}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        {/foreach}
 
                     </div>
                 
                 </div>
                 <div class="det">
-                    <div class="anli">
-                        <img src="__STATIC__/shopcom/fangan/image/kaigong.jpg">
-                        <p><span>签约合同</span></p>
-                        <div class="zhunbei">
-                        <img src="__STATIC__/shopcom/fangan/image/quan.jpg">
-                        准备阶段
-                                 </div>
-                    </div>
+                    <!-- 施工阶段 -->
+                    <!-- 判断属于哪个阶段 -->
+                                {switch name="$res.schedule"}
+                                    {case value="1"}
+                                        <div class="anli">
+                                            <img src="__STATIC__/shopcom/fangan/image/kaigong1.jpg">
+                                            <p><span>签约合同</span></p>
+                                            <div class="zhunbei">
+                                            <img src="__STATIC__/shopcom/fangan/image/quan.jpg">
+                                            准备阶段
+                                            </div>
+                                        </div>
+                                    {/case}
+                                    {case value="2"}
+                                        <div class="anli">
+                                            <img src="__STATIC__/shopcom/fangan/image/kaigong2.jpg">
+                                            <p><span>签约合同</span></p>
+                                            <div class="zhunbei">
+                                            <img src="__STATIC__/shopcom/fangan/image/quan.jpg">
+                                            水电阶段
+                                            </div>
+                                        </div>
+                                    {/case}
+                                    {case value="3"}
+                                        <div class="anli">
+                                            <img src="__STATIC__/shopcom/fangan/image/kaigong3.jpg">
+                                            <p><span>签约合同</span></p>
+                                            <div class="zhunbei">
+                                            <img src="__STATIC__/shopcom/fangan/image/quan.jpg">
+                                            泥木阶段
+                                            </div>
+                                        </div>
+                                    {/case}
+                                    {case value="4"}
+                                        <div class="anli">
+                                            <img src="__STATIC__/shopcom/fangan/image/kaigong4.jpg">
+                                            <p><span>签约合同</span></p>
+                                            <div class="zhunbei">
+                                            <img src="__STATIC__/shopcom/fangan/image/quan.jpg">
+                                            油漆阶段
+                                            </div>
+                                        </div>
+                                    {/case}
+                                    {case value="5"}
+                                        <div class="anli">
+                                            <img src="__STATIC__/shopcom/fangan/image/kaigong5.jpg">
+                                            <p><span>签约合同</span></p>
+                                            <div class="zhunbei">
+                                            <img src="__STATIC__/shopcom/fangan/image/quan.jpg">
+                                            竣工阶段
+                                            </div>
+                                        </div>
+                                    {/case}
+                                    {default /}
+                                    <div class="anli">
+                                            <img src="__STATIC__/shopcom/fangan/image/kaigong1.jpg">
+                                            <p><span>签约合同</span></p>
+                                            <div class="zhunbei">
+                                            <img src="__STATIC__/shopcom/fangan/image/quan.jpg">
+                                            准备阶段
+                                            </div>
+                                        </div>
+                                {/switch}
+                    
                     
                     <div class="newhomemin">
                                 <div class="img">

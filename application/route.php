@@ -103,6 +103,7 @@ Route::rule('/admin/plan/ajaxtpguanli','admin/plan/ajaxtpguanli');//图片管理
 Route::rule('/admin/plan/edit','admin/plan/edit');//修改
 Route::rule('/admin/Plan/tupianguanli','admin/Plan/tupianguanli');//图片管理修改
 Route::rule('/admin/plan/delete','admin/plan/delete');//删除
+
 //案例图片管理
 //书房
 Route::rule('/admin/plantu/shufangindex','admin/plantu/shufangindex');//图片管理书房

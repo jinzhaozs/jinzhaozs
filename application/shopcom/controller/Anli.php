@@ -76,6 +76,7 @@ class Anli extends \app\shopcom\controller\Base
          */
        //获取商家id
         $comid = input('comid');
+        $this->assign("comid",$comid);
         $whereshangjia['id'] = $comid;
         $shopcom = $this->uri("shop",$whereshangjia);
         // dump($shopcom);
@@ -87,7 +88,7 @@ class Anli extends \app\shopcom\controller\Base
         $plan = db("plan");//方案
         $where['plan.comid'] = $comid;
         $where['plan.id'] = $planid;
-        $res = $plan->field("plan.id,plan.fname,plan.time,plan.schedule,plan.flogo,plan.procode,plan.citycode,plan.frenyuan,plan.fmianji,plan.fyusuan,plan.ffangshi,lx.lxname as ftype,shop.id as comid,shop.name as comname,com_layout.lname as fhuxing,com_zhuancfg.zcfgname as ffengge,designer.dname as frenyuan,designer.davatar as sjslogo,designer.idea as idea")
+        $res = $plan->field("plan.id,plan.fname,plan.time,plan.schedule,plan.flogo,plan.procode,plan.citycode,plan.frenyuan,plan.fmianji,plan.fyusuan,plan.ffangshi,lx.lxname as ftype,shop.id as comid,shop.name as comname,com_layout.lname as fhuxing,com_zhuancfg.zcfgname as ffengge,designer.dname as frenyuan,designer.davatar as sjslogo,designer.idea as idea,designer.id as sjsid")
         ->join('com_qiyecsleixing lx','plan.ftype = lx.lxcode','left')//类型
         ->join('shop','plan.comid = shop.id','left')//公司
         ->join('com_layout','plan.fhuxing = com_layout.lcode','left')//户型
@@ -96,22 +97,7 @@ class Anli extends \app\shopcom\controller\Base
         ->order("plan.id")
         ->where($where)
         ->find();  
-        /**
-         * 图片信息
-         * {if condition="$ct neq '1'"}
-                            {foreach name="$ct" item="voct"}
-                        <div class="style-show">
-                            <h1>餐厅</h1>
-                            <div class="kuang">
-                                <img src="__STATIC__/uploads/{$voct.logo}">
-                                <p><span>【餐厅】&nbsp</span><span>{$voct.text}</span></p>
-                            </div>
-                            <br>
-                        </div>
-                            {/foreach}
-                    {else /}
-                    {/if}
-         */
+        //案例图片详情
         $wheretp['comid'] = $comid;
         $wheretp['planid'] = $planid;
         $ct = db('plan_canting')->where($wheretp)->select();//餐厅
@@ -121,33 +107,22 @@ class Anli extends \app\shopcom\controller\Base
         $sf = db('plan_shufang')->where($wheretp)->select();//书房
         $wsj = db('plan_weishengjian')->where($wheretp)->select();//卫生间
         $ws = db('plan_wushi')->where($wheretp)->select();//卧室
-        if (empty($ct)) {
-            $ct = 1;
-        }
-        if (empty($cf)) {
-            $cf = 1;
-        }
-        if (empty($etj)) {
-            $etj = 1;
-        }
-        if (empty($etj)) {
-            $etj = 1;
-        }
-        if (empty($kt)) {
-            $kt = 1;
-        }
-        if (empty($sf)) {
-            $sf = 1;
-        }
-        if (empty($wsj)) {
-            $wsj = 1;
-        }
-        if (empty($ws)) {
-            $ws = 1;
-        }
-        // dump($ct);
-
-        $this->assign("res",$res);
+        // 判断是否为空
+        if (empty($ct)) { $ct = 1; } if (empty($cf)) { $cf = 1; } if (empty($etj)) { $etj = 1; } if (empty($etj)) { $etj = 1; } if (empty($kt)) { $kt = 1; } if (empty($sf)) { $sf = 1; } if (empty($wsj)) { $wsj = 1; } if (empty($ws)) { $ws = 1; }
+        /**
+         * 相关工地(同一设计师工地)
+         */
+        // 设计师id
+        $wheresjs['designer.id'] = $res['sjsid'];        
+        $resxggd = $plan->field("plan.id,plan.fname,plan.time,plan.schedule,plan.flogo,plan.procode,plan.citycode,plan.frenyuan,plan.fmianji,plan.fyusuan,plan.ffangshi,lx.lxname as ftype,shop.id as comid,com_layout.lname as fhuxing,com_zhuancfg.zcfgname as ffengge,designer.dname as frenyuan,(select count(*) from plan_shigongtu where plan_shigongtu.planid=plan.id and plan_shigongtu.comid =".$comid.") as shigongcount")
+        ->join('com_qiyecsleixing lx','plan.ftype = lx.lxcode','left')//类型
+        ->join('shop','plan.comid = shop.id','left')//公司
+        ->join('com_layout','plan.fhuxing = com_layout.lcode','left')//户型
+        ->join('com_zhuancfg','plan.ffengge = com_zhuancfg.zcfgcode','left')//风格
+        ->join('designer','plan.frenyuan = designer.id','left')//设计师
+        ->order("plan.id")->where($wheresjs)->limit(1,2)->select(); 
+        $this->assign("res",$res);//案例信息
+        $this->assign("resxggd",$resxggd);//相关案例信息
         $this->assign("ct",$ct);
         $this->assign("cf",$cf);
         $this->assign("etj",$etj);
