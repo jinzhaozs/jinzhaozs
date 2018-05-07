@@ -59,7 +59,7 @@ class Designer extends Controller
         $shuju['citycode']=$ssq['citycode'];
         $shuju['areacode']=$ssq['areacode'];
         $shuju['dtime'] = date("Y-m-d h:i:s",time());
-        $shuju['grade']='A级信用设计师';  
+         
          if($file)
        { 
         $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    

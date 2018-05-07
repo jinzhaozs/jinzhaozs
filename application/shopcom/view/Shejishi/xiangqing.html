@@ -51,14 +51,19 @@
         <!-- 内容区域 -->
         <div class="banner_text " >
             <!-- 开始 -->
-              <form id="jiaojianquyu" action="{:url('/scshejishi')}" style="display: none;" method="get">
+     <form id="jiaojianquyu" action="{:url('/scshejishi')}" style="display: none;" method="get">
         <input type="text" name="comid" value="{$comid}">
         等级<input type="text" name="grade" id="grade" value="">
         <input type="submit" value="提交" >
-    </form>
-            <link rel="stylesheet" type="text/css" href="__STATIC__/shopcom/shejishi/team.css">
-            <div  id="all">
-        <div class="left">
+    </form>         
+	<link rel="stylesheet" type="text/css" href="__STATIC__/shopcom/shejishi/person.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/shopcom/shejishi/style.css">
+
+	<div  id="all">
+		<div class="loc">
+			<p><span>{$shopcom[0]['name']}&nbsp</span><span>>&nbsp</span><span>设计团队&nbsp</span><span>>&nbsp</span><span>{$designer['dname']}</span></p>
+		</div>
+		 <div class="left">
             <ul>
                 <li class="sjquanbu">全部团队成员</li>
                         {eq name="$grade" value="1"}
@@ -85,54 +90,82 @@
             </ul>
             
         </div>
-        <div class="right">
-        {php}
+		<div class="right"> 
+			  {php}
                 $status=array("1"=>"精英团队","2"=>"首席设计","3"=>"主任设计","4"=>"高级设计师");
             {/php}  
-            <h3>{eq name="$grade" value=""}
-                 设计团队
-                 {else/}
-                   {$status[$grade]}
-                    {/eq}  
-            </h3>
-            
-             {foreach name="designer" item="des"} 
-                <div class="zhuti">
-                    <ul>
-                        
-                       <a href="{:url('/shejianjie',['comid'=>$shopcom[0]['id'],'sjid'=>$des['id']])}"> <li>
-                            <div class="list">
-                                <div class="news">
-                                    <img src="__STATIC__/uploads/{$des.davatar}" width="100px" height="100px" style=" border-radius: 50%;">
-                                </div>
-                                <div class="name">
-                                    <p>{$des.dname}</p>
-                                    <span>{$status[$des['grade']]}</span>
-                                </div>
-                                
-                            </div>
-                            <div class="xiangqing">
-                                <dl>
-                                    <dt>设计方案</dt>
-                                    <dd>{$des.an}</dd>
-                                </dl>
-                            </div>
-                        </li></a>
-                       
-                    </ul>
-                </div>
-                  {/foreach} 
-               
-        </div>
-        {$page}                                          
-      </div>
-             <!-- 结束 -->
-
-        </div>
-    </div>
-</div>
-
-     <script type="text/javascript">
+				<div class="right-lt">
+					<p class="im"><img src="__STATIC__/uploads/{$designer['davatar']}" width="100px"></p>
+					<div class="jishi">
+					             <a href="">预约此设计师</a>
+					</div>
+					<div class="zhi">
+				                          <ul>
+				                          	<li>
+				                          		<p>设计图</p>
+				                          		<span>{$designer['an']}</span>
+				                          	</li>
+				                          	<li>
+				                          		<p>施工图</p>
+				                          		<span>0</span>
+				                          	</li>
+				                          </ul>
+				             </div>
+			             </div>
+				<div class="right-gt">
+					<h3>{$designer['dname']}<span>&nbsp&nbsp{$status[$designer['grade']]}</span></h3>
+					<div class="linian">
+						<dl>
+							<dt>设计理念</dt>
+							<dd>{$designer['idea']}</dd>
+							<dt>个人介绍</dt>
+							<dd>{$designer['intro']}
+							</dd>
+					             </dl>
+					</div>	
+				</div>
+				<div class="line-li"></div>	
+				<div class="zuopin">
+					<h3>设计作品<span>&nbsp&nbsp 3</span></h3>
+					<div class="pin-tu">
+						<ul>
+							<li><a href=""><img src="./image/a.jpg"></a>
+								<div class="meng">
+									<p>王(女士)的新家 <span>[2]</span><span>&nbsp&nbsp&nbsp&nbsp2008-03-03</span></p>
+								</div>
+							</li>
+							<li><a href=""><img src="./image/a.jpg"></a>
+								<div class="meng">
+									<p>王(女士)的新家 <span>[2]</span><span>&nbsp&nbsp&nbsp&nbsp2008-03-03</span></p>
+								</div>
+							</li>
+							<li><a href=""><img src="./image/a.jpg"></a>
+								<div class="meng">
+									<p>王(女士)的新家 <span>[2]</span><span>&nbsp&nbsp&nbsp&nbsp2008-03-03</span></p>
+								</div>
+							</li>
+							<li><a href=""><img src="./image/a.jpg"></a>
+								<div class="meng">
+									<p>王(女士)的新家 <span>[2]</span><span>&nbsp&nbsp&nbsp&nbsp2008-03-03</span></p>
+								</div>
+							</li>
+							<li><a href=""><img src="./image/a.jpg"></a>
+								<div class="meng">
+									<p>王(女士)的新家 <span>[2]</span><span>&nbsp&nbsp&nbsp&nbsp2008-03-03</span></p>
+								</div>
+							</li>
+							<li><a href=""><img src="./image/a.jpg"></a>
+								<div class="meng">
+									<p>王(女士)的新家 <span>[2]</span><span>&nbsp&nbsp&nbsp&nbsp2008-03-03</span></p>
+								</div>
+							</li>
+						</ul>
+					</div>
+		                          </div>	
+		</div>					             	    
+	  </div>
+</body>
+ <script type="text/javascript">
             
             //全部
                 $(document).on("click",".sjquanbu",function(){
@@ -159,12 +192,11 @@
                 });
                   
         </script>
-<script type="text/javascript">
-        var lis = document.querySelectorAll('.left  li ');
+	<script type="text/javascript">
+	    var lis = document.querySelectorAll('.left  li ');
                 for(var i=0;i<lis.length;i++){
                 lis[i].setAttribute("index",i);
                 lis[i].onclick=function(){
-                    
                 for(var i=0;i<lis.length;i++){
                     if(this.getAttribute("index")==i){
                         lis[i].style.color="#01af63";
@@ -177,8 +209,4 @@
             }
         }
 </script>
-<!--右侧弹出层结束-->
-
-  				
-
 {/block}

@@ -136,6 +136,9 @@
 </tr>
 </thead>
 <tbody id="yuansuzhijia">
+	{php}
+				$status=array("1"=>"精英团队","2"=>"首席设计","3"=>"主任设计","4"=>"高级设计师");
+    {/php}
 <tr>
 	<td style="display: none;">
 		{$i=1}
@@ -192,7 +195,7 @@
 		<span class="achievement">{$vores.achievement}</span>
 	</td>
 	<td>
-		<span class="grade">{$vores.grade}</span>
+		<span class="grade" name="{$vores['grade']}">{$status[$vores['grade']]}</span>
 	</td>
 	<td>
 		<span style=" cursor: pointer;" class="showModel2">修改</span> | 
@@ -255,6 +258,25 @@
 					</td>
 				</tr>
 				<tr>
+					<td>
+						设计等级
+					</td>
+					<td>
+							<select name="grade" id="grade"> 
+							<option value ="0">请选择</option>  
+                             
+                               <span ><option value ="1">精英团队</option></span>
+                               <span ><option value ="2">首席设计</option></span> 
+                               <span ><option value ="3">主任设计</option></span>
+                               <span ><option value ="4">高级设计师</option></span>
+                                
+                              
+                            </select>
+					</td>
+					
+				</tr>
+				<tr>
+
 					<td>
 						设计费用区间
 					</td>
@@ -388,6 +410,24 @@
 					<td>
 						<input type="text" name="jobage" id="jobage2" placeholder="请输入">年
 					</td>
+				</tr>
+				<tr>
+					<td>
+						设计等级
+					</td>
+					<td>
+							<select name="grade" id="grade2"> 
+							<option value ="0">请选择</option>  
+                             
+                               <span ><option value ="1">精英团队</option></span>
+                               <span ><option value ="2">首席设计</option></span> 
+                               <span ><option value ="3">主任设计</option></span>
+                               <span ><option value ="4">高级设计师</option></span>
+                                
+                              
+                            </select>
+					</td>
+					
 				</tr>
 				<tr>
 					<td>
@@ -548,6 +588,8 @@
     	var shop = $(this).parent().parent().find(".shop").attr('name');
     	//赋值
         var comzcf = comdzcfg.substring(0, comdzcfg.lastIndexOf(','));
+        var grade = $(this).parent().parent().find(".grade").attr('name');
+
        //复选赋值
      $(comzcf.split(",")).each(function (i,dom){
         $("#com_zcfg2 :checkbox[value='"+dom+"']").prop("checked",true);
@@ -567,7 +609,8 @@
      	$("#intro2").val(comintro);
      	$("#prize2").val(comprize);
      	$("#achievement2").val(comachievement);
-     	$("#shop2").val(shop); 
+     	$("#shop2").val(shop);
+     	$("#grade2").find('option[value="'+grade+'"]').attr("selected","selected"); 
     	// alert(comid);comname
     	 modal2.style.display = "block";  
     	});

@@ -32,7 +32,7 @@ Route::rule('/scjian/article','shopcom/Jianjie/article');//简介文章
 Route::rule('/scanli','shopcom/Anli/index');//案例
 Route::rule('/scgongdi','shopcom/Gongdi/index');//工地
 Route::rule('/scshejishi','shopcom/Shejishi/index');//设计师
-
+Route::rule('/shejianjie','shopcom/Shejishi/xiangqing');//设计师
 /**
  * 后台
  */
