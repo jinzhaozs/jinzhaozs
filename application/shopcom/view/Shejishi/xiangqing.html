@@ -66,36 +66,25 @@
 		 <div class="left">
             <ul>
                 <li class="sjquanbu">全部团队成员</li>
-                        {eq name="$grade" value="1"}
-                            <li style="color:#01af63;font-weight: bold;cursor:pointer;" class="sjjing">精英团队</li>
-                        {else/}
-                            <li class="sjjing">精英团队</li>
-                        {/eq}
-                         {eq name="$grade" value="2"}
-                            <li style="color:#01af63;font-weight: bold;cursor:pointer;" class="sjshou">首席设计</li>
-                        {else/}
+                      
+                            <a><li class="sjjing">精英团队</li></a>
+                      
                             <li class="sjshou">首席设计</li>
-                        {/eq}  
-                         {eq name="$grade" value="3"}
-                            <li style="color:#01af63;font-weight: bold;cursor:pointer;" class="sjzhu">主任设计</li>
-                        {else/}
+                      
                            <li class="sjzhu">主任设计</li>
-                        {/eq}  
-                         {eq name="$grade" value="4"}
-                            <li style="color:#01af63;font-weight: bold;cursor:pointer;" class="sjgao">高级设计师</li>
-                        {else/}
+                       
                             <li class="sjgao">高级设计师</li>
-                        {/eq}      
+                             
                
             </ul>
             
         </div>
 		<div class="right"> 
 			  {php}
-                $status=array("1"=>"精英团队","2"=>"首席设计","3"=>"主任设计","4"=>"高级设计师");
+                $status=array("0"=>"无","1"=>"精英团队","2"=>"首席设计","3"=>"主任设计","4"=>"高级设计师");
             {/php}  
 				<div class="right-lt">
-					<p class="im"><img src="__STATIC__/uploads/{$designer['davatar']}" width="100px"></p>
+					<p class="im"><img src="__STATIC__/uploads/{$designer['davatar']}" width="100px" height="100px" style="border-radius: 50%;"></p>
 					<div class="jishi">
 					             <a href="">预约此设计师</a>
 					</div>
@@ -126,39 +115,16 @@
 				</div>
 				<div class="line-li"></div>	
 				<div class="zuopin">
-					<h3>设计作品<span>&nbsp&nbsp 3</span></h3>
+					<h3>设计作品<span>&nbsp&nbsp {$count}</span></h3>
 					<div class="pin-tu">
 						<ul>
-							<li><a href=""><img src="./image/a.jpg"></a>
+							{foreach name="plan" item="pl"}
+							<li><a href="{:url('/scanlide/detail',['comid'=>$comid,'planid'=>$pl.id])}"><img src="__STATIC__/uploads/{$pl['flogo']}"></a>
 								<div class="meng">
-									<p>王(女士)的新家 <span>[2]</span><span>&nbsp&nbsp&nbsp&nbsp2008-03-03</span></p>
+									<p>{$pl.fname} <span>[{$pl.an}]</span><span>&nbsp&nbsp&nbsp&nbsp{$pl.time|timezhuanghuaduan=###}</span></p>
 								</div>
 							</li>
-							<li><a href=""><img src="./image/a.jpg"></a>
-								<div class="meng">
-									<p>王(女士)的新家 <span>[2]</span><span>&nbsp&nbsp&nbsp&nbsp2008-03-03</span></p>
-								</div>
-							</li>
-							<li><a href=""><img src="./image/a.jpg"></a>
-								<div class="meng">
-									<p>王(女士)的新家 <span>[2]</span><span>&nbsp&nbsp&nbsp&nbsp2008-03-03</span></p>
-								</div>
-							</li>
-							<li><a href=""><img src="./image/a.jpg"></a>
-								<div class="meng">
-									<p>王(女士)的新家 <span>[2]</span><span>&nbsp&nbsp&nbsp&nbsp2008-03-03</span></p>
-								</div>
-							</li>
-							<li><a href=""><img src="./image/a.jpg"></a>
-								<div class="meng">
-									<p>王(女士)的新家 <span>[2]</span><span>&nbsp&nbsp&nbsp&nbsp2008-03-03</span></p>
-								</div>
-							</li>
-							<li><a href=""><img src="./image/a.jpg"></a>
-								<div class="meng">
-									<p>王(女士)的新家 <span>[2]</span><span>&nbsp&nbsp&nbsp&nbsp2008-03-03</span></p>
-								</div>
-							</li>
+							{/foreach}
 						</ul>
 					</div>
 		                          </div>	

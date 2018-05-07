@@ -137,7 +137,7 @@
 </thead>
 <tbody id="yuansuzhijia">
 	{php}
-				$status=array("1"=>"精英团队","2"=>"首席设计","3"=>"主任设计","4"=>"高级设计师");
+				$status=array("0"=>"无","1"=>"精英团队","2"=>"首席设计","3"=>"主任设计","4"=>"高级设计师");
     {/php}
 <tr>
 	<td style="display: none;">
@@ -159,7 +159,7 @@
 		<span class="davatar" name="{$vores.davatar}"><img src="__STATIC__/uploads/{$vores.davatar}" style="width:100px;height: 100px" class="img"></span>
 	</td>
 	<td>
-		<span class="sex" name="{$vores.sex}">{if condition="($vores.sex == 1)"}男{else /} 女{/if}</span>
+		<span class="sex" name="{$vores.sex}" >{if condition="($vores.sex == 1)"}男{else /} 女{/if}</span>
 	</td>
 	<td>
 		<span class="jobage">{$vores.jobage}</span>

@@ -69,7 +69,7 @@
 				 {foreach name="article" item="ar"} 
 				<tr>
 				      <td><a href="">{$ar.aname}</a></td>
-				      <td style="width: 10em">{$ar.atime}</td>
+				      <td style="width: 10em">{$ar.atime|timezhuanghuaduan=###}</td>
 				</tr>
 				{/foreach}
 				<tr>
