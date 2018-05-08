@@ -159,6 +159,11 @@ Route::rule('/admin/Shoplbt/index','admin/Shoplbt/index');//服务价位
 Route::rule('/admin/Shoplbt/add','admin/Shoplbt/add');// 添加
 Route::rule('/admin/Shoplbt/edit','admin/Shoplbt/edit');// 修改
 Route::rule('/admin/Shoplbt/del','admin/Shoplbt/del');// 删除
+// 公司业务点评管理
+Route::rule('/admin/Shopeval/index','admin/Shopeval/index');//服务价位
+Route::rule('/admin/Shopeval/add','admin/Shopeval/add');// 添加
+Route::rule('/admin/Shopeval/edit','admin/Shopeval/edit');// 修改
+Route::rule('/admin/Shopeval/del','admin/Shopeval/del');// 删除
 
 //公司设计师
 Route::rule('/admin/designer/index','admin/designer/index');//公司详情

@@ -45,7 +45,7 @@ class Index extends \app\shopcom\controller\Base
 
         //获取评论总数
         $whpla['comid']= input('comid');
-        $pingluncount = db("evaluate")->where($whpla)->count();
+        $pingluncount = db("com_evaluate")->where($whpla)->count();
        
         //获取文章
         $wheres['ischeck']=1;

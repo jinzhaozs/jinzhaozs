@@ -105,7 +105,7 @@ class Index extends \app\index\controller\Base
         $this->assign("com_leixingtou",db("com_qiyecsleixing")->limit(6)->select());//类型
          $this->assign("com_fenggetou",db("com_zhuancfg")->limit(6)->select());//风格
         // $this->assign("com_suozaiqu",$com_suozaiqu);
-        // dump($comtype);
+        // dump($comtype);die;
         //渲染条件信息
         $this->assign("comtype",$comtype);//类型
         $this->assign("comservice",$comservice);//服务区域

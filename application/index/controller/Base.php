@@ -22,7 +22,7 @@ class Base extends \think\Controller
 	protected function uri($model, $filter,$pag=null,$urlcanshu=null)
 	{
 		if($pag){
-			$info = db($model)->field("id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_paixu,top,com_koubei,com_haoping,com_tel,(SELECT count(*) FROM plan WHERE plan.comid = shop.id) as fangancount,(SELECT count(*) FROM struction WHERE struction.comid = shop.id) as gongdicount,(SELECT count(*) FROM evaluate WHERE evaluate.comid = shop.id) as gspjcount")
+			$info = db($model)->field("id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_paixu,top,com_koubei,com_haoping,com_tel,(SELECT count(*) FROM plan WHERE plan.comid = shop.id) as fangancount,(SELECT count(*) FROM struction WHERE struction.comid = shop.id) as gongdicount,(SELECT count(*) FROM com_evaluate WHERE com_evaluate.comid = shop.id) as gspjcount")
 			->where($filter)->order("com_paixu desc")->paginate($pag,false,[
 'query'=>$urlcanshu,
 ]);
