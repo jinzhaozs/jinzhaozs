@@ -121,6 +121,13 @@ class Anli extends \app\shopcom\controller\Base
         ->join('com_zhuancfg','plan.ffengge = com_zhuancfg.zcfgcode','left')//风格
         ->join('designer','plan.frenyuan = designer.id','left')//设计师
         ->order("plan.id")->where($wheresjs)->limit(1,2)->select(); 
+        /**
+         * 点评
+         */
+        // $resdianping = uri('com_evaluate',$wheretp);
+        $resdianping = db('com_evaluate')->where($wheretp)->limit(2)->select();
+        // dump($resdianping);die;
+        $this->assign("resdianping",$resdianping);//点评信息
         $this->assign("res",$res);//案例信息
         $this->assign("resxggd",$resxggd);//相关案例信息
         $this->assign("ct",$ct);
