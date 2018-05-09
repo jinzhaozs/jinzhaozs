@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>金朝后台管理</title>
+<title>今朝后台管理</title>
 <meta name="description" content="这是一个 index 页面">
 <meta name="keywords" content="index">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -190,12 +190,34 @@
 
 
 
-
-      <li class="am-hide-sm-only" style="float: right;"><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+<!-- 全屏 -->
+      <!-- <li class="am-hide-sm-only" style="float: right;"><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">退出</span></a></li> -->
+      <li class="am-hide-sm-only" style="float: right;"><a href="javascript:;" ><span id="dosign" style="color: red;" class="admin-fullText">退出</span></a></li>
     </ul>
   </div>
 </header>
-
+<script type="text/javascript">
+  $(document).on("click","#dosign",function(){
+        $.ajax({
+                type:"post",
+                dataType:'json',
+                async:false,
+                url:'{:url("admin/login/dosign")}',
+                data:{},
+                success:function(dd){
+                    // alert(dd);
+                    // console.log(dd);
+                    if (dd.code == 200) {
+                        //jq 删除元素
+                       location.reload();
+                    }else{
+                        alert(msg);
+                    }
+                     
+                }
+            })
+  });
+</script>
 <div class="am-cf admin-main"> 
 
 <div class="nav-navicon admin-main admin-sidebar">
@@ -203,6 +225,8 @@
     
     <div class="sideMenu am-icon-dashboard" style="color:#aeb2b7; margin: 10px 0 0 0;"> 欢迎系统管理员：{$sesionadusername}</div>
     <div class="sideMenu">
+    <!-- 判断权限 -->
+        {in name="$sesionadusertype" value="1"}
       <h3 class="am-icon-flag"><em></em> <a href="#">装修公司</a></h3>
       <ul>
         <li><a href="{:url('admin/shop/index')}">公司列表</a></li>
@@ -212,11 +236,17 @@
         <li><br></li>
         <li><br></li>
       </ul>
+      {/in}
+      <!-- 判断权限 -->
+        {in name="$sesionadusertype" value="1"}
        <h3 class="am-icon-volume-up"><em></em> <a href="#">设计师</a></h3>
       <ul>
         <li><a href="{:url('admin/zdesigner/index')}">设计师</a> </li>
         
       </ul>
+      {/in}
+      <!-- 判断权限 -->
+        {in name="$sesionadusertype" value="1"}
       <h3 class="am-icon-cart-plus"><em></em> <a href="#"> 效果图</a></h3>
       <ul>
         <li> <a href="{:url('admin/ectatlas/index')}">图册列表</a></li>
@@ -228,6 +258,7 @@
         <li><a href="{:url('admin/tuce/jubu')}">图片——局部</a></li>
 
       </ul>
+      {/in}
         <!-- 判断权限 -->
       <h3 class="am-icon-gears"><em></em> <a href="#">预约信息</a></h3>
       <ul>
@@ -245,9 +276,17 @@
                 {case value="1"}
                     <li><a href="{:url('admin/user/index')}">人员列表</a></li>
                     <li><a href="{:url('admin/bm/index')}">部门管理</a></li>
+                    <li><br></li>
+                    <li><br></li>
+                    <li><br></li>
+                    <li><br></li>
                 {/case}
                 {case value="2"}
                  <li><a href="{:url('admin/ruser/index')}">员工列表</a></li>
+                 <li><br></li>
+                    <li><br></li>
+                    <li><br></li>
+                    <li><br></li>
                 {/case}
             {/switch}
         </ul>

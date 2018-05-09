@@ -52,7 +52,7 @@
         <div class="banner_text ">
             <!-- 开始 -->
             <link rel="stylesheet" type="text/css" href="__STATIC__/shopcom/fangan/shejixiangqing.css">
-    <div  id="all">
+                <div  id="all">
         <div class="weizhi">
                 <span>{$res.comname}</span><span>></span><span>装修工地</span><span>></span>
                 <span>{$res.fname}</span>
@@ -277,7 +277,51 @@
                     {/if}
 
 
-                   
+                    <div class="about">
+                        <p class="gongdi">相关工地</p>
+                        {foreach name="resxggd" item="voresxggd"}
+                            <div class="newhomemin">
+                                <div class="img">
+                                    <a href=""><img src="__STATIC__/uploads/{$voresxggd.flogo}"></a>
+                                </div>
+                                <div class="jieduanmin">
+                                    <p class="xinmin">
+                                        {$voresxggd.fname}
+                                    </p>
+                                    <span><img src="__STATIC__/shopcom/fangan/image/xinjia.jpg"></span>
+                                    <div class="xinximin">
+                                        <!-- 省转换 -->
+                                        <span>{$voresxggd.procode|prodoname=###}</span>
+                                        <span>{$voresxggd.citycode|citydoname=###}</span>
+                                        <span>{$voresxggd.fyusuan}万</span>
+                                        <span>{$voresxggd.ffengge}</span>
+                                        <span>{$voresxggd.fmianji}m²</span>
+                                        <span>工期：</span>
+                                        <span>{$voresxggd.time|timezhuanghuaduan=###}</span>
+                                    </div>
+                                    <div class="shujumin">
+                                        <ul>
+                                            <li>
+                                            <p>
+                                                设计图
+                                            </p>
+                                            <span> 
+                                            <!-- 设计图调用方法 -->
+                                    {$voresxggd.id|countshejitu=###,$comid}</span>
+                                            </li>
+                                            <li>
+                                            <p>
+                                                施工图
+                                            </p>
+                                            <span>{$voresxggd.shigongcount}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        {/foreach}
+
+                    </div>
                 
                 </div>
                 <div class="det">
@@ -376,21 +420,15 @@
                         </div>
                         <div class="right-ping">
                             <div class="stars">
-                                <ul>
-                                    <li> <span>设计：{$voresdianping.shejipf}</span><span> &nbsp;</span>
+                                    <span>设计：{$voresdianping.shejipf}</span><span> &nbsp;</span>
                                     {for start='0' end="$voresdianping.shejipf"}
                                     <span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp;</span>
                                     {/for}
                                     &nbsp;&nbsp;&nbsp;&nbsp;
-                                    </li>
-                                    <li> 
                                      <span>服务：</span><span> &nbsp;</span>
                                     {for start='0' end="$voresdianping.fuwupf"}
                                     <span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp;</span>
                                     {/for}
-                                    </li>
-                                </ul>
-                                   
                             </div>          
                             
                             <div class="time">
@@ -405,100 +443,7 @@
                     </div> 
                 </div>
         </div>
-         <div class="about">
-                        <p class="gongdi">相关工地</p>
-                        {foreach name="resxggd" item="voresxggd"}
-                            <div class="newhomemin">
-                                <div class="img">
-                                    <a href=""><img src="__STATIC__/uploads/{$voresxggd.flogo}"></a>
-                                </div>
-                                <div class="jieduanmin">
-                                    <p class="xinmin">
-                                        {$voresxggd.fname}
-                                    </p>
-                                    <span><img src="__STATIC__/shopcom/fangan/image/xinjia.jpg"></span>
-                                    <div class="xinximin">
-                                        <!-- 省转换 -->
-                                        <span>{$voresxggd.procode|prodoname=###}</span>
-                                        <span>{$voresxggd.citycode|citydoname=###}</span>
-                                        <span>{$voresxggd.fyusuan}万</span>
-                                        <span>{$voresxggd.ffengge}</span>
-                                        <span>{$voresxggd.fmianji}m²</span>
-                                        <span>工期：</span>
-                                        <span>{$voresxggd.time|timezhuanghuaduan=###}</span>
-                                    </div>
-                                    <div class="shujumin">
-                                        <ul>
-                                            <li>
-                                            <p>
-                                                设计图
-                                            </p>
-                                            <span> 
-                                            <!-- 设计图调用方法 -->
-                                    {$voresxggd.id|countshejitu=###,$comid}</span>
-                                            </li>
-                                            <li>
-                                            <p>
-                                                施工图
-                                            </p>
-                                            <span>{$voresxggd.shigongcount}</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        {/foreach}
-
-                    </div>
     </div>
-    <div class="ceng">
-        <div class="biaodan">
-            <div class="cha">
-                <img src="__STATIC__/shopcom/fangan/image/cha.jpg">
-            </div>
-            <div class="jingpin">
-                <h1>海量精品案例，免费预约参观</h1>
-                <div class="jing-pin"><img src="image/jingpin.jpg"></div>
-                <p>张(先生)的新家</p>
-                <div class="xinximin">
-                    <span>北京</span>
-                    <span>石佛营西里</span>
-                    <span>2万</span>
-                    <span>半包</span>
-                    <span>38m²</span>
-                    <span>工期：</span>                            
-                    <span>2018-04-16  到</span>
-                    <span>  2018-06-16</span>   
-                </div>
-            </div>
-            <div class="tel">
-                <span>您的称呼:</span><input type="text" id="name" placeholder="请输入您的称呼" id="in"><br/>
-                <span>所在城市:</span>
-                <select id="city">
-                                          <option value="">省/市</option>
-                        <option value="">A  安徽</option>
-                        <option value="">B  北京北京北京</option>
-                        <option value="">C  重庆</option>
-                </select>
-                <select id="shi">
-                        <option value="">市/区</option>
-                        <option value="">芜湖</option>
-                        <option value="">合肥</option>
-                        <option value="">六安</option>
-                </select>
-                <select id="shi">
-                        <option value="">市/区</option>
-                        <option value="">芜湖</option>
-                        <option value="">合肥</option>
-                        <option value="">六安</option>
-                </select>
-                <br/>
-                 <span>手机号码:</span><input type="text" id="name" placeholder="填写手机号码，抢先预约" id="in">
-                 <div class="mashang">马上预约</div>
-            </div>
-        </div>  
-    </div>
-
     <script type="text/javascript">
 
     $(function () {
@@ -509,16 +454,6 @@
             $(".navContent .det").eq(index).show().siblings().hide();
          })
     })
-
-    $(".cha").click(function() {
-            $(".ceng").css("display", "none");
-        })
-    $(".yuyue").click(function() {
-            $(".ceng").css("display", "block");
-        })
-    $("#in").click(function() {
-            $(".do-do").style.css("do-do");
-        })
 
     </script>
              <!-- 结束 -->

@@ -39,6 +39,7 @@ Route::rule('/shejianjie','shopcom/Shejishi/xiangqing');//设计师
  */
 Route::rule('/admin/login/index','admin/login/index');//后台登陆页面
 Route::rule('/admin/login/dologin','admin/login/dologin');//后台执行登陆
+Route::rule('/admin/login/dosign','admin/login/dosign');//后台执行退出
 Route::rule('/admin/index/index','admin/index/index');//主页
 //预约列表
 Route::rule('/admin/reserva/index','admin/reserva/index');
@@ -240,7 +241,8 @@ Route::rule('/admin/zdesigner/index','admin/zdesigner/index');
 // 登陆页面
 Route::rule('/adminshop','adminshop/login/index');
 //执行登陆
-Route::rule('/adminshop/login/dologin','adminshop/login/dologin');
+Route::rule('/adminshop/login/dologin','adminshop/login/dologin');//执行登陆
+Route::rule('/adminshop/login/dosign','adminshop/login/dosign');//执行退出
 // 主页
 Route::rule('/adminshop/index/index','adminshop/index/index');
 //基本信息

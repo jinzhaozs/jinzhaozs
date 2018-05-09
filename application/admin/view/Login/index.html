@@ -29,7 +29,7 @@
 
 </head>
 
-<body style="background:url(__STATIC__/admin/images/bg.jpg) no-repeat;">
+<body style="background:url(__STATIC__/admin/images/bg.jpg);">
     <!-- 提示 -->
 <div id="tishi" style="border:1px #A70000 solid;width: 26%;height: 6%;line-height:2.6em;z-index:99;display:none;position:absolute;top: 4%;margin-left: 37%;background-color: red;border-radius: 5px;text-align: center;color:#fff;" >
     
@@ -57,6 +57,12 @@
     </div><!--container end-->     
 </body>
 <script type="text/javascript">
+    $(document).keypress(function(e) {  
+        // 回车键事件  
+        if(e.which == 13) {  
+            $("#submit").click();
+        }  
+    }); 
     $("#submit").click(function(){
         var username = $("#username").val();
         var password = $("#password").val();
@@ -68,7 +74,7 @@
                 url:'{:url("admin/login/dologin")}',
                 data:{"username":username,"password":password},
                 success:function(dd){
-                    console.log(dd);
+                    // console.log(dd);
                     if (dd.code == 200) {
                         $("#tishi").html(dd.msg);
                         $("#tishi").css("background-color","#90EE90");

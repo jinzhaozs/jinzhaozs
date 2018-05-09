@@ -245,7 +245,7 @@
                         <a><i class="icon-bell-alt"></i>系统消息</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)" id="JsSignOut"><i class="icon-signout"></i>安全退出</a>
+                        <a href="javascript:void(0)" id="dosign"><i class="icon-signout"></i>安全退出</a>
                     </li>
                 </ul>
             </div>
@@ -254,5 +254,26 @@
         <main class="main-cont content mCustomScrollbar" >
          <div class="page-wrap" style="padding: 0px;">          
          <div style="border: 0px red solid;height: 560px;overflow: auto;margin-top: -4px;">
-    
+    <script type="text/javascript">
+  $(document).on("click","#dosign",function(){
+        $.ajax({
+                type:"post",
+                dataType:'json',
+                async:false,
+                url:'{:url("/adminshop/login/dosign")}',
+                data:{},
+                success:function(dd){
+                    // alert(dd);
+                    // console.log(dd);
+                    if (dd.code == 200) {
+                        //jq 删除元素
+                       location.reload();
+                    }else{
+                        alert(msg);
+                    }
+                     
+                }
+            })
+  });
+</script>
         

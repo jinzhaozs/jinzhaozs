@@ -79,7 +79,7 @@
             {foreach name="res" item = "vores"}
             <div class="newhome">
                 <div class="img">
-                <a href=""><img src="__STATIC__/uploads/{$vores.flogo}"></a>
+                <a href="{:url('/scanlide/detail',['comid'=>$comid,'planid'=>$vores.id])}"><img src="__STATIC__/uploads/{$vores.flogo}"></a>
                 </div> 
                <div class="jieduan">
                     <h3><a href="{:url('/scanlide/detail',['comid'=>$comid,'planid'=>$vores.id])}">{$vores.fname}</a></h3>

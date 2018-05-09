@@ -128,7 +128,7 @@
                   <div class="picture">
                         {foreach name="res" item="vores"}
                         <ul>
-                            <li><a href="{:url('/scanlide/detail',['comid'=>$vores.id])}">
+                            <li><a href="{:url('/scanlide/detail',['comid'=>$comid,'planid'=>$vores.id])}">
                                 <div class="img-img"><img style="width: 100%;height: 100%;" src="__STATIC__/uploads/{$vores.flogo}"></div>
                                 <p>{$vores.fname}<span>{$vores.time|timezhuanghuaduan=###}</span></p>   
                                 <div class="see">

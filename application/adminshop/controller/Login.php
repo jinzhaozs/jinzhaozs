@@ -71,4 +71,22 @@ class Login extends \app\adminshop\controller\Base
 
         return $data;
     }
+     // 执行退出
+    public function dosign(){
+        Session::clear();
+        if (Session::has('adminshopid')) {
+            $data = array(
+                'data' => true,
+                'code' => 400,
+                'msg'  => '退出失败 !',
+            );
+        }else{
+            $data = array(
+                'data' => true,
+                'code' => 200,
+                'msg'  => '退出成功 !',
+            );
+        }
+        return $data;
+    }
 }

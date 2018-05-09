@@ -51,6 +51,7 @@
                 <th>编号</th>
                 <th>公司</th>
                 <th>方案</th>
+                <th>阶段</th>
                 <th>时间</th>
                 <th>内容</th>
                 <th>业主名称</th>
@@ -62,11 +63,13 @@
             <tr>
             <td class="sjxingxing" style="display: none;">{$vores.shejipf}</td>
             <td class="fuxingxing" style="display: none;">{$vores.fuwupf}</td>
+            <td class="jinxingjieduan" style="display: none;">{$vores.schedule}</td>
             <td class="sfid">{$vores.id}</td>
             <td >{$com['name']}</td>
             <td >{$plan['name']}</td>
-            <td class="time">{$vores.time}</td>
-            <td class="text">{$vores.text}</td>
+            <td >{$vores['schedule|jdhoutaizh=###']}</td>
+            <td class="time">{$vores.time}</td> 
+            <td class="text" ><div class="textdo" style="width: 100px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;">{$vores.text}</div></td>
             <td class="yezhuname">{$vores.yezhuname}</td>
             <td><span style=" cursor: pointer;" class="showModel2">修改</span> |
             <span style=" cursor: pointer;" class="delcom">删除</span> </td>
@@ -185,6 +188,21 @@
                                     })
                                 })
                             </script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class='wid'>装修阶段</td>
+                        <td>
+                            <select name="schedule" > 
+                            <option value ="0">请选择</option>  
+                             
+                               <span ><option value ="1">准备开工</option></span>
+                               <span ><option value ="2">水电阶段</option></span> 
+                               <span ><option value ="3">泥水阶段</option></span>
+                               <span ><option value ="4">油漆阶段</option></span>
+                               <span ><option value ="5">竣工</option></span>  
+                              
+                            </select>
                         </td>
                     </tr>
                     <tr>
@@ -326,6 +344,21 @@
                         </td>
                     </tr>
                     <tr>
+                        <td class='wid'>装修阶段</td>
+                        <td>
+                            <select name="schedule" id="schedule"> 
+                            <option value ="0">请选择</option>  
+                             
+                               <span ><option value ="1">准备开工</option></span>
+                               <span ><option value ="2">水电阶段</option></span> 
+                               <span ><option value ="3">泥水阶段</option></span>
+                               <span ><option value ="4">油漆阶段</option></span>
+                               <span ><option value ="5">竣工</option></span>  
+                              
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
                         <td >业主名称</td>
                         <td>
                             <input type="text" class="form-control" name="yezhuname" id="yezhuname" placeholder="请输入名称">
@@ -389,10 +422,11 @@
         // 获取卧室id
         var sfid = $(this).parent().parent().find(".sfid").html();
         var yezhuname = $(this).parent().parent().find(".yezhuname").html();
-        var text = $(this).parent().parent().find(".text").html();
+        var text = $(this).parent().parent().find(".textdo").html();
         var time = $(this).parent().parent().find(".time").html();
         var sjxingxing = $(this).parent().parent().find(".sjxingxing").html();
         var fuxingxing = $(this).parent().parent().find(".fuxingxing").html();
+        var jinxingjieduan = $(this).parent().parent().find(".jinxingjieduan").html();
         time = time.substring(0,10);
         // 设计星星赋值
         $('.photo3 span').find('.high').css('z-index',0)
@@ -417,6 +451,7 @@
         $("#yezhuname").val(yezhuname);
         $("#textdo").val(text);
         $("#timedo").val(time);
+        $("#schedule").find("option[value = '"+jinxingjieduan+"']").attr("selected","selected");
         modal2.style.display = "block"; 
     });
     close2.addEventListener('click', function(){  

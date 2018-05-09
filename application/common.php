@@ -93,3 +93,46 @@
         // dump($count);
         return $count;
     }
+    //后台阶段转换
+    function jdhoutaizh($id){
+        switch ($id) {
+            case '1':
+                  return "准备开工";
+                break;
+            case '2':
+                return "水电阶段";
+                break;
+            case '3':
+                  return "泥水阶段";
+                break;
+            case '4':
+                 return "油漆阶段";
+                break;
+            case '5':
+                  return "竣工阶段";
+                break;
+            default:
+                  return "准备开工";
+                break;
+        }
+    }
+    //部门转换
+    function bumengzhmc($code){
+        $where['code'] = $code;
+        $res = db('branch')->where($where)->select();
+        if (empty($res)) {
+            return '未分配';
+        }else{
+            return $res[0]['name'];
+        }
+    }
+    //人员转换
+    function renyuanzhuanhmc($code){
+        $where['id'] = $code;
+        $res = db('useradmin')->where($where)->select();
+        if (empty($res)) {
+            return '未分配';
+        }else{
+            return $res[0]['uname'];
+        }
+    }
