@@ -7,6 +7,15 @@
 	<title></title>
   <script src="__STATIC__/adminshop/editor/ueditor.config.js"></script>
 <script src="__STATIC__/adminshop/editor/ueditor.all.js"></script>
+<style type="text/css">
+.table-bordered td div{
+  width:100px;
+    height: 119px;
+    overflow: hidden;
+   text-overflow:ellipsis;
+   white-space: nowrap;
+}
+</style>
 <script type="text/javascript">
   //缩略图添加
     function imgPreviews(fileDom){
@@ -103,7 +112,7 @@
 					<td style="display: none;"><span class="id">{$vores.id}</span></td>
 					<td><span class="">{$i++}</span></td>
 					<td><span class="jianjie">{$vores.jianjie}</span></td>
-          <td><span class="shuoming">{$vores.shuoming}</span></td>
+          <td><div class="shuoming">{$vores.shuoming}</div></td>
 					
 					<td><span  name="{$vores.actlogo}"  ><img src="__STATIC__/uploads/{$vores.actlogo}" style="width:100px;height: 100px" class="actlogos"></span></td>
 					<td><span class="kai_time">{$vores.kai_time|timezhuanghuaduan=###}</span></td>

@@ -7,7 +7,15 @@
 	<title></title>
   <script src="__STATIC__/adminshop/editor/ueditor.config.js"></script>
 <script src="__STATIC__/adminshop/editor/ueditor.all.js"></script>
-
+<style type="text/css">
+.table-bordered td div{
+  width:290px;
+    height: 100px;
+    overflow: hidden;
+   text-overflow:ellipsis;
+   white-space: nowrap;
+}
+</style>
 <script type="text/javascript">
   //缩略图添加
     function imgPreviews(fileDom){
@@ -108,7 +116,7 @@
 					<td><span class="abstract">{$vores.abstract}</span></td>
 					<td><span class="ischeck" name="{$vores.ischeck}">{if condition="($vores.ischeck == 1)"}已审核{else /}未审核{/if}</span></td>
 					<td style="display: none;"><span class="istop">{$vores.istop}</span></td>
-					<td><span class="content">{$vores.content}</span></td>
+					<td><div class="content">{$vores.content}</div></td>
 
 					<td>
 						<span style=" cursor: pointer;" class="showModel2">修改</span> | 

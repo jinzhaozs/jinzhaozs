@@ -8,12 +8,15 @@
 <style type="text/css">
 .table-bordered td, .table-bordered th {
     border: 1px solid #dee2e6;
-    width:100px;
+    width:80px;
+
 }
-.td div{
-	    width: 100px;
+.table-bordered td div{
+	width: 80px;
     height: 100px;
-    overflow: auto;
+    overflow: hidden;
+   text-overflow:ellipsis;
+   white-space: nowrap;
 }
 </style>
 </head>
@@ -192,6 +195,9 @@
 </tr>
 </thead>
 <tbody id="yuansuzhijia">
+	{php}
+				$status=array("1"=>"精英团队","2"=>"首席设计","3"=>"主任设计","4"=>"高级设计师");
+    {/php}
 <tr>
 	<td style="display: none;">
 		{$i=1}
@@ -227,7 +233,7 @@
 		<span class="price_range">{$vores.price_range}</span>
 	</td>
 	<td>
-		<span class="idea">{$vores.idea}</span>
+		<div class="idea">{$vores.idea}</div>
 	</td>
 	<td>
 		<div class="field"  name="{$vores.field}">{$vores.lxname}</div>
@@ -242,13 +248,13 @@
 		<div class="intro">{$vores.intro}</div>
 	</td>
 	<td>
-		<span class="prize">{$vores.prize}</span>
+		<div class="prize">{$vores.prize}</div>
 	</td>
 	<td>
-		<span class="achievement">{$vores.achievement}</span>
+		<div class="achievement">{$vores.achievement}</div>
 	</td>
 	<td>
-		<span class="grade">{$vores.grade}</span>
+		<span class="grade" name="{$vores['grade']}">{$status[$vores['grade']]}</span>
 	</td>
 	
 </tr>
