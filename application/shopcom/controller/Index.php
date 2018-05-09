@@ -81,8 +81,8 @@ class Index extends \app\shopcom\controller\Base
         $this->assign("article",$article);//文章
         $this->assign("articlecount",$articlecount);//文章总数
         $this->assign("articletop",$articletop);
-         $this->assign("shig",$shig);//施工工地
-         $this->assign("shigcount",$shigcount);//工地总数
+        $this->assign("shig",$shig);//施工工地
+        $this->assign("shigcount",$shigcount);//工地总数
         return $this->fetch();
     }
     //测试

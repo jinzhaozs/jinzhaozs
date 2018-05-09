@@ -235,6 +235,11 @@ Route::rule('/admin/bm/edit','admin/bm/edit');// 修改
 Route::rule('/admin/bm/del','admin/bm/del');// 删除
 //总设计师
 Route::rule('/admin/zdesigner/index','admin/zdesigner/index');
+//优惠活动
+Route::rule('/admin/act/index','admin/act/index');//优惠活动
+Route::rule('/admin/act/add','admin/act/add');// 添加
+Route::rule('/admin/act/edit','admin/act/edit');// 修改
+Route::rule('/admin/act/del','admin/act/del');// 删除
 /**
  * 公司后台
  */
@@ -286,6 +291,11 @@ Route::rule('/adminshop/article/index','adminshop/article/index');//公司 文�
 Route::rule('/adminshop/article/add','adminshop/article/add');//添加
 Route::rule('/adminshop/article/edit','adminshop/article/edit');//修改
 Route::rule('/adminshop/article/delete','adminshop/article/delete');//删除
+//公司活动管理
+Route::rule('/adminshop/act/index','adminshop/act/index');//优惠活动
+Route::rule('/adminshop/act/add','adminshop/act/add');// 添加
+Route::rule('/adminshop/act/edit','adminshop/act/edit');// 修改
+Route::rule('/adminshop/act/del','adminshop/act/del');// 删除
 //公司修改密码
 Route::rule('/adminshop/xgm/index','adminshop/xgm/index');//公司 文章列表
 Route::rule('/adminshop/xgm/ajaxyuan','adminshop/xgm/ajaxyuan');//添加

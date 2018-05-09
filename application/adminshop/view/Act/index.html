@@ -7,15 +7,6 @@
 	<title></title>
   <script src="__STATIC__/adminshop/editor/ueditor.config.js"></script>
 <script src="__STATIC__/adminshop/editor/ueditor.all.js"></script>
-<style type="text/css">
-.table-bordered td div{
-  width:290px;
-    height: 100px;
-    overflow: hidden;
-   text-overflow:ellipsis;
-   white-space: nowrap;
-}
-</style>
 <script type="text/javascript">
   //缩略图添加
     function imgPreviews(fileDom){
@@ -74,8 +65,8 @@
 <body>
 <div style="margin-left: 2%;margin-right: 2%; margin-top: 1%;">
 		<h1 style="text-align: center;">文章管理</h1>
-<button class="btn" style="margin-top: -5%;" id="showModel">添加文章</button> 
- 		<form class="well form-search" method="post" action="{:url('/admin/Article/index',['id'=>$comid])}">
+<button class="btn" style="margin-top: -5%;" id="showModel">添加活动</button> 
+ 		<form class="well form-search" method="post" action="{:url('/admin/Act/index',['id'=>$comid])}">
 			<div class="search_type cc mb10" style="margin-top: -4%;margin-left: 70%;">
 					<span class="mr20">
 
@@ -93,13 +84,14 @@
 			<tr>
 				<!-- <th>id</th> -->
 				<th>编号</th>
-				<th>文章标题</th>
-				<th>编辑</th>
-				<th>缩略图</th>
-				<th>摘要</th>
-				<th>审核</th>
-				
-				<th>内容</th>
+				<th>活动标题</th>
+				<th>活动说明</th>
+        <th>活动logo</th>
+				<th>开始时间</th>
+				<th>结束时间</th>
+				<th>联系人</th>
+				<th>电话</th>
+				<th>公司</th>
 				<th>操作</th>
 			</tr>
 		</thead>
@@ -110,14 +102,16 @@
 				<tr>
 					<td style="display: none;"><span class="id">{$vores.id}</span></td>
 					<td><span class="">{$i++}</span></td>
-					<td><span class="aname">{$vores.aname}</span></td>
-					<td><span class="shop" name="{$vores.ashop}">{$vores.name}</span></td>
-					<td><span  name="{$vores.pic}"  ><img src="__STATIC__/uploads/{$vores.pic}" style="width:100px;height: 100px" class="pic"></span></td>
-					<td><span class="abstract">{$vores.abstract}</span></td>
-					<td><span class="ischeck" name="{$vores.ischeck}">{if condition="($vores.ischeck == 1)"}已审核{else /}未审核{/if}</span></td>
-					<td style="display: none;"><span class="istop">{$vores.istop}</span></td>
-					<td><div class="content">{$vores.content}</div></td>
-
+					<td><span class="jianjie">{$vores.jianjie}</span></td>
+          <td><span class="shuoming">{$vores.shuoming}</span></td>
+					
+					<td><span  name="{$vores.actlogo}"  ><img src="__STATIC__/uploads/{$vores.actlogo}" style="width:100px;height: 100px" class="actlogos"></span></td>
+					<td><span class="kai_time">{$vores.kai_time|timezhuanghuaduan=###}</span></td>
+					
+					<td ><span class="zhong_time">{$vores.zhong_time|timezhuanghuaduan=###}</span></td>
+					<td><span class="lianxir">{$vores.lianxir}</span></td>
+          <td><span class="lxrtel">{$vores.lxrtel}</span></td>
+          <td><span class="comid" name="{$vores.comid}">{$vores.name}</span></td>
 					<td>
 						<span style=" cursor: pointer;" class="showModel2">修改</span> | 
 
@@ -143,49 +137,55 @@
 	            <span class="close">×</span>  
 	        </header>  
 	        <div class="modal-body">  
-	            <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Article/add')}" >
+	            <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('adminshop/Act/add')}" >
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
           <tr>
-            <input type="hidden" name="ashop" id="shop" value="{$comid}">
+            <input type="hidden" name="comid" id="shop" value="{$comid}">
             <td class='wid'>标题</td>
             <td>
-              <input type="text"  id="aname" name="aname" placeholder="请输入标题">
+              <input type="text"  id="jianjie" name="jianjie" placeholder="请输入标题">
             </td>
           </tr>
+         
           <tr>
-            <td class='wid'>缩略图</td>
+            <td class='wid'>说明</td>
             <td>
-              <img id="previews" width="100px" />
-                              <br />
-             <input type="file" name="pic" class="pic" onchange="imgPreviews(this)" />
-            </td>
-          </tr>
-          <tr>
-            <td class='wid'>摘要</td>
-            <td>
-              <textarea id="abstract" name="abstract" style="height: 50px;width: 100%" placeholder="请填写摘要"></textarea>
+              <textarea id="shuoming" name="shuoming" style="height: 50px;width: 100%" placeholder="请填写说明"></textarea>
              
             </td>
           </tr>
           <tr>
-            <td class='wid'>内容</td>
-           
-              <td style="width:82%" >
-          
-            <script id="content" name="content" type="text/plain"></script>
-            <script>
-              var editor;
-              KindEditor.ready(function(K) {
-                editor=K.create('#content');
-              });
-            </script>
-            <script type="text/javascript">
-              var ue = UE.getEditor('content');
-            </script>
+            <td class='wid'>logo</td>
+            <td>
+              <img id="previews" width="100px" />
+                              <br />
+             <input type="file" name="actlogo" class="actlogo" onchange="imgPreviews(this)" />
             </td>
-           
           </tr>
-
+           <tr>
+            <td class='wid'>开始时间</td>
+            <td>
+             <input type="date" name="kai_time" />
+            </td>
+          </tr>
+          <tr>
+            <td class='wid'>结束时间</td>
+            <td>
+             <input type="date" name="zhong_time" />
+            </td>
+          </tr>
+           <tr>
+            <td class='wid'>负责人</td>
+            <td>
+              <input type="text"  id="lianxir" name="lianxir" placeholder="请输入姓名">
+            </td>
+          </tr>
+           <tr>
+            <td class='wid'>联系电话</td>
+            <td>
+              <input type="text"  id="lxrtel" name="lxrtel" placeholder="请输入电话号">
+            </td>
+          </tr>
 				</table>
 	        </div>  
 	        <footer class="modal-footer">  
@@ -205,67 +205,54 @@
 	        </header>  
 	        <div class="modal-body">  
 
-	             <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('admin/Article/edit')}">
+	             <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('adminshop/Act/edit')}">
 				<table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
-          <input type="hidden" name="ashop" id="shop2" value="{$comid}">
+          <input type="hidden" name="comid" id="shop2" value="{$comid}">
           <input type="hidden" name="id" class="ids" value="">
-                  <td class='wid'>标题</td>
+                 <td class='wid'>标题</td>
             <td>
-              <input type="text"  id="aname2" name="aname" placeholder="请输入标题">
+              <input type="text"  id="jianjie2" name="jianjie" placeholder="请输入标题">
+            </td>
+          </tr>
+         
+          <tr>
+            <td class='wid'>说明</td>
+            <td>
+              <textarea id="shuoming2" name="shuoming" style="height: 50px;width: 100%" placeholder="请填写说明"></textarea>
+             
             </td>
           </tr>
           <tr>
             <td class='wid'>缩略图</td>
             <td>
               <div id="img"><img   id="preview" style="width:100px;height: 100px" ></div>
-             <input type="file" name="pic" class="pic" onchange="imgPreview(this)" />
+             <input type="file" name="actlogo" class="actlogo" onchange="imgPreview(this)" />
             </td>
           </tr>
-          <tr>
-            <td class='wid'>摘要</td>
+           <tr>
+            <td class='wid'>开始时间</td>
             <td>
-              <textarea id="abstract2" name="abstract" style="height: 50px;" placeholder="请填写摘要"></textarea>
-             
+             <input type="date" id="kai_time2" name="kai_time" />
             </td>
           </tr>
           <tr>
-            <td class='wid'>内容</td>
-           
-              <td style="width:82%" >
-          
-            <script id="content2" name="content" type="text/plain"></script>
-            <script>
-              var editor2;
-              KindEditor.ready(function(K) {
-                editor2=K.create('#content2');
-              });
-            </script>
-            <script type="text/javascript">
-              var ue = UE.getEditor('content2');
-            </script>
+            <td class='wid'>结束时间</td>
+            <td>
+             <input type="date" id="zhong_time2" name="zhong_time" />
             </td>
-           
           </tr>
-
-          <tr>
-          <td class='wid'>
-            审核
-          </td>
-          <td id="ischeck">
-            <input type="radio" name="ischeck" value="1"/>通过 
-            <input type="radio" name="ischeck" value="2"/>未通过
-          </td>
-        </tr>
-				<tr>
-          <td class='wid'>
-            置顶
-          </td>
-          <td id="istop">
-            <input type="radio" name="istop" value="1"/>置顶 
-            <input type="radio" name="istop" value="2"/>未置顶
-          </td>
-        </tr>		
-
+           <tr>
+            <td class='wid'>负责人</td>
+            <td>
+              <input type="text"  id="lianxir2" name="lianxir" placeholder="请输入姓名">
+            </td>
+          </tr>
+           <tr>
+            <td class='wid'>联系电话</td>
+            <td>
+              <input type="text"  id="lxrtel2" name="lxrtel" placeholder="请输入电话号">
+            </td>
+          </tr>
 				</table>
 	        </div>  
 	        <footer class="modal-footer">  
@@ -313,28 +300,27 @@
     var close2 = document.getElementsByClassName('close2')[0];  
     var cancel2 = document.getElementById('cancel2');  
     var sure2 = document.getElementById('sure2');  
-    var modal2 = document.getElementById('modal2'); 
+    var modal2 = document.getElementById('modal2');
+    
     //模态框展示 
     $(".showModel2").click(function(){
     	comid = $(this).parent().parent().find(".id").html();
-    	comname = $(this).parent().parent().find(".aname").html();//获取name
-    	comshop = $(this).parent().parent().find(".shop").attr('name');
-      comischeck=$(this).parent().parent().find(".ischeck").attr('name');
-      comabstract =$(this).parent().parent().find(".abstract").html();
-      comcontent =$(this).parent().parent().find(".content").html()
-      image=$(this).parent().parent().find(".pic").attr('src');
-      var istop=$(this).parent().parent().find(".istop").html();
+    	var jianjie=$(this).parent().parent().find(".jianjie").html();
+      var shuoming=$(this).parent().parent().find(".shuoming").html();
+      var kai_time=$(this).parent().parent().find(".kai_time").html();
+      var zhong_time=$(this).parent().parent().find(".zhong_time").html();
+      var lianxir=$(this).parent().parent().find(".lianxir").html();
+      var lxrtel=$(this).parent().parent().find(".lxrtel").html();
+      var image=$(this).parent().parent().find(".actlogos").attr('src'); 
     	//赋值
-    	$("#aname2").val(comname);
-    	//$("#shop2").val(comshop);
-      $("#abstract2").val(comabstract);
-      var ue = UE.getEditor('content2');
-      ue.ready(function() {
-      ue.setContent(comcontent);});
-       $("#istop input[name='istop'][value='"+istop+"']").attr("checked",true);
-      $("#ischeck input[name='ischeck'][value='"+comischeck+"']").attr("checked",true);  
+      $("#jianjie2").val(jianjie);
+      $("#shuoming2").val(shuoming);
+      $("#kai_time2").val(kai_time);
+      $("#zhong_time2").val(zhong_time);
+      $("#lianxir2").val(lianxir);
+      $("#lxrtel2").val(lxrtel);
      	$(".ids").val(comid);
-     	$("#img img").attr("src",image);
+      $("#img img").attr("src",image);
         
     	// alert(comid);comname
     	 modal2.style.display = "block";  
@@ -359,7 +345,7 @@
     $(".delcom").click(function(){
     	if(confirm("确定删除该类型吗？")){
     		comid = $(this).parent().parent().find(".id").html();
-    		var image=$(this).parent().parent().find(".pic").attr('src');
+    		var image=$(this).parent().parent().find(".actlogo").attr('src');
     		// alert(comid);return false;
     		$(this).parent().parent().remove();
     		// console.log(aa);return false;
@@ -367,8 +353,8 @@
 	            type:"post",
 	            dataType:'json',
 	            async:false,
-	            url:'{:url("admin/Article/delete")}',
-	            data:{"id":comid,"pic":image},
+	            url:'{:url("adminshop/Act/del")}',
+	            data:{"id":comid,"actlogo":image},
 	            success:function(dd){
 	                // console.log(dd);
 	                if (dd.code == 200) {
