@@ -1,0 +1,499 @@
+{extend name="layoutextend"}
+{block name="nav"}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"> 
+    <title></title>
+    <link rel="stylesheet" href="__STATIC__/xing/css/css.css">
+    <link rel="stylesheet" href="__STATIC__/xing/css/css2.css">
+    <link rel="stylesheet" href="__STATIC__/xing/css/css3.css">
+    <link rel="stylesheet" href="__STATIC__/xing/css/css4.css">
+    <script type="text/javascript">
+    //工地logo添加
+    function imgPreviews(fileDom){
+        //判断是否支持FileReader
+        if (window.FileReader) {
+            var reader = new FileReader();
+        } else {
+            alert("您的设备不支持图片预览功能，如需该功能请升级您的设备！");
+        }
+
+        //获取文件
+        var file = fileDom.files[0];
+        var imageType = /^image\//;
+        //是否是图片
+        if (!imageType.test(file.type)) {
+            alert("请选择图片！");
+            return;
+        }
+        //读取完成
+        reader.onload = function(e) {
+            //获取图片dom
+            var img = document.getElementById("previews");
+            //图片路径设置为读取的图片
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+    </script>
+</head>
+<body>
+<div style="margin-left: 2%;margin-right: 2%; margin-top: 1%;">
+        <h1 style="text-align: center;">评价</h1>
+<button class="btn" style="margin-top: -5%;" id="showModel">添加</button> 
+        <div class="hei"></div>
+    <table class="table table-bordered" >
+
+        <thead>
+            <tr>
+                <!-- <th>id</th> -->
+                <th>编号</th>
+                <th>公司</th>
+                <th>方案</th>
+                <th>阶段</th>
+                <th>时间</th>
+                <th>内容</th>
+                <th>业主名称</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="yuansuzhijia">
+            {foreach name="res" item="vores"}
+            <tr>
+            <td class="sjxingxing" style="display: none;">{$vores.shejipf}</td>
+            <td class="fuxingxing" style="display: none;">{$vores.fuwupf}</td>
+            <td class="jinxingjieduan" style="display: none;">{$vores.schedule}</td>
+            <td class="sfid">{$vores.id}</td>
+            <td >{$com['name']}</td>
+            <td >{$plan['name']}</td>
+            <td >{$vores['schedule|jdhoutaizh=###']}</td>
+            <td class="time">{$vores.time}</td> 
+            <td class="text" ><div class="textdo" style="width: 100px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;">{$vores.text}</div></td>
+            <td class="yezhuname">{$vores.yezhuname}</td>
+            <td><span style=" cursor: pointer;" class="showModel2">修改</span> |
+            <span style=" cursor: pointer;" class="delcom">删除</span> </td>
+            </tr>
+            {/foreach}
+        </tbody>
+        
+    </table>
+</div>
+
+<!-- 模态框 -->
+<div>
+     <!-- 模态框添加 -->
+    <div id="modal" class="modal">  
+        <div class="modal-content">  
+            <header class="modal-header">  
+                <h4>添加</h4>  
+                <span class="close">×</span>  
+            </header>  
+            <div class="modal-body">  
+                <form id="formsubadd" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('adminshop/Shopeval/add')}" >
+                <table  style="border-collapse:separate; border-spacing:10px; width: 100%;font:initial;" >
+                <!-- 公司id -->
+                <input type="hidden" name="comid" value="{$com['id']}">
+                <!-- 方案id -->
+                <input type="hidden" name="planid" value="{$plan['id']}">
+                    <tr>
+                        <td class='wid' >公司名称</td>
+                        <td>
+                            <input type="text" class="form-control" value="{$com['name']}" disabled="disabled">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class='wid'>方案名称</td>
+                        <td>
+                            <input type="text" class="form-control" value="{$plan['name']}" disabled="disabled">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class='wid'>设计评分</td>
+                        <td style="width: 10%;">
+                        <!-- 星星 -->
+                            <span id="starRating">
+                                <input type="text" class="starNum" name="shejipf" style="display: none;" />
+
+                                <span class="photo">
+                                    <span><i class="high"></i><i class="nohigh"></i></span>
+                                    <span><i class="high"></i><i class="nohigh"></i></span>
+                                    <span><i class="high"></i><i class="nohigh"></i></span>
+                                    <span><i class="high"></i><i class="nohigh"></i></span>
+                                    <span><i class="high"></i><i class="nohigh"></i></span>
+                                </span>
+                            </span>
+                            <script>
+                                $(function () {
+                                    //评分
+                                    var starRating = 0;
+                                    $('.photo span').on('mouseenter',function () {
+                                        var index = $(this).index()+1;
+                                        $(this).prevAll().find('.high').css('z-index',1)
+                                        $(this).find('.high').css('z-index',1)
+                                        $(this).nextAll().find('.high').css('z-index',0)
+                                        starRating = index;
+                                        $('.starNum').val((index).toFixed(1))
+                                    })
+                                    $('.photo').on('mouseleave',function () {
+                                        $(this).find('.high').css('z-index',0)
+                                        var count = starRating 
+                                        if(count == 5) {
+                                            $('.photo span').find('.high').css('z-index',1);
+                                        } else {
+                                            $('.photo span').eq(count).prevAll().find('.high').css('z-index',1);
+                                        }
+                                        $('.starNum').val(starRating.toFixed(1))
+                                    })
+                                })
+                            </script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class='wid'>服务评分</td>
+                         <td style="width: 10%;">
+                        <!-- 星星 -->
+                            <span id="starRating2">
+                                <input type="text" class="starNum2" name="fuwupf" style="display: none;" />
+
+                                <span class="photo2">
+                                    <span><i class="high"></i><i class="nohigh"></i></span>
+                                    <span><i class="high"></i><i class="nohigh"></i></span>
+                                    <span><i class="high"></i><i class="nohigh"></i></span>
+                                    <span><i class="high"></i><i class="nohigh"></i></span>
+                                    <span><i class="high"></i><i class="nohigh"></i></span>
+                                </span>
+                            </span>
+                            <script>
+                                $(function () {
+                                    //评分
+                                    var starRating2 = 0;
+                                    $('.photo2 span').on('mouseenter',function () {
+                                        var index = $(this).index()+1;
+                                        $(this).prevAll().find('.high').css('z-index',1)
+                                        $(this).find('.high').css('z-index',1)
+                                        $(this).nextAll().find('.high').css('z-index',0)
+                                        starRating2 = index;
+                                        $('.starNum2').val((index).toFixed(1))
+                                    })
+                                    $('.photo2').on('mouseleave',function () {
+                                        $(this).find('.high').css('z-index',0)
+                                        var count = starRating2 
+                                        if(count == 5) {
+                                            $('.photo2 span').find('.high').css('z-index',1);
+                                        } else {
+                                            $('.photo2 span').eq(count).prevAll().find('.high').css('z-index',1);
+                                        }
+                                        $('.starNum2').val(starRating2.toFixed(1))
+                                    })
+                                })
+                            </script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class='wid'>装修阶段</td>
+                        <td>
+                            <select name="schedule" > 
+                            <option value ="0">请选择</option>  
+                             
+                               <span ><option value ="1">准备开工</option></span>
+                               <span ><option value ="2">水电阶段</option></span> 
+                               <span ><option value ="3">泥水阶段</option></span>
+                               <span ><option value ="4">油漆阶段</option></span>
+                               <span ><option value ="5">竣工</option></span>  
+                              
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >业主名称</td>
+                        <td>
+                            <input type="text" class="form-control" name="yezhuname" placeholder="请输入名称">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >点评内容</td>
+                        <td>
+                            <textarea name="text" class="form-control" rows="5" cols="80"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >点评时间</td>
+                        <td>
+                            <input type="date" name="time" value="">
+                        </td>
+                    </tr>
+                </table>
+            </form> 
+            </div>  
+            <footer class="modal-footer">  
+                <button type="button" id="cancel">取消</button>  
+                <button type="button" id="sure">确定</button>  
+            </footer> 
+            
+        </div>  
+    </div> 
+
+    <!-- 模态框修改 -->
+    <div id="modal2" class="modal">  
+        <div class="modal-content">  
+            <header class="modal-header">  
+                <h4>信息修改</h4>  
+                <span class="close2">×</span>  
+            </header>  
+             <div class="modal-body">  
+                <form id="formsubedit" class="form-inline" method="post" enctype="multipart/form-data" action="{:url('adminshop/Shopeval/edit')}" >
+                <table  style="border-collapse:separate; border-spacing:10px; width: 100%;" >
+                <input type="hidden" name="id" id="sfid" value="">
+                <!-- 公司id -->
+                <input type="hidden" name="comid" value="{$com['id']}">
+                <!-- 方案id -->
+                <input type="hidden" name="planid" value="{$plan['id']}">
+                    <tr>
+                        <td >公司名称</td>
+                        <td>
+                            <input type="text" class="form-control" value="{$com['name']}" disabled="disabled">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >方案名称</td>
+                        <td>
+                            <input type="text" class="form-control" value="{$plan['name']}" disabled="disabled">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >设计评分</td>
+                        <td style="width: 10%;">
+                        <!-- 星星 -->
+                            <span id="starRating3">
+                                <input type="text" class="starNum3" name="shejipf" style="display: none;" />
+
+                                <span class="photo3">
+                                    <span><i class="high"></i><i class="nohigh"></i></span>
+                                    <span><i class="high"></i><i class="nohigh"></i></span>
+                                    <span><i class="high"></i><i class="nohigh"></i></span>
+                                    <span><i class="high"></i><i class="nohigh"></i></span>
+                                    <span><i class="high"></i><i class="nohigh"></i></span>
+                                </span>
+                            </span>
+                            <script>
+                                $(function () {
+                                    //评分
+                                    var starRating3 = 0;
+                                    $('.photo3 span').on('mouseenter',function () {
+                                        var index = $(this).index()+1;
+                                        $(this).prevAll().find('.high').css('z-index',1)
+                                        $(this).find('.high').css('z-index',1)
+                                        $(this).nextAll().find('.high').css('z-index',0)
+                                        starRating3 = index;
+                                        $('.starNum3').val((index).toFixed(1))
+                                    })
+                                    $('.photo3').on('mouseleave',function () {
+                                        $(this).find('.high').css('z-index',0)
+                                        var count = starRating3 
+                                        if(count == 5) {
+                                            $('.photo3 span').find('.high').css('z-index',1);
+                                        } else {
+                                            $('.photo3 span').eq(count).prevAll().find('.high').css('z-index',1);
+                                        }
+                                        $('.starNum3').val(starRating3.toFixed(1))
+                                    })
+                                })
+                            </script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >服务评分</td>
+                         <td style="width: 10%;">
+                        <!-- 星星 -->
+                            <span id="starRating4">
+                                <input type="text" class="starNum4" name="fuwupf" style="display: none;" />
+
+                                <span class="photo4">
+                                    <span><i class="high"></i><i class="nohigh"></i></span>
+                                    <span><i class="high"></i><i class="nohigh"></i></span>
+                                    <span><i class="high"></i><i class="nohigh"></i></span>
+                                    <span><i class="high"></i><i class="nohigh"></i></span>
+                                    <span><i class="high"></i><i class="nohigh"></i></span>
+                                </span>
+                            </span>
+                            <script>
+                                $(function () {
+                                    //评分
+                                    var starRating4 = 0;
+                                    $('.photo4 span').on('mouseenter',function () {
+                                        var index = $(this).index()+1;
+                                        $(this).prevAll().find('.high').css('z-index',1)
+                                        $(this).find('.high').css('z-index',1)
+                                        $(this).nextAll().find('.high').css('z-index',0)
+                                        starRating4 = index;
+                                        $('.starNum4').val((index).toFixed(1))
+                                    })
+                                    $('.photo4').on('mouseleave',function () {
+                                        $(this).find('.high').css('z-index',0)
+                                        var count = starRating4 
+                                        if(count == 5) {
+                                            $('.photo4 span').find('.high').css('z-index',1);
+                                        } else {
+                                            $('.photo4 span').eq(count).prevAll().find('.high').css('z-index',1);
+                                        }
+                                        $('.starNum4').val(starRating4.toFixed(1))
+                                    })
+                                })
+                            </script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class='wid'>装修阶段</td>
+                        <td>
+                            <select name="schedule" id="schedule"> 
+                            <option value ="0">请选择</option>  
+                             
+                               <span ><option value ="1">准备开工</option></span>
+                               <span ><option value ="2">水电阶段</option></span> 
+                               <span ><option value ="3">泥水阶段</option></span>
+                               <span ><option value ="4">油漆阶段</option></span>
+                               <span ><option value ="5">竣工</option></span>  
+                              
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >业主名称</td>
+                        <td>
+                            <input type="text" class="form-control" name="yezhuname" id="yezhuname" placeholder="请输入名称">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >点评内容</td>
+                        <td>
+                            <textarea name="text" id="textdo" class="form-control" rows="5" cols="80"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >点评时间</td>
+                        <td>
+                            <input type="date" name="time" id="timedo">
+                        </td>
+                    </tr>
+                </table>
+            </form> 
+            </div> 
+            <footer class="modal-footer">  
+                <button type="button" id="cancel2">取消</button>  
+                <button type="button" id="sure2">确定</button>  
+            </footer>
+        </div>  
+    </div>  
+</div>
+</body>
+<!-- 模态框js -->
+<script>  
+// 添加
+
+    var btn = document.getElementById('showModel');  
+    var close = document.getElementsByClassName('close')[0];  
+    var cancel = document.getElementById('cancel');  
+    var sure = document.getElementById('sure');  
+    var modal = document.getElementById('modal');  
+    btn.addEventListener('click', function(){
+        modal.style.display = "block";  
+    });  
+    close.addEventListener('click', function(){  
+        modal.style.display = "none";  
+    });  
+    cancel.addEventListener('click', function(){  
+        modal.style.display = "none";  
+    });  
+     
+    sure.addEventListener('click', function(){  
+        // 获取信息
+            $("#formsubadd").submit();
+        
+        
+    });
+    // 修改   
+    var close2 = document.getElementsByClassName('close2')[0];  
+    var cancel2 = document.getElementById('cancel2');  
+    var sure2 = document.getElementById('sure2');  
+    var modal2 = document.getElementById('modal2'); 
+    //模态框展示 
+    $(".showModel2").click(function(){
+        // 获取卧室id
+        var sfid = $(this).parent().parent().find(".sfid").html();
+        var yezhuname = $(this).parent().parent().find(".yezhuname").html();
+        var text = $(this).parent().parent().find(".textdo").html();
+        var time = $(this).parent().parent().find(".time").html();
+        var sjxingxing = $(this).parent().parent().find(".sjxingxing").html();
+        var fuxingxing = $(this).parent().parent().find(".fuxingxing").html();
+        var jinxingjieduan = $(this).parent().parent().find(".jinxingjieduan").html();
+        time = time.substring(0,10);
+        // 设计星星赋值
+        $('.photo3 span').find('.high').css('z-index',0)
+        var count = sjxingxing; 
+        if(count == 5) {
+            $('.photo3 span').find('.high').css('z-index',1);
+        } else {
+            $('.photo3 span').eq(count).prevAll().find('.high').css('z-index',1);
+        }
+        $('.starNum3').val(sjxingxing);
+        // 服务星星赋值
+        $('.photo4 span').find('.high').css('z-index',0)
+        var count = fuxingxing; 
+        if(count == 5) {
+            $('.photo4 span').find('.high').css('z-index',1);
+        } else {
+            $('.photo4 span').eq(count).prevAll().find('.high').css('z-index',1);
+        }
+        $('.starNum4').val(fuxingxing);
+        // alert(time);
+        $("#sfid").val(sfid);
+        $("#yezhuname").val(yezhuname);
+        $("#textdo").val(text);
+        $("#timedo").val(time);
+        $("#schedule").find("option[value = '"+jinxingjieduan+"']").attr("selected","selected");
+        modal2.style.display = "block"; 
+    });
+    close2.addEventListener('click', function(){  
+        modal2.style.display = "none";  
+    }); 
+    cancel2.addEventListener('click', function(){  
+        modal2.style.display = "none";  
+    });  
+    //执行修改
+    sure2.addEventListener('click', function(){
+        // 获取信息
+            $("#formsubedit").submit();
+        
+        
+    });
+    // 执行删除
+    $(".delcom").click(function(){
+        if(confirm("确定删除该类型吗？")){
+            var sfid = $(this).parent().parent().find(".sfid").html();
+            // alert(sfid);return false;
+            $(this).parent().parent().remove();
+            // console.log(aa);return false;
+            $.ajax({
+                type:"post",
+                dataType:'json',
+                async:false,
+                url:'{:url("admin/Shopeval/del")}',
+                data:{"sfid":sfid},
+                success:function(dd){
+                    // alert(dd);
+                 //    console.log(dd);
+                    if (dd.code == 200) {
+                        //jq 删除元素
+
+                    }else{
+                        alert(msg);
+                    }
+                     
+                }
+            })
+        }
+    });
+</script> 
+</html>
+{/block}

@@ -59,7 +59,7 @@ class Shop extends  \app\admin\controller\Base
             $area=$urlcanshu['areacode'];
 
         }
-    	$res=$user->field("shop.id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,zixurenshu,com_jianjie,com_koubei,com_haoping,com_tel,logo_yingyezz,name_jc,faren,zhucezijin,lianxiren,youxiang,qyname,qqkf,guimu,lianxirenshouji,top,com_paixu,zhi,com_slogan,code,pass,zhuanghoufw,shejilf,yusuanqt,shenhuasj,shenhuays,cailiaozl,hetonggf,tesefu,procode,citycode,areacode")->join('com_fuwuqy w','shop.com_szqy = w.qycode','left')->join('shop_do d','shop.id = d.shopid','left')->where($where)->order("com_paixu desc")->paginate(10,false,['query'=>$urlcanshu,]); 
+    	$res=$user->field("shop.id,name,logo,dizhi,bl,rz,sum,dis,com_price,com_fuqy,com_leixing,com_szqy,com_zcfg,com_jianjie,com_koubei,com_haoping,com_tel,logo_yingyezz,name_jc,faren,zhucezijin,lianxiren,youxiang,qyname,qqkf,guimu,lianxirenshouji,top,com_paixu,zhi,com_slogan,code,shejixj,fuwutd,shigongsp,pass,zhuanghoufw,shejilf,yusuanqt,shenhuasj,shenhuays,cailiaozl,hetonggf,tesefu,procode,citycode,areacode")->join('com_fuwuqy w','shop.com_szqy = w.qycode','left')->join('shop_do d','shop.id = d.shopid','left')->where($where)->order("com_paixu desc")->paginate(10,false,['query'=>$urlcanshu,]); 
         
     	$qy=$fu->select();
     	$xing=$lei->select();
@@ -142,6 +142,10 @@ class Shop extends  \app\admin\controller\Base
         $shuju_do['cailiaozl'] = input('post.cailiaozl');
         $shuju_do['hetonggf'] = input('post.hetonggf');
         $shuju_do['tesefu'] = input('post.tesefu');
+        $shuju_do['fuwutd'] = input('post.fuwutd');
+        $shuju_do['shejixj'] = input('post.shejixj');
+        $shuju_do['shigongsp'] = input('post.shigongsp');
+        $shuju_do['com_koubei'] = input('post.com_koubei');
         $user_info_do = db('shop_do')->insert($shuju_do);
         if (!$user_info) {
            $this->error("添加失败","admin/Shop/index");
@@ -157,7 +161,7 @@ class Shop extends  \app\admin\controller\Base
         $user = db('shop');
         $whid = input('post.id');//获取id
         $where['id'] = $whid; 
-       $shuju['name'] = input('post.name');//获取数据
+        $shuju['name'] = input('post.name');//获取数据
         $shuju['dizhi'] = input('post.dizhi');
         $shuju['bl'] = input('post.bl');
         $shuju['rz'] = input('post.rz');
@@ -210,6 +214,10 @@ class Shop extends  \app\admin\controller\Base
         $shuju_do['cailiaozl'] = input('post.cailiaozl');
         $shuju_do['hetonggf'] = input('post.hetonggf');
         $shuju_do['tesefu'] = input('post.tesefu');
+         $shuju_do['fuwutd'] = input('post.fuwutd');
+        $shuju_do['shejixj'] = input('post.shejixj');
+        $shuju_do['shigongsp'] = input('post.shigongsp');
+        $shuju_do['com_koubei'] = input('post.com_koubei');
         $wheres['shopid']=$whid;
         $user_info_do = db('shop_do')->where($wheres)->update($shuju_do);
 

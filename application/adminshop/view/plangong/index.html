@@ -303,7 +303,20 @@
                     <td>
                         <span style=" cursor: pointer;" class="showModel2">修改</span> | 
                         <span style=" cursor: pointer;" class="delcom">删除</span>  |
-                        <span  style=" cursor: pointer;"class="showModel3">图片管理</span>
+                        <span style=" cursor: pointer; "><a style="color: #000;" href="{:url('adminshop/Shopeval/index',['comid'=>$comid,'planid'=>$vores.id])}">点评</a></span>  |
+                        <span  style=" cursor: pointer;" > 
+                            <select name="" id="" onchange="window.location=this.value" style="width: 90px">
+                                <option value="">图片管理</option>
+                                <option value="{:url('adminshop/plantu/shufangindex',['comid'=>$comid,'planid'=>$vores.id])}">书房图片</option>
+                                <option value="{:url('adminshop/plantu/woshiindex',['comid'=>$comid,'planid'=>$vores.id])}">卧室图片</option>
+                                <option value="{:url('adminshop/plantu/ertongjianindex',['comid'=>$comid,'planid'=>$vores.id])}">儿童间图片</option>
+                                <option value="{:url('adminshop/plantu/weishengjianindex',['comid'=>$comid,'planid'=>$vores.id])}">卫生间图片</option>
+                                <option value="{:url('adminshop/plantu/ketingindex',['comid'=>$comid,'planid'=>$vores.id])}">客厅图片</option>
+                                <option value="{:url('adminshop/plantu/chufangindex',['comid'=>$comid,'planid'=>$vores.id])}">厨房图片</option>
+                                <option value="{:url('adminshop/plantu/cantingindex',['comid'=>$comid,'planid'=>$vores.id])}">餐厅图片</option>
+                                <option value="{:url('adminshop/plantu/shigongindex',['comid'=>$comid,'planid'=>$vores.id])}">施工图图片</option>
+                            </select>
+                        </span>
                     </td>
                 </tr>
             {/foreach}
