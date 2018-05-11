@@ -111,15 +111,17 @@ Route::rule('/admin/plantu/shufangindex','admin/plantu/shufangindex');//图片�
 Route::rule('/admin/Plantu/shufangadd','admin/Plantu/shufangadd');//图片管理书房添加
 Route::rule('/admin/Plantu/shufangedit','admin/Plantu/shufangedit');//图片管理书房修改
 Route::rule('/admin/Plantu/shufangdel','admin/Plantu/shufangdel');//图片管理书房del
-
+//施工图
 Route::rule('/admin/plantu/shigongindex','admin/plantu/shigongindex');//图片管理施工图
 Route::rule('/admin/Plantu/shigongadd','admin/Plantu/shigongadd');//图片管理施工图添加
 Route::rule('/admin/Plantu/shigongedit','admin/Plantu/shigongedit');//图片管理施工图修改
 Route::rule('/admin/Plantu/shigongdel','admin/Plantu/shigongdel');//图片管理施工图del
+//餐厅
 Route::rule('/admin/plantu/cantingindex','admin/plantu/cantingindex');//图片管理餐厅
 Route::rule('/admin/Plantu/cantingadd','admin/Plantu/cantingadd');//图片管理餐厅添加
 Route::rule('/admin/Plantu/cantingedit','admin/Plantu/cantingedit');//图片管理餐厅修改
 Route::rule('/admin/Plantu/cantingdel','admin/Plantu/cantingdel');//图片管理餐厅del
+//厨房
 Route::rule('/admin/plantu/chufangindex','admin/plantu/chufangindex');//图片管理厨房
 Route::rule('/admin/Plantu/chufangadd','admin/Plantu/chufangadd');//图片管理厨房添加
 Route::rule('/admin/Plantu/chufangedit','admin/Plantu/chufangedit');//图片管理厨房修改
@@ -266,6 +268,48 @@ Route::rule('/adminshop/plan/ajaxtpguanli','adminshop/plan/ajaxtpguanli');//图�
 Route::rule('/adminshop/plan/edit','adminshop/plan/edit');//修改
 Route::rule('/adminshop/Plan/tupianguanli','adminshop/Plan/tupianguanli');//图片管理修改
 Route::rule('/adminshop/plan/delete','adminshop/plan/delete');//删除
+//案例图片管理
+//书房
+Route::rule('/adminshops/plantu/shufangindex','adminshop/plantu/shufangindex');//图片管理书房
+Route::rule('/adminshops/Plantu/shufangadd','adminshop/Plantu/shufangadd');//图片管理书房添加
+Route::rule('/adminshops/Plantu/shufangedit','adminshop/Plantu/shufangedit');//图片管理书房修改
+Route::rule('/adminshops/Plantu/shufangdel','adminshop/Plantu/shufangdel');//图片管理书房del
+//施工图
+Route::rule('/adminshops/plantu/shigongindex','adminshop/plantu/shigongindex');//图片管理施工图
+Route::rule('/adminshops/Plantu/shigongadd','adminshop/Plantu/shigongadd');//图片管理施工图添加
+Route::rule('/adminshops/Plantu/shigongedit','adminshop/Plantu/shigongedit');//图片管理施工图修改
+Route::rule('/adminshops/Plantu/shigongdel','adminshop/Plantu/shigongdel');//图片管理施工图del
+//餐厅
+Route::rule('/adminshops/plantu/cantingindex','adminshop/plantu/cantingindex');//图片管理餐厅
+Route::rule('/adminshops/Plantu/cantingadd','adminshop/Plantu/cantingadd');//图片管理餐厅添加
+Route::rule('/adminshops/Plantu/cantingedit','adminshop/Plantu/cantingedit');//图片管理餐厅修改
+Route::rule('/adminshops/Plantu/cantingdel','adminshop/Plantu/cantingdel');//图片管理餐厅del
+//厨房
+Route::rule('/adminshops/plantu/chufangindex','adminshop/plantu/chufangindex');//图片管理厨房
+Route::rule('/adminshops/Plantu/chufangadd','adminshop/Plantu/chufangadd');//图片管理厨房添加
+Route::rule('/adminshops/Plantu/chufangedit','adminshop/Plantu/chufangedit');//图片管理厨房修改
+Route::rule('/adminshops/Plantu/chufangdel','adminshop/Plantu/chufangdel');//图片管理厨房del
+
+//卧室
+Route::rule('/adminshops/plantu/woshiindex','adminshop/plantu/woshiindex');
+Route::rule('/adminshops/Plantu/woshiadd','adminshop/Plantu/woshiadd');
+Route::rule('/adminshops/Plantu/woshiedit','adminshop/Plantu/woshiedit');
+Route::rule('/adminshops/Plantu/woshidel','adminshop/Plantu/woshidel');
+//儿童间
+Route::rule('/adminshops/plantu/ertongjianindex','adminshop/plantu/ertongjianindex');
+Route::rule('/adminshops/Plantu/ertongjianadd','adminshop/Plantu/ertongjianadd');
+Route::rule('/adminshops/Plantu/ertongjianedit','adminshop/Plantu/ertongjianedit');
+Route::rule('/adminshops/Plantu/ertongjiandel','adminshop/Plantu/ertongjiandel');
+//卫生间
+Route::rule('/adminshops/plantu/weishengjianindex','adminshop/plantu/weishengjianindex');
+Route::rule('/adminshops/Plantu/weishengjianadd','adminshop/Plantu/weishengjianadd');
+Route::rule('/adminshops/Plantu/weishengjianedit','adminshop/Plantu/weishengjianedit');
+Route::rule('/adminshops/Plantu/weishengjiandel','adminshop/Plantu/weishengjiandel');
+//客厅
+Route::rule('/adminshops/plantu/ketingindex','adminshop/plantu/ketingindex');
+Route::rule('/adminshops/Plantu/ketingadd','adminshop/Plantu/ketingadd');
+Route::rule('/adminshops/Plantu/ketingedit','adminshop/Plantu/ketingedit');
+Route::rule('/adminshops/Plantu/ketingdel','adminshop/Plantu/ketingdel');
 
 //公司工地
 Route::rule('/adminshop/plangong/index','adminshop/plangong/index');//公司 案例列表
@@ -280,7 +324,11 @@ Route::rule('/adminshop/designer/index','adminshop/designer/index');//公司 设
 Route::rule('/adminshop/designer/add','adminshop/designer/add');//添加
 Route::rule('/adminshop/designer/edit','adminshop/designer/edit');//修改
 Route::rule('/adminshop/designer/delete','adminshop/designer/delete');//删除
-
+// 公司业务点评管理
+Route::rule('/adminshopd/Shopeval/index','adminshop/Shopeval/index');//服务价位
+Route::rule('/adminshopd/Shopeval/add','adminshop/Shopeval/add');// 添加
+Route::rule('/adminshopd/Shopeval/edit','adminshop/Shopeval/edit');// 修改
+Route::rule('/adminshopd/Shopeval/del','adminshop/Shopeval/del');// 删除
 // 公司轮播图管理
 Route::rule('/adminshop/Shoplbt/index','adminshop/Shoplbt/index');//服务价位
 Route::rule('/adminshop/Shoplbt/add','adminshop/Shoplbt/add');// 添加

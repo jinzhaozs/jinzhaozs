@@ -284,6 +284,7 @@
 					<td><span class="sum">{$vores.sum}</span></td>
 					<td><span class="comszqy" name="{$vores.com_szqy}">{$vores.qyname}</span></td>
 					<td><span class="dizhi">{$vores.dizhi}</span></td>
+					<td style="display: none;"><span class="zhucezijin">{$vores.zhucezijin}</span></td>
 					<td style="display: none;"><span class="procode">{$vores.procode}</span></td>
 					<td style="display: none;"><span class="citycode">{$vores.citycode}</span></td>
 					<td style="display: none;"><span class="areacode">{$vores.areacode}</span></td>
@@ -309,6 +310,10 @@
 					<td style="display: none;"><span class="comleixing">{$vores.com_leixing}</span></td>
 					<td style="display: none;"><span class="comjianjie">{$vores.com_jianjie}</span></td>
 					<td style="display: none;"><span class="comslogan">{$vores.com_slogan}</span></td>
+					<td style="display: none;"><span class="shejixj" >{$vores.shejixj}</span></td>
+					<td style="display: none;"><span class="fuwutd" >{$vores.fuwutd}</span></td>
+					<td style="display: none;"><span class="shigongsp" >{$vores.shigongsp}</span></td>
+					<td style="display: none;"><span class="com_koubei" >{$vores.com_koubei}</span></td>
 					<td ><span style=" cursor: pointer;">{if condition="($vores.zhi ==2)"} <button style="width: 60px;" type="button" class="btn zhi" name="{$vores.id}">置顶</button>{else /} <button style="width: 60px;text-align: center;" type="button" class="btn qzhi" name="{$vores.id}">未置顶</button> {/if}</span></td>
 
 					<td>
@@ -322,7 +327,7 @@
                             <option value="{:url('/admin/plan/index',['comid'=>$vores.id])}">案例</option>
                             <option value="{:url('admin/article/index',['id'=>$vores['id']])}">文章</option>
                             <option value="{:url('admin/Shoplbt/index',['comid'=>$vores['id']])}">轮播图</option>
-                            <option value="{:url('admin/Shoplbt/index',['comid'=>$vores['id']])}">业主点评</option>
+                            <!-- <option value="{:url('admin/Shopeval/index',['comid'=>$vores['id']])}">业主点评</option> -->
                             <option value="{:url('admin/act/index',['id'=>$vores['id']])}"">优惠活动</option>
 
 
@@ -370,15 +375,15 @@
 					</tr>
 					<tr>
 						<td class='wid'>商标</td>
-						<td><img id="previews" width="100px" />
+						<td><img id="previews" src="" width="100px" />
                               <br />
 							
-							<input type="file" name="logo" onchange="imgPreviews(this)" />
+							<input type="file" name="logo" id="logo" onchange="imgPreviews(this)" />
 
 							
 						</td>
 					</tr>
-					<tr>
+					<tr style="display: none">
 						<td class='wid'>公司所在区</td>
 						<td>
 							  <select name="com_szqy" id="sz">  
@@ -614,6 +619,57 @@
 						</td>
 					</tr>
 					<tr>
+						<td class='wid'>口碑值</td>
+						<td>
+							<input type="text" class="form-control" name="com_koubei" id="com_koubei" placeholder="请输入口碑值">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>设计水平</td>
+						<td>
+							<select name="shejixj" id="shejixj"> 
+							<option value ="0">请选择</option>  
+                             
+                               <span ><option value ="1">1星</option></span>
+                               <span ><option value ="2">2星</option></span> 
+                               <span ><option value ="3">3星</option></span>
+                               <span ><option value ="4">4星</option></span>
+                               <span ><option value ="5">5星</option></span>  
+                              
+                            </select>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>服务态度</td>
+						<td>
+							<select name="fuwutd" id="fuwutd"> 
+							<option value ="0">请选择</option>  
+                             
+                               <span ><option value ="1">1星</option></span>
+                               <span ><option value ="2">2星</option></span> 
+                               <span ><option value ="3">3星</option></span>
+                               <span ><option value ="4">4星</option></span>
+                               <span ><option value ="5">5星</option></span>  
+                              
+                            </select>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>施工水平</td>
+						<td>
+							<select name="shigongsp" id="shigongsp"> 
+							<option value ="0">请选择</option>  
+                             
+                               <span ><option value ="1">1星</option></span>
+                               <span ><option value ="2">2星</option></span> 
+                               <span ><option value ="3">3星</option></span>
+                               <span ><option value ="4">4星</option></span>
+                               <span ><option value ="5">5星</option></span>  
+                              
+                            </select>
+						</td>
+					</tr>
+					<tr>
 						<td class='wid'>公司规模</td>
 						<td >
 						<textarea name='guimu' id="guimu" style='width:98%;height:50px;' placeholder='请填写公司规模'></textarea>
@@ -714,7 +770,7 @@
 							<input type="file" name="logo" class="form-control" id="logo2"  onchange="imgPreview(this)" />
 						</td>
 					</tr>
-					<tr>
+					<tr style="display: none;">
 						<td class='wid'>公司所在区</td>
 						<td>
 							  <select name="com_szqy" id="sz2">  
@@ -843,7 +899,7 @@
 						<td class='wid'>执照照片</td>
 						<td>
 							<div id="zhizhao"><img src="" id="previewzs" style="width:100px;height: 100px" ></div>
-							<input type="file" name="logo_yingyezz" class="logo_yingyezz" id="logo2" onchange="imgPreviewzs(this)" />
+							<input type="file" name="logo_yingyezz" class="logo_yingyezz" id="l2" onchange="imgPreviewzs(this)" />
 						</td>
 					</tr>
 					<tr>
@@ -851,7 +907,7 @@
 						<td class='wid'>法人</td>
 					
 						<td>
-							<input type="text" class="form-control" name="faren" id="faern2" placeholder="请输入法人姓名">
+							<input type="text" class="form-control" name="faren" id="faren2" placeholder="请输入法人姓名">
 						</td>
 					</tr>
 					<tr>
@@ -938,6 +994,57 @@
 						<td class='wid'>保障金</td>
 						<td>
 							<input type="text" class="form-control" name="sum" id="sum2" placeholder="请输入保障金">
+						</td>
+					</tr>
+							<tr>
+						<td class='wid'>口碑值</td>
+						<td>
+							<input type="text" class="form-control" name="com_koubei" id="com_koubei2" placeholder="请输入口碑值">
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>设计水平</td>
+						<td>
+							<select name="shejixj" id="shejixj2"> 
+							<option value ="0">请选择</option>  
+                             
+                               <span ><option value ="1">1星</option></span>
+                               <span ><option value ="2">2星</option></span> 
+                               <span ><option value ="3">3星</option></span>
+                               <span ><option value ="4">4星</option></span>
+                               <span ><option value ="5">5星</option></span>  
+                              
+                            </select>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>服务态度</td>
+						<td>
+							<select name="fuwutd" id="fuwutd2"> 
+							<option value ="0">请选择</option>  
+                             
+                               <span ><option value ="1">1星</option></span>
+                               <span ><option value ="2">2星</option></span> 
+                               <span ><option value ="3">3星</option></span>
+                               <span ><option value ="4">4星</option></span>
+                               <span ><option value ="5">5星</option></span>  
+                              
+                            </select>
+						</td>
+					</tr>
+					<tr>
+						<td class='wid'>施工水平</td>
+						<td>
+							<select name="shigongsp" id="shigongsp2"> 
+							<option value ="0">请选择</option>  
+                             
+                               <span ><option value ="1">1星</option></span>
+                               <span ><option value ="2">2星</option></span> 
+                               <span ><option value ="3">3星</option></span>
+                               <span ><option value ="4">4星</option></span>
+                               <span ><option value ="5">5星</option></span>  
+                              
+                            </select>
 						</td>
 					</tr>
 						<tr>
@@ -1030,9 +1137,19 @@
     sure.addEventListener('click', function(){  
     	// 获取信息
     	var name = $("#names").val();
+    	var name_jc=$("#namejc").val();
+    	var province=$("#province").val();
+    	var city=$("#city").val();
+    	var area=$("#area").val();
     	var dizhi = $("#dizhi").val();
-    	var logo = $("#logo").val();
-    	var sz = $("#com_szqy").val()
+    	var logo = $("#previews").attr("src");
+    	var previewz=$("#previewz").attr("src");
+    	var faern=$("#faren").val();
+    	var zhucezijin=$("#zhucezijin").val();
+    	var com_slogan=$("#com_slogan").val();
+    	var lianxiren=$("#lianxiren").val();
+    	var lianxirenshouji=$("#lianxirenshouji").val();
+    	var sz = $("#com_szqy").val();
     	var tel = $("#com_tel").val();
     	var code= $("#code").val();
     	var pass =$("#pass").val();
@@ -1068,31 +1185,160 @@
          $('#com_zcfg .zcfg').val(com_zcfg);
          $('#com_leixing .leixing').val(com_leixing);
           $('#com_price .price').val(com_price);
+          if(name ==''){
+				layer.tips('请输公司名称', '#names');
+				$("#names").focus();
+				return false;
+			}
+		 if(name_jc ==''){
+		 	layer.tips('请输入公司简称','#namejc');
+		 	$("#namejc").focus();
+		 	return false;
+		 }
+		 if(logo ==''){
+		 	layer.tips('请选择图片！','#logo');
+		 	$("#logo").focus();
+		 	return false;
+		 }
+		 if(province =='0'){
+		 	layer.tips('请选择省','#province',{
+              tips: [1, '#3595CC']}); 
+		 	$("#province").focus();
+		 	return false;
+		 }
+		 if(city =='0'){
+		 	layer.tips('请选择市','#city',{
+              tips: [1, '#3595CC']}); 
+		 	$("#city").focus();
+		 	return false;
+		 }
+		 if(area =='0'){
+		 	layer.tips('请选择区','#area',{
+              tips: [1, '#3595CC']}); 
+		 	$("#area").focus();
+		 	return false;
+		 }
+		 if(dizhi =='')
+		 {
+		 	layer.tips('请输入公司详细地址','#dizhi');
+		 	$("#dizhi").focus();
+		 	return false;
+		 }
+		 if(com_fuq =='')
+		 {
+		 	layer.tips('请选择服务区域','#com_fuqy');
+		 	$("#com_fuqy").focus();
+		 	return false;
+		 }
+		 if(com_pri =='')
+		 {
+		 	layer.tips('请选择服务价位','#com_price');
+		 	$("#com_price").focus();
+		 	return false;
+		 }
+		 if(com_zcf =='')
+		 {
+		 	layer.tips('请选择服务风格','#com_zcfg');
+		 	$("#com_zcfg").focus();
+		 	return false;
+		 }
+		 if(com_leixin =='')
+		 {
+		 	layer.tips('请选择服务类型','#com_leixing');
+		 	$("#com_leixing").focus();
+		 	return false;
+		 }
+		 if(previewz =='')
+		 {
+		 	layer.tips('请添加执照照片','#previewz');
+		 	$("#previewz").focus();
+		 	return false;
+		 }
+		 if(faern =='')
+		 {
+		 	layer.tips('请输入法人姓名','#faren');
+		 	$("#faren").focus();
+		 	return false;
+		 }
+		 if(zhucezijin =='')
+		 {
+		 	layer.tips('请输入注册资金','#zhucezijin');
+		 	$("#zhucezijin").focus();
+		 	return false;
+		 }
+		 if(com_slogan =='')
+		 {
+		 	layer.tips('请输入企业格言','#com_slogan');
+		 	$("#com_slogan").focus();
+		 	return false;
+		 }
+		 if(lianxiren =='')
+		 {
+		 	layer.tips('请输入联系人','#lianxiren');
+		 	$("#lianxiren").focus();
+		 	return false;
+		 }
+		 if(!/^(13[0-9]|14[0-9]|15[0-9]|18[0-9]|17[0-9])\d{8}$/i.test(lianxirenshouji))
+		 {
+		 	layer.tips('手机号码格式不正确！','#lianxirenshouji');
+		 	$("#lianxirenshouji").focus();
+		 	return false;
+		 }
+		 if(code =='')
+		 {
+		 	layer.tips('请输入账号','#code');
+		 	$("#code").focus();
+		 	return false;
+		 }
+		 if(!/^(13[0-9]|14[0-9]|15[0-9]|18[0-9]|17[0-9])\d{8}$/i.test(tel))
+		 {
+		 	layer.tips('手机号码格式不正确！','#com_tel');
+		 	$("#com_tel").focus();
+		 	return false;
+		 }
+		  if(pass =='')
+		 {
+		 	layer.tips('请输入密码','#pass');
+		 	$("#pass").focus();
+		 	return false;
+		 }
+		  if(pass !=pass1)
+		 {
+		 	layer.tips('密码验证错误','#pass1');
+		 	$("#pass1").focus();
+		 	return false;
+		 }
+
+
+
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+        //   if (name == "" || dizhi == "" || logo == "" || sz == "" || tel == "" || sum == "" || bl == "") {
+        //   	alert("请完善信息");
+        //   	// return false;
+        //   }
+        //   else if(code == "")
+        //   {
+        //   	alert("请填写账号");
+        //   }
+        //    else if(pass == "")
+        //   {
+        //   	alert("请填写密码");
+        //   }
+        //    else if(pass != pass1)
+        //   {
+        //   	alert("密码验证错误");
+        //   }
+        //   else if (!tel.match(/^[0-9]*[1-9][0-9]*$/)) { 
+        //     alert("手机号码格式不正确！"); 
+        // }
           
-          if (name == "" || dizhi == "" || logo == "" || sz == "" || tel == "" || sum == "" || bl == "") {
-          	alert("请完善信息");
-          	// return false;
-          }
-          else if(code == "")
-          {
-          	alert("请填写账号");
-          }
-           else if(pass == "")
-          {
-          	alert("请填写密码");
-          }
-           else if(pass != pass1)
-          {
-          	alert("密码验证错误");
-          }
-          else if (!tel.match(/^[0-9]*[1-9][0-9]*$/)) { 
-            alert("手机号码格式不正确！"); 
-        }
-          	else{
           	$("#formsubadd").submit();
 
-          }
-           
+          
     });
     //账号唯一验证
 
@@ -1180,6 +1426,11 @@
         var procode=$(this).parent().parent().find(".procode").html();
         var citycode=$(this).parent().parent().find(".citycode").html();
         var areacode=$(this).parent().parent().find(".areacode").html();
+        var shejixj=$(this).parent().parent().find(".shejixj").html();
+        var fuwutd=$(this).parent().parent().find(".fuwutd").html();
+        var shigongsp=$(this).parent().parent().find(".shigongsp").html();
+        var com_koubei=$(this).parent().parent().find(".com_koubei").html();
+
     	//赋值
     	var compri=comprice.substring(0, comprice.lastIndexOf(','));
         var comfuq = comfuqy.substring(0, comfuqy.lastIndexOf(','));
@@ -1263,6 +1514,10 @@
         $("#bl2 input[name='bl'][value='"+combl+"']").attr("checked",true);  
      	$("#rz2 input[name='rz'][value='"+comrz+"']").attr("checked",true);
      	$("#top2 input[name='top'][value='"+comtop+"']").attr("checked",true); 
+     	$("#shejixj2").find("option[value = '"+shejixj+"']").attr("selected","selected");
+     	$("#fuwutd2").find("option[value = '"+fuwutd+"']").attr("selected","selected");
+     	$("#shigongsp2").find("option[value = '"+shigongsp+"']").attr("selected","selected");
+     	$("#com_koubei2").val(com_koubei);
      	$(".ids").val(comid);
      	var ue = UE.getEditor('com_jianjie2');
 		ue.ready(function() {
@@ -1285,11 +1540,25 @@
     });  
     sure2.addEventListener('click', function(){
     	// 获取信息
-    	var name2 = $("#name2").val();
+    	var name2= $("#names2").val();
+    	var name_jc2=$("#namejc2").val();
+    	var province2=$("#province2").val();
+    	var city2=$("#city2").val();
+    	var area2=$("#area2").val();
     	var dizhi2 = $("#dizhi2").val();
-    	var logo2 = $("#logo2").val();
-    	var sz2 = $("#sz2").val();
-        var sum2 = $("#sum2").val();
+    	var logo2 = $("#previews2").attr("src");
+    	var previewz2=$("#previewzs").attr("src");
+    	var faern2=$("#faern2").val();
+    	var zhucezijin2=$("#zhucezijin2").val();
+    	var com_slogan2=$("#com_slogan2").val();
+    	var lianxiren2=$("#lianxiren2").val();
+    	var sz2 = $("#com_szqy2").val();
+    	var tel2 = $("#com_tel2").val();
+    	var code2= $("#code2").val();
+    	var lianxirenshouji2=$("#lianxirenshouji2").val();
+    	var sum2 = $("#sum2").val();
+    	var bl2 = $("#bl input[name='bl']:checked").val();
+    	var rz2 = $("#rz input[name='rz']:checked").val();
     	var bl2 = $("#bl2 input[name='radio1']:checked").val();
     	var rz2 = $("#rz2 input[name='radio2']:checked").val();
     	var tel2 = $("#com_tel2").val();
@@ -1322,17 +1591,116 @@
          $('#com_zcfg2 .zcfg').val(com_zcfg2);
          $('#com_leixing2 .leixing').val(com_leixing2);
           $('#com_price2 .price').val(com_price2);
-          if (name2 == "" || dizhi2 == ""  || sz2 == "" || tel2 == "" || sum2 == "" || bl2 == "") {
-          	alert("请完善信息");
-          	// return false;
-          }
-          else if(!tel2.match(/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/)){
-            alert("号码不正确");
-        }
-          	else{
+     		if(name2 ==''){
+				layer.tips('请输公司名称', '#names2');
+				$("#names").focus();
+				return false;
+			}
+		 if(name_jc2 ==''){
+		 	layer.tips('请输入公司简称','#namejc2');
+		 	$("#namejc2").focus();
+		 	return false;
+		 }
+		 if(logo2 ==''){
+		 	layer.tips('请选择图片！','#logo2');
+		 	$("#logo2").focus();
+		 	return false;
+		 }
+		 if(province2 =='0'){
+		 	layer.tips('请选择省','#province2',{
+              tips: [1, '#3595CC']}); 
+		 	$("#province2").focus();
+		 	return false;
+		 }
+		 if(city2 =='0'){
+		 	layer.tips('请选择市','#city2',{
+              tips: [1, '#3595CC']}); 
+		 	$("#city2").focus();
+		 	return false;
+		 }
+		 if(area2 =='0'){
+		 	layer.tips('请选择区','#area2',{
+              tips: [1, '#3595CC']}); 
+		 	$("#area2").focus();
+		 	return false;
+		 }
+		 if(dizhi2 =='')
+		 {
+		 	layer.tips('请输入公司详细地址','#dizhi2');
+		 	$("#dizhi2").focus();
+		 	return false;
+		 }
+		 if(com_fuq2 =='')
+		 {
+		 	layer.tips('请选择服务区域','#com_fuqy2');
+		 	$("#com_fuqy2").focus();
+		 	return false;
+		 }
+		 if(com_pri2 =='')
+		 {
+		 	layer.tips('请选择服务价位','#com_price2');
+		 	$("#com_price2").focus();
+		 	return false;
+		 }
+		 if(com_zcf2 =='')
+		 {
+		 	layer.tips('请选择服务风格','#com_zcfg2');
+		 	$("#com_zcfg2").focus();
+		 	return false;
+		 }
+		 if(com_leixin2 =='')
+		 {
+		 	layer.tips('请选择服务类型','#com_leixing2');
+		 	$("#com_leixing2").focus();
+		 	return false;
+		 }
+		 if(previewz2 =='')
+		 {
+		 	layer.tips('请添加执照照片','#previewzs');
+		 	$("#previewzs").focus();
+		 	return false;
+		 }
+		 if(faern2 =='')
+		 {
+		 	layer.tips('请输入法人姓名','#faern2');
+		 	$("#faern2").focus();
+		 	return false;
+		 }
+		 if(zhucezijin2 =='')
+		 {
+		 	layer.tips('请输入注册资金','#zhucezijin2');
+		 	$("#zhucezijin2").focus();
+		 	return false;
+		 }
+		 if(com_slogan2 =='')
+		 {
+		 	layer.tips('请输入企业格言','#com_slogan2');
+		 	$("#com_slogan2").focus();
+		 	return false;
+		 }
+		 if(lianxiren2 =='')
+		 {
+		 	layer.tips('请输入联系人','#lianxiren2');
+		 	$("#lianxiren").focus();
+		 	return false;
+		 }
+		 if(!/^(13[0-9]|14[0-9]|15[0-9]|18[0-9]|17[0-9])\d{8}$/i.test(lianxirenshouji2))
+		 {
+		 	layer.tips('请输入联系人手机号','#lianxirenshouji2');
+		 	$("#lianxirenshouji2").focus();
+		 	return false;
+		 }
+		 
+		 if(!/^(13[0-9]|14[0-9]|15[0-9]|18[0-9]|17[0-9])\d{8}$/i.test(tel2))
+		 {
+		 	layer.tips('请输入联系电话','#com_tel2');
+		 	$("#com_tel2").focus();
+		 	return false;
+		 }
+		
           	$("#formsubedit").submit();
 
-          }
+        
     	// alert(comid);
     	
     	// return false;

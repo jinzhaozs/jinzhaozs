@@ -77,7 +77,8 @@ class Plan extends Controller
     	$user = db('plan'); 
     	$file = request()->file('flogo');
         $shuju = input('post.');//获取数据
-        $shuju['time'] = date("Y-m-d h:i:s",time());    
+        $shuju['time'] = date("Y-m-d h:i:s",time()); 
+         $shuju['schedule'] =5;    
         if($file){
         $info = $file->move(ROOT_PATH . 'public/static/' . DS . 'uploads');    
              $shuju['flogo']=$info->getSaveName();

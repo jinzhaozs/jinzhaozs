@@ -143,7 +143,7 @@
         </div>
 </div><div class="case_box ">
     <div class="nav_menu_title ">
-        <a href="http://bj.bzw315.com/shop/78219/case/ " title=" " class="navbar-menu-more " target="_blank ">更多</a>
+        <a href="{:url('/scanli',['comid'=>$shopcom[0]['id']])}" title="装修案例 "  class="navbar-menu-more " target="_blank ">更多</a>
         <h3>
             装修案例<span> {$shopcom[0]['name_jc']}装修案例 (<i>{$plancount}</i>)</span>
         </h3>
@@ -154,7 +154,7 @@
                 <li>
                     <div class="img_box ">
                         <img class="lazy img " src="__STATIC__/uploads/{$voplan.flogo} " alt="西山艺境 " style="display: block; ">
-                        <a href=" " title=" " class="mask " target="_blank ">
+                       <a href="{:url('/scanlide/detail',['comid'=>$comid,'planid'=>$voplan.id])}" class="mask " target="_blank ">
                             <div class="tit ">
                                 <p>装修方式：<span>{$voplan.ffangshi}</span></p>
                                 <p>户型面积：<span>{$voplan.fmianji}㎡</span></p>
@@ -163,13 +163,13 @@
                         </a>
                     </div>
                     <div class="txt ">
-                        <h6><a href=" " title="{$voplan.fname} " target="_blank ">{$voplan.fname}</a></h6>
+                        <h6><a href="{:url('/scanlide/detail',['comid'=>$comid,'planid'=>$voplan.id])}" title="{$voplan.fname} " target="_blank ">{$voplan.fname}</a></h6>
                     </div>
                 </li>
             {/foreach}       
             </ul>
     </div>
-    <a href=" " title="招标 " class="ad " target="_blank "><img class="lazy " src="__STATIC__/shopcom/img/shop_banner.jpg "  alt="招标 " style="display: inline; "></a>
+   
 </div><div class="information_tender ">
     <div class="information ">
         <div class="nav_menu_title ">
@@ -229,14 +229,14 @@
     </div>
 </div><div class="design_team ">
     <div class="nav_menu_title ">
-        <a href="http://bj.bzw315.com/shop/78219/team/ " title=" " class="navbar-menu-more " target="_blank ">更多</a>
+        <a href="{:url('/scshejishi',['comid'=>$shopcom[0]['id']])} " title="装修设计团队 "  class="navbar-menu-more " target="_blank ">更多</a>
         <h3>设计团队<span> {$shopcom[0]['name_jc']}设计师(<i>{$shejishicount}</i>)</span></h3>
     </div>
     <div class="team ">
             <ul>
                {foreach name="designer" item="des"}
                     <li>
-                        <a href=" " title="{$des.dname} " class="img_txt " target="_blank ">
+                       <a href="{:url('/shejianjie',['comid'=>$comid,'sjid'=>$des['id']])}" title="{$des.dname} " class="img_txt " target="_blank ">
                             <img class="lazy " src="__STATIC__/uploads/{$des.davatar} " alt="{$des.dname} " style="display: block; ">
                             <div class="txt ">
                                 <h6><strong>{$des.dname}</strong>设计师</h6>
@@ -262,7 +262,7 @@
             <a href="http://bj.bzw315.com/shop/78219/ " title=" ">泥水阶段</a>
             <a href="http://bj.bzw315.com/shop/78219/ " title=" ">油漆阶段</a>
             <a href="http://bj.bzw315.com/shop/78219/ " title=" ">竣工阶段</a>
-            <a href="http://bj.bzw315.com/shop/78219/build/ " title=" " class="navbar-menu-more " target="_blank ">更多</a>
+            <a href="{:url('/scgongdi',['comid'=>$shopcom[0]['id']])}" title="施工工地 " class="navbar-menu-more " target="_blank ">更多</a>
         </div>
         <h3>施工工地<span> {$shopcom[0]['name_jc']}工地(<i>{$shigcount}</i>)</span></h3>
     </div>
@@ -270,7 +270,7 @@
             <ul>
                  {foreach name="shig" item="sg"}
                     <li>
-                        <a href=" " title="蔚来城 " target="_blank ">
+                        <a href="{:url('/scanlide/detail',['comid'=>$comid,'planid'=>$sg.id])}" title="{$sg.fname} " target="_blank ">
                             <img class="lazy " src="__STATIC__/uploads/{$sg.flogo}  " alt="{$sg.fname} " style="display: block; ">
                             <h6>{$sg.fname}</h6>
                         </a>
@@ -281,7 +281,7 @@
 </div><div class="company_profile ">
     {foreach name="shopcom" item="sh"}
         <div class="nav_menu_title ">
-            <a href="http://bj.bzw315.com/shop/78219/aboutus/ " title="  {$sh.name_jc}简介 " class="navbar-menu-more " target="_blank ">详细</a>
+            <a href="{:url('/scjianjie',['comid'=>$comid])}"  title="  {$sh.name_jc}简介 " class="navbar-menu-more " target="_blank ">详细</a>
             <h3><a title=" {$sh.name}简介 " target="_blank " href="http://bj.bzw315.com/shop/78219/aboutus/ ">公司简介</a><span> {$sh.name_jc}简介</span></h3>
         </div>
         <div class="company_profile_bd ">
@@ -307,7 +307,7 @@
                 </div>
                 <div class="look ">
                     <a href="javascript:void(0)" title="预约装修设计 " class="active bzw_popup_05">预约装修设计</a>
-                    <a href="" title=" " target="_blank ">查看详情</a>
+                    <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}"  title="装修公司简介 " target="_blank ">查看详情</a>
                 </div>
             </div>
         </div>

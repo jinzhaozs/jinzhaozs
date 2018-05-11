@@ -83,6 +83,7 @@ class Index extends \app\shopcom\controller\Base
         $this->assign("articletop",$articletop);
         $this->assign("shig",$shig);//施工工地
         $this->assign("shigcount",$shigcount);//工地总数
+        $this->assign("comid",$comid);
         return $this->fetch();
     }
     //测试
