@@ -34,6 +34,9 @@ Route::rule('/scanlide/detail','shopcom/Anli/detail');//案例详情
 Route::rule('/scgongdi','shopcom/Gongdi/index');//工地
 Route::rule('/scshejishi','shopcom/Shejishi/index');//设计师
 Route::rule('/shejianjie','shopcom/Shejishi/xiangqing');//设计师
+Route::rule('/scdianping','shopcom/Dianping/index');//点评
+// 提交预约信息
+Route::rule('/shopcomyy/Anli/addyuyuexx','shopcom/Anli/addyuyuexx');
 /**
  * 后台
  */
@@ -245,6 +248,7 @@ Route::rule('/admin/act/del','admin/act/del');// 删除
  */
 // 登陆页面
 Route::rule('/adminshop','adminshop/login/index');
+
 //执行登陆
 Route::rule('/adminshop/login/dologin','adminshop/login/dologin');//执行登陆
 Route::rule('/adminshop/login/dosign','adminshop/login/dosign');//执行退出

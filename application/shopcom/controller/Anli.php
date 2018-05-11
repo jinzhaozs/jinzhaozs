@@ -71,6 +71,7 @@ class Anli extends \app\shopcom\controller\Base
     }
     //详情
     public function detail(){
+
         /**
          * 获取商家信息
          */
@@ -97,6 +98,7 @@ class Anli extends \app\shopcom\controller\Base
         ->order("plan.id")
         ->where($where)
         ->find();  
+
         //案例图片详情
         $wheretp['comid'] = $comid;
         $wheretp['planid'] = $planid;
@@ -128,6 +130,8 @@ class Anli extends \app\shopcom\controller\Base
         $resdianping = db('com_evaluate')->where($wheretp)->limit(2)->select();
         // dump($resdianping);die;
         $this->assign("resdianping",$resdianping);//点评信息
+        $this->assign("pr",db('province')->select());//省信息
+        // dump($res);die;
         $this->assign("res",$res);//案例信息
         $this->assign("resxggd",$resxggd);//相关案例信息
         $this->assign("ct",$ct);
@@ -138,6 +142,31 @@ class Anli extends \app\shopcom\controller\Base
         $this->assign("wsj",$wsj);
         $this->assign("ws",$ws);
         return $this->fetch();
+    }
+    // 预约信息提交
+    public function addyuyuexx(){
+        // 获取数据
+        $res = input();
+        $res['new_tel'] = substr($res['tel'], 0, 3).'****'.substr($res['tel'], 7);
+        $user = db('reserva'); 
+        $res['time'] = date("Y-m-d h:i:s",time());
+               
+        $user_info = $user->insert($res);
+        if (!$user_info) {
+            $data = array(
+                    'data' => false,
+                    'code' => 500,
+                    'msg'  => '添加失败',
+            );
+
+            return $data;
+        }
+        $data = array(
+                'data' => true,
+                'code' => 200,
+                'msg'  => '添加成功 !',
+        );
+        return $data;
     }
     //测试
     public function aa(){

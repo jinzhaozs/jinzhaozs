@@ -61,6 +61,13 @@
         $name = $res[0]['name'];
         return $name;
     }
+    // 案例风格转换
+    function anlifenggename($code){
+        $where['zcfgcode'] = $code;
+        $res = db('com_zhuancfg')->where($where)->select();
+        $name = $res[0]['zcfgname'];
+        return $name;
+    }
     // 日期转换 为年月日
     function timezhuanghuaduan($time){
         return date("Y-m-d",strtotime($time));

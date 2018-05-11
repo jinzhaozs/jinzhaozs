@@ -1,0 +1,212 @@
+{extend name="layoutextend"}
+
+{block name="info"}
+<div class="company_header ">
+    <div class="wrapper ">
+        <div class="header-logo ">
+            <a href=" " title="北京今朝装饰设计有限公司 " class="logo ">
+                <img src="__STATIC__/uploads/{$shopcom[0]['logo']}" alt="北京今朝装饰设计有限公司 ">
+            </a>
+            <div class="company_explain ">
+                <h1>
+                    {$shopcom[0]['name']}
+                </h1>
+                <p class="addr ">地址：{$shopcom[0]['dizhi']} <a href=" " class="map "></a></p>
+                <p class="tel ">
+                    <span title="还在抄写地址电话吗？点一下，免费短信发给您 " class="GetMobile ">免费发送至手机</span>
+
+                    <a class="qq " target="_blank " href=" " title="点击这里给北京今朝装饰设计有限公司发消息 ">QQ在线咨询</a>
+                </p>
+            </div>
+        </div>
+        <div class="share ">
+<div class="article-share bdsharebuttonbox bdshare-button-style0-32 " data-bd-bind="1523428678629 ">
+    <span>分享到：</span><a class="bds_qzone " data-cmd="qzone " title="分享到QQ空间 "></a><a class="bds_tsina " data-cmd="tsina " title="分享到新浪微博 "></a><a class="bds_weixin " data-cmd="weixin " title="分享到微信 "></a><a class="bds_tqq " data-cmd="tqq " title="分享到腾讯微博 "></a><a class="bds_sqq " data-cmd="sqq " title="分享到QQ好友 "></a><a class="bds_more " data-cmd="more ">更多</a> <span></span>
+</div>
+        </div>
+    </div>
+</div>
+
+<div class="company_naver ">
+    <div class="wrapper ">
+        <a target="_blank " href="http://www.bzw315.com/zhaobiao/ " title="免费设计与报价 " class="free "><i></i>免费设计与报价</a>
+    </div>
+    <div class="company_naver_nav">
+        <div class="wrapper">
+            <a href="{:url('/shopcom',['comid'=>$shopcom[0]['id']])}" title="首页 "  >首页</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}"  title="装修公司简介 " class=" "><span style="color:#fff;">公司简介</span></a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}" title="装修优惠活动 " class=" ">优惠活动</a>
+            <a href="{:url('/scanli',['comid'=>$shopcom[0]['id']])}" title="装修案例 " class=" ">装修案例</a>
+            <a href="{:url('/scgongdi',['comid'=>$shopcom[0]['id']])}" title="施工工地 " class=" ">施工工地</a>
+            <a href="{:url('/scshejishi',['comid'=>$shopcom[0]['id']])} " title="装修设计团队 " class=" ">设计团队</a>
+            <a href="{:url('/scdianping',['comid'=>$shopcom[0]['id']])} " title="装修服务点评 " class="active">服务点评</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])} " title="装修公司资讯 " class=" ">公司资讯</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}" title="联系我们 " class=" ">联系我们</a>
+        </div>
+    </div>
+</div>
+
+<div class="main ">
+    <div class="wrapper ">
+        <!-- 内容区域 -->
+        <div class="banner_text ">
+        <!-- 开始 -->
+        <!-- form 隐藏条件 -->
+        <form id="jiaojianquyu" action="{:url('/scdianping')}" style="display: none;" method="get">
+            公司id：<input type="text" name="comid" value="{$comid}">
+            按阶段查看：<input type="text" name="jiduanchakan" id="jiduanchakan" value="">
+            点击好评、差评 <input type="text" name="pingjiajieduan" id="pingjiajieduan" value="">
+            <input type="submit" value="提交" >
+        </form>
+        <link rel="stylesheet" type="text/css" href="__STATIC__/shopcom/dianping/owner.css">
+        <div id="all">
+            <div class="left">
+                <div class="val">
+                    <div class="kou">
+                        <p>
+                            口碑值：{$spxiangxi.com_koubei}<span></span>
+                        </p>
+                    </div>
+                    <div class="dong">
+                        <p class="dong-p">
+                            动态评分
+                        </p>
+                        <ul>
+                            <li>
+                            <p>
+                                设计水平
+                            </p>
+                            </li>
+                            {for start='0' end="$spxiangxi.shejixj"}
+                                <li><span><img src="__STATIC__/shopcom/dianping/image/star.jpg"></span></li>
+                            {/for}
+                            
+                            
+                            <li><span>{$spxiangxi.shejixj}</span></li>
+                        </ul>
+                        <ul>
+                            <li>
+                            <p>
+                                服务态度
+                            </p>
+                            </li>
+                            {for start='0' end="$spxiangxi.fuwutd"}
+                                <li><span><img src="__STATIC__/shopcom/dianping/image/star.jpg"></span></li>
+                            {/for}
+                            <li><span>{$spxiangxi.fuwutd}</span></li>
+                        </ul>
+                        <ul>
+                            <li>
+                            <p>
+                                施工水平
+                            </p>
+                            </li>
+                            {for start='0' end="$spxiangxi.shigongsp"}
+                                <li><span><img src="__STATIC__/shopcom/dianping/image/star.jpg"></span></li>
+                            {/for}
+                            <li><span>{$spxiangxi.shigongsp}</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="xiangmu">
+                    <p class="p-one">
+                        项目信息
+                    </p>
+                    <ul>
+                        <li><span><input type="radio" name="djradio" class="clickpingjia" value="0"></span>全部</li>
+                        <li><span><input type="radio" name="djradio" class="clickpingjia" value="1"></span>好评 </li>
+                        <li><span><input type="radio" name="djradio" class="clickpingjia" value="2"></span>中评</li>
+                        <li><span><input type="radio" name="djradio" class="clickpingjia" value="3"></span>差评</li>
+                        <li>
+                        <select class="jiduanchakan" >
+                            <option value="0">按阶段查看</option>
+                            <option value="1"><a href="">准备开工</a></option>
+                            <option value="2"><a href="">水电验收</a></option>
+                            <option value="3"><a href="">泥水阶段</a></option>
+                            <option value="4"><a href="">油漆阶段</a></option>
+                            <option value="5"><a href="">竣工</a></option>
+                        </select>
+                        </li>
+                    </ul>
+                    <p class="p-two">
+                        业主
+                    </p>
+                </div>
+                {foreach name="res" item="vores"}
+                <div class="middle">
+                    <div class="left-l">
+                        <p>
+                            {$vores.fname}
+                        </p>
+                        <ul>
+                            <li>{$vores.fmianji}㎡</li>
+                            <li>{$vores.fyusuan}万</li>
+                            <li>{$vores.ffengge|anlifenggename=###}</li>
+                        </ul>
+                    </div>
+                    <div class="left-m">
+                        <div class="chart">
+                            <p class="l-p">
+                                {$vores.schedule|jdhoutaizh=###}
+                            </p>
+                            <ul>
+                                <li><span>设计：</span><span>{$vores.shejipf}分&nbsp&nbsp</span>
+                                    {for start='0' end="$vores.shejipf"}
+                                    <span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp;</span>
+                                    {/for}
+
+                                </li>
+                                <li><span>服务：</span><span>{$vores.fuwupf}分&nbsp&nbsp</span>
+                                    {for start='0' end="$vores.fuwupf"}
+                                    <span><img src="__STATIC__/shopcom/fangan/image/star.jpg">&nbsp;</span>
+                                    {/for}
+                                </li>
+                            </ul>
+                            <div class="name">
+                                {$vores.yezhuname}
+                            </div>
+                        </div>
+                        <div class="pingjia">
+                            <p>
+                            111111
+                                {$vores.text}
+                            </p>
+                        </div>
+                        <div class="times">
+                            <p>
+                                {$vores.time}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {/foreach}
+            </div>
+            <div>{$page}</div>
+        </div>
+        <!-- 结束 -->
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    //评价点击
+    $(document).on("click",".clickpingjia",function(){
+        $("#pingjiajieduan").val($(this).val());
+        $("#jiaojianquyu").submit();
+
+    });
+    // 阶段点击
+    $(document).on("change",".jiduanchakan",function(){
+        $("#jiduanchakan").val($(this).val());
+        $("#jiaojianquyu").submit();
+    })
+</script>
+
+
+<!--右侧弹出层结束-->
+
+                
+
+{/block}

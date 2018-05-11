@@ -8,6 +8,7 @@
  * Date: 2018年4月13日
 */
 namespace app\shopcom\controller;
+use \think\Request;
 
 class Base extends \think\Controller
 {
@@ -19,6 +20,15 @@ class Base extends \think\Controller
 	 * @param string $field 查询字段，为空时返回数组
 	 * @return array/string
 	*/
+ // 初始化
+    public function _initialize()
+    {
+         /**
+         * 获取http头部信息
+         */
+        $httpinfo = Request::instance()->header();
+        $this->assign("httpinfo",$httpinfo['host']);
+    }
 	protected function uri($model, $filter,$pag=null,$urlcanshu=null)
 	{
 		if($pag){

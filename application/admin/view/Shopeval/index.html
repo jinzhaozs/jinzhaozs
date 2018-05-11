@@ -64,6 +64,7 @@
             <td class="sjxingxing" style="display: none;">{$vores.shejipf}</td>
             <td class="fuxingxing" style="display: none;">{$vores.fuwupf}</td>
             <td class="jinxingjieduan" style="display: none;">{$vores.schedule}</td>
+            <td class="dianpingjibie" style="display: none;">{$vores.dianpingjibie}</td>
             <td class="sfid">{$vores.id}</td>
             <td >{$com['name']}</td>
             <td >{$plan['name']}</td>
@@ -203,6 +204,14 @@
                                <span ><option value ="5">竣工</option></span>  
                               
                             </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>点评级别</td>
+                        <td>
+                            <input type="radio" name="dianpingjibie" checked="true" value="1"> 好评
+                            <input type="radio" name="dianpingjibie" value="2" style="margin-left: 30px;"> 中评
+                            <input type="radio" name="dianpingjibie" value="3" style="margin-left: 30px;"> 差评
                         </td>
                     </tr>
                     <tr>
@@ -358,6 +367,14 @@
                             </select>
                         </td>
                     </tr>
+                     <tr>
+                        <td>点评级别</td>
+                        <td>
+                            <input type="radio" name="dianpingjibie" checked="true" value="1"> 好评
+                            <input type="radio" name="dianpingjibie" value="2" style="margin-left: 30px;"> 中评
+                            <input type="radio" name="dianpingjibie" value="3" style="margin-left: 30px;"> 差评
+                        </td>
+                    </tr>
                     <tr>
                         <td >业主名称</td>
                         <td>
@@ -394,7 +411,7 @@
     var btn = document.getElementById('showModel');  
     var close = document.getElementsByClassName('close')[0];  
     var cancel = document.getElementById('cancel');  
-    var sure = document.getElementById('sure');  
+    var sure = document.getElementById('sure'); 
     var modal = document.getElementById('modal');  
     btn.addEventListener('click', function(){
         modal.style.display = "block";  
@@ -427,7 +444,12 @@
         var sjxingxing = $(this).parent().parent().find(".sjxingxing").html();
         var fuxingxing = $(this).parent().parent().find(".fuxingxing").html();
         var jinxingjieduan = $(this).parent().parent().find(".jinxingjieduan").html();
+        var dianpingjibie = $(this).parent().parent().find(".dianpingjibie").html();
+        
         time = time.substring(0,10);
+        // 赋值点评级别
+         $("input[type=radio][name=dianpingjibie][value='"+dianpingjibie+"']").prop("checked", true);
+
         // 设计星星赋值
         $('.photo3 span').find('.high').css('z-index',0)
         var count = sjxingxing; 
