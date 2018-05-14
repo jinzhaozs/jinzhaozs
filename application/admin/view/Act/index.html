@@ -98,6 +98,7 @@
         <th>活动logo</th>
 				<th>开始时间</th>
 				<th>结束时间</th>
+        <th>活动地址</th>
 				<th>联系人</th>
 				<th>电话</th>
 				<th>公司</th>
@@ -118,6 +119,7 @@
 					<td><span class="kai_time">{$vores.kai_time|timezhuanghuaduan=###}</span></td>
 					
 					<td ><span class="zhong_time">{$vores.zhong_time|timezhuanghuaduan=###}</span></td>
+          <td><span class="adizhi">{$vores.adizhi}</span></td>
 					<td><span class="lianxir">{$vores.lianxir}</span></td>
           <td><span class="lxrtel">{$vores.lxrtel}</span></td>
           <td><span class="comid" name="{$vores.comid}">{$vores.name}</span></td>
@@ -181,6 +183,12 @@
             <td class='wid'>结束时间</td>
             <td>
              <input type="date" name="zhong_time" />
+            </td>
+          </tr>
+          <tr>
+            <td class='wid'>活动地址</td>
+            <td>
+              <input type="text"  id="adizhi" name="adizhi" placeholder="请输入活动地址">
             </td>
           </tr>
            <tr>
@@ -250,6 +258,12 @@
              <input type="date" id="zhong_time2" name="zhong_time" />
             </td>
           </tr>
+          <tr>
+            <td class='wid'>活动地址</td>
+            <td>
+              <input type="text"  id="adizhi2" name="adizhi" placeholder="请输入活动地址">
+            </td>
+          </tr>
            <tr>
             <td class='wid'>负责人</td>
             <td>
@@ -297,7 +311,7 @@
     sure.addEventListener('click', function(){  
     	// 获取信息
     	var name = $("#aname").val();
-    
+      
 
     	
           	$("#formsubadd").submit();
@@ -320,7 +334,8 @@
       var zhong_time=$(this).parent().parent().find(".zhong_time").html();
       var lianxir=$(this).parent().parent().find(".lianxir").html();
       var lxrtel=$(this).parent().parent().find(".lxrtel").html();
-      var image=$(this).parent().parent().find(".actlogos").attr('src'); 
+      var image=$(this).parent().parent().find(".actlogos").attr('src');
+      var adizhi= $(this).parent().parent().find(".adizhi").html();
     	//赋值
       $("#jianjie2").val(jianjie);
       $("#shuoming2").val(shuoming);
@@ -328,6 +343,7 @@
       $("#zhong_time2").val(zhong_time);
       $("#lianxir2").val(lianxir);
       $("#lxrtel2").val(lxrtel);
+      $("#adizhi2").val(adizhi);
      	$(".ids").val(comid);
       $("#img img").attr("src",image);
         

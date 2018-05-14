@@ -35,6 +35,8 @@ Route::rule('/scgongdi','shopcom/Gongdi/index');//工地
 Route::rule('/scshejishi','shopcom/Shejishi/index');//设计师
 Route::rule('/shejianjie','shopcom/Shejishi/xiangqing');//设计师
 Route::rule('/scdianping','shopcom/Dianping/index');//点评
+Route::rule('/schuodong','shopcom/Huodong/index');//活动
+Route::rule('/sczixun','shopcom/Zixun/index');//资讯
 // 提交预约信息
 Route::rule('/shopcomyy/Anli/addyuyuexx','shopcom/Anli/addyuyuexx');
 /**

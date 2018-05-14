@@ -32,7 +32,7 @@ class Act extends  \app\admin\controller\Base
            $where['jianjie']=array('like','%'.$urlcanshu['keyword'].'%');
            $aname=$urlcanshu['keyword'];
         }
-    	$res=$user->field("com_act.id,jianjie,shuoming,kai_time,zhong_time,lianxir,lxrtel,comid,actlogo,name")->join('shop s','com_act.comid = s.id')->where($where)->order("com_act.id")->paginate(10,false,['query'=>$urlcanshu,]);
+    	$res=$user->field("com_act.id,jianjie,shuoming,kai_time,zhong_time,adizhi,lianxir,lxrtel,comid,actlogo,name")->join('shop s','com_act.comid = s.id')->where($where)->order("com_act.id")->paginate(10,false,['query'=>$urlcanshu,]);
     	$page=$res->render();
     	$this->assign("comid",$comid);
       $this->assign("aname",$aname);

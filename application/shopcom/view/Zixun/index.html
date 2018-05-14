@@ -1,0 +1,87 @@
+{extend name="layoutextend"}
+
+{block name="info"}
+<div class="company_header ">
+    <div class="wrapper ">
+        <div class="header-logo ">
+            <a href=" " title="北京今朝装饰设计有限公司 " class="logo ">
+                <img src="__STATIC__/uploads/{$shopcom[0]['logo']}" alt="北京今朝装饰设计有限公司 ">
+            </a>
+            <div class="company_explain ">
+                <h1>
+                    {$shopcom[0]['name']}
+                </h1>
+                <p class="addr ">地址：{$shopcom[0]['dizhi']} <a href=" " class="map "></a></p>
+                <p class="tel ">
+                    <span title="还在抄写地址电话吗？点一下，免费短信发给您 " class="GetMobile ">免费发送至手机</span>
+
+                    <a class="qq " target="_blank " href=" " title="点击这里给北京今朝装饰设计有限公司发消息 ">QQ在线咨询</a>
+                </p>
+            </div>
+        </div>
+        <div class="share ">
+<div class="article-share bdsharebuttonbox bdshare-button-style0-32 " data-bd-bind="1523428678629 ">
+    <span>分享到：</span><a class="bds_qzone " data-cmd="qzone " title="分享到QQ空间 "></a><a class="bds_tsina " data-cmd="tsina " title="分享到新浪微博 "></a><a class="bds_weixin " data-cmd="weixin " title="分享到微信 "></a><a class="bds_tqq " data-cmd="tqq " title="分享到腾讯微博 "></a><a class="bds_sqq " data-cmd="sqq " title="分享到QQ好友 "></a><a class="bds_more " data-cmd="more ">更多</a> <span></span>
+</div>
+        </div>
+    </div>
+</div>
+
+<div class="company_naver ">
+    <div class="wrapper ">
+        <a target="_blank " href="http://www.bzw315.com/zhaobiao/ " title="免费设计与报价 " class="free "><i></i>免费设计与报价</a>
+    </div>
+    <div class="company_naver_nav">
+        <div class="wrapper">
+            <a href="{:url('/shopcom',['comid'=>$shopcom[0]['id']])}" title="首页 "  >首页</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}" class=" " title="装修公司简介 " ><span style="color:#fff;">公司简介</span></a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}" title="装修优惠活动 " class=" ">优惠活动</a>
+            <a href="{:url('/scanli',['comid'=>$shopcom[0]['id']])}" title="装修案例 " class=" ">装修案例</a>
+            <a href="{:url('/scgongdi',['comid'=>$shopcom[0]['id']])}" title="施工工地 " class=" ">施工工地</a>
+            <a href="{:url('/scshejishi',['comid'=>$shopcom[0]['id']])} " title="装修设计团队 " class="active ">设计团队</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])} " title="装修服务点评 " class=" ">服务点评</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])} " title="装修公司资讯 " class=" ">公司资讯</a>
+            <a href="{:url('/scjianjie',['comid'=>$shopcom[0]['id']])}" title="联系我们 " class=" ">联系我们</a>
+        </div>
+    </div>
+</div>
+
+<div class="main ">
+    <div class="wrapper ">
+        <!-- 内容区域 -->
+        <div class="banner_text " >
+	<link rel="stylesheet" type="text/css" href="__STATIC__/shopcom/zixun/zixun.css">
+
+	<div class="wei-zhi">
+		<ul>
+			<li><p class="fang"><img src="__STATIC__/shopcom/zixun/image/fang.jpg"><p></li>
+			<li><span>当前位置：</span></li>
+	        <li><a href="">&nbsp;&nbsp;   {$shopcom[0]['name']}&nbsp;&nbsp;</a></li>
+			<li><span>>&nbsp;&nbsp;公司资讯&nbsp;&nbsp;</span></li>
+			<li><span>&nbsp;&nbsp;共{$count}条结果</span></li>
+		</ul>
+	</div>
+	<div  id="all">
+		{foreach name="article" item="art"} 
+		<div class="zixun-all">
+			<div class="zixun-left">
+				<a href=""><img src="__STATIC__/uploads/{$art.pic}"></a>
+			</div>
+			<div class="zixun-middle">
+				<h3>{$art.aname}</h3>
+				<p>{$art.abstract}
+				</p>
+			</div>
+			<div class="zixun-right">
+				<strong>
+				{php} echo date('m-d',strtotime($art['atime'])){/php}</strong>
+				<p>{php} echo date('Y',strtotime($art['atime'])){/php}</p>
+			</div>
+		</div>
+		{/foreach}
+		
+		
+		
+	 </div>
+	 {$page}  		
+{/block}
