@@ -19,6 +19,7 @@ class Gongdi extends \app\shopcom\controller\Base
     {
         //获取商家id
         $comid = input('comid');
+        $this->assign('comid',$comid);
         // dump($comid);
         $whereshangjia['id'] = $comid;
         //获取商家信息
@@ -67,6 +68,8 @@ class Gongdi extends \app\shopcom\controller\Base
         $this->assign("shopcomfengge",db("com_zhuancfg")->limit(5)->select());//风格信息
         $this->assign("shopcom",$shopcom);//商家信息
         $this->assign("comid",$comid);//商家信息id
+        $this->assign("pr",db('province')->select());//省信息
+
         return $this->fetch();
     }
     //测试

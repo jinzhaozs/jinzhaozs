@@ -28,6 +28,9 @@ class Base extends \think\Controller
          */
         $httpinfo = Request::instance()->header();
         $this->assign("httpinfo",$httpinfo['host']);
+        //获取商家id
+        $comid = input('comid');
+        $this->assign('comid',$comid);
     }
 	protected function uri($model, $filter,$pag=null,$urlcanshu=null)
 	{

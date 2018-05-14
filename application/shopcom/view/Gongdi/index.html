@@ -12,7 +12,7 @@
                     {$shopcom[0]['name']}
                 </h1>
                 <p class="addr ">地址：{$shopcom[0]['dizhi']} <a href=" " class="map "></a></p>
-                <p class="tel ">
+                <p class="tel " style="margin-left: 0px;">
                     <span title="还在抄写地址电话吗？点一下，免费短信发给您 " class="GetMobile ">免费发送至手机</span>
 
                     <a class="qq " target="_blank " href=" " title="点击这里给北京今朝装饰设计有限公司发消息 ">QQ在线咨询</a>
@@ -51,6 +51,12 @@
         <!-- 内容区域 -->
         <div class="banner_text ">
             <!-- 开始 -->
+            <!-- 公司id -->
+            <input type="hidden" id="yincangcomid" value="{$comid}">
+            <!-- 案例id -->
+            <input type="hidden" id="yincangplanid" value="">
+            <!-- http头部信息 -->
+            <input type="hidden" id="yincanghttpinfo" value="{$httpinfo}">
             <!-- form 隐藏条件 -->
     <form id="jiaojianquyu" action="{:url('/scgongdi')}" style="display: none;" method="get">
         类型：<input type="text" name="comid" value="{$comid}">
@@ -79,10 +85,11 @@
             {foreach name="res" item = "vores"}
             <div class="newhome">
                 <div class="img">
-                <a href="{:url('/scanlide/detail',['comid'=>$comid,'planid'=>$vores.id])}"><img src="__STATIC__/uploads/{$vores.flogo}"></a>
+                <a href="{:url('/scanlide/detail',['comid'=>$comid,'planid'=>$vores.id])}"><img class="jshqimgsrc" src="__STATIC__/uploads/{$vores.flogo}"></a>
                 </div> 
                <div class="jieduan">
-                    <h3><a href="{:url('/scanlide/detail',['comid'=>$comid,'planid'=>$vores.id])}">{$vores.fname}</a></h3>
+                    <input type="hidden" class="jshqplanid" value="{$vores.id}">
+                    <h3><a href="{:url('/scanlide/detail',['comid'=>$comid,'planid'=>$vores.id])}"><span class="jshqname">{$vores.fname}</span></a></h3>
                     <span><img src="__STATIC__/shopcom/gongdi/image/xinjia.jpg"></span>
                     <div class="xinxi">
                         <!-- 省转换 -->
@@ -201,7 +208,7 @@
                                 <span>{$vores.shigongcount}</span>
                                 </li>
                             </ul>
-                            <div class="yuyue">
+                            <div style="cursor:pointer;" class="yuyue">
                              免费预约参观
                             </div>
                         </div>
@@ -209,8 +216,217 @@
                 </div>      
                 {/foreach}
                 </div>
-    </div>  
+    </div> 
+     <!-- 蒙层 -->
+     <div class="ceng" style="display: none;">
+        <div class="biaodan">
+            <div class="cha">
+                <img src="__STATIC__/shopcom/fangan/image/cha.jpg">
+            </div>
+            <div class="jingpin">
+                <h1>海量精品案例，免费预约参观</h1>
+                <div class="jing-pin"><img style="width: 67%;" src=""></div>
+                <p class="jsgongsiname"></p>
+                <div class="xinximin">
+                   <!-- js添加 -->
+                </div>
+            </div>
+            
+            <div class="tel">
+                <span>您的称呼:</span><input type="text" id="yuyuename" placeholder="请输入您的称呼"><br/>
+                <div class="cuo">
+                <div class="imgss1"><p><img src="__STATIC__/shopcom/fangan/image/cuo.jpg"></p><span>&nbsp;&nbsp;请输入称呼</span></div>
+                </div><br/>
+
+                <span>所在城市:</span>
+                <select id="province" name="procode">
+                <option value='0' >请选则省</option>
+                    {foreach name="pr" item="ce"}
+                        <option value='{$ce.code}'>{$ce.name}</option>
+                    {/foreach}
+                </select>
+                <span id="citySpan">
+                    <select id="city" name="citycode">
+                        <option value="0">请选则市</option>
+                    </select>
+                </span>
+                <span id="areaSpan">
+                    <select id="area" name="areacode">
+                        <option value="0">请选则区</option>
+                    </select>
+                </span>
+                <div class="cuo">
+                <div class="imgss2"><p><img src="__STATIC__/shopcom/fangan/image/cuo.jpg"></p><span>&nbsp;&nbsp;请选择省份</span></div>
+                </div><br/>
+                <script type="text/javascript">
+                    $("#province").change(function(){
+                                var provinceid=$(this).val();
+                                $.ajax({
+                                    type:"post",
+                                    dataType:'json',
+                                    async:false,
+                                    url:'{:url("/admin/Ajaxssq/ajaxcity")}',
+                                    data:{"provinceid":provinceid},
+                                    success:function(dd){
+                                        // alert(dd);
+                                        // console.log(dd); 
+                                        var str = '<option value="0">市/地区</option>';
+                                        $(dd).each(function(i,dom){
+                                            str += "<option value="+dom['code']+">"+dom['name']+"</option>";
+                                        });
+                                        $("#city").html(str);
+                                         $("#area").html('<option value="0">县/市</option>');
+                                    }
+                                })
+                            });
+                    $("#city").change(function(){
+                        var city=$(this).val();
+                        $("#area").empty();
+                        $("#area").append("<option value="+0+">请选则区</option>"); 
+                        $.ajax({
+                            type:"post",
+                            dataType:'json',
+                            async:false,
+                            url:'{:url("admin/Ajaxssq/ajaxarea")}',
+                            data:{"city":city},
+                             success:function(area){ 
+                                
+                                $(area).each(function (i,dom){
+                                    
+                                        $("#area").append("<option value="+dom['code']+">"+dom['name']+"</option>"); 
+                                 
+                                    
+                                 });
+                                }
+                         })
+                    });
+
+                </script>
+
+                 <span>手机号码:</span><input type="text" id="yuyuetel" placeholder="填写手机号码，抢先预约">
+                <div class="cuo">
+                <div class="imgss3"><p><img src="__STATIC__/shopcom/fangan/image/cuo.jpg"></p><span class="cuowutel">&nbsp;&nbsp;请输入手机号码</span></div>
+                </div>
+                 <div style="cursor:pointer;" class="mashang">马上预约</div>
+            </div>
+        </div>
+    </div>
+    <!-- 蒙层2 -->
+    <div class="ceng-one" style="display: none;">
+        <div class="succ">
+            <div class="succ-left">
+                <p class="logotu">
+                </p>
+                <h3>恭喜你预约成功</h3>
+                <p class="zhidian">
+                    *稍后装修管家将致电您，为您提供免费装修咨询服务
+                </p>
+                <p style="cursor:pointer;" class="xiajian">
+                    <a href="{:url('/scanli',['comid'=>$shopcom[0]['id']])}">更多精品案例<span><img src="__STATIC__/shopcom/fangan/image/xiajian.jpg"></span></a>
+                </p>
+                <div class="xian-tu">
+                    
+                </div>
+            </div>
+            <div class="succ-right">
+                <div class="cha">
+                    <img src="__STATIC__/shopcom/fangan/image/cha.jpg">
+                </div>
+                <div class="weixin">
+                    <h3>关注今朝装饰微信</h3>
+                    <p class="saoma">
+                        扫码关注今朝装饰微信
+                    </p>
+                    <p class="gonglue">
+                        <span>装修攻略随时看</span>
+                    </p>
+                    <div class="erweima">
+                        <a><img src="__STATIC__/shopcom/img/7.png"></a>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
      <script type="text/javascript">
+       // 获取焦点事件
+        $(document).on("focus","#yuyuename",function(){
+            $(".imgss1").css("display","none");
+        });
+         $(document).on("focus","#province",function(){
+            $(".imgss2").css("display","none");
+        });
+        $(document).on("focus","#yuyuetel",function(){
+            $(".imgss3").css("display","none");
+        });
+      $(".cha").click(function() {
+            $(".ceng").css("display", "none");
+            $(".ceng-one").css("display", "none");
+        })
+        // 预约显示
+       $(".yuyue").click(function() {
+            // 获取信息
+            var xinximin = $(this).parent().parent().parent().find(".xinxi").html();
+            var jsgongsiname = $(this).parent().parent().parent().find(".jshqname").html();
+            var yincangplanid = $(this).parent().parent().parent().find(".jshqplanid").val();
+            var jing_pin = $(this).parent().parent().parent().find(".jshqimgsrc").attr("src");
+            $(".xinximin").html(xinximin);
+            $(".jsgongsiname").html(jsgongsiname);
+            $(".jing-pin img").attr("src",jing_pin);
+            $("#yincangplanid").val(yincangplanid);
+            // 尾部隐藏
+            $("#bottom-close").click();
+            $(".ceng").css("display", "block");
+        })
+       // 预约提交
+        $(document).on("click",".mashang",function(){
+            //隐藏信息
+            var yincanghttpinfo = $("#yincanghttpinfo").val();//http头部信息
+            var yincangcomid = $("#yincangcomid").val();//公司id
+            var yincangplanid = $("#yincangplanid").val();//案例id
+            // 基本信息
+            var province = $("#province").val();//城市省
+            var city = $("#city").val();//城市  市
+            var area = $("#area").val();//城市 区
+            var yuyuename = $("#yuyuename").val();//名称
+            var yuyuetel = $("#yuyuetel").val();//手机号
+            // // 判断名称
+            if (!yuyuename) {
+                $(".imgss1").css("display","block");
+                return false;
+            }
+            // 判断城市不为空
+            if(province == 0){
+                $(".imgss2").css("display","block");
+                return false; 
+            }
+            //判断手机号格式
+            if (yuyuetel == "") { 
+                 $(".imgss3").css("display","block");
+                return false;
+            } else{
+                if (!yuyuetel.match(/^(((13[0-9]{1})|159|153)+\d{8})$/)) { 
+                    $(".cuowutel").html("&nbsp;&nbsp;号码格式有误");
+                     $(".imgss3").css("display","block"); 
+                    return false; 
+                } 
+            }
+            // 数据提交
+            $.ajax({
+                type:"post",
+                dataType:'json',
+                async:false,
+                url:'{:url("shopcomyy/Anli/addyuyuexx")}',
+                data:{"entran_ym":yincanghttpinfo,"comid":yincangcomid,"planid":yincangplanid,"procode":province,"citycode":city,"areacode":area,"name":yuyuename,"tel":yuyuetel},
+                success:function(dd){
+                    if (dd.code == 200) {
+                        $(".ceng-one").css("display", "block");
+                        $(".ceng").css("display", "none");
+                    }
+                    // alert(dd);
+                    // console.log(dd);
+                }
+            })
+        });
             //工地状态
             //全部
                 $(document).on("click",".tjquanbu",function(){
@@ -228,8 +444,6 @@
                     $("#jiaojianquyu").submit();//提交form
                 });
                   
-        </script>
-    <script type="text/javascript">
         var lis = document.querySelectorAll('.left  li');
                 for(var i=0;i<lis.length;i++){
                 lis[i].setAttribute("index",i);

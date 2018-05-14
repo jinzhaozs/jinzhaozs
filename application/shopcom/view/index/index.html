@@ -12,7 +12,7 @@
                     {$shopcom[0]['name']}
                 </h1>
                 <p class="addr ">地址：{$shopcom[0]['dizhi']} <a href=" " class="map "></a></p>
-                <p class="tel ">
+                <p class="tel" style="margin-left: 0px;">
                     <span title="还在抄写地址电话吗？点一下，免费短信发给您 " class="GetMobile ">免费发送至手机</span>
 
                     <a class="qq " target="_blank " href=" " title="点击这里给北京今朝装饰设计有限公司发消息 ">QQ在线咨询</a>
@@ -66,8 +66,13 @@
 
 </div>
     </div>
-
-
+    <!-- 蒙层css -->
+<link rel="stylesheet" type="text/css" href="__STATIC__/shopcom/mengceng.css">
+<!-- 隐藏信息 -->
+        <!-- http头部信息 -->
+        <input type="hidden" id="yincanghttpinfo" value="{$httpinfo}">
+        <!-- 公司id -->
+        <input type="hidden" id="yincangcomid" value="{$comid}">
         <div class="text ">
             <div class="text_top ">
                 <div class="text-l ">
@@ -347,92 +352,110 @@
 </div>
     </div>
 </div>
-<!-- 第一个弹出框 -->
-<div class="whole_popup_box " id="login_dialogBox_01 " style="display: none;">
-    <div class="whole_popup_tit popup_01 ">
-        <strong>
-            我的 <em>家居</em>
-            我做主
-        </strong>
-        <p>
-            <i class="line "></i>
-            打造属于您的精致生活 <i class="line "></i>
-        </p>
-    </div>
-    <div class="whole_popup_bd zhaobiao-bzwPopup01 ">
-        <h5>申请专属设计</h5>
-        <p class="sub_tit ">
-            快速发布需求，找到
-            <span>专属设计</span>
-        </p>
-        <div class="labs ">
-            <div class="input-box ">
-                <input type="text " class="text " name="applyuser " placeholder="您的称呼 ">
-            </div>
-            <div class="input-box ">
-                <input type="text " class="text " name="mobile " placeholder="手机号码(必填) ">
-            </div>
-            <div class="input-box " style="position:relative;overflow:initial; ">
-                <input type="text " name="mobilecode " class="text text02 " placeholder="动态验证码 ">
-                <button type="button " class="get_tupian_box ">获取验证码</button>
-                <div class="check-code " style="display: none; ">
-                    <span>
-                        <img class="imgCode ">
-                        <a class="random-code " href="javascript:; ">换一换</a>
-                    </span>
-                    <span>
-                        <input type="text " name="picturecode ">
-                        <button class="get_code " type="button ">确定</button>
-                    </span>
-                </div>
-            </div>
-            <div class="select_box ">
-                <!-- 户型 -->
 
-
-
-<select name="housetype " id="design_leixing " class="leixing_select ">
-    <option value="0 "> -- 请选择户型 --</option>
-    <option value="2161 ">小户型</option>
-    <option value="2162 ">一居室</option>
-    <option value="2163 ">二居室</option>
-    <option value="2164 ">三居室</option>
-    <option value="2165 ">四居室</option>
-    <option value="2166 ">五居室</option>
-    <option value="2169 ">公寓</option>
-    <option value="2167 ">复式</option>
-    <option value="85 ">别墅</option>
-    <option value="86 ">其他</option>
-</select>
-            </div>
-            <div class="set ">
-                <!-- 预算 -->
-
-
-
-<select name="decoratebudget " id="design_budget " class="set_fl ">
-    <option value="0 "> -- 请选择预算 --</option>
-    <option value="88 ">5万以内</option>
-    <option value="89 ">5-10万</option>
-    <option value="90 ">10-15万</option>
-    <option value="91 ">15-20万</option>
-    <option value="92 ">20-30万</option>
-    <option value="93 ">30-50万</option>
-    <option value="94 ">50万以上</option>
-    <option value="95 ">面议</option>
-</select>
-            </div>
-        </div>
-       
-    </div>
-</div>
 
 
 <div id="bottom-open" class="bottom-open" style="display: block; left: 0px; ">
 	<img src="__STATIC__/shopcom/img/9.png " alt=" ">
 </div>
-<!--右侧弹出层结束-->
+<!--立即预约-->
+<div class="whole_popup_box" id="login_dialogBox_05" style="display: none;">
+                        <div class="whole_popup_tit popup_05">
+                        <strong>装修<em>就要省</em></strong>
+                        <p>
+                            <i class="line"></i> 省钱 省时 省事 省心 省力
+                            <i class="line"></i>
+                        </p>
+                        <span class="close_cha"> <img src="__STATIC__/shopcom/img/close2.gif"/>
+                        </span>
+                    </div>
+                    <div class="whole_popup_bd  zhaobiao-bzwPopup05">
+                        <h5>您装修我保障</h5>
+                        <p class="sub_tit">
+                            申请装修
+                            <span class="saverate">立省30%</span>
+                        </p>
+                        <div class="labs">
+                            <div class="input-box">
+                                <input type="text" class="text" id="yuyuename" name="applyuser" placeholder="您的称呼">
+                            </div>
+                            <div class="input-box">
+                                <input type="text" class="text" id="yuyuetel" name="mobile" placeholder="手机号码(必填)">
+                            </div>
+                            <div class="input-box" style="overflow:initial;position:relative;">
+                                <input type="text" name="mobilecode" class="text text02" placeholder="动态验证码">
+                                <button type="button" class="get_tupian_box">获取验证码</button>
+                                <div class="check-code" style="display: none;">
+                                    <span>
+                        <img class="imgCode">
+                        <a class="random-code" href="javascript:;">换一换</a>
+                    </span>
+                                    <span>
+                        <input type="text" name="picturecode">
+                        <button class="get_code" type="button">确定</button>
+                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="num">
+                            <label>
+                <input type="checkbox" name="fengshuiService" class="check">
+                风水服务
+            </label>
+                        </p>
+                        <button type="button" id="yuyueadd" class="popup_box_btn zhaobiao_btn">立即免费申请</button>
+                    </div>
+</div>
 
-  				
+<script type="text/javascript">
+  $(".cha").click(function() {
+            $(".ceng").css("display", "none");
+            $(".ceng-one").css("display", "none");
+        })
+    // 预约信息提交
+        $(document).on("click","#yuyueadd",function(){
+            //隐藏信息
+            var yincanghttpinfo = $("#yincanghttpinfo").val();//http头部信息
+            var yincangcomid = $("#yincangcomid").val();//公司id
+            // 基本信息
+            var yuyuename = $("#yuyuename").val();//名称
+            var yuyuetel = $("#yuyuetel").val();//手机号
+            // // 判断名称
+            if (!yuyuename) {
+                $("#yuyuename").focus();
+                $("#yuyuename").css("background-color","#FFFFCD");
+                return false;
+            }
+            //判断手机号格式
+            if (yuyuetel == "") { 
+                 $("#yuyuetel").focus();
+                $("#yuyuetel").css("background-color","#FFFFCD");
+                return false;
+            } else{
+                if (!yuyuetel.match(/^(((13[0-9]{1})|159|153)+\d{8})$/)) { 
+                    $("#yuyuetel").focus();
+                $("#yuyuetel").css("background-color","#FFFFCD"); 
+                    return false; 
+                } 
+            }
+            // 数据提交
+            $.ajax({
+                type:"post",
+                dataType:'json',
+                async:false,
+                url:'{:url("shopcomyy/Anli/addyuyuexx")}',
+                data:{"entran_ym":yincanghttpinfo,"comid":yincangcomid,"citycode":123,"areacode":123,"name":yuyuename,"tel":yuyuetel},
+                success:function(dd){
+                    if (dd.code == 200) {
+                        $(".close_cha").click();
+                        $(".ceng-one").css("display", "block");
+                        $(".ceng").css("display", "none");
+                    }
+                    // alert(dd);
+                    // console.log(dd);
+                }
+            })
+        });
+</script>
 
 {/block}

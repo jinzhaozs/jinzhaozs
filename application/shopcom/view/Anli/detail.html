@@ -458,7 +458,7 @@
 
                     </div>
     </div>
-    <div class="ceng">
+    <div class="ceng"  style="display: none;">
         <div class="biaodan">
             <div class="cha">
                 <img src="__STATIC__/shopcom/fangan/image/cha.jpg">
@@ -552,7 +552,7 @@
                 <div class="cuo">
                 <div class="imgss3"><p><img src="__STATIC__/shopcom/fangan/image/cuo.jpg"></p><span class="cuowutel">&nbsp;&nbsp;请输入手机号码</span></div>
                 </div>
-                 <div class="mashang">马上预约</div>
+                 <div style="cursor:pointer;" class="mashang">马上预约</div>
             </div>
         </div>
     </div>
@@ -567,8 +567,8 @@
                 <p class="zhidian">
                     *稍后装修管家将致电您，为您提供免费装修咨询服务
                 </p>
-                <p class="xiajian">
-                    该公司更多精品案例<span><img src="__STATIC__/shopcom/fangan/image/xiajian.jpg"></span>
+                <p style="cursor:pointer;" class="xiajian">
+                    <a href="{:url('/scanli',['comid'=>$shopcom[0]['id']])}">更多精品案例<span><img src="__STATIC__/shopcom/fangan/image/xiajian.jpg"></span></a>
                 </p>
                 <div class="xian-tu">
                     <p class="xian-one">
@@ -617,6 +617,8 @@
             var yincangplanid = $("#yincangplanid").val();//案例id
             // 基本信息
             var province = $("#province").val();//城市省
+            var city = $("#city").val();//城市  市
+            var area = $("#area").val();//城市 区
             var yuyuename = $("#yuyuename").val();//名称
             var yuyuetel = $("#yuyuetel").val();//手机号
             // // 判断名称
@@ -640,13 +642,13 @@
                     return false; 
                 } 
             }
-            // 数据提交
+             // 数据提交
             $.ajax({
                 type:"post",
                 dataType:'json',
                 async:false,
                 url:'{:url("shopcomyy/Anli/addyuyuexx")}',
-                data:{"entran_ym":yincanghttpinfo,"comid":yincangcomid,"planid":yincangplanid,"procode":province,"citycode":123,"areacode":123,"name":yuyuename,"tel":yuyuetel},
+                data:{"entran_ym":yincanghttpinfo,"comid":yincangcomid,"planid":yincangplanid,"procode":province,"citycode":city,"areacode":area,"name":yuyuename,"tel":yuyuetel},
                 success:function(dd){
                     if (dd.code == 200) {
                         $(".ceng-one").css("display", "block");
@@ -674,7 +676,7 @@
         // 尾部隐藏
         $("#bottom-close").click();
             $(".ceng").css("display", "block");
-        })
+    })
 
     </script>
              <!-- 结束 -->

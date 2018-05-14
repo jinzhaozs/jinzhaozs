@@ -150,7 +150,7 @@ class Anli extends \app\shopcom\controller\Base
         $res['new_tel'] = substr($res['tel'], 0, 3).'****'.substr($res['tel'], 7);
         $user = db('reserva'); 
         $res['time'] = date("Y-m-d h:i:s",time());
-               
+        // return $res;
         $user_info = $user->insert($res);
         if (!$user_info) {
             $data = array(
