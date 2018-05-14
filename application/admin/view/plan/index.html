@@ -336,22 +336,22 @@
 					<tr>
 						<td class='wid'>方案名称</td>
 						<td>
-							<input type="text" class="form-control" name="fname" placeholder="请输入名称">
+							<input type="text" class="form-control" name="fname" id="fname2" placeholder="请输入名称">
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>方案logo</td>
 						<td>
-							<img id="previews" width="100px" />
+							<img id="previews" src="" width="100px" />
                               <br />
-							<input type="file" name="flogo" onchange="imgPreviews(this)"/>
+							<input type="file" name="flogo" id="flogo2" onchange="imgPreviews(this)"/>
 							
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>方案类型</td>
 						<td>
-							<select name="ftype"> 
+							<select name="ftype" id="ftype2"> 
 							<option value ="0">请选择</option>  
                               {foreach name="reslx" item="voreslx"}
                                <span ><option value ="{$voreslx.lxcode}">{$voreslx.lxname}</option></span>  
@@ -362,7 +362,7 @@
 					<tr>
 						<td class='wid'>设计师</td>
 						<td>
-							<select name="frenyuan"> 
+							<select name="frenyuan" id="frenyuan2"> 
 							<option value ="0">请选择</option>  
                               {foreach name="usersjs" item="vousersjs"}
                                <span ><option value ="{$vousersjs.id}">{$vousersjs.dname}</option></span>  
@@ -444,19 +444,19 @@
 					<tr>
 						<td class='wid'>房屋面积</td>
 						<td>
-							<input type="text" class="form-control" name="fmianji" placeholder="请输入面积">m²
+							<input type="text" class="form-control" name="fmianji" id="fmianji2" placeholder="请输入面积">m²
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>装修预算</td>
 						<td>
-							<input type="text" class="form-control"  name="fyusuan" placeholder="请输入装修预算">万
+							<input type="text" class="form-control"  name="fyusuan" id="fyusuan2" placeholder="请输入装修预算">万
 						</td>
 					</tr>
 					<tr>
 						<td class='wid'>户型</td>
 						<td>
-							<select name="fhuxing"> 
+							<select name="fhuxing" id="fhuxing2"> 
 							<option value ="0">请选择</option>  
                               {foreach name="userhx" item="vouserhx"}
                                <span ><option value ="{$vouserhx.lcode}">{$vouserhx.lname}</option></span>  
@@ -467,7 +467,7 @@
 					<tr>
 						<td class='wid'>风格</td>
 						<td>
-							<select name="ffengge"> 
+							<select name="ffengge" id="ffengge2"> 
 							<option value ="0">请选择</option>  
                               {foreach name="userfg" item="vouserfg"}
                                <span ><option value ="{$vouserfg.zcfgcode}">{$vouserfg.zcfgname}</option></span>  
@@ -520,7 +520,7 @@
 						<td class='wid'>方案logo</td>
 						<td>
 							<div ><img id="img" src="__STATIC__/uploads/" style="width:100px;height: 100px" ></div>
-							<input type="file" name="flogo" class="form-control" id="logo2"  onchange="imgPreview(this)" />
+							<input type="file" name="flogo" class="form-control" id="logo"  onchange="imgPreview(this)" />
 						</td>
 					</tr>
 					<tr>
@@ -772,7 +772,58 @@
      
     sure.addEventListener('click', function(){  
     	// 获取信息
-          	$("#formsubadd").submit();
+    var fname2=$("#fname2").val();
+    var previews=$("#previews").attr('src');
+    var ftype2=$("#ftype2").val();
+    var frenyuan2=$("#frenyuan2").val();
+    var fmianji2=$("#fmianji2").val();
+    var fyusuan2=$("#fyusuan2").val();
+    var fhuxing2=$("#fhuxing2").val();
+    var ffengge2=$("#ffengge2").val();
+     var r = /^[0-9]*[1-9][0-9]*$/;
+    if(fname2 ==''){
+        layer.tips('请输入设计师姓名', '#fname2');
+        $("#fname2").focus();
+        return false;
+    }
+    if(previews ==''){
+        layer.tips('请添加图片', '#flogo2');
+        $("#flogo2").focus();
+        return false;
+    }
+    if(ftype2 ==''){
+        layer.tips('请选择类型', '#ftype2');
+        $("#ftype2").focus();
+        return false;
+    }
+    if(frenyuan2 ==''){
+        layer.tips('请选择设计师', '#frenyuan2');
+        $("#frenyuan").focus();
+        return false;
+    }
+    if(fmianji2 ==''){
+        layer.tips('请输入面积', '#fmianji2');
+        $("#fmianji2").focus();
+        return false;
+    }
+    if(!r.test(fyusuan2)){
+            layer.tips('请输入预算金额', '#fyusuan2');
+                $("#fyusuan2").focus();
+                return false;
+    }
+    if(fhuxing2 ==''){
+            layer.tips('请选择户型', '#fhuxing2');
+                $("#fhuxing2").focus();
+                return false;
+    }
+    if(ffengge2 ==''){
+            layer.tips('请选择风格', '#ffengge2');
+                $("#ffengge2").focus();
+                return false;
+    }
+
+
+        $("#formsubadd").submit();
     	
         
     });
@@ -914,6 +965,55 @@
     //执行修改
     sure2.addEventListener('click', function(){
     	// 获取信息
+    var fname=$("#fname").val();
+    var preview=$("#preview").attr('src');
+    var ftype=$("#ftype").val();
+    var frenyuan=$("#frenyuan").val();
+    var fmianji=$("#fmianji").val();
+    var fyusuan=$("#fyusuan").val();
+    var fhuxing=$("#fhuxing").val();
+    var ffengge=$("#ffengge").val();
+     var r = /^[0-9]*[1-9][0-9]*$/;
+    if(fname ==''){
+        layer.tips('请输入设计师姓名', '#fname');
+        $("#fname").focus();
+        return false;
+    }
+    if(previews ==''){
+        layer.tips('请添加图片', '#flogo');
+        $("#flogo").focus();
+        return false;
+    }
+    if(ftype ==''){
+        layer.tips('请选择类型', '#ftype');
+        $("#ftype").focus();
+        return false;
+    }
+    if(frenyuan ==''){
+        layer.tips('请选择设计师', '#frenyuan');
+        $("#frenyuan").focus();
+        return false;
+    }
+    if(fmianji ==''){
+        layer.tips('请输入面积', '#fmianji');
+        $("#fmianji").focus();
+        return false;
+    }
+    if(!r.test(fyusuan)){
+            layer.tips('请输入预算金额', '#fyusuan');
+                $("#fyusuan").focus();
+                return false;
+    }
+    if(fhuxing ==''){
+            layer.tips('请选择户型', '#fhuxing');
+                $("#fhuxing").focus();
+                return false;
+    }
+    if(ffengge ==''){
+            layer.tips('请选择风格', '#ffengge');
+                $("#ffengge").focus();
+                return false;
+    } 
     		$("#formsubedit").submit();
     	
         

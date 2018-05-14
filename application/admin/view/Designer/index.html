@@ -249,9 +249,9 @@
 						头像
 					</td>
 					<td>
-						<img id="previews" width="100px" />
+						<img id="previews" src="" width="100px" />
                               <br />
-						<input type="file" name="davatar" class="davatar" onchange="imgPreviews(this)"/>
+						<input type="file" name="davatar" class="davatar" id="davatar" onchange="imgPreviews(this)"/>
 					</td>
 				</tr>
 				<tr>
@@ -565,15 +565,46 @@
          $('#com_zcfg .zcfg').val(com_zcfg);
          var jobage=$("#jobage").val();
          var r = /^[0-9]*[1-9][0-9]*$/;
+         var dname=$("#dname").val();
+         var previews=$("#previews").attr('src');
+         var price_range=$("#price_range").val();
+         var grade=$("#grade").val();
+         var idea=$("#idea").val();
+         if(dname ==''){
+				layer.tips('请输入设计师姓名', '#dname');
+				$("#dname").focus();
+				return false;
+			}
+		if(previews ==''){
+				layer.tips('请添加头像', '#davatar');
+				$("#davatar").focus();
+				return false;
+			}
+		
          if(!r.test(jobage))
          {
-         
-         	alert("请正确输入工作年限");
+         	layer.tips('请正确输入工作年限', '#jobage');
+				$("#jobage").focus();
+				return false;
          }
-         else
-    	{
+         if(grade ==''){
+				layer.tips('请选择等级', '#grade');
+				$("#grade").focus();
+				return false;
+			}
+         if(price_range ==''){
+				layer.tips('请添加费用', '#price_range');
+				$("#price_range").focus();
+				return false;
+			}
+		if(idea ==''){
+				layer.tips('请添加设计理念', '#idea');
+				$("#idea").focus();
+				return false;
+			}
+
     		$("#formsubadd").submit();
-		}
+		
     	
     	
     });
@@ -643,16 +674,48 @@
          var com_zcf=com_zc.join();
          var com_zcfg= com_zcf.concat(",");
          $('#com_zcfg2 .zcfg').val(com_zcfg);
-    var jobage2=$("#jobage2").val();
-    var r = /^[0-9]*[1-9][0-9]*$/;
-    if(!r.test(jobage2))
+	    var jobage2=$("#jobage2").val();
+	    var r = /^[0-9]*[1-9][0-9]*$/;
+	     var dname2=$("#dname2").val();
+         var preview=$("#preview").attr('src');
+         var price_range2=$("#price_range2").val();
+         var grade2=$("#grade2").val();
+         var idea2=$("#idea2").val();
+   if(dname2 ==''){
+				layer.tips('请输入设计师姓名', '#dname2');
+				$("#dname2").focus();
+				return false;
+			}
+		if(preview ==''){
+				layer.tips('请添加头像', '#davatar2');
+				$("#davatar2").focus();
+				return false;
+			}
+		
+         if(!r.test(jobage2))
          {
-         	alert('请正确输入工作年限');
+         	layer.tips('请正确输入工作年限', '#jobage2');
+				$("#jobage2").focus();
+				return false;
          }
-         else
-         {
+         if(grade2 ==''){
+				layer.tips('请选择等级', '#grade2');
+				$("#grade2").focus();
+				return false;
+			}
+         if(price_range2 ==''){
+				layer.tips('请添加费用', '#price_range2');
+				$("#price_range2").focus();
+				return false;
+			}
+		if(idea2 ==''){
+				layer.tips('请添加设计理念', '#idea2');
+				$("#idea2").focus();
+				return false;
+			}
+
          	 $("#formsubedit").submit();
-         }
+        
    
     	// alert(comid);
     	

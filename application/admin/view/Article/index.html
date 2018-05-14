@@ -9,7 +9,7 @@
 <script src="__STATIC__/adminshop/editor/ueditor.all.js"></script>
 <style type="text/css">
 .table-bordered td div{
-  width:290px;
+  width:200px;
     height: 100px;
     overflow: hidden;
    text-overflow:ellipsis;
@@ -113,7 +113,7 @@
 					<td><span class="aname">{$vores.aname}</span></td>
 					<td><span class="shop" name="{$vores.ashop}">{$vores.name}</span></td>
 					<td><span  name="{$vores.pic}"  ><img src="__STATIC__/uploads/{$vores.pic}" style="width:100px;height: 100px" class="pic"></span></td>
-					<td><span class="abstract">{$vores.abstract}</span></td>
+					<td><div class="abstract">{$vores.abstract}</div></td>
 					<td><span class="ischeck" name="{$vores.ischeck}">{if condition="($vores.ischeck == 1)"}已审核{else /}未审核{/if}</span></td>
 					<td style="display: none;"><span class="istop">{$vores.istop}</span></td>
 					<td><div class="content">{$vores.content}</div></td>
@@ -163,7 +163,7 @@
           <tr>
             <td class='wid'>摘要</td>
             <td>
-              <textarea id="abstract" name="abstract" style="height: 50px;width: 100%" placeholder="请填写摘要"></textarea>
+              <textarea id="abstract" name="abstract" style="height: 100px;width:500px" placeholder="请填写摘要"></textarea>
              
             </td>
           </tr>
