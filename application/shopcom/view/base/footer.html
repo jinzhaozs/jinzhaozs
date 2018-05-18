@@ -217,6 +217,7 @@
                 return false;
             }
             //判断手机号格式
+            
             if (!yuyuetel) { 
                  $("#yuyuetel").focus();
                  // alert(123);
@@ -226,7 +227,7 @@
                 if (!yuyuetel.match(/^(((13[0-9]{1})|159|153)+\d{8})$/)) { 
                     $("#yuyuetel").focus();
                 $("#yuyuetel").css("background-color","#FFFFCD"); 
-                    return false; 
+                    return false;
                 } 
             }
              // // 面积
