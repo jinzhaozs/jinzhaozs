@@ -1,0 +1,611 @@
+
+    {extend name="layoutextend"}
+
+{block name="link"}
+<div class="container clear">
+    <div class="zgs_cl_left" style="width: 100%;">
+        <div style="height: 6.5rem;"></div>
+        <!-- 攻略css -->
+        <link rel="stylesheet" type="text/css" href="__STATIC__/index/gonglue/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="__STATIC__/index/gonglue/css/detail.css" />
+        <div>
+        <!-- 主体内容star -->
+        <div class="mydaohen">
+            当前位置：&nbsp;
+            <a href="#">今朝装饰</a>&gt;
+            <a href="#">装修攻略</a>&gt;
+            <a href="#">{$zhuname}</a>&gt;
+            <a href="#">{$funame}</a>
+            <div class="clearfix"></div>
+        </div>
+                        
+        
+        <div class="sty_top">
+            <div class="top_left">
+                
+                <div class="left_dow">
+                    <!--标题-->
+                    <div class="text_title">
+                        <h1>{$resgl.title}</h1>
+                    </div>
+                    <!--明细-->
+                    <div class="text_span">
+                        <span>来源：{$resgl.laiyuan}</span>
+                        <span>浏览数：<font id="liulanliang">{$resgl.liulannum}</font>次查看 </span>
+                        <span>发布时间：{$resgl.time_fb}</span>
+                    </div>
+                    <!--导读-->
+                    <div class="text_daodu">
+                        <font>【导读】</font>{$resgl.daodu}</div>
+                    <!--内容框-->
+                    <div class="text_conter jinxuanxiang">
+                        <!--star-->
+                        <p>
+                           {$resgl.text}。
+                        </p>
+                        {foreach name="resdetail" item="voresdetail"}
+                        <p>
+                            <strong><span style="color:#009900;">{$voresdetail.title}</span></strong>
+                        </p>
+                        <p>
+                            {$voresdetail.text}
+                        </p>
+                        <p>
+                            <img  src="__STATIC__/uploads/{$voresdetail.logo}" alt="厨房装修步骤"  title="{$voresdetail.logosm}" align="">
+                        </p>
+                        {/foreach}
+                        <!--end-->
+                        <div class="neirrkuan" id="neirrkuan">
+                            <div class="neirrtilte">相关推荐</div>
+                            <div class="neirrpai_new">
+                                <a href="#"><span style="color:#E53333;">房屋装修注意事项</span></a><br>
+                                <a href="#"><span style="color:#E53333;"> 装修注意事项及细节</span></a><br>
+                                <a href="#"><span style="color:#E53333;">装修流程及注意事项</span></a><br>
+                                <a href="#"><span style="color:#E53333;">二手房装修注意事项</span></a><br>
+                                <a href="#"><span style="color:#e53333;">找装修公司注意事项</span></a><br>
+                                <a href="#"><span style="color:#E53333;">家装注意事项</span></a><br>
+                                <div style="clear: both;"></div>
+                            </div>
+                            <div style="clear: both;"></div>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+
+                    <div class="textdown">
+                        <div class="shangxiab clearfix">
+                            <p class="text_ov clearfix"><span>上一篇:</span>
+                                <a href="#">夏季收房后可以马上装修吗？</a>
+                            </p>
+                            <p class="text_ov clearfix"><span>下一篇:</span>
+                                <a href="#">7月博若森首届清凉家装节 让你在家轻松装修</a>
+                            </p>
+                        </div>
+                        <div class="textdowndown">
+                            <span>标签：</span>
+                            <a href="#">厨房装修步骤</a>
+                            <a href="#">装修步骤</a>
+                            <div style="clear: both;"></div>
+                        </div>
+                        <div class="textdowntop">
+                            本文首发于网，转载请注明原文地址：
+                        </div>
+                        <div class="textdownffxs clearfix">
+                            <div class="fx_sscgx">
+                                <div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1527227488110"><span>分享到：</span>
+                                    <!--<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                                    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+                                    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+                                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                                    <a href="#" class="bds_more" data-cmd="more">更多</a>-->
+                                </div>
+                                <!--<script>
+                                    window._bd_share_config = {
+                                        "common": {
+                                            "bdSnsKey": {},
+                                            "bdText": "",
+                                            "bdMini": "1",
+                                            "bdMiniList": false,
+                                            "bdPic": "",
+                                            "bdStyle": "0",
+                                            "bdSize": "16"
+                                        },
+                                        "share": {}
+                                    };
+                                    with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+                                </script>-->
+                            </div>
+                            <div class="fx_sscgd">
+                                <span id="dianzhang_btn">点赞 <font>752</font></span>
+                                <span id="shouchang_btn">收藏 <font>59</font></span>
+                                
+                            </div>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+
+                <div id="ys_yd">
+                    <div class="ysyd_title">
+                        厨房装修步骤延伸阅读:
+                    </div>
+                    <div class="ysyd_cinterer clearfix">
+                        <div class="ysyd_lister">
+                            <a href="#">
+                                <img alt="厨房装修步骤都有哪些 厨房装修步骤介绍" src="__STATIC__/index/gonglue/img/thumb_275_150_20170704094600_84374.jpg">
+                                <span class="text_ov">厨房装修步骤都有哪些 厨房装修步骤介绍</span>
+                            </a>
+                        </div>
+                        <div class="ysyd_lister">
+                            <a href="#">
+                                <img alt="大户型房子装修都有哪些步骤" src="__STATIC__/index/gonglue/img/thumb_275_150_20170704094600_84374.jpg">
+                                <span class="text_ov">大户型房子装修都有哪些步骤</span>
+                            </a>
+                        </div>
+                        <div class="ysyd_lister">
+                            <a href="#">
+                                <img alt="老房装修当中都有哪些必要步骤？" src="__STATIC__/index/gonglue/img/thumb_275_150_20170704094600_84374.jpg">
+                                <span class="text_ov">老房装修当中都有哪些必要步骤？</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ysyd_cinter clearfix">
+                        <div class="ysyd_list clearfix">
+                            <div class="ysyd_left text_ov">
+                                <a href="#">厨房用品清单都有哪些</a>
+                            </div>
+                            <div class="ysyd_right text_ov">2014-08-14</div>
+                        </div>
+                        <div class="ysyd_list clearfix">
+                            <div class="ysyd_left text_ov">
+                                <a href="#">整体厨房材料都有哪些？</a>
+                            </div>
+                            <div class="ysyd_right text_ov">2014-08-27</div>
+                        </div>
+                        <div class="ysyd_list clearfix">
+                            <div class="ysyd_left text_ov">
+                                <a href="#">家装书房装饰装修的风格都有哪些</a>
+                            </div>
+                            <div class="ysyd_right text_ov">2016-09-13</div>
+                        </div>
+                        <div class="ysyd_list clearfix">
+                            <div class="ysyd_left text_ov">
+                                <a href="#">老房局部装修都有哪些常见问题？</a>
+                            </div>
+                            <div class="ysyd_right text_ov">2016-05-31</div>
+                        </div>
+                        <div class="ysyd_list clearfix">
+                            <div class="ysyd_left text_ov">
+                                <a href="#">装修步骤有哪些？</a>
+                            </div>
+                            <div class="ysyd_right text_ov">2017-10-11</div>
+                        </div>
+                        <div class="ysyd_list clearfix">
+                            <div class="ysyd_left text_ov">
+                                <a href="#">房屋装修预算审核都有哪些技巧？</a>
+                            </div>
+                            <div class="ysyd_right text_ov">2016-05-31</div>
+                        </div>
+                    </div>
+                </div>
+                <!--<script>
+                    $(".abtread dd").each(function(i, item) {
+                        var txt = $(item);
+                        var temp = cutString(txt.text(), 120);
+                        console.log(temp);
+                        txt.text(temp);
+                    });
+                </script>-->
+
+                <div id="gg_pl">
+                    <div class="img_gg">
+                        <h3>网友评论：</h3>
+                    </div>
+                    <div class="img_pls">
+                        <div class="text_pl">
+                            <textarea id="userInputMsg" maxlength="200"  placeholder="发表一下自己的看法吧"  onkeyup= "checkword(this)" name="content"></textarea>
+                        </div>
+                        <div class="text_simb">
+                            <div class="simb_left">
+                                还可以输入<span id="wordCheck">200</span>个字
+                            </div>
+                            <div class="simb_bott">
+                                <input class="but" id="normalComment_submit" type="submit" value="评论">
+                            </div>
+                            <div style="clear: both;"></div>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                    <div class="Ajax_UserMsg" id="zbbox"></div>
+                    <div style="clear: both;"></div>
+                </div>
+
+                <div style="clear: both;"></div>
+            </div>
+            <div class="top_right">
+                <div class="right_title"></div>
+                <div class="right_table">
+                    <div class="right_top">
+                        <form id="for" action="http://www.zx123.cn/bidding/floatzb2.php" method="post" name="myform" onsubmit="return sub_click(this)">
+                            <div class="table_list table_list_top">
+                                3份精准装修报价PK
+                                <font>知底价！</font>
+                            </div>
+                            <div class="table_list">
+                                <input id="lianxiren" name="info[lianxiren]" type="text" class="txt" placeholder="您的称呼" value="您的称呼" onfocus="javascript:if(this.value=='您的称呼')this.value='';" onblur="if(this.value==''){this.value='您的称呼'}">
+                            </div>
+                            <div class="table_list">
+                                <input id="shouji" name="info[shouji]" type="text" class="txt" placeholder="您的电话" value="您的电话" onfocus="javascript:if(this.value=='您的电话')this.value='';" onblur="if(this.value==''){this.value='您的电话'}">
+                            </div>
+                            <div class="table_list">
+
+                                <span id="df">
+                                    <form class="form-inline">
+      <div data-toggle="distpicker">
+        <div class="form-group">
+          <!--<label class="sr-only" for="province1">Province</label>-->
+          <select class="form-control" id="province1"><option value="" data-code="">—— 省 ——</option><option value="北京市" data-code="110000" selected="">北京市</option><option value="天津市" data-code="120000">天津市</option><option value="河北省" data-code="130000">河北省</option><option value="山西省" data-code="140000">山西省</option><option value="内蒙古自治区" data-code="150000">内蒙古自治区</option><option value="辽宁省" data-code="210000">辽宁省</option><option value="吉林省" data-code="220000">吉林省</option><option value="黑龙江省" data-code="230000">黑龙江省</option><option value="上海市" data-code="310000">上海市</option><option value="江苏省" data-code="320000">江苏省</option><option value="浙江省" data-code="330000">浙江省</option><option value="安徽省" data-code="340000">安徽省</option><option value="福建省" data-code="350000">福建省</option><option value="江西省" data-code="360000">江西省</option><option value="山东省" data-code="370000">山东省</option><option value="河南省" data-code="410000">河南省</option><option value="湖北省" data-code="420000">湖北省</option><option value="湖南省" data-code="430000">湖南省</option><option value="广东省" data-code="440000">广东省</option><option value="广西壮族自治区" data-code="450000">广西壮族自治区</option><option value="海南省" data-code="460000">海南省</option><option value="重庆市" data-code="500000">重庆市</option><option value="四川省" data-code="510000">四川省</option><option value="贵州省" data-code="520000">贵州省</option><option value="云南省" data-code="530000">云南省</option><option value="西藏自治区" data-code="540000">西藏自治区</option><option value="陕西省" data-code="610000">陕西省</option><option value="甘肃省" data-code="620000">甘肃省</option><option value="青海省" data-code="630000">青海省</option><option value="宁夏回族自治区" data-code="640000">宁夏回族自治区</option><option value="新疆维吾尔自治区" data-code="650000">新疆维吾尔自治区</option><option value="台湾省" data-code="710000">台湾省</option><option value="香港特别行政区" data-code="810000">香港特别行政区</option><option value="澳门特别行政区" data-code="820000">澳门特别行政区</option></select>
+        </div>
+        <div class="form-group">
+          <!--<label class="sr-only" for="city1">City</label>-->
+          <select class="form-control" id="city1"><option value="" data-code="">—— 市 ——</option><option value="济南市" data-code="370100" selected="">济南市</option><option value="青岛市" data-code="370200">青岛市</option><option value="淄博市" data-code="370300">淄博市</option><option value="枣庄市" data-code="370400">枣庄市</option><option value="东营市" data-code="370500">东营市</option><option value="烟台市" data-code="370600">烟台市</option><option value="潍坊市" data-code="370700">潍坊市</option><option value="济宁市" data-code="370800">济宁市</option><option value="泰安市" data-code="370900">泰安市</option><option value="威海市" data-code="371000">威海市</option><option value="日照市" data-code="371100">日照市</option><option value="莱芜市" data-code="371200">莱芜市</option><option value="临沂市" data-code="371300">临沂市</option><option value="德州市" data-code="371400">德州市</option><option value="聊城市" data-code="371500">聊城市</option><option value="滨州市" data-code="371600">滨州市</option><option value="菏泽市" data-code="371700">菏泽市</option></select>
+        </div>
+        <div class="form-group">
+          <!--<label class="sr-only" for="district1">District</label>-->
+          <select class="form-control" id="district1"><option value="" data-code="">—— 区 ——</option><option value="芝罘区" data-code="370602" selected="">芝罘区</option><option value="福山区" data-code="370611">福山区</option><option value="牟平区" data-code="370612">牟平区</option><option value="莱山区" data-code="370613">莱山区</option><option value="长岛县" data-code="370634">长岛县</option><option value="龙口市" data-code="370681">龙口市</option><option value="莱阳市" data-code="370682">莱阳市</option><option value="莱州市" data-code="370683">莱州市</option><option value="蓬莱市" data-code="370684">蓬莱市</option><option value="招远市" data-code="370685">招远市</option><option value="栖霞市" data-code="370686">栖霞市</option><option value="海阳市" data-code="370687">海阳市</option></select>
+        </div>
+      </div>
+    </form>
+                                </span>
+                                <input class="txt" id="areaid" name="info[areaid]" type="hidden">
+                            </div>
+                            <div class="table_list">
+                                <input type="hidden" name="info[gclid]" id="gclid" value="">
+                                <input type="hidden" name="info[bidding_from]" id="bidding_from" value="">
+                                <input type="hidden" name="zbtype" value="pc">
+                                <input name="info[title]" value="文章内容页" type="hidden">
+                                <input category="文章内容页" type="submit" class="but_default" value="免费申请装修报价">
+                            </div>
+                            <div class="table_list table_list_top xxxwei" style="font-size: 12px;height: 30px;">今日
+                                <font>935</font> 位业主已申请</div>
+                        </form>
+                        <div style="clear: both;"></div>
+                    </div>
+                    <div class="right_down">
+                        <div class="down_top">
+                            <div class="downtop_list" id="table_gongdon" style="overflow: hidden; position: relative; width: 220px; height: 30px;">
+                            <ul>
+                                 <li>50分钟前 宁波王女士抢到一个名额</li>
+                                 <li>12分钟前 遂宁吴女士抢到一个名额</li>
+                                 <li>14分钟前 成都杨先生抢到一个名额</li>
+                                 <li>20分钟前 上海吴女士抢到一个名额</li>
+                            </ul>
+                            </div>
+                            <div style="clear: both;"></div>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+                <div class="myimg_img_b">
+                    <a href="#" rel="#" target="_blank">
+                        <img alt="藤艺" src="__STATIC__/index/gonglue/img/tb_c.png">
+                    </a>
+                </div>
+
+                <div class="ooppsd">
+                    <div class="right_zxfb">
+                        <div class="zxfb_title bottr">
+                            <h3>菜鸟装修宝典</h3>
+                        </div>
+                    </div>
+                    <div class="right_zxfb right_zxty kku">
+                        <div class="zxfb_title">
+                            <h3>装修准备</h3>
+                        </div>
+                        <div class="zxfb_conter conter">
+                            <a target="_blank" href="#">装修房子流程</a>
+                            <a target="_blank" href="#">装修前期准备工作</a>
+                            <a target="_blank" href="#">基础装修包括哪些</a>
+                            <a target="_blank" href="#">半包包括哪些</a>
+                            <a target="_blank" href="#">装修注意事项及细节</a>
+                            <a target="_blank" href="#">房子装修步骤</a>
+                            <a target="_blank" href="#">二手房装修攻略</a>
+                            <a target="_blank" href="#">毛坯房墙面装修步骤 </a>
+                            <a target="_blank" href="#">半包和全包区别</a>
+                            <a target="_blank" href="#">装修全包注意事项</a>
+                            <div style="clear: both;"></div>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+
+                    <div class="right_zxfb right_zxty">
+                        <div class="zxfb_title">
+                            <h3>装修报价</h3>
+                        </div>
+                        <div class="zxfb_conter conter">
+                            <a target="_blank" href="#">装修报价明细表</a>
+                            <a target="_blank" href="#">装修人工费价格表</a>
+                            <a target="_blank" href="#">装修报价标准</a>
+                            <a target="_blank" href="#">装修报价预算表</a>
+                            <a target="_blank" href="#"> 90平米房屋装修报价</a>
+                            <a target="_blank" href="#">怎样装修最省钱</a>
+                            <a target="_blank" href="#">房屋装修预算清单</a>
+                            <a target="_blank" href="#">房子装修一般多少钱</a>
+                            <a class="hover" target="_blank" href="#">免费获取报价清单&gt;&gt;</a>
+                            <div style="clear: both;"></div>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+
+                    <div class="right_zxfb right_zxty">
+                        <div class="zxfb_title">
+                            <h3>方案选择</h3>
+                        </div>
+                        <div class="zxfb_conter conter">
+                            <a target="_blank" href="#">装修风格分类</a>
+                            <a target="_blank" href="#">装修设计如何收费</a>
+                            <a target="_blank" href="#">装修设计注意事项</a>
+                            <a target="_blank" href="#">小户型收纳技巧</a>
+                            <a target="_blank" href="#">厨房设计规范</a>
+                            <a target="_blank" href="#">装修风水禁忌和破解</a>
+                            <div style="clear: both;"></div>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                    <div class="right_zxfb right_zxty">
+                        <div class="zxfb_title">
+                            <h3>公司选择</h3>
+                        </div>
+                        <div class="zxfb_conter conter">
+                            <a target="_blank" href="#">选择装修公司注意事项</a>
+                            <a target="_blank" href="#">装修公司选择标准</a>
+                            <a target="_blank" href="#">签订装修合同注意事项</a>
+                            <a target="_blank" href="#">装修合同样本</a>
+                            <a target="_blank" href="#">装修公司和施工队差别</a>
+                            <div style="clear: both;"></div>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+
+                    <div class="right_zxfb right_zxty">
+                        <div class="zxfb_title">
+                            <h3>材料选购</h3>
+                        </div>
+                        <div class="zxfb_conter conter">
+                            <a target="_blank" href="#">装修材料清单大全</a>
+                            <a target="_blank" href="#">装修材料价格明细表</a>
+                            <a target="_blank" href="#">装修材料品牌及价格</a>
+                            <a target="_blank" href="#">水电装修材料清单</a>
+                            <a target="_blank" href="#">装修选材注意事项</a>
+                            <a target="_blank" href="#">别墅装修材料清单</a>
+                            <div style="clear: both;"></div>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+
+                    <div class="right_zxfb right_zxty">
+                        <div class="zxfb_title">
+                            <h3>装修施工</h3>
+                        </div>
+                        <div class="zxfb_conter conter">
+                            <a target="_blank" href="#">家装施工工艺流程</a>
+                            <a target="_blank" href="#">水电安装注意事项</a>
+                            <a target="_blank" href="#">卫生间防水施工流程</a>
+                            <a target="_blank" href="#">墙面装修流程</a>
+                            <a target="_blank" href="#">装修刷漆步骤</a>
+                            <a target="_blank" href="#">木工装修注意事项</a>
+                            <a target="_blank" href="#">瓷砖铺贴施工流程</a>
+                            <a target="_blank" href="#">家装水电施工流程</a>
+                            <div style="clear: both;"></div>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+
+                    <div class="right_zxfb right_zxty">
+                        <div class="zxfb_title">
+                            <h3>装修验收</h3>
+                        </div>
+                        <div class="zxfb_conter conter">
+                            <a target="_blank" href="#">水电验收标准</a>
+                            <a target="_blank" href="#">水电验收注意事项</a>
+                            <a target="_blank" href="#">装修验收流程</a>
+                            <a target="_blank" href="#">木工验收标准</a>
+                            <a target="_blank" href="#">隐蔽工程验收程序</a>
+                            <a target="_blank" href="#">隐蔽工程验收表</a>
+                            <a target="_blank" href="#">房屋验收注意事项</a>
+                            <a target="_blank" href="#">新房装修验收标准</a>
+                            <div style="clear: both;"></div>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                    <div class="right_zxfb right_zxty">
+                        <div class="zxfb_title">
+                            <h3>入住阶段</h3>
+                        </div>
+                        <div class="zxfb_conter conter">
+
+                            <a target="_blank" href="#">装修后多久可以入住</a>
+                            <a target="_blank" href="#">除甲醛最有效方法</a>
+                            <a target="_blank" href="#">搬家注意事项及禁忌</a>
+                            <a target="_blank" href="#">搬家公司收费标准</a>
+                            <a target="_blank" href="#">装修后马上入住危害</a>
+                            <div style="clear: both;"></div>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+                <div class="right_zxfb">
+                    <div class="zxfb_title">
+                        <h3>最新文章</h3>
+                    </div>
+                    <div class="zxfb_conter">
+                        <div class="text_list">
+                            <a href="#" target="_blank">房子怎么装才漂亮又温馨</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">梅州市梅江区义乌小商品批发城装修设计</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">杭州小型咖啡厅装修技巧 为打造更有情调的小咖啡厅</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">杭州小型鞋店装修设计 小型鞋店怎么装修比较好看</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">十八匠：装修时水管出水口尺寸大全</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">【徽匠装饰】装修，为什么要选择装修公司？</a>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+                <div class="right_zxfb xiazaizqu">
+                    <a target="_blank" href="#">预算费用清单下载</a>
+                    <a target="_blank" href="#">装修合同下载</a>
+                </div>
+
+                <!--相关文章-->
+
+                <!--一问一答样式-->
+                <div class="right_zxfb">
+                    <div class="zxfb_title">
+                        <h3>相关问答</h3>
+                    </div>
+
+                    <div class="zxfb_conter">
+                        <div class="text_list">
+                            <a href="#" target="_blank">厨房装修的步骤有哪些？</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">楼房装修步骤谁给简单介绍下？</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">厨房装修步骤有哪些？需要注意的问题有哪些？</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">求厨房装修防水设计方案及装修步骤？</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">小厨房自己怎么装修省钱不？求厨房装修步骤？</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">厨房装修要多少钱？厨房装修详细步骤是什么？</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">求厨房装修注意事项？厨房装修详细步骤是什么？</a>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+
+                    <div style="clear: both;"></div>
+                </div>
+
+                <!--效果图样式-->
+                <div class="right_zxfb">
+                    <div class="zxfb_title">
+                        <h3>效果图推荐</h3>
+                    </div>
+                    <div class="we">
+                        <div class="xgtsdtop">
+                        
+                             <div class="J_banner J_banner3">
+                                <ul class="img">
+                                    <li><a href="#"><img src="__STATIC__/index/gonglue/img/thumb_223_150_20131228131902_34021.jpg" alt=""></a></li>
+                                    <li><a href="#"><img src="__STATIC__/index/gonglue/img/thumb_223_150_20150129091825_97222.jpg" alt=""></a></li>
+                                    <li><a href="#"><img src="__STATIC__/index/gonglue/img/thumb_223_150_20150623131000_55031.jpg" alt=""></a></li>
+                                </ul>
+                                <ul class="pointer" id="pointer"></ul>
+                            </div>
+                        </div>
+                        <div class="xgtsdbow clearfix">
+                            <div class="sslide">
+                                <a rel="nofollow" href="#" target="_blank"><img src="http://img.zx123.cn/Resources/zx123cn/uploadfile/2015/0623/thumb_108_90_20150623114435_19370.jpg" width="108" height="90" alt="现代简约风格装修效果图"></a>
+                            </div>
+                            <div class="sslide">
+                                <a rel="nofollow" href="#" target="_blank"><img src="http://img.zx123.cn/Resources/zx123cn/uploadfile/2015/0616/thumb_108_90_20150616083554_86041.jpg" width="108" height="90" alt="田园风格装修图片"></a>
+                            </div>
+                            <div class="sslide">
+                                <a rel="nofollow" href="#" target="_blank"><img src="http://img.zx123.cn/Resources/zx123cn/uploadfile/2015/0616/thumb_108_90_20150616105243_62025.jpg" width="108" height="90" alt="地中海风格装修图片欣赏"></a>
+                            </div>
+                            <div class="sslide">
+                                <a rel="nofollow" href="#" target="_blank"><img src="http://img.zx123.cn/Resources/zx123cn/uploadfile/2015/0619/thumb_108_90_20150619091132_87763.jpg" width="108" height="90" alt="现代风格装修效果图大全2015图片"></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="clear: both;"></div>
+                </div>
+
+                <div class="right_zxfb">
+                    <div class="zxfb_title">
+                        <h3>热门搜索</h3>
+                    </div>
+                    <div class="zxfb_conter conter conter_downid">
+                        <a class="tagc2" href="#" target="_blank">楼梯踏步尺寸标准</a>
+                        <a class="tagc3" href="#" target="_blank">家装楼梯踏步尺寸</a>
+                        <a class="tagc4" href="#" target="_blank">100平方装修设计</a>
+                        <a class="tagc5" href="#" target="_blank">进门玄关装修设计</a>
+                        <a class="tagc1" href="#" target="_blank">老房装修技巧</a>
+                        <a class="tagc2" href="#" target="_blank">门面装修技巧</a>
+                        <a class="tagc3" href="#" target="_blank">书桌高度标准</a>
+                        <a class="tagc4" href="#" target="_blank">儿童书桌高度</a>
+                        <a class="tagc5" href="#" target="_blank">阁楼装修费用</a>
+                        <div style="clear: both;"></div>
+                    </div>
+
+                    <div style="clear: both;"></div>
+                </div>
+
+                <div class="right_zxfb">
+                    <div class="zxfb_title">
+                        <h3>热门效果图分类</h3>
+                    </div>
+                    <div class="zxfb_conter conter conter_downid">
+                        <a href="#">100平方房子设计图</a>
+                        <a href="#">100平米复式楼户型图</a>
+                        <a href="#">100平米黄色儿童房间</a>
+                        <a href="#">10平米儿童房装修图片</a>
+                        <a href="#">10平米简约卧室效果图</a>
+                        <a href="#">10平米卧室装修图片</a>
+                        <a href="#">10平阳台装修效果图片</a>
+                        <a href="#">10万装修效果图</a>
+                        <a href="#">120平米吧台装修效果图</a>
+                        <a href="#">120平米背景墙装修效果图</a>
+                        <div style="clear: both;"></div>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+        <!-- end -->
+        <script type="text/javascript" src="__STATIC__/index/gonglue/js/Myapi.js"></script>
+        <script type="text/javascript" src="__STATIC__/index/gonglue/js/distpicker.data.js"></script>
+        <script type="text/javascript" src="__STATIC__/index/gonglue/js/distpicker.js"></script>
+        <script type="text/javascript" src="__STATIC__/index/gonglue/js/main.js"></script>
+        <script type="text/javascript" src="__STATIC__/index/gonglue/js/detail.js"></script>
+        <script type="text/javascript">
+         $(function () {
+            setInterval("noticeUp('.downtop_list ul','-30px',500)", 2000);
+         });
+        </script>
+        </div>
+    </div>
+    <!-- 头部选择表示 -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".have-arrow").each(function(){
+                $(this).attr("class","have-arrow");
+            });
+            $(".have-arrow").eq(2).attr("class","have-arrow on");
+        });
+    </script>
+</div>
+
+{/block}        
+        

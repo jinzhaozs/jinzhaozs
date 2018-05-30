@@ -143,3 +143,20 @@
             return $res[0]['uname'];
         }
     }
+    // 攻略类别转换
+    function gongluetypename($code){
+         switch ($code) {
+            case '6':
+                  return '<em>头条</em>';
+                break;
+            case '7':
+                return '<em class="er">推荐</em>';
+                break;
+            case '8':
+                  return "";
+                break;
+            default:
+                  return "";
+                break;
+        }
+    }

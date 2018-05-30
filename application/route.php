@@ -20,6 +20,13 @@ Route::rule('/aa','index/Index/aa');//查询
 Route::rule('/regis','index/Index/regis');//注册页面
 Route::rule('/index/Index/doregis','index/Index/doregis');//执行注册
 /**
+ * 前台攻略
+ */
+Route::rule('/strate','index/Gonglue/index');//攻略首页
+Route::rule('/stratetype','index/Gonglue/stratetype');//攻略类别页
+Route::rule('/strateneirong','index/Gonglue/strateneirong');//攻略内容
+
+/**
  * 前台公司
  */
 Route::rule('/shopcom','shopcom/Index/index');//首页

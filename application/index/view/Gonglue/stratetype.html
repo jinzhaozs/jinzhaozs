@@ -1,0 +1,264 @@
+
+    {extend name="layoutextend"}
+
+{block name="link"}
+<div class="container clear">
+    <div class="zgs_cl_left" style="width: 100%;">
+        <div style="height: 6.5rem;"></div>
+        <!-- 攻略css -->
+        <link rel="stylesheet" type="text/css" href="__STATIC__/index/gonglue/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="__STATIC__/index/gonglue/css/list.css" />
+        <div>
+        <!-- 主体内容star -->
+        <div class="mydaohen">
+            当前位置：&nbsp;
+            <a href="#">今朝装饰</a> &gt;
+            <a href="#">装修攻略</a>&gt;
+            <a href="#">{$reslbname}</a>
+            <div class="clearfix"></div>
+        </div>
+        <!---->
+        <div class="sty_top clear">
+
+            <div class="top_left">
+                <div class="zxbtops">
+                    <h1>{$reslbname}</h1>
+                </div>
+                <!--<div class="zxbtopg">
+<span class="er">按时间排序</span><span>按热门排序</span>
+</div>-->
+                <div class="left_dow">
+                <!-- 攻略 -->
+                    {foreach name="resgl" item="voresgl"}
+                    <div class="aasd">
+                        <div class="tagstt">
+                            <div class="tagstt_img">
+                                <a href="#" target="_blank">
+                                    <span>{$voresgl.type|gongluetypename=###}</span>
+                                    <img src="__STATIC__/uploads/{$voresgl.logo}" width="225" height="160" alt="厨房瓷砖装修注意事项 厨房瓷砖装修技巧">
+                                </a>
+                            </div>
+                            <div class="tagstt_item">
+                                <div class="atitle">
+                                    <h2><a href="{:url('/strateneirong',array('strid'=>$voresgl['id']))}">{$voresgl.title}</a></h2>
+                                </div>
+                                <div class="anredu">
+                                    {$voresgl.daodu}
+                                    <!-- <a href="#" target="_blank">[阅读全文]</a> -->
+                                </div>
+                                <div class="anredate">
+                                    <span> {$voresgl.time_fb}</span>
+                                    <p class="sdhg text_ov">
+                                        <a href="#"></a>
+                                    </p>
+                                    <!--<span class="rr ss">收藏（12）</span>-->
+                                    <!--<span class="rr xx">阅读（154）</span>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/foreach}
+                    <!-- 分页 -->
+                    <div>
+                       {$page}
+                    </div>
+                </div>
+            </div>
+            <div class="top_right">
+
+                <!--目录树导航-->
+                <div class="mulvs">
+                <!-- 左侧目录遍历 -->
+                {foreach name="reslb" item="voreslb"}
+                    <div class="mlkua">
+                        <div class="mltitl">
+                            <a href="{:url('/stratetype',array('zlid'=>$voreslb['id']))}">{$voreslb.name}</a>
+                        </div>
+                        <div class="mlcont">
+                            <!-- 子类遍历 -->
+                            {foreach name="voreslb.zlbsel" item="vozlbsel"}
+                                <span><a href="{:url('/stratetype',array('zlid'=>$voreslb['id'],'flid'=>$vozlbsel['id']))}" >{$vozlbsel.name}</a></a></span>
+                            {/foreach}
+                        </div>
+                    </div>
+                {/foreach}
+                </div>
+                <!--目录 end-->
+                <div class="zxbk_mig">
+                    <a href="#" target="_blank">
+                        <img alt="免费装修招标" src="__STATIC__/index/gonglue/img/zxbk_2.jpg">
+                    </a>
+                </div>
+                <div class="right_zxfb">
+                    <div class="zxfb_title">
+                        <h3>厨房装修热门文章</h3>
+                    </div>
+                    <div class="zxfb_conter">
+                        <div class="text_list">
+                            <a href="#" target="_blank">厨房装修必须注意的四个细节问题</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">五款创意厨房小家电惊曝你的眼球，快来看看哈</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">陶与瓷有别 装修厨房卫浴时切不可混用</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">冬季装修指南：厨房装修 安全大于一切</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">装修参考： 小厨房装修，细节设计是重点</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">厨房装修中需要注意的四个细节</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">厨房设备 属于你自己的个性空间</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">卫浴、厨房如何选择铝扣天花板</a>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+                <div class="right_zxfb">
+                    <div class="zxfb_title">
+                        <h3>厨房装修相关问答</h3>
+                    </div>
+                    <div class="zxfb_conter">
+                        <div class="text_list">
+                            <a href="#" target="_blank">厨房要怎样装修</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">厨房如何装修</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">求厨房装修知识？</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">厨房太小怎么装修？</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">厨房装修注意什么，厨房装修如何进行？</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">厨房装修注意什么些问题才能装修好厨房？</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">装友们，厨房装修那个厨房台面用什么材料好？</a>
+                        </div>
+                        <div class="text_list">
+                            <a href="#" target="_blank">小厨房如何装修？小厨房炉灶如何摆放？</a>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+                <!--效果图样式-->
+                <div class="right_zxfb">
+                    <div class="zxfb_title">
+                        <h3>精品效果图欣赏</h3>
+                    </div>
+                    <div class="we">
+                            <div class="xgtsdtop">
+                        
+                             <div class="J_banner J_banner3">
+                                <ul class="img clearfix">
+                                    <li><a href=""><img src="__STATIC__/index/gonglue/img/thumb_203_155_20170518150055_65279.jpg" alt=""></a></li>
+                                    <li><a href=""><img src="__STATIC__/index/gonglue/img/thumb_203_155_20170519155802_10175.jpg" alt=""></a></li>
+                                    <li><a href=""><img src="__STATIC__/index/gonglue/img/thumb_203_155_20170519155832_94713.jpg" alt=""></a></li>
+                                    <li><a href=""><img src="__STATIC__/index/gonglue/img/thumb_203_155_20170519155836_26903.jpg" alt=""></a></li>
+                                    <li><a href=""><img src="__STATIC__/index/gonglue/img/thumb_203_155_20170523150100_29850.jpg" alt=""></a></li>
+                                </ul>
+                                <ul class="pointer" id="pointer"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+                <div class="right_zxfb xiazaizqu">
+                    <a target="_blank" href="#">预算费用清单下载</a>
+                    <a target="_blank" href="#">装修合同下载</a>
+                </div>
+                <div class="right_zxfb">
+                    <div class="zxfb_title">
+                        <h3>热门搜索</h3>
+                    </div>
+                    <div class="zxfb_conter conter conter_downid">
+                        <a class="tagc2" href="#" target="_blank" style="display: none;">空调安装价格</a>
+                        <a class="tagc3" href="#" target="_blank" style="display: none;">洗衣机选购</a>
+                        <a class="tagc4" href="#" target="_blank" style="display: none;">沙发摆放规则</a>
+                        <a class="tagc5" href="#" target="_blank" style="display: none;">沙发摆放方法</a>
+                        <a class="tagc1" href="#" target="_blank" style="display: none;">百搭沙发</a>
+                        <a class="tagc2" href="#" target="_blank" style="display: none;">沙发使用年限</a>
+                        <a class="tagc3" href="#" target="_blank" style="display: none;">空调颜色选择</a>
+                        <a class="tagc4" href="#" target="_blank" style="display: none;">沙发选择技巧</a>
+                        <a class="tagc5" href="#" target="_blank" style="display: none;">父母房装修</a>
+                        <a class="tagc1" href="#" target="_blank" style="display: none;">时尚装修</a>
+                        <a class="tagc2" href="#" target="_blank" style="display: none;">花架材质</a>
+                        <a class="tagc3" href="#" target="_blank" style="display: none;">净水设备</a>
+                        <a class="tagc4" href="#" target="_blank" style="display: none;">家居健康</a>
+                        <a class="tagc5" href="#" target="_blank" style="display: none;">手工地毯</a>
+                        <a class="tagc1" href="#" target="_blank" style="display: none;">网络购物</a>
+                        <a class="tagc2" href="#" target="_blank" style="display: block;">书房布局</a>
+                        <a class="tagc3" href="#" target="_blank" style="display: block;">书房植物</a>
+                        <a class="tagc4" href="#" target="_blank" style="display: block;">公寓住宅</a>
+                        <a class="tagc5" href="#" target="_blank" style="display: block;">水龙头安装</a>
+                        <a class="tagc1" href="#" target="_blank" style="display: block;">松下电器</a>
+                        <a class="tagc2" href="#" target="_blank" style="display: block;">家用热水器</a>
+                        <a class="tagc3" href="#" target="_blank" style="display: block;">书桌材质</a>
+                        <a class="tagc4" href="#" target="_blank" style="display: block;">沙发用品！</a>
+                        <a class="tagc5" href="#" target="_blank" style="display: block;">微波炉使用</a>
+                        <a class="tagc1" href="#" target="_blank" style="display: none;">微波炉清洗</a>
+                        <a class="tagc2" href="#" target="_blank" style="display: none;">卫生间装饰</a>
+                        <a class="tagc3" href="#" target="_blank" style="display: none;">置物架摆放</a>
+                        <a class="tagc4" href="#" target="_blank" style="display: none;">厕所反味</a>
+                        <a class="tagc5" href="#" target="_blank" style="display: none;">置物架布局</a>
+                        <a class="tagc1" href="#" target="_blank" style="display: none;">厕所清洗</a>
+                        <a class="tagc2" href="#" target="_blank" style="display: none;">瓷砖马赛克</a>
+                        <a class="tagc3" href="#" target="_blank" style="display: none;">浴室浴缸</a>
+                        <a class="tagc4" href="#" target="_blank" style="display: none;">木门防潮</a>
+                        <a class="tagc5" href="#" target="_blank" style="display: none;">灯光选择</a>
+                        <a class="tagc1" href="#" target="_blank" style="display: none;">塑料制品</a>
+                        <a class="tagc2" href="#" target="_blank" style="display: none;">电器用品</a>
+                        <a class="tagc3" href="#" target="_blank" style="display: none;">家具沙发</a>
+                        <a class="tagc4" href="#" target="_blank" style="display: none;">146平米装修价格</a>
+                        <a class="tagc5" href="#" target="_blank" style="display: none;">146平米装修预算</a>
+                        <a class="tagc1" href="#" target="_blank" style="display: none;">卧室花卉</a>
+                        <div style="clear: both;"></div>
+                    </div>
+                    
+
+                    <div style="clear: both;"></div>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+        <!-- end -->
+        <script type="text/javascript" src="__STATIC__/index/gonglue/js/Myapi.js"></script>
+        <script type="text/javascript">
+             var myApi3 = new Myapi();
+ myApi3.JSON.lagout($('.J_banner3'),2000,0);
+                        var su = Math.ceil(Math.random() * 5) * 5;
+                        $('.conter_downid a').hide();
+                        for(var i = su; i < su + 9; i++) {
+                            $('.conter_downid a').eq(i).show();
+                        }
+        </script>
+        </div>
+    </div>
+    <!-- 头部选择表示 -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".have-arrow").each(function(){
+                $(this).attr("class","have-arrow");
+            });
+            $(".have-arrow").eq(2).attr("class","have-arrow on");
+        });
+    </script>
+</div>
+
+{/block}        
+        

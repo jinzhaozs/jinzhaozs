@@ -1,0 +1,409 @@
+
+    {extend name="layoutextend"}
+
+{block name="link"}
+<div class="container clear">
+    <div class="zgs_cl_left" style="width: 100%;">
+        <div style="height: 6.5rem;"></div>
+        <!-- 攻略css -->
+        <link rel="stylesheet" type="text/css" href="__STATIC__/index/gonglue/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="__STATIC__/index/gonglue/css/decoration.css" />
+        <!-- 主体内容 -->
+        <div style="">
+            <!-- start -->
+            <div class="mydaohen">
+                当前位置：&nbsp;
+                <a href="#">今朝装饰</a> &gt;
+                <a href="#">装修攻略</a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="bktopb clearfix">
+                <div class="leftnnav">
+                    <div class="navtitl">
+                        <h1>装修知识</h1></div>
+                    <div class="navlistt">
+                    <!-- 遍历类别 -->
+                    {foreach name="reslb" item="vores"}
+                        <div class="navlist">
+                            <div class="natitl">
+                                <h2><a href="{:url('/stratetype',array('zlid'=>$vores['id']))}" ><font class="bkicon"></font>{$vores.name}</a></h2>
+                            </div>
+                            <div class="nalist">
+                                <div class="naliss">
+                                    <!-- 遍历子类别 -->
+                                    {foreach name="vores.zlbsel" item="vozlb"}
+                                    <h3><a href="{:url('/stratetype',array('zlid'=>$vores['id'],'flid'=>$vozlb['id']))}" >{$vozlb.name}</a></h3>
+                                    {/foreach}
+                                </div>
+                            </div>
+                        </div>
+                    {/foreach}
+                    </div>
+                </div>
+                <!-- 轮播图 -->
+                <div class="rightimg">
+                     <div class="J_banner J_banner3">
+                                    <ul class="img">
+                                        {foreach name="lbt" item="volbt"}
+                                        <li><a href="#"><img src="__STATIC__/uploads/{$volbt.shop_logo}" style="width: 904px;height: 412px;" alt=""></a></li>
+                                        {/foreach}
+                                    </ul>
+                                    <ul class="pointer" id="pointer"></ul>
+                                </div>
+                </div>
+            </div>
+            <div class="bktopc clearfix">
+                <div class="listsig clearfix">
+                    <a href="/zxbk/">
+                        <div class="bkicon lefticon"></div>
+                        <div class="righttet">
+                            <span class="as">新手装修</span>
+                            <span class="bs">搞懂装修拒绝装修陷阱 </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="listsig clearfix">
+                    <a href="#" target="_blank">
+                        <div class="bkicon lefticon"></div>
+                        <div class="righttet">
+                            <span class="as">装修保障金</span>
+                            <span class="bs">先行赔付 装修无忧 </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="listsig clearfix">
+                    <a href="#" target="_blank">
+                        <div class="bkicon lefticon"></div>
+                        <div class="righttet">
+                            <span class="as">免费出效果图</span>
+                            <span class="bs">百万优秀设计师原创作品 </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="listsig clearfix">
+                    <a href="#" target="_blank">
+                        <div class="bkicon lefticon"></div>
+                        <div class="righttet">
+                            <span class="as">装修日记</span>
+                            <span class="bs">记录装修我的家过程 </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="bkconta">
+
+                <div class="bt_step clearfix">
+                    <div class="bt_step_bd clearfix">
+                        <div class="step_item">
+                            <div class="step_itema">
+                                <ul>
+                                    <li>
+                                        <a target="_blank" href="#"><span class="step_ico step_icoa"></span>收房</a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="#"><span class="step_ico step_icob"></span>设计</a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="#"><span class="step_ico step_icoc"></span>预算</a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="#"><span class="step_ico step_icod"></span>合同</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="step_item">
+                            <div class="step_itemb">
+                                <ul>
+                                    <li>
+                                        <a target="_blank" href="#"><span class="step_ico step_icoe"></span>拆改</a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="#"><span class="step_ico step_icof"></span>水电</a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="#"><span class="step_ico step_icog"></span>防水</a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="#"><span class="step_ico step_icoh"></span>泥瓦</a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="#"><span class="step_ico step_icoi"></span>木工</a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="#"><span class="step_ico step_icoj"></span>油漆</a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="#"><span class="step_ico step_icok"></span>竣工</a>
+                                    </li>
+                                    <li>
+                                        <a rel="nofollow" target="_blank" href="/zxbk/"><span class="step_ico step_icol"></span>更多</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="step_item">
+                            <div class="step_itemc">
+                                <ul>
+                                    <li>
+                                        <a target="_blank" href="#"><span class="step_ico step_icom"></span>软装</a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="#"><span class="step_ico step_icon"></span>入住</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--eee-->
+            <div class="bkconta">
+                <div class="titlr clearfix">
+                    <div class="hhldf">
+                        <a href="#" target="_blank">装修攻略</a>
+                    </div>
+                    <div class="hhlgf">
+                        <a href="#" target="_blank">色彩搭配</a>
+                    </div>
+                    <div class="hhlgf">
+                        <a href="#" target="_blank">装修经验</a>
+                    </div>
+                </div>
+                <div class="contr clearfix">
+                    <div class="listd">
+                        <a href="#" target="_blank">
+                            <img alt="装修墙面开槽方法 墙面开槽注意事项" src="__STATIC__/index/gonglue/img/thumb_285_204_20180427113613_47929.jpg">
+                            <span>装修墙面开槽方法 墙面开槽注意事项</span>
+                        </a>
+                    </div>
+                    <div class="listd">
+                        <a href="#" target="_blank">
+                            <img alt="墙面装修方法有哪些 墙体裂缝怎么处理" src="__STATIC__/index/gonglue/img/thumb_285_204_20180427105459_59515.jpg">
+                            <span>墙面装修方法有哪些 墙体裂缝怎么处理</span>
+                        </a>
+                    </div>
+                    <div class="listd">
+                        <a href="#" target="_blank">
+                            <img alt="夏季装修有哪些好处 夏季装修好处盘点" src="__STATIC__/index/gonglue/img/thumb_285_204_20180426170758_14297.jpg">
+                            <span>夏季装修有哪些好处 夏季装修好处盘点</span>
+                        </a>
+                    </div>
+                    <div class="listd">
+                        <a href="#" target="_blank">
+                            <img alt="衣帽间装修小技巧 衣帽间如何装修才好" src="__STATIC__/index/gonglue/img/thumb_285_204_20180426104617_77953.jpg">
+                            <span>衣帽间装修小技巧 衣帽间如何装修才好</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <!---->
+            <div class="bkcontb clearfix">
+                <!--left-->
+                <div class="bkleft">
+                    {foreach name="reslb" item="voreslb"}
+                    <div class="titletop clearfix">
+                        <div class="titlea">
+                            <a href="{:url('/stratetype',array('zlid'=>$voreslb['id']))}">{$voreslb.name}</a>
+                        </div>
+                        <!-- 子类遍历 -->
+                        {foreach name="voreslb.zlbsel" item="vozlbsel"}
+                        <div class="titleb">
+                            <a href="{:url('/stratetype',array('zlid'=>$voreslb['id'],'flid'=>$vozlbsel['id']))}">{$vozlbsel.name}</a>
+                        </div>
+                        {/foreach}
+                        <div class="titlec">
+                            <a href="{:url('/stratetype',array('zlid'=>$voreslb['id']))}" target="_blank" rel="nofollow">更多&gt;</a>
+                        </div>
+                    </div>
+                    <div class="copnttop clearfix">
+                        <div class="bkcpleft">
+                            <a href="{:url('/strateneirong',array('strid'=>$voreslb['neirongtoutiao']['id']))}" target="_blank">
+                                <img style="width:380px;height: 250px;" alt="快餐店装修价格表 快餐店装修价格分析" src="__STATIC__/uploads/{$voreslb['neirongtoutiao']['logo']}">
+                            </a>
+                        </div>
+                        <div class="bkcprigt">
+                            <div class="tilre text_ov">
+                                <a href="{:url('/strateneirong',array('strid'=>$voreslb['neirongtoutiao']['id']))}" target="_blank">{$voreslb['neirongtoutiao']['title']}</a>
+                            </div>
+                            <div class="ticon">
+                               {$voreslb['neirongtoutiao']['daodu']}</div>
+
+                            <div class="tilaa">
+                                {foreach name="$voreslb['neirongtuijian']" item="votuijian"}
+                                <a href="{:url('/strateneirong',array('strid'=>$votuijian['id']))}" target="_blank">{$votuijian.title}</a>
+                                {/foreach}
+                            </div>
+                        </div>
+                    </div>
+                    {/foreach}
+
+                </div>
+                <!--right-->
+                <div class="bkrigh">
+
+                    <div class="bkimge">
+                        <a href="#">
+                            <img alt="免费装修报价" src="__STATIC__/index/gonglue/img/baike_01.jpg">
+                        </a>
+                    </div>
+
+                    <div class="bkturl">
+                        <div class="bktitlr">
+                            家居装修
+                        </div>
+                        <div class="bkpaiup clearfix">
+                            <a href="#">
+                                <div class="lisdyr">
+                                    <span class="bkicon a"></span>客厅
+                                </div>
+                            </a>
+                            <a href="#">
+                                <div class="lisdyr">
+                                    <span class="bkicon b"></span>卧室
+                                </div>
+                            </a>
+                            <a href="#">
+                                <div class="lisdyr">
+                                    <span class="bkicon c"></span>儿童房
+                                </div>
+                            </a>
+                            <a href="#">
+                                <div class="lisdyr">
+                                    <span class="bkicon d"></span>厨房
+                                </div>
+                            </a>
+                            <a href="#">
+                                <div class="lisdyr">
+                                    <span class="bkicon e"></span>餐厅
+                                </div>
+                            </a>
+                            <a href="#">
+                                <div class="lisdyr">
+                                    <span class="bkicon f"></span>阳台
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bkturl">
+                        <div class="bktitlr">
+                            热点文章
+                        </div>
+                        <div class="bkpaimd">
+                            <div class="lisdyu">
+                                <font>1</font>
+                                <a href="#" target="_blank">装修房子多少钱 如何节省家居装修费用</a>
+                            </div>
+                            <div class="lisdyu">
+                                <font>2</font>
+                                <a href="#" target="_blank">装修墙面开槽方法 墙面开槽注意事项</a>
+                            </div>
+                            <div class="lisdyu">
+                                <font>3</font>
+                                <a href="#" target="_blank">小户型装修设计技巧 小户型装修注意事项</a>
+                            </div>
+                            <div class="lisdyu">
+                                <font>4</font>
+                                <a href="#" target="_blank">简单装修材料清单 简单装修需要哪些材料</a>
+                            </div>
+                            <div class="lisdyu">
+                                <font>5</font>
+                                <a href="#" target="_blank">家居装修环保知识有哪些 室内环保装修介绍</a>
+                            </div>
+                            <div class="lisdyu">
+                                <font>6</font>
+                                <a href="#" target="_blank">衣帽间装修小技巧 衣帽间如何装修才好</a>
+                            </div>
+                            <div class="lisdyu">
+                                <font>7</font>
+                                <a href="#" target="_blank">北京林奥家园现代三室装修案例 韵味优雅灵动</a>
+                            </div>
+                            <div class="lisdyu">
+                                <font>8</font>
+                                <a href="#" target="_blank">快餐店装修价格表 快餐店装修价格分析</a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="bkimge">
+                        <a href="#">
+                            <img alt="免费获取三家正规公司报价PK" src="__STATIC__/index/gonglue/img/ggicong.jpg">
+                        </a>
+                    </div>
+                    <div class="bkturl">
+                        <div class="bktitlr">
+                            装修问答
+                        </div>
+                        <div class="bkpaiui">
+                            <a href="#" target="_blank">餐馆装修注意事项有哪些?</a>
+                            <a href="#" target="_blank">橡木地板的优缺点是什么?</a>
+                            <a href="#" target="_blank">小卧室如何装修设计?</a>
+                            <a href="#" target="_blank">电视墙怎么装修设计?</a>
+                            <a href="#" target="_blank">家装灯具如何挑选好?</a>
+                            <a href="#" target="_blank">110平米装修预算大概是多少?</a>
+                            <a href="#" target="_blank">卧室飘窗如何装修?</a>
+                        </div>
+                    </div>
+
+                    <div class="bkturl">
+                        <div class="bktitlr">
+                            热搜关键词
+                        </div>
+                        <div class="bkpaiuo clearfix">
+                            <a class="tagc2" href="#" target="_blank">
+                                餐馆装修注意事项</a>
+                            <a class="tagc3" href="#" target="_blank">定制家具的优势</a>
+                            <a class="tagc4" href="#" target="_blank">定制家具好还是买成品好</a>
+                            <a class="tagc5" href="#" target="_blank">自热地板好不好</a>
+                            <a class="tagc1" href="#" target="_blank">自热地板优点</a>
+                            <a class="tagc2" href="#" target="_blank">电视墙如何设计</a>
+                            <a class="tagc3" href="#" target="_blank">灯具怎么挑选</a>
+                            <a class="tagc4" href="#" target="_blank">家装灯具挑选</a>
+                            <a class="tagc5" href="#" target="_blank">9平米卫生间装修</a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!---->
+            <div id="ggtjuaner">
+                <div class="ggtjuan">
+                    <div class="ggttitle"><strong>3大特"<font>省</font>"服务，让装修更<font>省</font></strong></div>
+                    <div class="ggtconte">
+                        <div class="ggtconte_lest ggtconte_lest_yi">
+                            <a rel="nofollow" href="#" target="_blank"><span>申请服务，省力</span><span class="er">只需30秒，免费申请装修</span></a>
+                        </div>
+                        <div class="ggtconte_lest ggtconte_lest_er">
+                            <a rel="nofollow" href="#" target="_blank"><span>全方位PK，省钱</span><span class="er">免费量房+报价PK+方案PK</span></a>
+                        </div>
+                        <div class="ggtconte_lest ggtconte_lest_sv">
+                            <a rel="nofollow" href="#" target="_blank"><span>装修保障，省心</span><span class="er">业主保障，装修无担忧</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end -->
+        </div>
+        <!-- 攻略js -->
+        <script type="text/javascript" src="__STATIC__/index/gonglue/js/Myapi.js"></script>
+        <script type="text/javascript">
+             var myApi3 = new Myapi();
+             myApi3.JSON.lagout($('.J_banner3'),200000,0);
+        </script>
+    </div>
+    <!-- 头部选择表示 -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".have-arrow").each(function(){
+                $(this).attr("class","have-arrow");
+            });
+            $(".have-arrow").eq(2).attr("class","have-arrow on");
+        });
+    </script>
+</div>
+
+{/block}        
+        
